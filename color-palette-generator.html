@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Generator — Toolivo</title>
+<meta name="description" content="Generate beautiful color palettes instantly with Toolivo. Free online color palette generator with HEX codes.">
+<meta name="keywords" content="color palette generator, hex palette, color tool, gradient generator, Toolivo">
+<meta name="google-adsense-account" content="ca-pub-4422292009724522">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:radial-gradient(circle at top left,#0d3f35 0%,transparent 30%),radial-gradient(circle at top right,#1b2557 0%,transparent 30%),#05070d;color:white;min-height:100vh;overflow-x:hidden}.container{width:min(1150px,calc(100% - 32px));margin:auto}header{padding:28px 0}.logo{font-size:34px;font-weight:900;letter-spacing:-2px}.logo span{background:linear-gradient(90deg,#39e6d2,#7aa2ff);-webkit-background-clip:text;color:transparent}.hero{text-align:center;padding:60px 0 26px}.hero h1{font-size:72px;line-height:.95;letter-spacing:-4px;margin:0 0 18px}.hero h1 span{background:linear-gradient(90deg,#fff,#89dfff);-webkit-background-clip:text;color:transparent}.hero p{max-width:760px;margin:auto;line-height:1.7;font-size:18px;color:#9ca8bb}.tool{margin-top:40px;display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}.panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:22px;backdrop-filter:blur(14px)}.input-row{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;margin-bottom:16px}.color-input{width:90px;height:58px;border:0;border-radius:18px;background:transparent;cursor:pointer}.text-input{height:58px;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.25);color:white;padding:0 16px;font:inherit;text-transform:uppercase}.btn{height:58px;border:none;border-radius:18px;font-weight:800;font-size:16px;cursor:pointer;background:linear-gradient(90deg,#39e6d2,#6ea8ff);color:#051018;transition:.2s;width:100%;margin-top:10px}.btn:hover{transform:translateY(-2px)}.muted{background:rgba(255,255,255,.08);color:white;border:1px solid rgba(255,255,255,.08)}.info{margin-top:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:18px;line-height:1.6;color:#9ca8bb}.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.swatch{min-height:300px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.1);position:relative;cursor:pointer;transition:.22s}.swatch:hover{transform:translateY(-5px);box-shadow:0 24px 80px rgba(0,0,0,.35)}.swatch .hex{position:absolute;left:12px;right:12px;bottom:12px;padding:12px;border-radius:16px;background:rgba(0,0,0,.42);backdrop-filter:blur(10px);font-weight:900;text-align:center;letter-spacing:.04em}.copied{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(57,230,210,.16);border:1px solid rgba(57,230,210,.35);color:#d8fffb;padding:13px 18px;border-radius:999px;font-weight:800;opacity:0;pointer-events:none;transition:.25s}.copied.show{opacity:1;transform:translateX(-50%) translateY(0)}.gradient-box{height:90px;border-radius:24px;margin-top:18px;border:1px solid rgba(255,255,255,.1)}footer{margin-top:70px;padding:26px 0;border-top:1px solid rgba(255,255,255,.08);text-align:center;color:#7c8799}@media(max-width:860px){.tool{grid-template-columns:1fr}.palette{grid-template-columns:1fr}.swatch{min-height:120px}.hero h1{font-size:52px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header><a class="logo" href="/"><span>Toolivo</span></a></header>
+<section class="hero"><h1><span>Color Palette</span><br>generator.</h1><p>Create beautiful color palettes instantly. Pick a base color, generate matching tones and copy HEX codes with one click.</p></section>
+<section class="tool">
+<div class="panel">
+<div class="input-row"><input class="color-input" type="color" id="baseColor" value="#39e6d2"><input class="text-input" id="hexInput" value="#39E6D2" maxlength="7"></div>
+<button class="btn" id="generateBtn">Generate Palette</button>
+<button class="btn muted" id="randomBtn">Random Premium Palette</button>
+<div class="info">Click any color card to copy its HEX code. Use palettes for websites, logos, social media posts, UI designs and brand themes.</div>
+<div class="gradient-box" id="gradientBox"></div>
+</div>
+<div class="panel"><div class="palette" id="palette"></div></div>
+</section>
+<footer>© 2026 Toolivo — Color Palette Generator</footer>
+</div>
+<div class="copied" id="copied">Copied HEX code</div>
+<script>
+const baseColor=document.getElementById('baseColor'),hexInput=document.getElementById('hexInput'),palette=document.getElementById('palette'),gradientBox=document.getElementById('gradientBox'),copied=document.getElementById('copied');function clamp(v,min,max){return Math.max(min,Math.min(max,v))}function hexToRgb(hex){hex=hex.replace('#','');return {r:parseInt(hex.slice(0,2),16),g:parseInt(hex.slice(2,4),16),b:parseInt(hex.slice(4,6),16)}}function rgbToHex(r,g,b){return '#'+[r,g,b].map(x=>clamp(Math.round(x),0,255).toString(16).padStart(2,'0')).join('').toUpperCase()}function mix(c1,c2,amount){const a=hexToRgb(c1),b=hexToRgb(c2);return rgbToHex(a.r+(b.r-a.r)*amount,a.g+(b.g-a.g)*amount,a.b+(b.b-a.b)*amount)}function luminance(hex){const c=hexToRgb(hex);return (0.299*c.r+0.587*c.g+0.114*c.b)/255}function showCopied(text){copied.textContent=text+' copied';copied.classList.add('show');setTimeout(()=>copied.classList.remove('show'),1200)}function generate(hex){if(!/^#[0-9A-Fa-f]{6}$/.test(hex))hex='#39E6D2';hex=hex.toUpperCase();baseColor.value=hex;hexInput.value=hex;const colors=[mix(hex,'#000000',.42),mix(hex,'#000000',.16),hex,mix(hex,'#FFFFFF',.24),mix(hex,'#FFFFFF',.52)];palette.innerHTML='';colors.forEach(color=>{const card=document.createElement('div');card.className='swatch';card.style.background=color;card.innerHTML='<div class="hex" style="color:'+(luminance(color)>.55?'#071018':'#fff')+'">'+color+'</div>';card.onclick=async()=>{await navigator.clipboard.writeText(color);showCopied(color)};palette.appendChild(card)});gradientBox.style.background='linear-gradient(135deg,'+colors.join(',')+')'}function randomColor(){return rgbToHex(Math.random()*255,Math.random()*255,Math.random()*255)}document.getElementById('generateBtn').onclick=()=>generate(hexInput.value);document.getElementById('randomBtn').onclick=()=>generate(randomColor());baseColor.oninput=()=>generate(baseColor.value);hexInput.oninput=()=>{if(/^#[0-9A-Fa-f]{6}$/.test(hexInput.value))generate(hexInput.value)};generate('#39E6D2');
+</script>
+</body>
+</html>
