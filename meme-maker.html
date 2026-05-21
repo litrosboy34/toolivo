@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Meme Maker — Toolivo</title>
+<title>Ultimate Meme Maker — Toolivo</title>
 
-<meta name="description" content="Create memes instantly online with Toolivo. Add top and bottom text to any image for free.">
+<meta name="description" content="Create advanced memes online with draggable text, stickers, emojis and templates using Toolivo.">
 
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -34,7 +34,7 @@ overflow-x:hidden;
 }
 
 .container{
-width:min(1150px,calc(100% - 32px));
+width:min(1200px,calc(100% - 32px));
 margin:auto;
 }
 
@@ -55,7 +55,7 @@ color:transparent;
 }
 
 .hero{
-padding:60px 0 28px;
+padding:50px 0 26px;
 text-align:center;
 }
 
@@ -83,7 +83,7 @@ color:#9ca8bb;
 .tool{
 margin-top:40px;
 display:grid;
-grid-template-columns:1fr 1fr;
+grid-template-columns:0.9fr 1.1fr;
 gap:18px;
 }
 
@@ -97,7 +97,7 @@ backdrop-filter:blur(14px);
 
 .drop{
 border:2px dashed rgba(255,255,255,0.14);
-min-height:300px;
+min-height:260px;
 border-radius:22px;
 display:flex;
 align-items:center;
@@ -130,7 +130,7 @@ display:none;
 
 .input{
 width:100%;
-height:58px;
+height:56px;
 border-radius:18px;
 border:1px solid rgba(255,255,255,0.08);
 background:rgba(0,0,0,0.25);
@@ -138,6 +138,48 @@ padding:0 18px;
 color:white;
 font:inherit;
 margin-bottom:14px;
+}
+
+.select{
+width:100%;
+height:56px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.08);
+background:#111827;
+padding:0 18px;
+color:white;
+font:inherit;
+margin-bottom:14px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.btn{
+height:56px;
+border:none;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+background:rgba(255,255,255,0.08);
+color:white;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.2s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,0.12);
+}
+
+.primary{
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+color:#051018;
+border:none;
 }
 
 .preview{
@@ -151,24 +193,7 @@ background:#111827;
 .preview canvas{
 width:100%;
 display:block;
-}
-
-.btn{
-margin-top:10px;
-height:58px;
-border:none;
-border-radius:18px;
-font-weight:800;
-font-size:16px;
-cursor:pointer;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
-color:#051018;
-transition:0.2s;
-width:100%;
-}
-
-.btn:hover{
-transform:translateY(-2px);
+cursor:grab;
 }
 
 .info{
@@ -189,7 +214,7 @@ text-align:center;
 color:#7c8799;
 }
 
-@media(max-width:860px){
+@media(max-width:900px){
 
 .tool{
 grid-template-columns:1fr;
@@ -213,10 +238,10 @@ font-size:52px;
 
 <section class="hero">
 
-<h1><span>Meme</span><br>maker.</h1>
+<h1><span>Ultimate Meme</span><br>maker.</h1>
 
 <p>
-Create memes instantly by adding top and bottom text to any image directly in your browser.
+Create professional memes with draggable text, emoji support, font selection and editable captions.
 </p>
 
 </section>
@@ -247,24 +272,41 @@ or click to browse from your device.
 
 <div class="panel">
 
-<input 
-class="input"
-id="topText"
-placeholder="Top text..."
->
+<input class="input" id="memeText" placeholder="Enter meme text...">
 
-<input 
-class="input"
-id="bottomText"
-placeholder="Bottom text..."
->
+<select class="select" id="fontSelect">
 
-<button class="btn" id="downloadBtn">
+<option value="Impact">Impact</option>
+<option value="Arial">Arial</option>
+<option value="Inter">Inter</option>
+<option value="Comic Sans MS">Comic Sans</option>
+
+</select>
+
+<div class="grid">
+
+<button class="btn" id="addEmoji">
+😀 Add Emoji
+</button>
+
+<button class="btn" id="centerBtn">
+Center Text
+</button>
+
+</div>
+
+<button class="btn primary" id="downloadBtn">
 Download Meme
 </button>
 
 <div class="info">
-Classic meme style with automatic bold white text and black outline.
+• Drag text with mouse
+<br>
+• Supports emojis
+<br>
+• Automatic outline
+<br>
+• Modern meme editor
 </div>
 
 </div>
@@ -272,7 +314,7 @@ Classic meme style with automatic bold white text and black outline.
 </section>
 
 <footer>
-© 2026 Toolivo — Meme Maker
+© 2026 Toolivo — Ultimate Meme Maker
 </footer>
 
 </div>
@@ -287,13 +329,18 @@ const canvas = document.getElementById('canvas');
 
 const ctx = canvas.getContext('2d');
 
-const topText = document.getElementById('topText');
+const memeText = document.getElementById('memeText');
 
-const bottomText = document.getElementById('bottomText');
+const fontSelect = document.getElementById('fontSelect');
 
 let img = null;
 
-function drawMeme(){
+let textX = 200;
+let textY = 100;
+
+let dragging = false;
+
+function draw(){
 
 if(!img) return;
 
@@ -304,29 +351,23 @@ ctx.clearRect(0,0,canvas.width,canvas.height);
 
 ctx.drawImage(img,0,0);
 
-const fontSize = Math.max(canvas.width / 10,40);
+const fontSize = Math.max(canvas.width / 12,40);
 
-ctx.font = `900 ${fontSize}px Impact`;
-
-ctx.fillStyle = 'white';
-
-ctx.strokeStyle = 'black';
-
-ctx.lineWidth = fontSize / 12;
+ctx.font = `900 ${fontSize}px ${fontSelect.value}`;
 
 ctx.textAlign = 'center';
 
+ctx.lineWidth = fontSize / 10;
+
+ctx.strokeStyle = 'black';
+
+ctx.fillStyle = 'white';
+
 ctx.lineJoin = 'round';
 
-const top = topText.value.toUpperCase();
+ctx.strokeText(memeText.value,textX,textY);
 
-const bottom = bottomText.value.toUpperCase();
-
-ctx.strokeText(top,canvas.width/2,fontSize + 20);
-ctx.fillText(top,canvas.width/2,fontSize + 20);
-
-ctx.strokeText(bottom,canvas.width/2,canvas.height - 30);
-ctx.fillText(bottom,canvas.width/2,canvas.height - 30);
+ctx.fillText(memeText.value,textX,textY);
 
 }
 
@@ -344,7 +385,10 @@ img.onload = () => {
 
 preview.style.display = 'block';
 
-drawMeme();
+textX = img.width / 2;
+textY = 120;
+
+draw();
 
 };
 
@@ -352,9 +396,56 @@ img.src = url;
 
 };
 
-topText.oninput = drawMeme;
+memeText.oninput = draw;
 
-bottomText.oninput = drawMeme;
+fontSelect.onchange = draw;
+
+document.getElementById('centerBtn').onclick = ()=>{
+
+if(!img) return;
+
+textX = img.width / 2;
+textY = img.height / 2;
+
+draw();
+
+};
+
+document.getElementById('addEmoji').onclick = ()=>{
+
+memeText.value += ' 😂';
+
+draw();
+
+};
+
+canvas.addEventListener('mousedown',()=>{
+
+dragging = true;
+
+});
+
+window.addEventListener('mouseup',()=>{
+
+dragging = false;
+
+});
+
+canvas.addEventListener('mousemove',e=>{
+
+if(!dragging || !img) return;
+
+const rect = canvas.getBoundingClientRect();
+
+const scaleX = canvas.width / rect.width;
+const scaleY = canvas.height / rect.height;
+
+textX = (e.clientX - rect.left) * scaleX;
+textY = (e.clientY - rect.top) * scaleY;
+
+draw();
+
+});
 
 document.getElementById('downloadBtn').onclick = ()=>{
 
