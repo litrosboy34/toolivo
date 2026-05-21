@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PNG to WEBP Converter — Toolivo</title>
+  <meta name="description" content="Convert PNG images to WEBP instantly with Toolivo. Free, fast and private online PNG to WEBP converter." />
+  <meta name="keywords" content="png to webp, convert png to webp, webp converter, Toolivo" />
+  <meta name="google-adsense-account" content="ca-pub-4422292009724522">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
+
+  <link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,sans-serif;
+      background:#05070d;
+      color:white;
+      min-height:100vh;
+      overflow-x:hidden;
+      background:
+      radial-gradient(circle at top left,#143 0%,transparent 30%),
+      radial-gradient(circle at top right,#225 0%,transparent 30%),
+      #05070d;
+    }
+
+    .container{
+      width:min(1100px,calc(100% - 32px));
+      margin:auto;
+    }
+
+    header{
+      padding:28px 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:32px;
+      font-weight:900;
+      letter-spacing:-2px;
+    }
+
+    .logo span{
+      background:linear-gradient(90deg,#39e6d2,#7aa2ff);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero{
+      text-align:center;
+      padding:60px 0 30px;
+    }
+
+    h1{
+      font-size:72px;
+      line-height:0.95;
+      letter-spacing:-4px;
+      margin:0 0 18px;
+    }
+
+    h1 span{
+      background:linear-gradient(90deg,#fff,#89dfff);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      color:#9ca8bb;
+      max-width:700px;
+      margin:auto;
+      line-height:1.7;
+      font-size:18px;
+    }
+
+    .tool-box{
+      margin-top:40px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .panel{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:28px;
+      padding:22px;
+      backdrop-filter:blur(14px);
+    }
+
+    .drop{
+      border:2px dashed rgba(255,255,255,0.15);
+      min-height:320px;
+      border-radius:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .drop:hover{
+      border-color:#39e6d2;
+      background:rgba(57,230,210,0.05);
+    }
+
+    .drop h2{
+      margin:16px 0 10px;
+      font-size:28px;
+    }
+
+    .drop p{
+      color:#9ca8bb;
+      max-width:300px;
+      line-height:1.6;
+    }
+
+    input[type=file]{
+      display:none;
+    }
+
+    .preview{
+      display:none;
+      margin-top:18px;
+      overflow:hidden;
+      border-radius:18px;
+    }
+
+    .preview img{
+      width:100%;
+      max-height:360px;
+      object-fit:contain;
+      background:#111827;
+    }
+
+    .controls{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .info{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px;
+      padding:16px;
+      color:#9ca8bb;
+      line-height:1.6;
+    }
+
+    .btn{
+      height:56px;
+      border:none;
+      border-radius:18px;
+      font-weight:800;
+      font-size:16px;
+      cursor:pointer;
+      background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+      color:#051018;
+      transition:0.2s;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn:disabled{
+      opacity:0.5;
+      cursor:not-allowed;
+    }
+
+    .slider-wrap{
+      background:rgba(255,255,255,0.04);
+      border-radius:18px;
+      padding:16px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .slider-wrap label{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:12px;
+      color:#9ca8bb;
+    }
+
+    input[type=range]{
+      width:100%;
+      accent-color:#39e6d2;
+    }
+
+    footer{
+      margin-top:70px;
+      padding:26px 0;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#7c8799;
+      text-align:center;
+    }
+
+    @media(max-width:860px){
+      .tool-box{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:52px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <div class="logo"><span>Toolivo</span></div>
+</header>
+
+<section class="hero">
+  <h1><span>PNG to WEBP</span><br>converter.</h1>
+  <p>
+    Convert PNG images to WEBP instantly. Reduce file size and generate modern WEBP images directly in your browser.
+  </p>
+</section>
+
+<section class="tool-box">
+
+  <div class="panel">
+
+    <label class="drop" for="fileInput">
+      <div style="font-size:56px">🖼️</div>
+      <h2>Drop your PNG image</h2>
+      <p>or click to browse from your device.</p>
+    </label>
+
+    <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp">
+
+    <div class="preview" id="preview">
+      <img id="previewImg">
+    </div>
+
+  </div>
+
+  <div class="panel controls">
+
+    <div class="info" id="info">
+      Choose a PNG image to begin.
+    </div>
+
+    <div class="slider-wrap">
+      <label>
+        <span>WEBP Quality</span>
+        <span id="qualityValue">85%</span>
+      </label>
+
+      <input type="range" id="quality" min="10" max="100" value="85">
+    </div>
+
+    <button class="btn" id="downloadBtn" disabled>
+      Convert & Download WEBP
+    </button>
+
+    <div class="info">
+      Your image never leaves your device. Everything is processed locally in your browser.
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Toolivo — PNG to WEBP Tool
+</footer>
+
+</div>
+
+<script>
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+const previewImg = document.getElementById('previewImg');
+const info = document.getElementById('info');
+const downloadBtn = document.getElementById('downloadBtn');
+const quality = document.getElementById('quality');
+const qualityValue = document.getElementById('qualityValue');
+
+let imageBitmap = null;
+let fileName = 'toolivo-image';
+
+quality.oninput = () => {
+  qualityValue.textContent = quality.value + '%';
+};
+
+fileInput.onchange = async (e) => {
+
+  const file = e.target.files[0];
+  if(!file) return;
+
+  fileName = file.name.replace(/\.[^/.]+$/, "");
+
+  imageBitmap = await createImageBitmap(file);
+
+  preview.style.display = 'block';
+  previewImg.src = URL.createObjectURL(file);
+
+  info.innerHTML = `
+    ${file.name}<br>
+    ${imageBitmap.width} × ${imageBitmap.height}<br>
+    ${(file.size / 1024).toFixed(1)} KB
+  `;
+
+  downloadBtn.disabled = false;
+};
+
+downloadBtn.onclick = () => {
+
+  if(!imageBitmap) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = imageBitmap.width;
+  canvas.height = imageBitmap.height;
+
+  const ctx = canvas.getContext('2d');
+
+  ctx.drawImage(imageBitmap,0,0);
+
+  canvas.toBlob(blob => {
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+
+    a.href = url;
+    a.download = fileName + '-toolivo.webp';
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    URL.revokeObjectURL(url);
+
+  }, 'image/webp', Number(quality.value)/100);
+
+};
+</script>
+
+</body>
+</html>
