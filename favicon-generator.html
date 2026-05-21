@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Favicon Generator — Toolivo</title>
+
+<meta name="description" content="Generate favicons instantly with Toolivo. Create 16x16, 32x32 and app icons online for free.">
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Inter,sans-serif;
+background:
+radial-gradient(circle at top left,#0d3f35 0%,transparent 30%),
+radial-gradient(circle at top right,#1b2557 0%,transparent 30%),
+#05070d;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+.container{
+width:min(1150px,calc(100% - 32px));
+margin:auto;
+}
+
+header{
+padding:28px 0;
+}
+
+.logo{
+font-size:34px;
+font-weight:900;
+letter-spacing:-2px;
+}
+
+.logo span{
+background:linear-gradient(90deg,#39e6d2,#7aa2ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero{
+padding:60px 0 28px;
+text-align:center;
+}
+
+.hero h1{
+font-size:72px;
+line-height:0.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#fff,#89dfff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#9ca8bb;
+}
+
+.tool{
+margin-top:40px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+padding:22px;
+backdrop-filter:blur(14px);
+}
+
+.drop{
+border:2px dashed rgba(255,255,255,0.14);
+min-height:320px;
+border-radius:22px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+cursor:pointer;
+text-align:center;
+transition:0.2s;
+}
+
+.drop:hover{
+border-color:#39e6d2;
+background:rgba(57,230,210,0.05);
+}
+
+.drop h2{
+margin:14px 0 10px;
+font-size:28px;
+}
+
+.drop p{
+max-width:320px;
+line-height:1.6;
+color:#9ca8bb;
+}
+
+input[type=file]{
+display:none;
+}
+
+.preview-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.preview-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:20px;
+padding:18px;
+text-align:center;
+}
+
+.preview-card canvas{
+background:white;
+padding:10px;
+border-radius:14px;
+margin-bottom:12px;
+}
+
+.preview-card h3{
+margin:0;
+font-size:16px;
+}
+
+.preview-card p{
+margin-top:6px;
+color:#9ca8bb;
+font-size:14px;
+}
+
+.btn{
+margin-top:18px;
+height:58px;
+border:none;
+border-radius:18px;
+font-weight:800;
+font-size:16px;
+cursor:pointer;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+color:#051018;
+transition:0.2s;
+width:100%;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.info{
+margin-top:18px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:16px;
+border-radius:18px;
+line-height:1.6;
+color:#9ca8bb;
+}
+
+footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(255,255,255,0.08);
+text-align:center;
+color:#7c8799;
+}
+
+@media(max-width:860px){
+
+.tool{
+grid-template-columns:1fr;
+}
+
+.preview-grid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<div class="logo"><span>Toolivo</span></div>
+</header>
+
+<section class="hero">
+
+<h1><span>Favicon</span><br>generator.</h1>
+
+<p>
+Generate modern favicon icons instantly for websites, apps and browsers.
+</p>
+
+</section>
+
+<section class="tool">
+
+<div class="panel">
+
+<label class="drop" for="fileInput">
+
+<div style="font-size:58px">⭐</div>
+
+<h2>Drop your logo</h2>
+
+<p>
+or click to browse from your device.
+</p>
+
+</label>
+
+<input type="file" id="fileInput" accept="image/*">
+
+<div class="info">
+Recommended:
+<br><br>
+• Square logo
+<br>
+• Transparent PNG
+<br>
+• High resolution image
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="preview-grid">
+
+<div class="preview-card">
+<canvas id="icon16" width="16" height="16"></canvas>
+<h3>16 × 16</h3>
+<p>Classic favicon</p>
+</div>
+
+<div class="preview-card">
+<canvas id="icon32" width="32" height="32"></canvas>
+<h3>32 × 32</h3>
+<p>Browser icon</p>
+</div>
+
+<div class="preview-card">
+<canvas id="icon64" width="64" height="64"></canvas>
+<h3>64 × 64</h3>
+<p>Desktop shortcut</p>
+</div>
+
+<div class="preview-card">
+<canvas id="icon180" width="180" height="180"></canvas>
+<h3>180 × 180</h3>
+<p>Apple touch icon</p>
+</div>
+
+</div>
+
+<button class="btn" id="downloadBtn">
+Download 180x180 PNG
+</button>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Toolivo — Favicon Generator
+</footer>
+
+</div>
+
+<script>
+
+const fileInput = document.getElementById('fileInput');
+
+const canvases = [
+16,
+32,
+64,
+180
+];
+
+let img = null;
+
+function drawFavicons(){
+
+canvases.forEach(size=>{
+
+const canvas = document.getElementById(`icon${size}`);
+
+const ctx = canvas.getContext('2d');
+
+ctx.clearRect(0,0,size,size);
+
+ctx.drawImage(img,0,0,size,size);
+
+});
+
+}
+
+fileInput.onchange = e => {
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const url = URL.createObjectURL(file);
+
+img = new Image();
+
+img.onload = () => {
+
+drawFavicons();
+
+};
+
+img.src = url;
+
+};
+
+document.getElementById('downloadBtn').onclick = ()=>{
+
+const canvas = document.getElementById('icon180');
+
+const link = document.createElement('a');
+
+link.download = 'toolivo-favicon-180.png';
+
+link.href = canvas.toDataURL('image/png');
+
+link.click();
+
+};
+
+</script>
+
+</body>
+</html>
