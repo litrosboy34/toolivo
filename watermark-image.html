@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Watermark Image Online — Toolivo</title>
+
+<meta name="description" content="Add watermark text to images online with Toolivo. Fast, private and free watermark tool.">
+
+<meta name="google-adsense-account" content="ca-pub-4422292009724522">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Inter,sans-serif;
+background:
+radial-gradient(circle at top left,#0d3f35 0%,transparent 30%),
+radial-gradient(circle at top right,#1b2557 0%,transparent 30%),
+#05070d;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+.container{
+width:min(1150px,calc(100% - 32px));
+margin:auto;
+}
+
+header{
+padding:28px 0;
+}
+
+.logo{
+font-size:34px;
+font-weight:900;
+letter-spacing:-2px;
+}
+
+.logo span{
+background:linear-gradient(90deg,#39e6d2,#7aa2ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero{
+padding:60px 0 26px;
+text-align:center;
+}
+
+.hero h1{
+font-size:72px;
+line-height:0.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#fff,#89dfff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#9ca8bb;
+}
+
+.tool{
+margin-top:40px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+padding:22px;
+backdrop-filter:blur(14px);
+}
+
+.drop{
+border:2px dashed rgba(255,255,255,0.14);
+min-height:300px;
+border-radius:22px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+cursor:pointer;
+text-align:center;
+transition:0.2s;
+}
+
+.drop:hover{
+border-color:#39e6d2;
+background:rgba(57,230,210,0.05);
+}
+
+.drop h2{
+margin:14px 0 10px;
+font-size:28px;
+}
+
+.drop p{
+max-width:320px;
+line-height:1.6;
+color:#9ca8bb;
+}
+
+input[type=file]{
+display:none;
+}
+
+.preview{
+display:none;
+margin-top:18px;
+border-radius:22px;
+overflow:hidden;
+background:#111827;
+}
+
+.preview canvas{
+width:100%;
+display:block;
+}
+
+.controls{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.info{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:16px;
+border-radius:18px;
+color:#9ca8bb;
+line-height:1.6;
+}
+
+.input{
+width:100%;
+height:54px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,0.1);
+background:rgba(0,0,0,0.25);
+color:white;
+padding:0 16px;
+font:inherit;
+}
+
+.slider{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:16px;
+border-radius:18px;
+}
+
+.slider label{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
+color:#9ca8bb;
+}
+
+input[type=range]{
+width:100%;
+accent-color:#39e6d2;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.btn{
+height:56px;
+border:none;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:0.2s;
+background:rgba(255,255,255,0.08);
+color:white;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.btn:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,0.12);
+}
+
+.primary{
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+color:#051018;
+border:none;
+}
+
+footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(255,255,255,0.08);
+text-align:center;
+color:#7c8799;
+}
+
+@media(max-width:860px){
+
+.tool{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<div class="logo"><span>Toolivo</span></div>
+</header>
+
+<section class="hero">
+
+<h1><span>Watermark</span><br>image tool.</h1>
+
+<p>
+Add custom watermark text to your images instantly. Perfect for creators, stores and social media posts.
+</p>
+
+</section>
+
+<section class="tool">
+
+<div class="panel">
+
+<label class="drop" for="fileInput">
+
+<div style="font-size:58px">💧</div>
+
+<h2>Drop your image</h2>
+
+<p>
+or click to browse from your device.
+</p>
+
+</label>
+
+<input type="file" id="fileInput" accept="image/*">
+
+<div class="preview" id="preview">
+<canvas id="canvas"></canvas>
+</div>
+
+</div>
+
+<div class="panel controls">
+
+<div class="info" id="info">
+Choose an image to begin.
+</div>
+
+<input class="input" id="watermarkText" placeholder="Enter watermark text">
+
+<div class="slider">
+
+<label>
+<span>Opacity</span>
+<span id="opacityValue">50%</span>
+</label>
+
+<input type="range" id="opacity" min="10" max="100" value="50">
+
+</div>
+
+<div class="grid">
+
+<button class="btn" data-pos="top-left">Top Left</button>
+<button class="btn" data-pos="top-right">Top Right</button>
+<button class="btn" data-pos="bottom-left">Bottom Left</button>
+<button class="btn" data-pos="bottom-right">Bottom Right</button>
+
+</div>
+
+<button class="btn primary" id="downloadBtn">
+Download Watermarked Image
+</button>
+
+<div class="info">
+Everything works locally in your browser. Your images are never uploaded.
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Toolivo — Watermark Tool
+</footer>
+
+</div>
+
+<script>
+
+const fileInput = document.getElementById('fileInput');
+
+const preview = document.getElementById('preview');
+
+const canvas = document.getElementById('canvas');
+
+const ctx = canvas.getContext('2d');
+
+const info = document.getElementById('info');
+
+const watermarkInput = document.getElementById('watermarkText');
+
+const opacity = document.getElementById('opacity');
+
+const opacityValue = document.getElementById('opacityValue');
+
+let img = null;
+
+let position = 'bottom-right';
+
+function draw(){
+
+if(!img) return;
+
+canvas.width = img.width;
+canvas.height = img.height;
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.drawImage(img,0,0);
+
+const text = watermarkInput.value || 'Toolivo';
+
+ctx.font = `bold ${Math.max(canvas.width / 25,24)}px Inter`;
+
+ctx.fillStyle = `rgba(255,255,255,${opacity.value / 100})`;
+
+ctx.textBaseline = 'top';
+
+const padding = 30;
+
+const textWidth = ctx.measureText(text).width;
+
+let x = padding;
+let y = padding;
+
+if(position === 'top-right'){
+x = canvas.width - textWidth - padding;
+y = padding;
+}
+
+if(position === 'bottom-left'){
+x = padding;
+y = canvas.height - 60;
+}
+
+if(position === 'bottom-right'){
+x = canvas.width - textWidth - padding;
+y = canvas.height - 60;
+}
+
+ctx.fillText(text,x,y);
+
+}
+
+fileInput.onchange = e => {
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const url = URL.createObjectURL(file);
+
+img = new Image();
+
+img.onload = () => {
+
+draw();
+
+preview.style.display = 'block';
+
+info.innerHTML = `
+${file.name}<br>
+${img.width} × ${img.height}<br>
+${(file.size / 1024).toFixed(1)} KB
+`;
+
+};
+
+img.src = url;
+
+};
+
+watermarkInput.oninput = draw;
+
+opacity.oninput = () => {
+
+opacityValue.textContent = opacity.value + '%';
+
+draw();
+
+};
+
+document.querySelectorAll('[data-pos]').forEach(btn => {
+
+btn.onclick = () => {
+
+position = btn.dataset.pos;
+
+draw();
+
+};
+
+});
+
+document.getElementById('downloadBtn').onclick = () => {
+
+if(!img) return;
+
+const link = document.createElement('a');
+
+link.download = 'toolivo-watermarked.png';
+
+link.href = canvas.toDataURL('image/png');
+
+link.click();
+
+};
+
+</script>
+
+</body>
+</html>
