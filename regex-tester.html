@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Tester — Toolivo</title>
+<meta name="description" content="Test regular expressions instantly with Toolivo. Match patterns, highlight results and count matches online.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:white}
+.wrap{width:min(1100px,calc(100% - 28px));margin:auto;padding:40px 0}
+h1{font-size:56px;margin:20px 0 10px}
+p{color:#9ca8bb}
+.panel{background:#0b1020;border:1px solid #263244;border-radius:20px;padding:18px;margin-top:18px}
+input,textarea{width:100%;border-radius:16px;border:1px solid #263244;background:#05070d;color:white;padding:15px;font-size:16px;box-sizing:border-box}
+textarea{min-height:220px;resize:vertical;line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+button{padding:14px 18px;border:0;border-radius:14px;background:linear-gradient(90deg,#39e6d2,#6ea8ff);font-weight:800;cursor:pointer;margin-top:12px}
+.output{white-space:pre-wrap;line-height:1.7;min-height:220px}
+mark{background:#39e6d2;color:#031017;border-radius:4px;padding:2px 4px}
+.status{margin-top:12px;color:#9ca8bb}
+@media(max-width:900px){.grid{grid-template-columns:1fr}h1{font-size:42px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Regex Tester</h1>
+<p>Test regular expressions and highlight matches instantly.</p>
+
+<div class="panel">
+<input id="pattern" placeholder="Enter regex pattern, example: \\b\\w+@\\w+\\.com\\b">
+<button onclick="testRegex()">Test Regex</button>
+<div class="status" id="status">Matches: 0</div>
+</div>
+
+<div class="grid">
+<div class="panel">
+<textarea id="text" placeholder="Paste text here...">Contact us at test@example.com or hello@toolivo.site</textarea>
+</div>
+
+<div class="panel output" id="output"></div>
+</div>
+</div>
+
+<script>
+const pattern=document.getElementById('pattern');
+const text=document.getElementById('text');
+const output=document.getElementById('output');
+const status=document.getElementById('status');
+
+pattern.value='\\b[\\w.-]+@[\\w.-]+\\.\\w+\\b';
+
+function escapeHtml(str){
+return str.replace(/[&<>"']/g,m=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+}[m]));
+}
+
+function testRegex(){
+try{
+const regex=new RegExp(pattern.value,'gi');
+let count=0;
+const result=escapeHtml(text.value).replace(regex,match=>{
+count++;
+return '<mark>'+match+'</mark>';
+});
+output.innerHTML=result;
+status.textContent='Matches: '+count;
+}catch(e){
+output.textContent='Invalid regex';
+status.textContent='Regex error';
+}
+}
+
+pattern.addEventListener('input',testRegex);
+text.addEventListener('input',testRegex);
+testRegex();
+</script>
+</body>
+</html>
