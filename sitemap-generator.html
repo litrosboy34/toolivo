@@ -4,317 +4,562 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sitemap XML Generator - Toolivo</title>
+<title>Sitemap XML Generator — Toolivo</title>
 
-<meta name="description" content="Generate sitemap.xml files instantly for your website.">
+<meta name="description" content="Generate sitemap.xml files instantly for your website with Toolivo. Free online sitemap generator.">
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+*{box-sizing:border-box}
 
 body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
 }
+
+a{text-decoration:none;color:inherit}
 
 .container{
-    max-width:950px;
-    margin:auto;
+width:min(1150px,calc(100% - 32px));
+margin:auto;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:30px;
-    line-height:1.6;
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{
+color:#22d3ee;
+}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
+}
+
+.panel{
+margin-top:34px;
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-@media(max-width:700px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
 }
 
 .input-group{
-    display:flex;
-    flex-direction:column;
+display:flex;
+flex-direction:column;
 }
 
-.input-group label{
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+label{
+margin-bottom:8px;
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
 }
 
-.input-group input,
-.input-group select{
-    background:#020617;
-    border:1px solid #1e293b;
-    color:white;
-    padding:14px;
-    border-radius:12px;
-    outline:none;
+input,
+select{
+width:100%;
+height:56px;
+background:#020617;
+border:1px solid rgba(148,163,184,.18);
+color:white;
+padding:0 16px;
+border-radius:18px;
+outline:none;
+font-family:inherit;
+font-size:15px;
+transition:.2s;
 }
 
-.buttons{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
+input:focus,
+select:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:22px;
 }
 
 button{
-    padding:14px 20px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.2s;
-}
-
-.add{
-    background:#1e293b;
-    color:white;
-}
-
-.generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
-}
-
-.copy{
-    background:#0f172a;
-    border:1px solid #1e293b;
-    color:white;
+height:56px;
+padding:0 22px;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+background:rgba(255,255,255,.06);
+color:white;
+border:1px solid rgba(148,163,184,.16);
 }
 
 button:hover{
-    opacity:0.9;
-    transform:translateY(-2px);
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
 }
 
 .url-list{
-    margin-top:20px;
+margin-top:24px;
+display:flex;
+flex-direction:column;
+gap:12px;
 }
 
 .url-item{
-    background:#020617;
-    border:1px solid #1e293b;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:10px;
-    color:#cbd5e1;
-    word-break:break-all;
+background:#020617;
+border:1px solid rgba(148,163,184,.14);
+padding:16px;
+border-radius:18px;
+color:#cbd5e1;
+word-break:break-word;
+line-height:1.6;
+}
+
+.url-item strong{
+display:block;
+margin-bottom:4px;
+color:#67e8f9;
 }
 
 textarea{
-    width:100%;
-    height:350px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:360px;
+margin-top:18px;
+background:#020617;
+border:1px solid rgba(148,163,184,.16);
+color:#67e8f9;
+border-radius:22px;
+padding:18px;
+resize:vertical;
+line-height:1.7;
+outline:none;
+font-family:Consolas,Monaco,monospace;
+font-size:15px;
+}
+
+textarea:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:30px;
-    font-size:14px;
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{
+color:#22d3ee;
+}
+
+@media(max-width:850px){
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.grid,
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.tool-hero h1{
+letter-spacing:-2px;
+}
+
+.actions{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <div class="title">Sitemap XML Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate sitemap.xml files instantly for your website pages.
-    </div>
+<a href="/" class="logo">
+Toolivo
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div class="input-group">
-                <label>Page URL</label>
-                <input type="text" id="urlInput" placeholder="https://toolivo.site/page">
-            </div>
+<section class="tool-hero">
 
-            <div class="input-group">
-                <label>Change Frequency</label>
-                <select id="freqInput">
-                    <option value="daily">daily</option>
-                    <option value="weekly">weekly</option>
-                    <option value="monthly">monthly</option>
-                    <option value="yearly">yearly</option>
-                </select>
-            </div>
+<h1>
+<span class="gradient">Sitemap XML</span><br>
+Generator
+</h1>
 
-            <div class="input-group">
-                <label>Priority</label>
-                <select id="priorityInput">
-                    <option value="1.0">1.0</option>
-                    <option value="0.9">0.9</option>
-                    <option value="0.8">0.8</option>
-                    <option value="0.7">0.7</option>
-                    <option value="0.6">0.6</option>
-                    <option value="0.5">0.5</option>
-                </select>
-            </div>
+<p>
+Generate sitemap.xml files instantly for your website pages with customizable priorities and change frequencies.
+</p>
 
-            <div class="input-group">
-                <label>Last Modified</label>
-                <input type="date" id="lastmodInput">
-            </div>
+</section>
 
-        </div>
+<section class="panel">
 
-        <div class="buttons">
+<div class="grid">
 
-            <button class="add" onclick="addUrl()">
-                Add URL
-            </button>
+<div class="input-group">
+<label for="urlInput">Page URL</label>
+<input type="text" id="urlInput" placeholder="https://toolivo.site/page">
+</div>
 
-            <button class="generate" onclick="generateSitemap()">
-                Generate Sitemap
-            </button>
+<div class="input-group">
+<label for="freqInput">Change Frequency</label>
+<select id="freqInput">
+<option value="daily">daily</option>
+<option value="weekly">weekly</option>
+<option value="monthly">monthly</option>
+<option value="yearly">yearly</option>
+</select>
+</div>
 
-            <button class="copy" onclick="copySitemap()">
-                Copy
-            </button>
+<div class="input-group">
+<label for="priorityInput">Priority</label>
+<select id="priorityInput">
+<option value="1.0">1.0</option>
+<option value="0.9">0.9</option>
+<option value="0.8">0.8</option>
+<option value="0.7">0.7</option>
+<option value="0.6">0.6</option>
+<option value="0.5">0.5</option>
+</select>
+</div>
 
-        </div>
+<div class="input-group">
+<label for="lastmodInput">Last Modified</label>
+<input type="date" id="lastmodInput">
+</div>
 
-        <div class="url-list" id="urlList"></div>
+</div>
 
-    </div>
+<div class="actions">
 
-    <div class="card">
-        <textarea id="output" placeholder="Generated sitemap.xml will appear here..."></textarea>
-    </div>
+<button class="primary" onclick="addUrl()">
+Add URL
+</button>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<button onclick="generateSitemap()">
+Generate Sitemap
+</button>
+
+<button onclick="copySitemap()">
+Copy XML
+</button>
+
+<button onclick="clearAll()">
+Clear
+</button>
+
+</div>
+
+<div class="url-list" id="urlList"></div>
+
+<textarea id="output" placeholder="Generated sitemap.xml will appear here..." readonly></textarea>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h2>What is sitemap.xml?</h2>
+<p>
+A sitemap.xml file helps search engines discover and index pages on your website more efficiently.
+</p>
+</div>
+
+<div class="info-card">
+<h2>Can I use this for SEO?</h2>
+<p>
+Yes. Proper sitemaps improve crawling and help search engines understand your site structure.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© 2026 Toolivo — Sitemap XML Generator
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
+
 let urls = [];
+
+function escapeXML(str){
+
+return str
+.replace(/&/g,'&amp;')
+.replace(/</g,'&lt;')
+.replace(/>/g,'&gt;')
+.replace(/"/g,'&quot;')
+.replace(/'/g,'&apos;');
+
+}
 
 function addUrl(){
 
-    const url = document.getElementById("urlInput").value.trim();
-    const freq = document.getElementById("freqInput").value;
-    const priority = document.getElementById("priorityInput").value;
-    const lastmod = document.getElementById("lastmodInput").value;
+const url =
+document.getElementById("urlInput").value.trim();
 
-    if(!url){
-        alert("Please enter a URL.");
-        return;
-    }
+const freq =
+document.getElementById("freqInput").value;
 
-    urls.push({
-        url,
-        freq,
-        priority,
-        lastmod
-    });
+const priority =
+document.getElementById("priorityInput").value;
 
-    renderUrls();
+const lastmod =
+document.getElementById("lastmodInput").value;
 
-    document.getElementById("urlInput").value = "";
+if(!url){
+alert("Please enter a URL.");
+return;
+}
+
+urls.push({
+url,
+freq,
+priority,
+lastmod
+});
+
+renderUrls();
+
+document.getElementById("urlInput").value = "";
+
 }
 
 function renderUrls(){
 
-    const list = document.getElementById("urlList");
+const list =
+document.getElementById("urlList");
 
-    list.innerHTML = "";
+list.innerHTML = "";
 
-    urls.forEach(item => {
+urls.forEach((item,index) => {
 
-        list.innerHTML += `
-            <div class="url-item">
-                ${item.url}
-            </div>
-        `;
-    });
+list.innerHTML += `
+<div class="url-item">
+<strong>URL ${index + 1}</strong>
+${item.url}<br>
+Frequency: ${item.freq} · Priority: ${item.priority}
+</div>
+`;
+
+});
+
 }
 
 function generateSitemap(){
 
-    if(urls.length === 0){
-        alert("Add at least one URL.");
-        return;
-    }
+if(urls.length === 0){
+alert("Add at least one URL.");
+return;
+}
 
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+let xml =
+`<?xml version="1.0" encoding="UTF-8"?>\n`;
 
-    urls.forEach(item => {
+xml +=
+`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-        xml += `
+urls.forEach(item => {
+
+xml += `
   <url>
-    <loc>${item.url}</loc>
+    <loc>${escapeXML(item.url)}</loc>
     <lastmod>${item.lastmod || ""}</lastmod>
     <changefreq>${item.freq}</changefreq>
     <priority>${item.priority}</priority>
   </url>
 `;
-    });
 
-    xml += `</urlset>`;
+});
 
-    document.getElementById("output").value = xml;
+xml += `</urlset>`;
+
+document.getElementById("output").value = xml;
+
 }
 
 function copySitemap(){
 
-    const output = document.getElementById("output");
+const output =
+document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate sitemap first.");
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
+if(!output.value){
+alert("Generate sitemap first.");
+return;
 }
+
+navigator.clipboard.writeText(output.value);
+
+alert("Copied!");
+
+}
+
+function clearAll(){
+
+urls = [];
+
+document.getElementById("urlInput").value = "";
+document.getElementById("output").value = "";
+
+renderUrls();
+
+}
+
 </script>
 
 </body>
