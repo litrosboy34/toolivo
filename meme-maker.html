@@ -707,7 +707,519 @@ Mouse and touch supported. Export is a clean PNG with all layers included.
 <div class="toast" id="toast">Done</div>
 
 <script>
-/* senin mevcut JS'in aynen buraya gelecek */
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const editor=$('#editor'),placeholder=$('#placeholder'),fileInput=$('#fileInput'),stickerInput=$('#stickerInput'),drop=$('#drop'),toast=$('#toast');
+
+let bgImg=null,bgW=900,bgH=650,selected=null,idCounter=1;
+const emojis=['😂','😭','💀','🔥','😎','🤡','🚀','💸','🤯','👀','❤️','⚡'];
+
+$('#year').textContent=new Date().getFullYear();
+
+function showToast(t){
+toast.textContent=t;
+toast.classList.add('show');
+setTimeout(()=>toast.classList.remove('show'),1200);
+}
+
+emojis.forEach(e=>{
+const b=document.createElement('button');
+b.className='pill';
+b.textContent=e;
+b.onclick=()=>addEmoji(e);
+$('#emojiGrid').appendChild(b);
+});
+
+function setupCanvas(w=900,h=650){
+bgW=w;
+bgH=h;
+
+if(placeholder) placeholder.remove();
+
+editor.style.width=w+'px';
+editor.style.height=h+'px';
+editor.innerHTML='';
+
+if(bgImg){
+const im=document.createElement('img');
+im.className='bg';
+im.src=bgImg;
+im.style.width=w+'px';
+im.style.height=h+'px';
+im.style.objectFit='cover';
+editor.appendChild(im);
+}
+
+selected=null;
+syncPanel();
+renderLayers();
+}
+
+function loadImage(file){
+if(!file)return;
+
+const url=URL.createObjectURL(file);
+const im=new Image();
+
+im.onload=()=>{
+bgImg=url;
+
+let w=im.naturalWidth;
+let h=im.naturalHeight;
+const max=980;
+
+if(w>max){
+h=h*(max/w);
+w=max;
+}
+
+if(h>720){
+w=w*(720/h);
+h=720;
+}
+
+setupCanvas(Math.round(w),Math.round(h));
+showToast('Image loaded');
+};
+
+im.src=url;
+}
+
+fileInput.onchange=e=>loadImage(e.target.files[0]);
+
+['dragenter','dragover'].forEach(ev=>{
+drop.addEventListener(ev,e=>{
+e.preventDefault();
+drop.classList.add('drag');
+});
+});
+
+['dragleave','drop'].forEach(ev=>{
+drop.addEventListener(ev,e=>{
+e.preventDefault();
+drop.classList.remove('drag');
+});
+});
+
+drop.addEventListener('drop',e=>{
+loadImage(e.dataTransfer.files[0]);
+});
+
+function makeLayer(type,content,opt={}){
+if(!editor.style.width)setupCanvas();
+
+const el=document.createElement('div');
+
+el.className='layer '+(type==='text'?'text-layer':type==='emoji'?'emoji-layer':'sticker-layer');
+el.dataset.id='layer-'+idCounter++;
+el.dataset.type=type;
+
+el.style.left=(opt.x??bgW/2-160)+'px';
+el.style.top=(opt.y??bgH/2-50)+'px';
+el.style.width=(opt.w??320)+'px';
+el.style.transform='rotate(0deg)';
+el.style.opacity=opt.opacity??1;
+
+if(type==='text'){
+el.textContent=content||'MEME TEXT';
+el.style.fontFamily=opt.font||'Impact';
+el.style.fontSize=(opt.size||54)+'px';
+el.style.color=opt.fill||'#fff';
+el.style.textAlign=opt.align||'center';
+el.dataset.stroke=opt.stroke||'#000';
+el.dataset.outline=opt.outline??6;
+applyTextShadow(el);
+}
+
+if(type==='emoji'){
+el.textContent=content;
+el.style.fontSize=(opt.size||70)+'px';
+el.style.width='90px';
+}
+
+if(type==='sticker'){
+const img=document.createElement('img');
+img.src=content;
+el.appendChild(img);
+el.style.width=(opt.w||150)+'px';
+}
+
+const handle=document.createElement('div');
+handle.className='handle';
+
+const rot=document.createElement('div');
+rot.className='rotate-handle';
+
+el.appendChild(handle);
+el.appendChild(rot);
+
+editor.appendChild(el);
+
+bindLayer(el);
+selectLayer(el);
+renderLayers();
+
+return el;
+}
+
+function applyTextShadow(el){
+const o=Number(el.dataset.outline||0);
+const c=el.dataset.stroke||'#000';
+
+if(o===0){
+el.style.textShadow='none';
+return;
+}
+
+el.style.textShadow=`0 ${o/2}px 0 ${c}, ${o}px 0 0 ${c}, -${o}px 0 0 ${c}, 0 -${o}px 0 ${c}, ${o*.7}px ${o*.7}px 0 ${c}, -${o*.7}px ${o*.7}px 0 ${c}, ${o*.7}px -${o*.7}px 0 ${c}, -${o*.7}px -${o*.7}px 0 ${c}`;
+}
+
+function bindLayer(el){
+let dragging=false,resizing=false,rotating=false;
+let startX=0,startY=0,startL=0,startT=0,startW=0;
+
+el.addEventListener('pointerdown',e=>{
+selectLayer(el);
+
+if(e.target.classList.contains('handle')){
+resizing=true;
+}else if(e.target.classList.contains('rotate-handle')){
+rotating=true;
+}else{
+dragging=true;
+}
+
+startX=e.clientX;
+startY=e.clientY;
+startL=parseFloat(el.style.left)||0;
+startT=parseFloat(el.style.top)||0;
+startW=parseFloat(el.style.width)||100;
+
+el.setPointerCapture(e.pointerId);
+});
+
+el.addEventListener('pointermove',e=>{
+if(!dragging&&!resizing&&!rotating)return;
+
+const dx=e.clientX-startX;
+const dy=e.clientY-startY;
+
+if(dragging){
+el.style.left=startL+dx+'px';
+el.style.top=startT+dy+'px';
+}
+
+if(resizing){
+const nw=Math.max(40,startW+dx);
+el.style.width=nw+'px';
+
+if(el.dataset.type!=='sticker'){
+el.style.fontSize=Math.max(14,nw/6)+'px';
+}
+}
+
+if(rotating){
+const r=el.getBoundingClientRect();
+const cx=r.left+r.width/2;
+const cy=r.top+r.height/2;
+const ang=Math.atan2(e.clientY-cy,e.clientX-cx)*180/Math.PI+90;
+el.style.transform=`rotate(${ang}deg)`;
+}
+});
+
+el.addEventListener('pointerup',()=>{
+dragging=false;
+resizing=false;
+rotating=false;
+syncPanel();
+});
+}
+
+function getRot(el){
+const m=(el.style.transform||'').match(/rotate\(([-\d.]+)deg\)/);
+return m?Number(m[1]):0;
+}
+
+function selectLayer(el){
+if(selected)selected.classList.remove('selected');
+
+selected=el;
+
+if(el)el.classList.add('selected');
+
+syncPanel();
+renderLayers();
+}
+
+function syncPanel(){
+const disabled=!selected;
+
+['layerText','fontSelect','fillColor','strokeColor','fontSize','outline','opacity'].forEach(id=>{
+const item=$('#'+id);
+if(item)item.disabled=disabled;
+});
+
+if(!selected){
+$('#layerText').value='';
+return;
+}
+
+if(selected.dataset.type==='text'){
+$('#layerText').value=selected.textContent;
+$('#fontSelect').value=selected.style.fontFamily.replaceAll('"','')||'Impact';
+$('#fillColor').value=rgbToHex(selected.style.color)||'#ffffff';
+$('#strokeColor').value=selected.dataset.stroke||'#000000';
+$('#fontSize').value=parseInt(selected.style.fontSize)||54;
+$('#outline').value=selected.dataset.outline||6;
+}else{
+$('#layerText').value=selected.textContent||selected.dataset.type;
+$('#fontSize').value=parseInt(selected.style.fontSize)||60;
+}
+
+$('#opacity').value=Math.round((parseFloat(selected.style.opacity)||1)*100);
+updateVals();
+}
+
+function updateVals(){
+$('#fontSizeVal').textContent=$('#fontSize').value;
+$('#outlineVal').textContent=$('#outline').value;
+$('#opacityVal').textContent=$('#opacity').value+'%';
+}
+
+function renderLayers(){
+const list=$('#layersList');
+list.innerHTML='';
+
+[...editor.querySelectorAll('.layer')].reverse().forEach(el=>{
+const item=document.createElement('div');
+item.className='layer-item '+(el===selected?'active':'');
+item.innerHTML=`<span>${el.dataset.type==='text'?(el.textContent.slice(0,18)||'Text'):el.dataset.type}</span><small>${el.dataset.id}</small>`;
+item.onclick=()=>selectLayer(el);
+list.appendChild(item);
+});
+}
+
+$('#addTextBtn').onclick=()=>makeLayer('text',$('#textInput').value||'MEME TEXT');
+
+function addEmoji(e){
+makeLayer('emoji',e,{w:90,size:72});
+}
+
+$('#addStickerBtn').onclick=()=>stickerInput.click();
+
+stickerInput.onchange=e=>{
+const file=e.target.files[0];
+if(!file)return;
+
+const url=URL.createObjectURL(file);
+makeLayer('sticker',url,{w:150});
+};
+
+['layerText','fontSelect','fillColor','strokeColor','fontSize','outline','opacity'].forEach(id=>{
+$('#'+id).addEventListener('input',()=>{
+if(!selected)return;
+
+if(selected.dataset.type==='text'){
+selected.textContent=$('#layerText').value;
+selected.style.fontFamily=$('#fontSelect').value;
+selected.style.color=$('#fillColor').value;
+selected.style.fontSize=$('#fontSize').value+'px';
+selected.dataset.stroke=$('#strokeColor').value;
+selected.dataset.outline=$('#outline').value;
+applyTextShadow(selected);
+}else{
+selected.style.fontSize=$('#fontSize').value+'px';
+}
+
+selected.style.opacity=$('#opacity').value/100;
+
+updateVals();
+renderLayers();
+});
+});
+
+$('#alignLeft').onclick=()=>{if(selected&&selected.dataset.type==='text')selected.style.textAlign='left'};
+$('#alignCenter').onclick=()=>{if(selected&&selected.dataset.type==='text')selected.style.textAlign='center'};
+$('#alignRight').onclick=()=>{if(selected&&selected.dataset.type==='text')selected.style.textAlign='right'};
+
+$('#centerBtn').onclick=()=>{
+if(!selected)return;
+
+selected.style.left=bgW/2-(selected.offsetWidth/2)+'px';
+selected.style.top=bgH/2-(selected.offsetHeight/2)+'px';
+};
+
+$('#deleteBtn').onclick=()=>{
+if(!selected)return;
+
+selected.remove();
+selected=null;
+syncPanel();
+renderLayers();
+};
+
+$('#duplicateBtn').onclick=()=>{
+if(!selected)return;
+
+const r=selected.cloneNode(true);
+
+r.dataset.id='layer-'+idCounter++;
+r.style.left=(parseFloat(selected.style.left)+30)+'px';
+r.style.top=(parseFloat(selected.style.top)+30)+'px';
+r.classList.remove('selected');
+
+editor.appendChild(r);
+bindLayer(r);
+selectLayer(r);
+};
+
+$('#resetBtn').onclick=()=>{
+bgImg=null;
+setupCanvas(900,650);
+};
+
+$$('[data-template]').forEach(b=>{
+b.onclick=()=>{
+const t=b.dataset.template;
+
+bgImg=null;
+setupCanvas(900,650);
+
+editor.style.background=t==='tweet'?'#f5f8fa':t==='quote'?'linear-gradient(135deg,#111827,#0f766e)':t==='blank'?'#111827':'#222';
+
+if(t==='classic'){
+makeLayer('text','TOP TEXT',{x:120,y:45,w:660,size:74});
+makeLayer('text','BOTTOM TEXT',{x:90,y:540,w:720,size:74});
+}
+
+if(t==='tweet'){
+makeLayer('text','@toolivo\nThis meme maker is actually clean.',{x:130,y:220,w:640,size:42,fill:'#111827',stroke:'#ffffff',outline:0,font:'Arial',align:'left'});
+makeLayer('emoji','🚀',{x:720,y:60});
+}
+
+if(t==='quote'){
+makeLayer('text','“MAKE IT LOOK EXPENSIVE.”',{x:120,y:250,w:660,size:52,font:'Georgia'});
+makeLayer('emoji','✨',{x:410,y:120});
+}
+};
+});
+
+function exportCanvas(){
+return new Promise(resolve=>{
+const out=document.createElement('canvas');
+
+out.width=bgW;
+out.height=bgH;
+
+const c=out.getContext('2d');
+const bg=editor.querySelector('img.bg');
+
+if(bg){
+c.drawImage(bg,0,0,bgW,bgH);
+}else{
+const cs=getComputedStyle(editor);
+c.fillStyle=cs.backgroundColor||'#111827';
+c.fillRect(0,0,bgW,bgH);
+}
+
+const layers=[...editor.querySelectorAll('.layer')];
+
+layers.forEach(el=>{
+c.save();
+
+const x=parseFloat(el.style.left)||0;
+const y=parseFloat(el.style.top)||0;
+const w=el.offsetWidth;
+const h=el.offsetHeight;
+const rot=getRot(el)*Math.PI/180;
+
+c.globalAlpha=parseFloat(el.style.opacity)||1;
+c.translate(x+w/2,y+h/2);
+c.rotate(rot);
+
+if(el.dataset.type==='text'||el.dataset.type==='emoji'){
+const fs=parseInt(el.style.fontSize)||54;
+
+c.font=`900 ${fs}px ${el.style.fontFamily||'Impact'}`;
+c.textAlign=el.style.textAlign||'center';
+c.textBaseline='top';
+
+const text=el.textContent;
+const lines=text.split('\n');
+
+const stroke=el.dataset.stroke||'#000';
+const outline=Number(el.dataset.outline||0);
+
+c.lineJoin='round';
+c.lineWidth=outline*2;
+c.fillStyle=el.style.color||'#fff';
+c.strokeStyle=stroke;
+
+lines.forEach((line,i)=>{
+const yy=-h/2+i*fs*1.12;
+
+if(outline)c.strokeText(line,0,yy);
+c.fillText(line,0,yy);
+});
+}else{
+const im=el.querySelector('img');
+
+if(im)c.drawImage(im,-w/2,-h/2,w,h);
+}
+
+c.restore();
+});
+
+resolve(out);
+});
+}
+
+$('#downloadBtn').onclick=async()=>{
+const out=await exportCanvas();
+
+out.toBlob(blob=>{
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+
+a.href=url;
+a.download='toolivo-meme.png';
+
+document.body.appendChild(a);
+a.click();
+a.remove();
+
+URL.revokeObjectURL(url);
+
+showToast('Meme downloaded');
+},'image/png');
+};
+
+$('#copyBtn').onclick=async()=>{
+const out=await exportCanvas();
+
+out.toBlob(async blob=>{
+try{
+await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+showToast('Copied to clipboard');
+}catch(e){
+showToast('Copy not supported');
+}
+});
+};
+
+$('#fitBtn').onclick=()=>editor.scrollIntoView({behavior:'smooth',block:'center'});
+
+function rgbToHex(rgb){
+if(!rgb)return'#ffffff';
+if(rgb.startsWith('#'))return rgb;
+
+const m=rgb.match(/\d+/g);
+
+if(!m)return'#ffffff';
+
+return '#'+m.slice(0,3).map(n=>(+n).toString(16).padStart(2,'0')).join('');
+}
+
+setupCanvas(900,650);
 </script>
 
 </body>
