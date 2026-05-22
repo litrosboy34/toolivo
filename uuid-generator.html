@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UUID Generator — Toolivo</title>
+<meta name="description" content="Generate random UUID v4 values instantly with Toolivo. Free online UUID generator.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:white}
+.wrap{width:min(900px,calc(100% - 28px));margin:auto;padding:40px 0}
+h1{font-size:56px;margin:20px 0 10px}
+p{color:#9ca8bb}
+.panel{background:#0b1020;border:1px solid #263244;border-radius:20px;padding:18px;margin-top:18px}
+.output{font-size:18px;word-break:break-all;background:#05070d;border:1px solid #263244;border-radius:16px;padding:18px;margin-bottom:12px}
+button{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#39e6d2,#6ea8ff);font-weight:800;cursor:pointer;margin:6px 6px 6px 0}
+.copy{background:#121935;color:white;border:1px solid #263244}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>UUID Generator</h1>
+<p>Generate secure random UUID v4 values instantly.</p>
+
+<div class="panel">
+<div class="output" id="uuid"></div>
+<button onclick="generate()">Generate UUID</button>
+<button class="copy" onclick="copyUUID()">Copy</button>
+<button class="copy" onclick="generateList()">Generate 10</button>
+</div>
+</div>
+
+<script>
+const uuidBox=document.getElementById('uuid');
+
+function generateUUID(){
+ return crypto.randomUUID();
+}
+
+function generate(){
+ uuidBox.textContent=generateUUID();
+}
+
+function generateList(){
+ let list=[];
+ for(let i=0;i<10;i++) list.push(generateUUID());
+ uuidBox.textContent=list.join('\\n');
+}
+
+function copyUUID(){
+ navigator.clipboard.writeText(uuidBox.textContent);
+}
+
+generate();
+</script>
+</body>
+</html>
