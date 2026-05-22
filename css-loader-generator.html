@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CSS Loader Generator - Toolivo</title>
+
+<meta name="description" content="Generate CSS loaders instantly with live preview and copyable code.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+@media(max-width:850px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.control{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+select,
+input{
+    width:100%;
+    background:#020617;
+    border:1px solid #334155;
+    color:white;
+    border-radius:12px;
+    padding:14px;
+    outline:none;
+}
+
+input[type="range"]{
+    accent-color:#0ea5e9;
+    padding:0;
+}
+
+input[type="color"]{
+    height:60px;
+    cursor:pointer;
+}
+
+.preview{
+    min-height:340px;
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.loader{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:8px solid rgba(255,255,255,0.15);
+    border-top-color:#06b6d4;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+button{
+    padding:13px 20px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#1e293b;
+    color:white;
+}
+
+textarea{
+    width:100%;
+    height:240px;
+    margin-top:18px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:25px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">CSS Loader Generator</div>
+
+    <div class="desc">
+        Generate CSS loaders instantly with live preview and copyable CSS code.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div>
+
+                <div class="control">
+                    <label>Loader Size</label>
+                    <input type="range" id="size" min="20" max="150" value="70">
+                </div>
+
+                <div class="control">
+                    <label>Border Size</label>
+                    <input type="range" id="border" min="2" max="20" value="8">
+                </div>
+
+                <div class="control">
+                    <label>Animation Speed</label>
+                    <input type="range" id="speed" min="0.2" max="5" step="0.1" value="1">
+                </div>
+
+                <div class="control">
+                    <label>Loader Color</label>
+                    <input type="color" id="color" value="#06b6d4">
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="preview">
+                    <div class="loader" id="loader"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="generate" onclick="generateLoader()">
+                Generate
+            </button>
+
+            <button class="copy" onclick="copyCSS()">
+                Copy CSS
+            </button>
+
+        </div>
+
+        <textarea id="output"></textarea>
+
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function generateLoader(){
+
+    const size =
+    document.getElementById("size").value;
+
+    const border =
+    document.getElementById("border").value;
+
+    const speed =
+    document.getElementById("speed").value;
+
+    const color =
+    document.getElementById("color").value;
+
+    const loader =
+    document.getElementById("loader");
+
+    loader.style.width = size + "px";
+    loader.style.height = size + "px";
+    loader.style.borderWidth = border + "px";
+    loader.style.borderTopColor = color;
+    loader.style.animation =
+    `spin ${speed}s linear infinite`;
+
+    const css =
+`.loader{
+    width:${size}px;
+    height:${size}px;
+    border:${border}px solid rgba(255,255,255,0.15);
+    border-top-color:${color};
+    border-radius:50%;
+    animation:spin ${speed}s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}`;
+
+    document.getElementById("output").value = css;
+}
+
+function copyCSS(){
+
+    navigator.clipboard.writeText(
+        document.getElementById("output").value
+    );
+
+    alert("Copied!");
+}
+
+document.querySelectorAll("input").forEach(el => {
+    el.addEventListener("input", generateLoader);
+});
+
+generateLoader();
+</script>
+
+</body>
+</html>
