@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Minifier — Toolivo</title>
+<meta name="description" content="Minify JavaScript code instantly with Toolivo. Remove comments, spaces and reduce JS file size.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1100px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+margin-bottom:10px;
+}
+
+textarea{
+width:100%;
+min-height:380px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.6;
+box-sizing:border-box;
+resize:vertical;
+font-family:monospace;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin:10px 10px 0 0;
+}
+
+.copy{
+background:#121935;
+color:white;
+border:1px solid #263244;
+}
+
+.stats{
+margin-top:14px;
+padding:14px;
+border-radius:14px;
+background:#121935;
+border:1px solid #263244;
+color:#9ca8bb;
+font-size:14px;
+line-height:1.7;
+}
+
+@media(max-width:900px){
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>JavaScript Minifier</h1>
+
+<p>
+Minify JavaScript code instantly by removing comments, spaces and unnecessary formatting.
+</p>
+
+<div class="grid">
+
+<div class="panel">
+
+<div class="label">Input JavaScript</div>
+
+<textarea id="input" placeholder="Paste JavaScript code here..."></textarea>
+
+<button onclick="minifyJS()">Minify JavaScript</button>
+<button class="copy" onclick="clearAll()">Clear</button>
+
+<div class="stats" id="stats">
+Original size: 0 chars
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="label">Minified Output</div>
+
+<textarea id="output" readonly placeholder="Minified JavaScript will appear here..."></textarea>
+
+<button onclick="copyOutput()">Copy Output</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const input=document.getElementById('input');
+const output=document.getElementById('output');
+const stats=document.getElementById('stats');
+
+function minifyJS(){
+
+let js=input.value;
+
+const original=js.length;
+
+js=js
+.replace(/\/\/.*$/gm,'')
+.replace(/\/\*[\s\S]*?\*\//g,'')
+.replace(/\n/g,' ')
+.replace(/\s+/g,' ')
+.replace(/\s*=\s*/g,'=')
+.replace(/\s*{\s*/g,'{')
+.replace(/\s*}\s*/g,'}')
+.replace(/\s*;\s*/g,';')
+.replace(/\s*,\s*/g,',')
+.replace(/\s*\(\s*/g,'(')
+.replace(/\s*\)\s*/g,')')
+.trim();
+
+output.value=js;
+
+const minified=js.length;
+const saved=original-minified;
+const percent=original?((saved/original)*100).toFixed(1):0;
+
+stats.innerHTML=`
+Original size: ${original} chars<br>
+Minified size: ${minified} chars<br>
+Saved: ${saved} chars (${percent}%)
+`;
+}
+
+function copyOutput(){
+navigator.clipboard.writeText(output.value);
+}
+
+function clearAll(){
+input.value='';
+output.value='';
+stats.innerHTML='Original size: 0 chars';
+}
+</script>
+
+</body>
+</html>
