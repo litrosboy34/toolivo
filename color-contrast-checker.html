@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Color Contrast Checker - Toolivo</title>
+<meta name="description" content="Check color contrast ratio instantly for WCAG AA and AAA accessibility standards.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;padding:20px}
+.container{max-width:950px;margin:auto}
+.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
+.card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:20px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:750px){.grid{grid-template-columns:1fr}}
+label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
+input[type="color"]{width:100%;height:60px;background:#020617;border:1px solid #334155;border-radius:12px;padding:5px;cursor:pointer}
+input[type="text"]{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:12px;padding:14px;margin-top:10px}
+.preview{min-height:220px;border-radius:16px;border:1px solid #334155;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;font-size:28px;font-weight:bold;margin-top:20px}
+.result{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
+@media(max-width:750px){.result{grid-template-columns:1fr}}
+.box{background:#020617;border:1px solid #1e293b;border-radius:14px;padding:18px;text-align:center}
+.box h3{font-size:15px;color:#94a3b8;margin-bottom:8px}
+.box p{font-size:24px;font-weight:bold;color:#38bdf8}
+.pass{color:#22c55e!important}
+.fail{color:#ef4444!important}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.copy{background:#1e293b;color:white}
+.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">Color Contrast Checker</div>
+    <div class="desc">
+        Check text and background color contrast ratio instantly for WCAG AA and AAA accessibility standards.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div>
+                <label>Text Color</label>
+                <input type="color" id="textColor" value="#ffffff">
+                <input type="text" id="textHex" value="#ffffff">
+            </div>
+
+            <div>
+                <label>Background Color</label>
+                <input type="color" id="bgColor" value="#0f172a">
+                <input type="text" id="bgHex" value="#0f172a">
+            </div>
+
+        </div>
+
+        <div class="preview" id="preview">
+            Sample Text Preview
+        </div>
+
+        <div class="result">
+
+            <div class="box">
+                <h3>Contrast Ratio</h3>
+                <p id="ratio">0:1</p>
+            </div>
+
+            <div class="box">
+                <h3>WCAG AA</h3>
+                <p id="aa">-</p>
+            </div>
+
+            <div class="box">
+                <h3>WCAG AAA</h3>
+                <p id="aaa">-</p>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button class="generate" onclick="checkContrast()">Check Contrast</button>
+            <button class="copy" onclick="copyColors()">Copy Colors</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function hexToRgb(hex){
+    hex = hex.replace("#","");
+
+    if(hex.length === 3){
+        hex = hex.split("").map(c => c + c).join("");
+    }
+
+    return {
+        r: parseInt(hex.substring(0,2),16),
+        g: parseInt(hex.substring(2,4),16),
+        b: parseInt(hex.substring(4,6),16)
+    };
+}
+
+function luminance(r,g,b){
+    const values = [r,g,b].map(v => {
+        v = v / 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+
+    return values[0] * 0.2126 + values[1] * 0.7152 + values[2] * 0.0722;
+}
+
+function getContrast(hex1, hex2){
+    const c1 = hexToRgb(hex1);
+    const c2 = hexToRgb(hex2);
+
+    const l1 = luminance(c1.r,c1.g,c1.b);
+    const l2 = luminance(c2.r,c2.g,c2.b);
+
+    const lighter = Math.max(l1,l2);
+    const darker = Math.min(l1,l2);
+
+    return (lighter + 0.05) / (darker + 0.05);
+}
+
+function checkContrast(){
+
+    const text = document.getElementById("textHex").value.trim();
+    const bg = document.getElementById("bgHex").value.trim();
+
+    if(!text.startsWith("#") || !bg.startsWith("#")){
+        alert("Please enter valid HEX colors.");
+        return;
+    }
+
+    document.getElementById("textColor").value = text;
+    document.getElementById("bgColor").value = bg;
+
+    const ratio = getContrast(text,bg);
+    const rounded = ratio.toFixed(2);
+
+    const preview = document.getElementById("preview");
+    preview.style.color = text;
+    preview.style.background = bg;
+
+    document.getElementById("ratio").innerText = rounded + ":1";
+
+    const aa = document.getElementById("aa");
+    const aaa = document.getElementById("aaa");
+
+    if(ratio >= 4.5){
+        aa.innerText = "PASS";
+        aa.className = "pass";
+    }else{
+        aa.innerText = "FAIL";
+        aa.className = "fail";
+    }
+
+    if(ratio >= 7){
+        aaa.innerText = "PASS";
+        aaa.className = "pass";
+    }else{
+        aaa.innerText = "FAIL";
+        aaa.className = "fail";
+    }
+}
+
+function copyColors(){
+    const text = document.getElementById("textHex").value;
+    const bg = document.getElementById("bgHex").value;
+
+    navigator.clipboard.writeText("Text: " + text + "\nBackground: " + bg);
+    alert("Copied!");
+}
+
+document.getElementById("textColor").addEventListener("input", function(){
+    document.getElementById("textHex").value = this.value;
+    checkContrast();
+});
+
+document.getElementById("bgColor").addEventListener("input", function(){
+    document.getElementById("bgHex").value = this.value;
+    checkContrast();
+});
+
+document.getElementById("textHex").addEventListener("input", checkContrast);
+document.getElementById("bgHex").addEventListener("input", checkContrast);
+
+checkContrast();
+</script>
+
+</body>
+</html>
