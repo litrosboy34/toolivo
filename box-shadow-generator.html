@@ -3,343 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Box Shadow Generator - Toolivo</title>
-
-<meta name="description" content="Generate CSS box shadows instantly with live preview and copyable CSS code.">
+<meta name="description" content="Generate CSS box shadows with live preview and copyable CSS code.">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-}
-
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.desc{
-    color:#94a3b8;
-    margin-bottom:30px;
-    line-height:1.6;
-}
-
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-@media(max-width:800px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
-
-.input-group{
-    display:flex;
-    flex-direction:column;
-}
-
-.input-group label{
-    margin-bottom:10px;
-    color:#cbd5e1;
-    font-size:14px;
-}
-
-.range-wrap{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.range-wrap span{
-    width:55px;
-    color:#38bdf8;
-    font-size:14px;
-}
-
-input[type="range"]{
-    width:100%;
-    accent-color:#0ea5e9;
-}
-
-input[type="color"]{
-    width:70px;
-    height:50px;
-    border:none;
-    border-radius:10px;
-    background:none;
-    cursor:pointer;
-}
-
-.preview-wrapper{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:50px 0;
-}
-
-.preview-box{
-    width:240px;
-    height:240px;
-    border-radius:24px;
-    background:linear-gradient(135deg,#06b6d4,#3b82f6);
-    border:1px solid rgba(255,255,255,0.08);
-    transition:0.15s;
-}
-
-.checkbox{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:15px;
-}
-
-.buttons{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
-}
-
-button{
-    padding:14px 22px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.2s;
-}
-
-.generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
-}
-
-.copy{
-    background:#1e293b;
-    color:white;
-}
-
-button:hover{
-    transform:translateY(-2px);
-    opacity:0.9;
-}
-
-.output{
-    width:100%;
-    height:170px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:14px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
-    margin-top:20px;
-}
-
-.footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:30px;
-    font-size:14px;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;padding:20px}
+.container{max-width:950px;margin:auto}
+.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.desc{color:#94a3b8;margin-bottom:25px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:20px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:750px){.grid{grid-template-columns:1fr}}
+label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
+.control{margin-bottom:18px}
+input[type="range"]{width:100%;accent-color:#0ea5e9}
+input[type="color"]{width:80px;height:50px;background:#020617;border:1px solid #334155;border-radius:10px;padding:4px}
+.value{color:#38bdf8;font-size:13px;margin-top:5px}
+.preview-area{display:flex;justify-content:center;align-items:center;min-height:280px;background:#020617;border:1px solid #1e293b;border-radius:16px}
+.preview-box{width:180px;height:180px;background:white;border-radius:20px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+button{padding:13px 20px;border:0;border-radius:12px;font-weight:bold;cursor:pointer}
+.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.copy{background:#1e293b;color:white}
+textarea{width:100%;height:130px;margin-top:15px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:14px;resize:vertical}
+.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-
     <div class="title">Box Shadow Generator</div>
-
-    <div class="desc">
-        Generate CSS box shadows instantly with live preview and copyable CSS code.
-    </div>
+    <div class="desc">Generate CSS box shadows with live preview and copyable CSS code.</div>
 
     <div class="card">
-
         <div class="grid">
-
             <div>
-
-                <div class="input-group">
+                <div class="control">
                     <label>Horizontal Offset</label>
-
-                    <div class="range-wrap">
-                        <input type="range" id="x" min="-100" max="100" value="0">
-                        <span id="xValue">0px</span>
-                    </div>
+                    <input type="range" id="x" min="-100" max="100" value="10">
+                    <div class="value" id="xVal">10px</div>
                 </div>
 
-                <br>
-
-                <div class="input-group">
+                <div class="control">
                     <label>Vertical Offset</label>
-
-                    <div class="range-wrap">
-                        <input type="range" id="y" min="-100" max="100" value="15">
-                        <span id="yValue">15px</span>
-                    </div>
+                    <input type="range" id="y" min="-100" max="100" value="10">
+                    <div class="value" id="yVal">10px</div>
                 </div>
 
-                <br>
-
-                <div class="input-group">
+                <div class="control">
                     <label>Blur Radius</label>
-
-                    <div class="range-wrap">
-                        <input type="range" id="blur" min="0" max="100" value="35">
-                        <span id="blurValue">35px</span>
-                    </div>
+                    <input type="range" id="blur" min="0" max="120" value="35">
+                    <div class="value" id="blurVal">35px</div>
                 </div>
 
-                <br>
-
-                <div class="input-group">
+                <div class="control">
                     <label>Spread Radius</label>
-
-                    <div class="range-wrap">
-                        <input type="range" id="spread" min="-50" max="50" value="0">
-                        <span id="spreadValue">0px</span>
-                    </div>
+                    <input type="range" id="spread" min="-50" max="50" value="0">
+                    <div class="value" id="spreadVal">0px</div>
                 </div>
 
-            </div>
-
-            <div>
-
-                <div class="input-group">
+                <div class="control">
                     <label>Shadow Color</label>
-                    <input type="color" id="color" value="#000000">
-                </div>
-
-                <br>
-
-                <div class="input-group">
-                    <label>Opacity</label>
-
-                    <div class="range-wrap">
-                        <input type="range" id="opacity" min="0" max="1" step="0.01" value="0.30">
-                        <span id="opacityValue">0.30</span>
-                    </div>
-                </div>
-
-                <div class="checkbox">
-                    <input type="checkbox" id="inset">
-                    <label for="inset">Inset Shadow</label>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="preview-wrapper">
-            <div class="preview-box" id="previewBox"></div>
-        </div>
-
-        <div class="buttons">
-            <button class="generate" onclick="generateShadow()">
-                Generate
-            </button>
-
-            <button class="copy" onclick="copyShadow()">
-                Copy CSS
-            </button>
-        </div>
-
-        <textarea class="output" id="output"></textarea>
-
-    </div>
-
-    <div class="footer">
-        Toolivo © 2026
-    </div>
-
-</div>
-
-<script>
-function hexToRgb(hex){
-
-    hex = hex.replace("#","");
-
-    return {
-        r: parseInt(hex.substring(0,2),16),
-        g: parseInt(hex.substring(2,4),16),
-        b: parseInt(hex.substring(4,6),16)
-    };
-}
-
-function generateShadow(){
-
-    const x = document.getElementById("x").value;
-    const y = document.getElementById("y").value;
-    const blur = document.getElementById("blur").value;
-    const spread = document.getElementById("spread").value;
-    const color = document.getElementById("color").value;
-    const opacity = document.getElementById("opacity").value;
-    const inset = document.getElementById("inset").checked;
-
-    document.getElementById("xValue").innerText = x + "px";
-    document.getElementById("yValue").innerText = y + "px";
-    document.getElementById("blurValue").innerText = blur + "px";
-    document.getElementById("spreadValue").innerText = spread + "px";
-    document.getElementById("opacityValue").innerText = opacity;
-
-    const rgb = hexToRgb(color);
-
-    const shadow =
-`${inset ? "inset " : ""}${x}px ${y}px ${blur}px ${spread}px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
-
-    document.getElementById("previewBox").style.boxShadow = shadow;
-
-    document.getElementById("output").value =
-`box-shadow: ${shadow};`;
-}
-
-function copyShadow(){
-
-    const output = document.getElementById("output");
-
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
-}
-
-document.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", generateShadow);
-});
-
-generateShadow();
-</script>
-
-</body>
-</html>
+                    <input type="color" id
