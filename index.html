@@ -422,101 +422,220 @@ All rights reserved.
 const tools = [
 
 {
-title:{
-en:"Background Remover",
-tr:"Arka Plan Kaldırıcı"
-},
-
-desc:{
-en:"Remove image backgrounds online.",
-tr:"Görsellerin arka planını kaldırın."
-},
-
-url:"/background-remover.html",
+title:{en:"Resize Image",tr:"Görsel Yeniden Boyutlandır"},
+desc:{en:"Resize images for web and social media.",tr:"Görselleri yeniden boyutlandırın."},
+url:"/resize-image.html",
 cat:"image",
-icon:"🖼️"
+icon:"📐"
 },
 
 {
-title:{
-en:"Image Compressor",
-tr:"Görsel Sıkıştırıcı"
-},
-
-desc:{
-en:"Compress images quickly.",
-tr:"Görselleri hızlıca sıkıştırın."
-},
-
-url:"/image-compressor.html",
+title:{en:"Crop Image",tr:"Görsel Kırp"},
+desc:{en:"Crop images online.",tr:"Görselleri online kırpın."},
+url:"/crop-image.html",
 cat:"image",
-icon:"⚡"
+icon:"✂️"
 },
 
 {
-title:{
-en:"Word Counter",
-tr:"Kelime Sayacı"
-},
-
-desc:{
-en:"Count words and characters.",
-tr:"Kelime ve karakter sayın."
-},
-
-url:"/word-counter.html",
-cat:"text",
-icon:"🔤"
+title:{en:"Rotate Image",tr:"Görsel Döndür"},
+desc:{en:"Rotate and flip images.",tr:"Görselleri döndürün ve çevirin."},
+url:"/rotate-image.html",
+cat:"image",
+icon:"🔄"
 },
 
 {
-title:{
-en:"Password Generator",
-tr:"Şifre Oluşturucu"
+title:{en:"Blur Image",tr:"Görsel Blur"},
+desc:{en:"Add blur effects to images.",tr:"Görsellere blur efekti ekleyin."},
+url:"/blur-image.html",
+cat:"image",
+icon:"🌫️"
 },
 
-desc:{
-en:"Generate secure passwords.",
-tr:"Güvenli şifreler oluşturun."
+{
+title:{en:"Watermark Image",tr:"Filigran Ekle"},
+desc:{en:"Add watermark to images.",tr:"Görsellere filigran ekleyin."},
+url:"/watermark-image.html",
+cat:"image",
+icon:"💧"
 },
 
-url:"/password-generator.html",
+{
+title:{en:"Image Upscaler",tr:"Görsel Kalite Artırıcı"},
+desc:{en:"Upscale images online.",tr:"Görsellerin kalitesini artırın."},
+url:"/image-upscaler.html",
+cat:"image",
+icon:"🔍"
+},
+
+{
+title:{en:"Meme Maker",tr:"Meme Oluşturucu"},
+desc:{en:"Create simple memes online.",tr:"Online meme oluşturun."},
+url:"/meme-maker.html",
+cat:"image",
+icon:"😂"
+},
+
+{
+title:{en:"QR Generator",tr:"QR Oluşturucu"},
+desc:{en:"Generate QR codes instantly.",tr:"Anında QR kod oluşturun."},
+url:"/qr-generator.html",
+cat:"image",
+icon:"▦"
+},
+
+{
+title:{en:"PNG to JPG",tr:"PNG → JPG"},
+desc:{en:"Convert PNG images to JPG.",tr:"PNG görselleri JPG dönüştürün."},
+url:"/png-to-jpg.html",
+cat:"converter",
+icon:"🔁"
+},
+
+{
+title:{en:"PNG to WEBP",tr:"PNG → WEBP"},
+desc:{en:"Convert PNG images to WEBP.",tr:"PNG görselleri WEBP dönüştürün."},
+url:"/png-to-webp.html",
+cat:"converter",
+icon:"🔁"
+},
+
+{
+title:{en:"JPG to PNG",tr:"JPG → PNG"},
+desc:{en:"Convert JPG images to PNG.",tr:"JPG görselleri PNG dönüştürün."},
+url:"/jpg-to-png.html",
+cat:"converter",
+icon:"🔁"
+},
+
+{
+title:{en:"JPG to WEBP",tr:"JPG → WEBP"},
+desc:{en:"Convert JPG images to WEBP.",tr:"JPG görselleri WEBP dönüştürün."},
+url:"/jpg-to-webp.html",
+cat:"converter",
+icon:"🔁"
+},
+
+{
+title:{en:"WEBP to PNG",tr:"WEBP → PNG"},
+desc:{en:"Convert WEBP images to PNG.",tr:"WEBP görselleri PNG dönüştürün."},
+url:"/webp-to-png.html",
+cat:"converter",
+icon:"🔁"
+},
+
+{
+title:{en:"WEBP to JPG",tr:"WEBP → JPG"},
+desc:{en:"Convert WEBP images to JPG.",tr:"WEBP görselleri JPG dönüştürün."},
+url:"/webp-to-jpg.html",
+cat:"converter",
+icon:"🔁"
+},
+
+{
+title:{en:"JSON Formatter",tr:"JSON Düzenleyici"},
+desc:{en:"Format and beautify JSON.",tr:"JSON formatlayın."},
+url:"/json-formatter.html",
 cat:"developer",
-icon:"🔐"
+icon:"{}"
 },
 
 {
-title:{
-en:"CSS Gradient Generator",
-tr:"CSS Gradient Oluşturucu"
+title:{en:"Regex Tester",tr:"Regex Test Aracı"},
+desc:{en:"Test regular expressions.",tr:"Regex ifadelerini test edin."},
+url:"/regex-tester.html",
+cat:"developer",
+icon:".*"
 },
 
-desc:{
-en:"Generate CSS gradients.",
-tr:"CSS gradient oluşturun."
+{
+title:{en:"UUID Generator",tr:"UUID Oluşturucu"},
+desc:{en:"Generate UUIDs instantly.",tr:"UUID oluşturun."},
+url:"/uuid-generator.html",
+cat:"developer",
+icon:"🆔"
 },
 
-url:"/css-gradient-generator.html",
+{
+title:{en:"SHA256 Generator",tr:"SHA256 Oluşturucu"},
+desc:{en:"Generate SHA256 hashes.",tr:"SHA256 hash oluşturun."},
+url:"/sha256-generator.html",
+cat:"developer",
+icon:"#"
+},
+
+{
+title:{en:"CSS Button Generator",tr:"CSS Buton Oluşturucu"},
+desc:{en:"Create CSS buttons.",tr:"CSS butonları oluşturun."},
+url:"/css-button-generator.html",
 cat:"css",
-icon:"🌈"
+icon:"🔘"
 },
 
 {
-title:{
-en:"Meta Tag Generator",
-tr:"Meta Etiket Oluşturucu"
+title:{en:"Glassmorphism Generator",tr:"Glassmorphism Oluşturucu"},
+desc:{en:"Generate glass CSS effects.",tr:"Glassmorphism efektleri oluşturun."},
+url:"/glassmorphism-generator.html",
+cat:"css",
+icon:"🧊"
 },
 
-desc:{
-en:"Generate SEO meta tags.",
-tr:"SEO meta etiketleri oluşturun."
+{
+title:{en:"Flexbox Generator",tr:"Flexbox Oluşturucu"},
+desc:{en:"Generate flexbox layouts.",tr:"Flexbox düzenleri oluşturun."},
+url:"/flexbox-generator.html",
+cat:"css",
+icon:"↔️"
 },
 
-url:"/meta-tag-generator.html",
+{
+title:{en:"CSS Grid Generator",tr:"CSS Grid Oluşturucu"},
+desc:{en:"Generate CSS grid layouts.",tr:"CSS grid düzenleri oluşturun."},
+url:"/css-grid-generator.html",
+cat:"css",
+icon:"▦"
+},
+
+{
+title:{en:"Color Palette Generator",tr:"Renk Paleti Oluşturucu"},
+desc:{en:"Generate color palettes.",tr:"Renk paletleri oluşturun."},
+url:"/color-palette-generator.html",
+cat:"css",
+icon:"🎨"
+},
+
+{
+title:{en:"Favicon Generator",tr:"Favicon Oluşturucu"},
+desc:{en:"Generate favicon tags.",tr:"Favicon oluşturun."},
+url:"/favicon-generator.html",
 cat:"seo",
-icon:"🏷️"
-}
+icon:"🔖"
+},
 
+{
+title:{en:"Sitemap Generator",tr:"Sitemap Oluşturucu"},
+desc:{en:"Generate sitemap XML.",tr:"Sitemap XML oluşturun."},
+url:"/sitemap-generator.html",
+cat:"seo",
+icon:"🗺️"
+},
+
+{
+title:{en:"Robots.txt Generator",tr:"Robots.txt Oluşturucu"},
+desc:{en:"Generate robots.txt files.",tr:"Robots.txt oluşturun."},
+url:"/robots-txt-generator.html",
+cat:"seo",
+icon:"🤖"
+},
+
+{
+title:{en:"UTM Link Builder",tr:"UTM Link Oluşturucu"},
+desc:{en:"Build UTM campaign links.",tr:"UTM linkleri oluşturun."},
+url:"/utm-link-builder.html",
+cat:"seo",
+icon:"📈"
+}
 ];
 
 const grid =
