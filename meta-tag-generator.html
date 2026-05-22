@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meta Tag Generator - Toolivo</title>
+
+<meta name="description" content="Generate SEO meta tags instantly including Open Graph and Twitter Card tags.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+@media(max-width:700px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-group label{
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select{
+    background:#020617;
+    border:1px solid #1e293b;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    outline:none;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:14px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#1e293b;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+    transform:translateY(-2px);
+}
+
+.output{
+    width:100%;
+    height:350px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:30px;
+    font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="title">Meta Tag Generator</div>
+
+    <div class="desc">
+        Generate SEO meta tags including Open Graph and Twitter Card tags instantly.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div class="input-group">
+                <label>Website Title</label>
+                <input type="text" id="titleInput" placeholder="Toolivo">
+            </div>
+
+            <div class="input-group">
+                <label>Website URL</label>
+                <input type="text" id="urlInput" placeholder="https://toolivo.site">
+            </div>
+
+            <div class="input-group">
+                <label>Description</label>
+                <textarea id="descInput" placeholder="Website description"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>Keywords</label>
+                <textarea id="keywordsInput" placeholder="seo, tools, generator"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>Author</label>
+                <input type="text" id="authorInput" placeholder="Toolivo">
+            </div>
+
+            <div class="input-group">
+                <label>Robots</label>
+                <select id="robotsInput">
+                    <option value="index, follow">index, follow</option>
+                    <option value="noindex, nofollow">noindex, nofollow</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Open Graph Image URL</label>
+                <input type="text" id="imageInput" placeholder="https://example.com/image.jpg">
+            </div>
+
+            <div class="input-group">
+                <label>Favicon URL</label>
+                <input type="text" id="faviconInput" placeholder="/favicon.ico">
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button class="generate" onclick="generateMeta()">
+                Generate
+            </button>
+
+            <button class="copy" onclick="copyMeta()">
+                Copy
+            </button>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <textarea class="output" id="output" placeholder="Generated meta tags will appear here..."></textarea>
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function generateMeta(){
+
+    const title = document.getElementById("titleInput").value;
+    const url = document.getElementById("urlInput").value;
+    const desc = document.getElementById("descInput").value;
+    const keywords = document.getElementById("keywordsInput").value;
+    const author = document.getElementById("authorInput").value;
+    const robots = document.getElementById("robotsInput").value;
+    const image = document.getElementById("imageInput").value;
+    const favicon = document.getElementById("faviconInput").value;
+
+    const meta = `
+<title>${title}</title>
+
+<meta name="title" content="${title}">
+<meta name="description" content="${desc}">
+<meta name="keywords" content="${keywords}">
+<meta name="author" content="${author}">
+<meta name="robots" content="${robots}">
+
+<link rel="canonical" href="${url}">
+<link rel="icon" href="${favicon}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${image}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${desc}">
+<meta name="twitter:image" content="${image}">
+`;
+
+    document.getElementById("output").value = meta.trim();
+}
+
+function copyMeta(){
+
+    const output = document.getElementById("output");
+
+    if(!output.value){
+        alert("Generate meta tags first.");
+        return;
+    }
+
+    navigator.clipboard.writeText(output.value);
+
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
