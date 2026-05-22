@@ -1,34 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Schema Markup Generator - Toolivo</title>
+<meta name="description" content="Generate JSON-LD schema markup for SEO and rich snippets instantly.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+@media(max-width:700px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-group label{
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select{
+    background:#020617;
+    border:1px solid #1e293b;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    outline:none;
+}
+
+textarea{
+    resize:vertical;
+    min-height:100px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:14px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#1e293b;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+    transform:translateY(-2px);
+}
+
+.output{
+    width:100%;
+    height:360px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:30px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">Schema Markup Generator</div>
+
+    <div class="desc">
+        Generate JSON-LD schema markup for SEO, Google rich snippets and structured data.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div class="input-group">
+                <label>Schema Type</label>
+                <select id="schemaType">
+                    <option value="Organization">Organization</option>
+                    <option value="WebSite">Website</option>
+                    <option value="Article">Article</option>
+                    <option value="Product">Product</option>
+                    <option value="FAQPage">FAQ Page</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Name / Title</label>
+                <input type="text" id="nameInput" placeholder="Toolivo">
+            </div>
+
+            <div class="input-group">
+                <label>Website URL</label>
+                <input type="text" id="urlInput" placeholder="https://toolivo.site">
+            </div>
+
+            <div class="input-group">
+                <label>Image URL</label>
+                <input type="text" id="imageInput" placeholder="https://example.com/image.jpg">
+            </div>
+
+            <div class="input-group">
+                <label>Description</label>
+                <textarea id="descInput" placeholder="Website or product description"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>Author / Brand</label>
+                <input type="text" id="authorInput" placeholder="Toolivo">
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button class="generate" onclick="generateSchema()">Generate</button>
+            <button class="copy" onclick="copySchema()">Copy</button>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <textarea class="output" id="output" placeholder="Generated JSON-LD schema will appear here..."></textarea>
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
 <script>
 function generateSchema(){
 
     const type = document.getElementById("schemaType").value;
-    const name = document.getElementById("nameInput").value;
-    const url = document.getElementById("urlInput").value;
-    const image = document.getElementById("imageInput").value;
-    const desc = document.getElementById("descInput").value;
-    const author = document.getElementById("authorInput").value;
+    const name = document.getElementById("nameInput").value.trim();
+    const url = document.getElementById("urlInput").value.trim();
+    const image = document.getElementById("imageInput").value.trim();
+    const desc = document.getElementById("descInput").value.trim();
+    const author = document.getElementById("authorInput").value.trim();
 
     let schema = {
         "@context": "https://schema.org",
-        "@type": type,
-        "name": name,
-        "url": url,
-        "image": image,
-        "description": desc
+        "@type": type
     };
 
+    if(type === "Organization"){
+        schema.name = name;
+        schema.url = url;
+        if(image) schema.logo = image;
+        if(desc) schema.description = desc;
+    }
+
+    if(type === "WebSite"){
+        schema.name = name;
+        schema.url = url;
+        if(desc) schema.description = desc;
+    }
+
     if(type === "Article"){
+        schema.headline = name;
+        schema.description = desc;
+        schema.image = image;
+        schema.url = url;
         schema.author = {
             "@type": "Person",
-            "name": author
+            "name": author || "Author"
+        };
+        schema.publisher = {
+            "@type": "Organization",
+            "name": author || "Publisher"
         };
     }
 
     if(type === "Product"){
+        schema.name = name;
+        schema.description = desc;
+        schema.image = image;
         schema.brand = {
             "@type": "Brand",
-            "name": author
+            "name": author || "Brand"
         };
+    }
+
+    if(type === "FAQPage"){
+        schema.mainEntity = [
+            {
+                "@type": "Question",
+                "name": name || "Question title",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": desc || "Answer text"
+                }
+            }
+        ];
     }
 
     const output =
@@ -40,6 +284,7 @@ JSON.stringify(schema, null, 2) +
 }
 
 function copySchema(){
+
     const output = document.getElementById("output");
 
     if(!output.value){
@@ -51,3 +296,6 @@ function copySchema(){
     alert("Copied!");
 }
 </script>
+
+</body>
+</html>
