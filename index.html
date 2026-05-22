@@ -279,53 +279,75 @@ renderTools();
 }
 
 function renderTools(){
-const query = searchInput.value.toLowerCase().trim();
+
+const query =
+searchInput.value.toLowerCase().trim();
+
 grid.innerHTML = "";
 
 const filtered = tools.filter(tool => {
-const matchesCategory = activeCategory === "all" || tool.cat === activeCategory;
-const matchesSearch = tool.title[lang].toLowerCase().includes(query) || tool.desc[lang].toLowerCase().includes(query);
+
+const title =
+typeof tool.title === "object"
+? tool.title[lang]
+: tool.title;
+
+const desc =
+typeof tool.desc === "object"
+? tool.desc[lang]
+: tool.desc;
+
+const matchesCategory =
+activeCategory === "all" ||
+tool.cat === activeCategory;
+
+const matchesSearch =
+title.toLowerCase().includes(query) ||
+desc.toLowerCase().includes(query);
+
 return matchesCategory && matchesSearch;
 });
 
 filtered.forEach(tool => {
-const card = document.createElement("a");
+
+const title =
+typeof tool.title === "object"
+? tool.title[lang]
+: tool.title;
+
+const desc =
+typeof tool.desc === "object"
+? tool.desc[lang]
+: tool.desc;
+
+const card =
+document.createElement("a");
+
 card.className = "tool-card";
+
 card.href = tool.url;
+
 card.innerHTML = `
 <div class="tool-icon">${tool.icon}</div>
-<h3>${tool.title[lang]}</h3>
-<p>${tool.desc[lang]}</p>
-<span class="tool-tag">${tool.cat.toUpperCase()} →</span>
+
+<h3>${title}</h3>
+
+<p>${desc}</p>
+
+<span class="tool-tag">
+${tool.cat.toUpperCase()} →
+</span>
 `;
+
 grid.appendChild(card);
 });
 
 if(filtered.length === 0){
-grid.innerHTML = `<p style="color:#94a3b8;">${translations[lang].notFound}</p>`;
+
+grid.innerHTML = `
+<p style="color:#94a3b8;">
+${translations[lang].notFound}
+</p>
+`;
 }
 }
-
-buttons.forEach(btn => {
-btn.addEventListener("click", () => {
-buttons.forEach(b => b.classList.remove("active"));
-btn.classList.add("active");
-activeCategory = btn.dataset.category;
-renderTools();
-});
-});
-
-langBtn.addEventListener("click", () => {
-lang = lang === "tr" ? "en" : "tr";
-localStorage.setItem("toolivo_lang", lang);
-applyLang();
-});
-
-searchInput.addEventListener("input", renderTools);
-document.getElementById("year").innerText = new Date().getFullYear();
-
-applyLang();
-</script>
-
-</body>
-</html>
