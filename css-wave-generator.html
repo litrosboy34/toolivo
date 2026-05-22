@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CSS Wave Generator - Toolivo</title>
+<meta name="description" content="Generate SVG wave shapes instantly with live preview and copyable code.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;padding:20px}
+.container{max-width:1000px;margin:auto}
+.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:850px){.grid{grid-template-columns:1fr}}
+.control{margin-bottom:18px}
+label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
+input{width:100%;accent-color:#0ea5e9}
+input[type="color"]{height:60px;border:none;border-radius:12px;background:none;cursor:pointer}
+.value{margin-top:6px;color:#38bdf8;font-size:14px}
+.preview{min-height:320px;background:#020617;border:1px solid #1e293b;border-radius:18px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview svg{width:100%;height:220px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.copy{background:#1e293b;color:white}
+textarea{width:100%;height:240px;margin-top:18px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5}
+.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">CSS Wave Generator</div>
+    <div class="desc">Generate SVG wave shapes with live preview and copyable SVG code.</div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div>
+                <div class="control">
+                    <label>Wave Color</label>
+                    <input type="color" id="color" value="#06b6d4">
+                </div>
+
+                <div class="control">
+                    <label>Wave Height</label>
+                    <input type="range" id="height" min="20" max="180" value="90">
+                    <div class="value" id="heightVal">90</div>
+                </div>
+
+                <div class="control">
+                    <label>Curve Strength</label>
+                    <input type="range" id="curve" min="20" max="180" value="100">
+                    <div class="value" id="curveVal">100</div>
+                </div>
+
+                <div class="control">
+                    <label>Wave Position</label>
+                    <input type="range" id="position" min="0" max="200" value="100">
+                    <div class="value" id="positionVal">100</div>
+                </div>
+            </div>
+
+            <div class="preview" id="preview"></div>
+
+        </div>
+
+        <div class="buttons">
+            <button class="generate" onclick="generateWave()">Generate</button>
+            <button class="copy" onclick="copySVG()">Copy SVG</button>
+        </div>
+
+        <textarea id="output"></textarea>
+
+    </div>
+
+    <div class="footer">Toolivo © 2026</div>
+
+</div>
+
+<script>
+function generateWave(){
+
+    const color = document.getElementById("color").value;
+    const height = document.getElementById("height").value;
+    const curve = document.getElementById("curve").value;
+    const position = document.getElementById("position").value;
+
+    document.getElementById("heightVal").innerText = height;
+    document.getElementById("curveVal").innerText = curve;
+    document.getElementById("positionVal").innerText = position;
+
+    const svg =
+`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+<path fill="${color}" fill-opacity="1" d="M0,${position} C240,${curve} 480,${height} 720,${position} C960,${320-height} 1200,${curve} 1440,${position} L1440,320 L0,320 Z"></path>
+</svg>`;
+
+    document.getElementById("preview").innerHTML = svg;
+    document.getElementById("output").value = svg;
+}
+
+function copySVG(){
+    navigator.clipboard.writeText(document.getElementById("output").value);
+    alert("Copied!");
+}
+
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", generateWave);
+});
+
+generateWave();
+</script>
+
+</body>
+</html>
