@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Base64 Encoder Decoder — Toolivo</title>
-<meta name="description" content="Encode and decode Base64 instantly with Toolivo. Free online Base64 encoder and decoder tool.">
+<title>Blur Image Online — Toolivo</title>
+<meta name="description" content="Blur images online instantly with Toolivo. Upload an image, adjust blur strength and download the result.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
@@ -27,50 +27,83 @@ a{text-decoration:none;color:inherit}
 .tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
 .tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
 
-.gradient{
-background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.tool-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:20px;
-}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
 
-.panel{
-background:#111827;
-border:1px solid #1e293b;
+.drop{
+min-height:310px;
+border:2px dashed #334155;
 border-radius:18px;
-padding:20px;
+background:#020617;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+cursor:pointer;
+padding:24px;
+transition:.2s;
 }
 
-.label{
+.drop:hover,.drop.drag{border-color:#38bdf8;background:#061326}
+.drop strong{display:block;font-size:24px;margin-bottom:10px}
+.drop span{color:#94a3b8;line-height:1.6}
+input[type=file]{display:none}
+
+.preview{
+display:none;
+margin-top:16px;
+border:1px solid #334155;
+border-radius:18px;
+background:#020617;
+overflow:hidden;
+}
+
+.preview img{
+width:100%;
+display:block;
+max-height:340px;
+object-fit:contain;
+background:#020617;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.control{
+margin-top:16px;
+}
+
+.control label{
+display:flex;
+justify-content:space-between;
+color:#cbd5e1;
 font-size:14px;
 font-weight:bold;
-color:#cbd5e1;
 margin-bottom:10px;
 }
 
-textarea{
+input[type=range]{
 width:100%;
-min-height:260px;
-border-radius:18px;
-border:1px solid #334155;
-background:#020617;
-color:white;
-padding:18px;
-font-size:15px;
-line-height:1.7;
-resize:vertical;
-outline:none;
-font-family:monospace;
+accent-color:#38bdf8;
 }
 
-textarea:focus{
-border-color:#38bdf8;
+canvas{
+width:100%;
+max-height:430px;
+display:none;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+object-fit:contain;
 }
 
 .buttons{
@@ -90,11 +123,11 @@ font-size:15px;
 transition:.2s;
 }
 
-button:hover{
-transform:translateY(-2px);
-}
+button:hover{transform:translateY(-2px)}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
 .primary{
+flex:1;
 background:linear-gradient(90deg,#06b6d4,#3b82f6);
 color:white;
 }
@@ -105,14 +138,10 @@ color:#cbd5e1;
 border:1px solid #334155;
 }
 
-.info{
-padding:16px;
-border:1px solid #334155;
-border-radius:16px;
-background:#020617;
+.result{
+margin-top:14px;
 color:#94a3b8;
 line-height:1.6;
-margin-bottom:14px;
 }
 
 .content{
@@ -129,20 +158,9 @@ border-radius:18px;
 padding:20px;
 }
 
-.card h2{
-font-size:24px;
-margin-bottom:10px;
-}
-
-.card p,
-.card li{
-color:#94a3b8;
-line-height:1.7;
-}
-
-.card ul{
-padding-left:18px;
-}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
 
 .footer{
 margin-top:55px;
@@ -160,42 +178,18 @@ flex-wrap:wrap;
 margin-top:12px;
 }
 
-.footer-links a:hover{
-color:white;
-}
+.footer-links a:hover{color:white}
 
 @media(max-width:900px){
-
-.tool-grid,
-.content{
-grid-template-columns:1fr;
-}
-
-.header{
-flex-direction:column;
-}
-
-.logo img{
-width:95px;
-height:95px;
-}
-
-textarea{
-min-height:220px;
-}
-
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+.drop{min-height:250px}
 }
 
 @media(max-width:520px){
-
-.buttons{
-flex-direction:column;
-}
-
-button{
-width:100%;
-}
-
+.buttons{flex-direction:column}
+.primary,.secondary,button{width:100%}
 }
 </style>
 </head>
@@ -205,8 +199,7 @@ width:100%;
 <div class="container">
 
 <header class="header">
-
-<a href="/" class="logo">
+<a class="logo" href="/">
 <img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
 <span>Toolivo</span>
 </a>
@@ -218,106 +211,77 @@ width:100%;
 <a href="/privacy.html">Privacy</a>
 <a href="/contact.html">Contact</a>
 </nav>
-
 </header>
 
 <section class="tool-hero">
-
-<h1>Base64 <span class="gradient">Encoder Decoder</span></h1>
-
-<p>
-Encode and decode Base64 instantly with Toolivo. Convert plain text into Base64 format or decode Base64 back into readable text.
-</p>
-
+<h1>Blur Image <span class="gradient">Online</span></h1>
+<p>Upload an image, adjust blur strength and download the result instantly. Everything runs directly in your browser.</p>
 </section>
 
 <section class="tool-grid">
 
 <div class="panel">
 
-<div class="label">Input</div>
+<label class="drop" id="dropZone" for="fileInput">
+<div>
+<strong>Drop your image here</strong>
+<span>or tap to browse JPG, PNG, WEBP from your device.</span>
+</div>
+</label>
 
-<textarea
-id="input"
-placeholder="Paste your text or Base64 here..."
-></textarea>
+<input id="fileInput" type="file" accept="image/*">
 
-<div class="buttons">
-
-<button class="primary" onclick="encodeText()">
-Encode
-</button>
-
-<button class="primary" onclick="decodeText()">
-Decode
-</button>
-
-<button class="secondary" onclick="clearAll()">
-Clear
-</button>
-
+<div class="preview" id="preview">
+<img id="previewImg" alt="Preview">
 </div>
 
 </div>
 
 <div class="panel">
 
-<div class="info">
-Your converted Base64 result will appear below instantly.
+<div class="info" id="fileInfo">
+Choose an image to begin.
 </div>
 
-<div class="label">Output</div>
+<div class="control">
+<label>
+<span>Blur strength</span>
+<span id="blurVal">8px</span>
+</label>
+<input id="blurRange" type="range" min="0" max="40" value="8">
+</div>
 
-<textarea
-id="output"
-readonly
-placeholder="Result will appear here..."
-></textarea>
+<canvas id="canvas"></canvas>
 
 <div class="buttons">
-
-<button class="secondary" onclick="copyOutput()">
-Copy Output
-</button>
-
+<button class="primary" id="downloadBtn" disabled>Download Blurred Image</button>
+<button class="secondary" id="resetBtn" disabled>Reset</button>
 </div>
+
+<div class="result" id="result"></div>
 
 </div>
 
 </section>
 
 <section class="content">
-
 <article class="card">
-
-<h2>What is Base64?</h2>
-
-<p>
-Base64 is an encoding method used to safely transmit text and binary data over systems that handle text only.
-</p>
-
+<h2>Why blur images?</h2>
+<p>Blur effects are useful for backgrounds, privacy masking, soft visuals, thumbnails and social media designs.</p>
 </article>
 
 <article class="card">
-
 <h2>How it works</h2>
-
 <ul>
-<li>Paste your text or Base64 string.</li>
-<li>Choose Encode or Decode.</li>
-<li>Copy the generated result instantly.</li>
+<li>Select or drop an image.</li>
+<li>Adjust the blur strength slider.</li>
+<li>Download the blurred image as PNG.</li>
 </ul>
-
 </article>
-
 </section>
 
 <footer class="footer">
-
-<div>
-© <span id="year"></span> Toolivo. All rights reserved.
-</div>
-
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -325,54 +289,132 @@ Base64 is an encoding method used to safely transmit text and binary data over s
 <a href="/contact.html">Contact</a>
 <a href="/sitemap.xml">Sitemap</a>
 </div>
-
 </footer>
 
 </div>
 
 <script>
-const input=document.getElementById('input');
-const output=document.getElementById('output');
+const fileInput=document.getElementById('fileInput');
+const dropZone=document.getElementById('dropZone');
+const preview=document.getElementById('preview');
+const previewImg=document.getElementById('previewImg');
+const fileInfo=document.getElementById('fileInfo');
+const blurRange=document.getElementById('blurRange');
+const blurVal=document.getElementById('blurVal');
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+const downloadBtn=document.getElementById('downloadBtn');
+const resetBtn=document.getElementById('resetBtn');
+const result=document.getElementById('result');
 
-function encodeText(){
+let img=new Image();
+let fileName='toolivo-blur-image';
+let loaded=false;
 
-try{
-output.value=btoa(unescape(encodeURIComponent(input.value)));
-}catch{
-output.value='Encoding error';
+function loadFile(file){
+if(!file || !file.type.startsWith('image/')) return;
+
+fileName=file.name.replace(/\.[^.]+$/,'') || 'toolivo-blur-image';
+
+const url=URL.createObjectURL(file);
+
+img.onload=()=>{
+const max=1400;
+let w=img.naturalWidth;
+let h=img.naturalHeight;
+
+if(w>max){
+h=h*(max/w);
+w=max;
 }
 
+if(h>max){
+w=w*(max/h);
+h=max;
 }
 
-function decodeText(){
+canvas.width=Math.round(w);
+canvas.height=Math.round(h);
+canvas.style.display='block';
 
-try{
-output.value=decodeURIComponent(escape(atob(input.value)));
-}catch{
-output.value='Invalid Base64';
+previewImg.src=url;
+preview.style.display='block';
+
+fileInfo.innerHTML=
+`${file.name}<br>${img.naturalWidth}×${img.naturalHeight}<br>${(file.size/1024).toFixed(1)} KB`;
+
+downloadBtn.disabled=false;
+resetBtn.disabled=false;
+loaded=true;
+result.textContent='';
+
+drawBlur();
+};
+
+img.src=url;
 }
 
+function drawBlur(){
+if(!loaded) return;
+
+const blur=Number(blurRange.value);
+blurVal.textContent=blur+'px';
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.filter=`blur(${blur}px)`;
+ctx.drawImage(img,0,0,canvas.width,canvas.height);
+ctx.filter='none';
 }
 
-function copyOutput(){
+fileInput.onchange=e=>loadFile(e.target.files[0]);
 
-if(!output.value){
-alert('Nothing to copy.');
-return;
-}
+['dragenter','dragover'].forEach(ev=>{
+dropZone.addEventListener(ev,e=>{
+e.preventDefault();
+dropZone.classList.add('drag');
+});
+});
 
-navigator.clipboard.writeText(output.value);
+['dragleave','drop'].forEach(ev=>{
+dropZone.addEventListener(ev,e=>{
+e.preventDefault();
+dropZone.classList.remove('drag');
+});
+});
 
-alert('Copied!');
-}
+dropZone.addEventListener('drop',e=>{
+loadFile(e.dataTransfer.files[0]);
+});
 
-function clearAll(){
-input.value='';
-output.value='';
-}
+blurRange.addEventListener('input',drawBlur);
 
-document.getElementById('year').innerText=
-new Date().getFullYear();
+downloadBtn.onclick=()=>{
+if(!loaded) return;
+
+canvas.toBlob(blob=>{
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+
+a.href=url;
+a.download=`${fileName}-blur-toolivo.png`;
+
+document.body.appendChild(a);
+a.click();
+a.remove();
+
+URL.revokeObjectURL(url);
+
+result.textContent=`Done • ${(blob.size/1024).toFixed(1)} KB`;
+},'image/png');
+};
+
+resetBtn.onclick=()=>{
+blurRange.value=8;
+drawBlur();
+result.textContent='';
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
