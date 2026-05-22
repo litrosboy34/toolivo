@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CSS Gradient Generator - Toolivo</title>
+
+<meta name="description" content="Generate beautiful CSS gradients instantly with live preview and copyable CSS code.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+@media(max-width:700px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-group label{
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.input-group input,
+.input-group select{
+    background:#020617;
+    border:1px solid #1e293b;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    outline:none;
+}
+
+input[type="color"]{
+    height:60px;
+    padding:5px;
+    cursor:pointer;
+}
+
+.preview{
+    width:100%;
+    height:220px;
+    border-radius:16px;
+    border:1px solid #1e293b;
+    margin-top:20px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:14px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#1e293b;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+    transform:translateY(-2px);
+}
+
+.output{
+    width:100%;
+    height:180px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+    margin-top:20px;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:30px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">CSS Gradient Generator</div>
+
+    <div class="desc">
+        Generate beautiful CSS gradients instantly with live preview and copyable CSS code.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div class="input-group">
+                <label>First Color</label>
+                <input type="color" id="color1" value="#06b6d4">
+            </div>
+
+            <div class="input-group">
+                <label>Second Color</label>
+                <input type="color" id="color2" value="#3b82f6">
+            </div>
+
+            <div class="input-group">
+                <label>Gradient Type</label>
+                <select id="gradientType">
+                    <option value="linear">Linear</option>
+                    <option value="radial">Radial</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Angle</label>
+                <input type="range" id="angle" min="0" max="360" value="90">
+            </div>
+
+        </div>
+
+        <div class="preview" id="preview"></div>
+
+        <div class="buttons">
+            <button class="generate" onclick="generateGradient()">
+                Generate
+            </button>
+
+            <button class="copy" onclick="copyCSS()">
+                Copy CSS
+            </button>
+        </div>
+
+        <textarea class="output" id="output" placeholder="Generated CSS code will appear here..."></textarea>
+
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function generateGradient(){
+
+    const color1 = document.getElementById("color1").value;
+    const color2 = document.getElementById("color2").value;
+    const type = document.getElementById("gradientType").value;
+    const angle = document.getElementById("angle").value;
+
+    let gradient = "";
+
+    if(type === "linear"){
+        gradient = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+    } else {
+        gradient = `radial-gradient(circle, ${color1}, ${color2})`;
+    }
+
+    document.getElementById("preview").style.background = gradient;
+
+    document.getElementById("output").value =
+`background: ${gradient};`;
+}
+
+function copyCSS(){
+
+    const output = document.getElementById("output");
+
+    if(!output.value){
+        alert("Generate gradient first.");
+        return;
+    }
+
+    navigator.clipboard.writeText(output.value);
+
+    alert("Copied!");
+}
+
+generateGradient();
+</script>
+
+</body>
+</html>
