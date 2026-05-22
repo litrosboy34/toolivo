@@ -3,9 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>XML Formatter — Toolivo</title>
+
 <meta name="description" content="Format and beautify XML instantly with Toolivo. Free online XML formatter and validator.">
+
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="stylesheet" href="/global.css">
 
 <style>
 body{
@@ -113,7 +118,18 @@ font-size:42px;
 }
 </style>
 </head>
+
 <body>
+
+<div id="globalHeader"></div>
+
+<script>
+fetch('/header.html')
+.then(res => res.text())
+.then(html => {
+document.getElementById('globalHeader').innerHTML = html;
+});
+</script>
 
 <div class="wrap">
 
@@ -127,12 +143,19 @@ Beautify and validate XML instantly with Toolivo.
 
 <div class="panel">
 
-<div class="label">Input XML</div>
+<div class="label">
+Input XML
+</div>
 
 <textarea id="input"><note><to>Yunus</to><from>Toolivo</from><message>Hello</message></note></textarea>
 
-<button onclick="formatXML()">Format XML</button>
-<button class="copy" onclick="clearAll()">Clear</button>
+<button onclick="formatXML()">
+Format XML
+</button>
+
+<button class="copy" onclick="clearAll()">
+Clear
+</button>
 
 <div class="status" id="status">
 Ready.
@@ -142,17 +165,31 @@ Ready.
 
 <div class="panel">
 
-<div class="label">Formatted Output</div>
+<div class="label">
+Formatted Output
+</div>
 
 <textarea id="output" readonly></textarea>
 
-<button onclick="copyOutput()">Copy Output</button>
+<button onclick="copyOutput()">
+Copy Output
+</button>
 
 </div>
 
 </div>
 
 </div>
+
+<div id="globalFooter"></div>
+
+<script>
+fetch('/footer.html')
+.then(res => res.text())
+.then(html => {
+document.getElementById('globalFooter').innerHTML = html;
+});
+</script>
 
 <script>
 const input=document.getElementById('input');
@@ -177,15 +214,15 @@ let formatted='';
 let indent=0;
 
 xmlString
-.replace(/(>)(<)(\\/*)/g,'$1\\n$2$3')
-.split('\\n')
+.replace(/(>)(<)(\/*)/g,'$1\n$2$3')
+.split('\n')
 .forEach(line=>{
 
-if(line.match(/^<\\/\\w/)){
+if(line.match(/^<\/\w/)){
 indent--;
 }
 
-formatted+=`${'  '.repeat(indent)}${line}\\n`;
+formatted+=`${'  '.repeat(indent)}${line}\n`;
 
 if(line.match(/^<[^!?].*[^/]>/) && !line.includes('</')){
 indent++;
