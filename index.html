@@ -284,7 +284,7 @@ grid.innerHTML = "";
 
 const filtered = tools.filter(tool => {
 const matchesCategory = activeCategory === "all" || tool.cat === activeCategory;
-const matchesSearch = tool.title.toLowerCase().includes(query) || tool.desc.toLowerCase().includes(query);
+const matchesSearch = tool.title[lang].toLowerCase().includes(query) || tool.desc[lang].toLowerCase().includes(query);
 return matchesCategory && matchesSearch;
 });
 
