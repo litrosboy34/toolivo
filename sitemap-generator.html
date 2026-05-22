@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sitemap XML Generator - Toolivo</title>
+
+<meta name="description" content="Generate sitemap.xml files instantly for your website.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+@media(max-width:700px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-group label{
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.input-group input,
+.input-group select{
+    background:#020617;
+    border:1px solid #1e293b;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    outline:none;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:14px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.add{
+    background:#1e293b;
+    color:white;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#0f172a;
+    border:1px solid #1e293b;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+    transform:translateY(-2px);
+}
+
+.url-list{
+    margin-top:20px;
+}
+
+.url-item{
+    background:#020617;
+    border:1px solid #1e293b;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+    color:#cbd5e1;
+    word-break:break-all;
+}
+
+textarea{
+    width:100%;
+    height:350px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:30px;
+    font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="title">Sitemap XML Generator</div>
+
+    <div class="desc">
+        Generate sitemap.xml files instantly for your website pages.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div class="input-group">
+                <label>Page URL</label>
+                <input type="text" id="urlInput" placeholder="https://toolivo.site/page">
+            </div>
+
+            <div class="input-group">
+                <label>Change Frequency</label>
+                <select id="freqInput">
+                    <option value="daily">daily</option>
+                    <option value="weekly">weekly</option>
+                    <option value="monthly">monthly</option>
+                    <option value="yearly">yearly</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Priority</label>
+                <select id="priorityInput">
+                    <option value="1.0">1.0</option>
+                    <option value="0.9">0.9</option>
+                    <option value="0.8">0.8</option>
+                    <option value="0.7">0.7</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.5">0.5</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Last Modified</label>
+                <input type="date" id="lastmodInput">
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="add" onclick="addUrl()">
+                Add URL
+            </button>
+
+            <button class="generate" onclick="generateSitemap()">
+                Generate Sitemap
+            </button>
+
+            <button class="copy" onclick="copySitemap()">
+                Copy
+            </button>
+
+        </div>
+
+        <div class="url-list" id="urlList"></div>
+
+    </div>
+
+    <div class="card">
+        <textarea id="output" placeholder="Generated sitemap.xml will appear here..."></textarea>
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+let urls = [];
+
+function addUrl(){
+
+    const url = document.getElementById("urlInput").value.trim();
+    const freq = document.getElementById("freqInput").value;
+    const priority = document.getElementById("priorityInput").value;
+    const lastmod = document.getElementById("lastmodInput").value;
+
+    if(!url){
+        alert("Please enter a URL.");
+        return;
+    }
+
+    urls.push({
+        url,
+        freq,
+        priority,
+        lastmod
+    });
+
+    renderUrls();
+
+    document.getElementById("urlInput").value = "";
+}
+
+function renderUrls(){
+
+    const list = document.getElementById("urlList");
+
+    list.innerHTML = "";
+
+    urls.forEach(item => {
+
+        list.innerHTML += `
+            <div class="url-item">
+                ${item.url}
+            </div>
+        `;
+    });
+}
+
+function generateSitemap(){
+
+    if(urls.length === 0){
+        alert("Add at least one URL.");
+        return;
+    }
+
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+    urls.forEach(item => {
+
+        xml += `
+  <url>
+    <loc>${item.url}</loc>
+    <lastmod>${item.lastmod || ""}</lastmod>
+    <changefreq>${item.freq}</changefreq>
+    <priority>${item.priority}</priority>
+  </url>
+`;
+    });
+
+    xml += `</urlset>`;
+
+    document.getElementById("output").value = xml;
+}
+
+function copySitemap(){
+
+    const output = document.getElementById("output");
+
+    if(!output.value){
+        alert("Generate sitemap first.");
+        return;
+    }
+
+    navigator.clipboard.writeText(output.value);
+
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
