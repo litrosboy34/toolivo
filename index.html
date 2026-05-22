@@ -1,94 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-3QBF2V9J5T');
-</script>
-
-<meta name="google-adsense-account" content="ca-pub-4422292009724522">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Toolivo - Free Online Tools</title>
-<meta name="description" content="Free online tools for images, text, SEO, CSS, developers and converters. Fast, simple and mobile friendly.">
-<meta name="keywords" content="free online tools, image tools, seo tools, css tools, developer tools, text tools, converters, Toolivo">
-<meta name="author" content="Toolivo">
-<meta name="theme-color" content="#0f172a">
-
-<meta property="og:title" content="Toolivo - Free Online Tools">
-<meta property="og:description" content="Free online tools for images, text, SEO, CSS, developers and converters.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toolivo.site">
-<meta property="og:image" content="https://i.imgur.com/7qzyyTa.png">
-
-<link rel="canonical" href="https://toolivo.site/">
-<link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png">
-<link rel="apple-touch-icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;min-height:100vh}
-a{text-decoration:none;color:inherit}
-.container{max-width:1200px;margin:auto;padding:20px}
 
-.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:4px 0 0}
-.logo{display:flex;align-items:center;gap:2px;font-size:34px;font-weight:bold}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+min-height:100vh;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+padding:5px 0 15px;
+flex-wrap:wrap;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:0px;
+font-size:34px;
+font-weight:bold;
+}
+
 .logo img{
-width:124px;
-height:124px;
+width:120px;
+height:120px;
 object-fit:contain;
+filter:
+drop-shadow(0 0 34px rgba(57,230,210,.55))
+drop-shadow(0 20px 46px rgba(0,0,0,.62));
+}
+
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.lang-btn{
+padding:8px 13px;
+border-radius:999px;
+border:1px solid #334155;
+background:#111827;
+color:#cbd5e1;
+cursor:pointer;
+font-weight:bold;
+}
+
+.hero{
+text-align:center;
+padding:50px 0 40px;
+}
+
+.badge{
+display:inline-block;
+padding:8px 14px;
+border:1px solid #1e293b;
+border-radius:999px;
+color:#38bdf8;
+background:#111827;
+margin-bottom:18px;
+}
+
+.hero h1{
+font-size:clamp(42px,7vw,78px);
+line-height:1.05;
+margin-bottom:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+max-width:720px;
+margin:auto;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.search-box{
+margin:30px auto 0;
+max-width:650px;
+}
+
+.search-box input{
+width:100%;
+padding:17px 20px;
+border-radius:16px;
+border:1px solid #334155;
+background:#020617;
+color:white;
+outline:none;
+font-size:16px;
+}
+
+.categories{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center;
+margin:25px 0 40px;
+}
+
+.cat-btn{
+padding:11px 16px;
+border-radius:999px;
+border:1px solid #334155;
+background:#111827;
+color:#cbd5e1;
+cursor:pointer;
+font-weight:bold;
+}
+
+.cat-btn.active,
+.cat-btn:hover{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+border-color:transparent;
+}
+
+.section-title{
+font-size:30px;
+margin:35px 0 18px;
+}
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+}
+
+.tool-card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:18px;
+transition:.2s;
+min-height:150px;
 display:block;
-filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 22px 46px rgba(0,0,0,.65));
-transform:translateY(4px) scale(1.08);
 }
-.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.nav a{color:#94a3b8;font-size:14px}
-.nav a:hover{color:white}
-.lang-btn{padding:8px 13px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold}
-.lang-btn:hover{color:white;border-color:#38bdf8}
+.tool-card:hover{
+transform:translateY(-4px);
+border-color:#38bdf8;
+box-shadow:0 0 35px rgba(56,189,248,.08);
+}
 
-.hero{text-align:center;padding:56px 0 45px}
-.badge{display:inline-block;padding:8px 14px;border:1px solid #1e293b;border-radius:999px;color:#38bdf8;background:#111827;margin-bottom:18px}
-.hero h1{font-size:clamp(42px,7vw,78px);line-height:1.05;margin-bottom:18px}
-.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{max-width:720px;margin:auto;color:#94a3b8;line-height:1.7;font-size:18px}
+.tool-icon{
+font-size:28px;
+margin-bottom:12px;
+}
 
-.search-box{margin:30px auto 0;max-width:650px}
-.search-box input{width:100%;padding:17px 20px;border-radius:16px;border:1px solid #334155;background:#020617;color:white;outline:none;font-size:16px}
+.tool-card h3{
+font-size:18px;
+margin-bottom:8px;
+}
 
-.categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:25px 0 40px}
-.cat-btn{padding:11px 16px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold}
-.cat-btn.active,.cat-btn:hover{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;border-color:transparent}
+.tool-card p{
+color:#94a3b8;
+font-size:14px;
+line-height:1.5;
+}
 
-.section-title{font-size:30px;margin:35px 0 18px}
-.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:1000px){.tools-grid{grid-template-columns:repeat(3,1fr)}}
+.tool-tag{
+display:inline-block;
+margin-top:12px;
+font-size:12px;
+color:#38bdf8;
+font-weight:bold;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+@media(max-width:1000px){
+
+.tools-grid{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
 @media(max-width:750px){
-.tools-grid{grid-template-columns:1fr}
-.header{flex-direction:column}
-.logo img{width:110px;height:110px}
-.hero{padding-top:35px}
+
+.tools-grid{
+grid-template-columns:1fr;
 }
 
-.tool-card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:18px;transition:.2s;min-height:150px}
-.tool-card:hover{transform:translateY(-4px);border-color:#38bdf8;box-shadow:0 0 35px rgba(56,189,248,.08)}
-.tool-icon{font-size:28px;margin-bottom:12px}
-.tool-card h3{font-size:18px;margin-bottom:8px}
-.tool-card p{color:#94a3b8;font-size:14px;line-height:1.5}
-.tool-tag{display:inline-block;margin-top:12px;font-size:12px;color:#38bdf8;font-weight:bold}
+.header{
+flex-direction:column;
+}
 
-.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
-.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
-.footer-links a:hover{color:white}
+.logo img{
+width:100px;
+height:100px;
+}
+}
+
 </style>
 </head>
 
@@ -97,205 +257,220 @@ transform:translateY(4px) scale(1.08);
 <div class="container">
 
 <header class="header">
+
 <a class="logo" href="/">
-<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<img src="https://i.imgur.com/7qzyyTa.png">
+
 <span>Toolivo</span>
 </a>
 
 <nav class="nav">
-<a href="#tools" data-i18n="navTools">Tools</a>
-<a href="/about.html" data-i18n="navAbout">About</a>
-<a href="/privacy.html" data-i18n="navPrivacy">Privacy</a>
-<a href="/contact.html" data-i18n="navContact">Contact</a>
-<button class="lang-btn" id="langBtn">TR</button>
+
+<a href="#">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+
+<button class="lang-btn" id="langBtn">
+TR
+</button>
+
 </nav>
+
 </header>
 
 <section class="hero">
-<div class="badge" data-i18n="badge">Fast • Free • Mobile Friendly</div>
-<h1 id="heroTitle">Free Online <span class="gradient">Tools</span></h1>
-<p data-i18n="heroText">Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters. No clutter. No login. Just useful tools.</p>
+
+<div class="badge" id="badge">
+Fast • Free • Mobile Friendly
+</div>
+
+<h1 id="heroTitle">
+Free Online <span class="gradient">Tools</span>
+</h1>
+
+<p id="heroText">
+Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.
+</p>
 
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search tools...">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search tools..."
+>
+
 </div>
+
 </section>
 
 <div class="categories">
-<button class="cat-btn active" data-category="all" data-i18n="catAll">All</button>
-<button class="cat-btn" data-category="image" data-i18n="catImage">Image</button>
-<button class="cat-btn" data-category="text" data-i18n="catText">Text</button>
-<button class="cat-btn" data-category="developer" data-i18n="catDeveloper">Developer</button>
-<button class="cat-btn" data-category="css" data-i18n="catCss">CSS</button>
-<button class="cat-btn" data-category="seo" data-i18n="catSeo">SEO</button>
-<button class="cat-btn" data-category="converter" data-i18n="catConverter">Converter</button>
+
+<button class="cat-btn active" data-category="all">
+All
+</button>
+
+<button class="cat-btn" data-category="image">
+Image
+</button>
+
+<button class="cat-btn" data-category="developer">
+Developer
+</button>
+
+<button class="cat-btn" data-category="css">
+CSS
+</button>
+
+<button class="cat-btn" data-category="seo">
+SEO
+</button>
+
 </div>
 
-<h2 class="section-title" id="tools" data-i18n="allTools">All Tools</h2>
+<h2 class="section-title">
+All Tools
+</h2>
 
 <div class="tools-grid" id="toolsGrid"></div>
 
 <footer class="footer">
-<div>© <span id="year"></span> Toolivo. <span data-i18n="rights">All rights reserved.</span></div>
-<div class="footer-links">
-<a href="/about.html" data-i18n="navAbout">About</a>
-<a href="/privacy.html" data-i18n="navPrivacy">Privacy</a>
-<a href="/terms.html">Terms</a>
-<a href="/contact.html" data-i18n="navContact">Contact</a>
-<a href="/sitemap.xml">Sitemap</a>
-</div>
+© 2026 Toolivo
 </footer>
 
 </div>
 
 <script>
-const translations = {
-en:{
-navTools:"Tools",navAbout:"About",navPrivacy:"Privacy",navContact:"Contact",
-badge:"Fast • Free • Mobile Friendly",
-heroTitle:'Free Online <span class="gradient">Tools</span>',
-heroText:"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters. No clutter. No login. Just useful tools.",
-search:"Search tools...",
-catAll:"All",catImage:"Image",catText:"Text",catDeveloper:"Developer",catCss:"CSS",catSeo:"SEO",catConverter:"Converter",
-allTools:"All Tools",rights:"All rights reserved.",notFound:"No tools found."
-},
-tr:{
-navTools:"Araçlar",navAbout:"Hakkında",navPrivacy:"Gizlilik",navContact:"İletişim",
-badge:"Hızlı • Ücretsiz • Mobil Uyumlu",
-heroTitle:'Ücretsiz Online <span class="gradient">Araçlar</span>',
-heroText:"Toolivo; görsel, metin, SEO, CSS, geliştirici ve dönüştürücü araçları için basit ve hızlı online araçlar sunar. Üyelik yok. Karmaşa yok.",
-search:"Araç ara...",
-catAll:"Tümü",catImage:"Görsel",catText:"Metin",catDeveloper:"Geliştirici",catCss:"CSS",catSeo:"SEO",catConverter:"Dönüştürücü",
-allTools:"Tüm Araçlar",rights:"Tüm hakları saklıdır.",notFound:"Araç bulunamadı."
-}
-};
 
-let lang = localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
+let lang = "en";
 
 const tools = [
-{title:"Background Remover",desc:"Remove image backgrounds online.",url:"/background-remover.html",cat:"image",icon:"🖼️"},
-{title:"Image Compressor",desc:"Compress images quickly.",url:"/image-compressor.html",cat:"image",icon:"⚡"},
-{title:"Resize Image",desc:"Resize images for web and social media.",url:"/resize-image.html",cat:"image",icon:"📐"},
-{title:"Crop Image",desc:"Crop images online.",url:"/crop-image.html",cat:"image",icon:"✂️"},
-{title:"Rotate Image",desc:"Rotate and flip images.",url:"/rotate-image.html",cat:"image",icon:"🔄"},
-{title:"Blur Image",desc:"Add blur effects to images.",url:"/blur-image.html",cat:"image",icon:"🌫️"},
-{title:"Watermark Image",desc:"Add watermark to images.",url:"/watermark-image.html",cat:"image",icon:"💧"},
-{title:"Image Upscaler",desc:"Upscale images online.",url:"/image-upscaler.html",cat:"image",icon:"🔍"},
-{title:"Meme Maker",desc:"Create simple memes online.",url:"/meme-maker.html",cat:"image",icon:"😂"},
-{title:"QR Generator",desc:"Generate QR codes instantly.",url:"/qr-generator.html",cat:"image",icon:"▦"},
 
-{title:"PNG to JPG",desc:"Convert PNG images to JPG.",url:"/png-to-jpg.html",cat:"converter",icon:"🔁"},
-{title:"PNG to WEBP",desc:"Convert PNG images to WEBP.",url:"/png-to-webp.html",cat:"converter",icon:"🔁"},
-{title:"JPG to PNG",desc:"Convert JPG images to PNG.",url:"/jpg-to-png.html",cat:"converter",icon:"🔁"},
-{title:"JPG to WEBP",desc:"Convert JPG images to WEBP.",url:"/jpg-to-webp.html",cat:"converter",icon:"🔁"},
-{title:"WEBP to PNG",desc:"Convert WEBP images to PNG.",url:"/webp-to-png.html",cat:"converter",icon:"🔁"},
-{title:"WEBP to JPG",desc:"Convert WEBP images to JPG.",url:"/webp-to-jpg.html",cat:"converter",icon:"🔁"},
-{title:"JSON to CSV",desc:"Convert JSON data to CSV.",url:"/json-to-csv.html",cat:"converter",icon:"📊"},
-{title:"CSV to JSON",desc:"Convert CSV data to JSON.",url:"/csv-to-json.html",cat:"converter",icon:"📊"},
-{title:"Color Picker Converter",desc:"Convert color formats.",url:"/color-picker-converter.html",cat:"converter",icon:"🎨"},
-{title:"Unit Converter",desc:"Convert common units.",url:"/unit-converter.html",cat:"converter",icon:"📏"},
+{
+title:{
+en:"Background Remover",
+tr:"Arka Plan Kaldırıcı"
+},
 
-{title:"Word Counter",desc:"Count words and characters.",url:"/word-counter.html",cat:"text",icon:"🔤"},
-{title:"Case Converter",desc:"Convert text case instantly.",url:"/case-converter.html",cat:"text",icon:"Aa"},
-{title:"Lorem Ipsum Generator",desc:"Generate placeholder text.",url:"/lorem-ipsum-generator.html",cat:"text",icon:"📝"},
-{title:"Text Diff Checker",desc:"Compare two texts.",url:"/text-diff-checker.html",cat:"text",icon:"🔎"},
-{title:"Text to Slug",desc:"Create SEO friendly slugs.",url:"/text-to-slug.html",cat:"text",icon:"🔗"},
-{title:"Markdown Previewer",desc:"Preview Markdown live.",url:"/markdown-previewer.html",cat:"text",icon:"⬇️"},
-{title:"Markdown Table Generator",desc:"Generate Markdown tables.",url:"/markdown-table-generator.html",cat:"text",icon:"📋"},
+desc:{
+en:"Remove image backgrounds online.",
+tr:"Görsellerin arka planını kaldırın."
+},
 
-{title:"Password Generator",desc:"Generate secure passwords.",url:"/password-generator.html",cat:"developer",icon:"🔐"},
-{title:"UUID Generator",desc:"Generate UUIDs instantly.",url:"/uuid-generator.html",cat:"developer",icon:"🆔"},
-{title:"Base64 Encoder Decoder",desc:"Encode and decode Base64.",url:"/base64-encoder-decoder.html",cat:"developer",icon:"🧬"},
-{title:"URL Encoder Decoder",desc:"Encode and decode URLs.",url:"/url-encoder-decoder.html",cat:"developer",icon:"🌐"},
-{title:"JSON Formatter",desc:"Format and beautify JSON.",url:"/json-formatter.html",cat:"developer",icon:"{}"},
-{title:"JWT Decoder",desc:"Decode JWT tokens.",url:"/jwt-decoder.html",cat:"developer",icon:"🪪"},
-{title:"SHA256 Generator",desc:"Generate SHA256 hashes.",url:"/sha256-generator.html",cat:"developer",icon:"#"},
-{title:"Regex Tester",desc:"Test regular expressions.",url:"/regex-tester.html",cat:"developer",icon:".*"},
-{title:"Timestamp Converter",desc:"Convert Unix timestamps.",url:"/timestamp-converter.html",cat:"developer",icon:"⏱️"},
-{title:"HTTP Status Codes",desc:"Search HTTP status codes.",url:"/http-status-codes.html",cat:"developer",icon:"📡"},
-{title:"User Agent Parser",desc:"Parse user agent strings.",url:"/user-agent-parser.html",cat:"developer",icon:"🧭"},
-{title:"MIME Type Lookup",desc:"Find MIME types quickly.",url:"/mime-type-lookup.html",cat:"developer",icon:"📦"},
-{title:"Cron Expression Generator",desc:"Generate cron expressions.",url:"/cron-expression-generator.html",cat:"developer",icon:"🕒"},
-{title:"HTAccess Generator",desc:"Generate .htaccess rules.",url:"/htaccess-generator.html",cat:"developer",icon:"⚙️"},
-{title:"HTML Minifier",desc:"Minify HTML code.",url:"/html-minifier.html",cat:"developer",icon:"HTML"},
-{title:"CSS Minifier",desc:"Minify CSS code.",url:"/css-minifier.html",cat:"developer",icon:"CSS"},
-{title:"JavaScript Minifier",desc:"Minify JavaScript code.",url:"/javascript-minifier.html",cat:"developer",icon:"JS"},
-{title:"SQL Formatter",desc:"Format SQL queries.",url:"/sql-formatter.html",cat:"developer",icon:"SQL"},
-{title:"XML Formatter",desc:"Format XML code.",url:"/xml-formatter.html",cat:"developer",icon:"XML"},
-{title:"YAML Formatter",desc:"Format YAML code.",url:"/yaml-formatter.html",cat:"developer",icon:"YAML"},
-{title:"HTML Table Generator",desc:"Generate HTML tables.",url:"/html-table-generator.html",cat:"developer",icon:"📋"},
+url:"/background-remover.html",
+cat:"image",
+icon:"🖼️"
+},
 
-{title:"CSS Gradient Generator",desc:"Generate CSS gradients.",url:"/css-gradient-generator.html",cat:"css",icon:"🌈"},
-{title:"CSS Box Shadow Generator",desc:"Generate CSS box shadows.",url:"/css-box-shadow-generator.html",cat:"css",icon:"⬛"},
-{title:"Box Shadow Generator",desc:"Create box shadow CSS.",url:"/box-shadow-generator.html",cat:"css",icon:"⬛"},
-{title:"Border Radius Generator",desc:"Generate border radius CSS.",url:"/border-radius-generator.html",cat:"css",icon:"◼️"},
-{title:"Color Contrast Checker",desc:"Check WCAG color contrast.",url:"/color-contrast-checker.html",cat:"css",icon:"🎨"},
-{title:"Color Palette Generator",desc:"Generate color palettes.",url:"/color-palette-generator.html",cat:"css",icon:"🎨"},
-{title:"CSS Button Generator",desc:"Create CSS buttons.",url:"/css-button-generator.html",cat:"css",icon:"🔘"},
-{title:"Glassmorphism Generator",desc:"Generate glass CSS effects.",url:"/glassmorphism-generator.html",cat:"css",icon:"🧊"},
-{title:"Flexbox Generator",desc:"Generate flexbox layouts.",url:"/flexbox-generator.html",cat:"css",icon:"↔️"},
-{title:"CSS Grid Generator",desc:"Generate CSS grid layouts.",url:"/css-grid-generator.html",cat:"css",icon:"▦"},
-{title:"CSS Clamp Generator",desc:"Generate responsive clamp values.",url:"/css-clamp-generator.html",cat:"css",icon:"📏"},
-{title:"CSS Animation Generator",desc:"Generate CSS animations.",url:"/css-animation-generator.html",cat:"css",icon:"✨"},
-{title:"CSS Loader Generator",desc:"Generate CSS loaders.",url:"/css-loader-generator.html",cat:"css",icon:"⭕"},
-{title:"Gradient Text Generator",desc:"Create gradient text CSS.",url:"/gradient-text-generator.html",cat:"css",icon:"🌈"},
-{title:"Neon Text Generator",desc:"Create neon text CSS.",url:"/neon-text-generator.html",cat:"css",icon:"💡"},
-{title:"CSS Transform Generator",desc:"Generate transform CSS.",url:"/css-transform-generator.html",cat:"css",icon:"🔄"},
-{title:"CSS Filter Generator",desc:"Generate CSS filters.",url:"/css-filter-generator.html",cat:"css",icon:"🎛️"},
-{title:"SVG Blob Generator",desc:"Generate SVG blobs.",url:"/svg-blob-generator.html",cat:"css",icon:"🫧"},
-{title:"CSS Wave Generator",desc:"Generate SVG waves.",url:"/css-wave-generator.html",cat:"css",icon:"🌊"},
+{
+title:{
+en:"Image Compressor",
+tr:"Görsel Sıkıştırıcı"
+},
 
-{title:"Meta Tag Generator",desc:"Generate SEO meta tags.",url:"/meta-tag-generator.html",cat:"seo",icon:"🏷️"},
-{title:"Canonical URL Generator",desc:"Generate canonical tags.",url:"/canonical-url-generator.html",cat:"seo",icon:"🔗"},
-{title:"Robots.txt Generator",desc:"Generate robots.txt files.",url:"/robots-txt-generator.html",cat:"seo",icon:"🤖"},
-{title:"Sitemap Generator",desc:"Generate sitemap XML.",url:"/sitemap-generator.html",cat:"seo",icon:"🗺️"},
-{title:"Schema Markup Generator",desc:"Generate JSON-LD schema.",url:"/schema-markup-generator.html",cat:"seo",icon:"⭐"},
-{title:"Open Graph Generator",desc:"Generate OG meta tags.",url:"/open-graph-generator.html",cat:"seo",icon:"📣"},
-{title:"Open Graph Previewer",desc:"Preview social cards.",url:"/open-graph-previewer.html",cat:"seo",icon:"👁️"},
-{title:"Favicon Generator",desc:"Generate favicon tags.",url:"/favicon-generator.html",cat:"seo",icon:"🔖"},
-{title:"UTM Link Builder",desc:"Build UTM campaign links.",url:"/utm-link-builder.html",cat:"seo",icon:"📈"},
-{title:"Meta Pixel Helper",desc:"Generate Meta Pixel code.",url:"/meta-pixel-helper.html",cat:"seo",icon:"📊"},
-{title:"Aspect Ratio Calculator",desc:"Calculate aspect ratios.",url:"/aspect-ratio-calculator.html",cat:"seo",icon:"📐"}
+desc:{
+en:"Compress images quickly.",
+tr:"Görselleri hızlıca sıkıştırın."
+},
+
+url:"/image-compressor.html",
+cat:"image",
+icon:"⚡"
+},
+
+{
+title:{
+en:"Word Counter",
+tr:"Kelime Sayacı"
+},
+
+desc:{
+en:"Count words and characters.",
+tr:"Kelime ve karakter sayın."
+},
+
+url:"/word-counter.html",
+cat:"developer",
+icon:"🔤"
+},
+
+{
+title:{
+en:"Password Generator",
+tr:"Şifre Oluşturucu"
+},
+
+desc:{
+en:"Generate secure passwords.",
+tr:"Güvenli şifreler oluşturun."
+},
+
+url:"/password-generator.html",
+cat:"developer",
+icon:"🔐"
+},
+
+{
+title:{
+en:"CSS Gradient Generator",
+tr:"CSS Gradient Oluşturucu"
+},
+
+desc:{
+en:"Generate CSS gradients.",
+tr:"CSS gradient oluşturun."
+},
+
+url:"/css-gradient-generator.html",
+cat:"css",
+icon:"🌈"
+},
+
+{
+title:{
+en:"Meta Tag Generator",
+tr:"Meta Etiket Oluşturucu"
+},
+
+desc:{
+en:"Generate SEO meta tags.",
+tr:"SEO meta etiketleri oluşturun."
+},
+
+url:"/meta-tag-generator.html",
+cat:"seo",
+icon:"🏷️"
+}
+
 ];
 
-const grid = document.getElementById("toolsGrid");
-const searchInput = document.getElementById("searchInput");
-const buttons = document.querySelectorAll(".cat-btn");
-const langBtn = document.getElementById("langBtn");
-let activeCategory = "all";
+const grid =
+document.getElementById("toolsGrid");
 
-function applyLang(){
-const t = translations[lang];
-document.documentElement.lang = lang;
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-const key = el.dataset.i18n;
-if(t[key]) el.innerHTML = t[key];
-});
-document.getElementById("heroTitle").innerHTML = t.heroTitle;
-searchInput.placeholder = t.search;
-langBtn.innerText = lang === "tr" ? "EN" : "TR";
-document.title = lang === "tr" ? "Toolivo - Ücretsiz Online Araçlar" : "Toolivo - Free Online Tools";
-renderTools();
-}
+const searchInput =
+document.getElementById("searchInput");
+
+const buttons =
+document.querySelectorAll(".cat-btn");
+
+let activeCategory = "all";
 
 function renderTools(){
 
 const query =
-searchInput.value.toLowerCase().trim();
+searchInput.value.toLowerCase();
 
 grid.innerHTML = "";
 
-const filtered = tools.filter(tool => {
+const filtered =
+tools.filter(tool => {
 
 const title =
-typeof tool.title === "object"
-? tool.title[lang]
-: tool.title;
+tool.title[lang];
 
 const desc =
-typeof tool.desc === "object"
-? tool.desc[lang]
-: tool.desc;
+tool.desc[lang];
 
 const matchesCategory =
 activeCategory === "all" ||
@@ -310,16 +485,6 @@ return matchesCategory && matchesSearch;
 
 filtered.forEach(tool => {
 
-const title =
-typeof tool.title === "object"
-? tool.title[lang]
-: tool.title;
-
-const desc =
-typeof tool.desc === "object"
-? tool.desc[lang]
-: tool.desc;
-
 const card =
 document.createElement("a");
 
@@ -328,11 +493,17 @@ card.className = "tool-card";
 card.href = tool.url;
 
 card.innerHTML = `
-<div class="tool-icon">${tool.icon}</div>
+<div class="tool-icon">
+${tool.icon}
+</div>
 
-<h3>${title}</h3>
+<h3>
+${tool.title[lang]}
+</h3>
 
-<p>${desc}</p>
+<p>
+${tool.desc[lang]}
+</p>
 
 <span class="tool-tag">
 ${tool.cat.toUpperCase()} →
@@ -341,13 +512,92 @@ ${tool.cat.toUpperCase()} →
 
 grid.appendChild(card);
 });
-
-if(filtered.length === 0){
-
-grid.innerHTML = `
-<p style="color:#94a3b8;">
-${translations[lang].notFound}
-</p>
-`;
 }
+
+buttons.forEach(btn => {
+
+btn.addEventListener("click", () => {
+
+buttons.forEach(b =>
+b.classList.remove("active")
+);
+
+btn.classList.add("active");
+
+activeCategory =
+btn.dataset.category;
+
+renderTools();
+});
+});
+
+searchInput.addEventListener(
+"input",
+renderTools
+);
+
+document.getElementById("langBtn")
+.addEventListener("click", () => {
+
+if(lang === "en"){
+
+lang = "tr";
+
+document.getElementById("langBtn")
+.innerText = "EN";
+
+document.getElementById("badge")
+.innerText =
+"Hızlı • Ücretsiz • Mobil Uyumlu";
+
+document.getElementById("heroTitle")
+.innerHTML =
+'Ücretsiz Online <span class="gradient">Araçlar</span>';
+
+document.getElementById("heroText")
+.innerText =
+"Toolivo hızlı ve basit online araçlar sunar.";
+
+document.querySelector(".section-title")
+.innerText =
+"Tüm Araçlar";
+
+searchInput.placeholder =
+"Araç ara...";
+
+}else{
+
+lang = "en";
+
+document.getElementById("langBtn")
+.innerText = "TR";
+
+document.getElementById("badge")
+.innerText =
+"Fast • Free • Mobile Friendly";
+
+document.getElementById("heroTitle")
+.innerHTML =
+'Free Online <span class="gradient">Tools</span>';
+
+document.getElementById("heroText")
+.innerText =
+"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.";
+
+document.querySelector(".section-title")
+.innerText =
+"All Tools";
+
+searchInput.placeholder =
+"Search tools...";
 }
+
+renderTools();
+});
+
+renderTools();
+
+</script>
+
+</body>
+</html>
