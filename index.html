@@ -82,6 +82,31 @@ transform:translateY(2px) scale(1.08);
 .footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
 .footer-links a:hover{color:white}
 .hidden{display:none}
+.logo img{
+width:88px;
+height:88px;
+object-fit:contain;
+display:block;
+filter:drop-shadow(0 0 26px rgba(57,230,210,.42)) drop-shadow(0 20px 42px rgba(0,0,0,.58));
+transform:translateY(2px) scale(1.08);
+}
+
+.lang-btn{
+padding:8px 13px;
+border-radius:999px;
+border:1px solid #334155;
+background:#111827;
+color:#cbd5e1;
+cursor:pointer;
+font-weight:bold;
+transition:.2s;
+}
+
+.lang-btn:hover{
+color:white;
+border-color:#38bdf8;
+background:#0f172a;
+}
 </style>
 </head>
 
@@ -100,6 +125,7 @@ transform:translateY(2px) scale(1.08);
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
 <a href="/contact.html">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
 </nav>
 </header>
 
