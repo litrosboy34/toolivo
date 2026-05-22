@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JWT Decoder — Toolivo</title>
+<meta name="description" content="Decode JWT tokens instantly with Toolivo. View JWT header and payload online.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1100px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+margin-top:18px;
+}
+
+textarea{
+width:100%;
+min-height:180px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.6;
+box-sizing:border-box;
+resize:vertical;
+font-family:monospace;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:18px;
+}
+
+.output{
+background:#05070d;
+border:1px solid #263244;
+border-radius:18px;
+padding:18px;
+min-height:260px;
+white-space:pre-wrap;
+overflow:auto;
+font-family:monospace;
+line-height:1.7;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+margin-bottom:10px;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin-top:12px;
+}
+
+.status{
+margin-top:14px;
+color:#9ca8bb;
+}
+
+.error{
+color:#ff7b7b;
+}
+
+.success{
+color:#7fffc5;
+}
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>JWT Decoder</h1>
+
+<p>
+Decode JWT tokens instantly and inspect header and payload data.
+</p>
+
+<div class="panel">
+
+<div class="label">JWT Token</div>
+
+<textarea id="token" placeholder="Paste JWT token here..."></textarea>
+
+<button onclick="decodeJWT()">Decode JWT</button>
+
+<div class="status" id="status"></div>
+
+</div>
+
+<div class="grid">
+
+<div class="panel">
+
+<div class="label">Header</div>
+
+<div class="output" id="headerOutput">
+Header data will appear here...
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="label">Payload</div>
+
+<div class="output" id="payloadOutput">
+Payload data will appear here...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const token=document.getElementById('token');
+
+const headerOutput=document.getElementById('headerOutput');
+const payloadOutput=document.getElementById('payloadOutput');
+
+const status=document.getElementById('status');
+
+function base64UrlDecode(str){
+
+str=str.replace(/-/g,'+').replace(/_/g,'/');
+
+while(str.length%4){
+str+='=';
+}
+
+return decodeURIComponent(
+atob(str)
+.split('')
+.map(c=>{
+return '%' + ('00'+c.charCodeAt(0).toString(16)).slice(-2);
+})
+.join('')
+);
+
+}
+
+function decodeJWT(){
+
+try{
+
+const parts=token.value.trim().split('.');
+
+if(parts.length!==3){
+throw new Error('Invalid JWT format');
+}
+
+const header=JSON.parse(base64UrlDecode(parts[0]));
+const payload=JSON.parse(base64UrlDecode(parts[1]));
+
+headerOutput.textContent=JSON.stringify(header,null,2);
+
+payloadOutput.textContent=JSON.stringify(payload,null,2);
+
+status.textContent='JWT decoded successfully ✔';
+status.className='status success';
+
+}catch(err){
+
+headerOutput.textContent='Invalid token';
+payloadOutput.textContent='Invalid token';
+
+status.textContent='Could not decode JWT ❌';
+status.className='status error';
+
+}
+
+}
+</script>
+
+</body>
+</html>
