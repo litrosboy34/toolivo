@@ -4,158 +4,273 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Border Radius Generator - Toolivo</title>
-
+<title>Border Radius Generator — Toolivo</title>
 <meta name="description" content="Generate CSS border radius instantly with live preview and copyable CSS code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
 }
 
-.container{
-    max-width:950px;
-    margin:auto;
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.nav a:hover{
+color:white;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.tool-hero{
+padding:45px 0 28px;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
 }
 
-@media(max-width:750px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
 .control{
-    margin-bottom:18px;
+margin-bottom:20px;
 }
 
 label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
 }
 
 .range-wrap{
-    display:flex;
-    align-items:center;
-    gap:15px;
+display:flex;
+align-items:center;
+gap:14px;
 }
 
 .range-wrap input{
-    width:100%;
-    accent-color:#0ea5e9;
+width:100%;
+accent-color:#38bdf8;
 }
 
 .range-wrap span{
-    width:55px;
-    color:#38bdf8;
-    font-size:14px;
+min-width:55px;
+color:#67e8f9;
+font-size:14px;
+font-weight:bold;
 }
 
 .preview-area{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:320px;
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:16px;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:360px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:20px;
 }
 
 .preview-box{
-    width:230px;
-    height:230px;
-    background:linear-gradient(135deg,#06b6d4,#3b82f6);
-    transition:0.15s;
+width:240px;
+height:240px;
+background:linear-gradient(135deg,#06b6d4,#3b82f6);
+transition:.15s;
+box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
-}
-
-.copy{
-    background:#1e293b;
-    color:white;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
 }
 
 button:hover{
-    opacity:0.9;
-    transform:translateY(-2px);
+transform:translateY(-2px);
+}
+
+.primary{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+
+.secondary{
+background:#020617;
+border:1px solid #334155;
+color:#cbd5e1;
 }
 
 textarea{
-    width:100%;
-    height:140px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:170px;
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:18px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview-area{
+min-height:280px;
+}
+
+.preview-box{
+width:200px;
+height:200px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -164,115 +279,189 @@ textarea{
 
 <div class="container">
 
-    <div class="title">Border Radius Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate CSS border radius instantly with live preview and copyable CSS code.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Top Left</label>
+<h1>Border Radius <span class="gradient">Generator</span></h1>
 
-                    <div class="range-wrap">
-                        <input type="range" id="tl" min="0" max="150" value="20">
-                        <span id="tlVal">20px</span>
-                    </div>
-                </div>
+<p>
+Generate CSS border radius instantly with live preview and copyable CSS code for modern UI and web design projects.
+</p>
 
-                <div class="control">
-                    <label>Top Right</label>
+</section>
 
-                    <div class="range-wrap">
-                        <input type="range" id="tr" min="0" max="150" value="20">
-                        <span id="trVal">20px</span>
-                    </div>
-                </div>
+<section class="tool-grid">
 
-                <div class="control">
-                    <label>Bottom Right</label>
+<div class="panel">
 
-                    <div class="range-wrap">
-                        <input type="range" id="br" min="0" max="150" value="20">
-                        <span id="brVal">20px</span>
-                    </div>
-                </div>
+<div class="control">
+<label>
+<span>Top Left</span>
+<span id="tlVal">20px</span>
+</label>
 
-                <div class="control">
-                    <label>Bottom Left</label>
+<div class="range-wrap">
+<input type="range" id="tl" min="0" max="150" value="20">
+</div>
+</div>
 
-                    <div class="range-wrap">
-                        <input type="range" id="bl" min="0" max="150" value="20">
-                        <span id="blVal">20px</span>
-                    </div>
-                </div>
+<div class="control">
+<label>
+<span>Top Right</span>
+<span id="trVal">20px</span>
+</label>
 
-            </div>
+<div class="range-wrap">
+<input type="range" id="tr" min="0" max="150" value="20">
+</div>
+</div>
 
-            <div class="preview-area">
-                <div class="preview-box" id="previewBox"></div>
-            </div>
+<div class="control">
+<label>
+<span>Bottom Right</span>
+<span id="brVal">20px</span>
+</label>
 
-        </div>
+<div class="range-wrap">
+<input type="range" id="br" min="0" max="150" value="20">
+</div>
+</div>
 
-        <div class="buttons">
-            <button class="generate" onclick="generateRadius()">
-                Generate
-            </button>
+<div class="control">
+<label>
+<span>Bottom Left</span>
+<span id="blVal">20px</span>
+</label>
 
-            <button class="copy" onclick="copyCSS()">
-                Copy CSS
-            </button>
-        </div>
+<div class="range-wrap">
+<input type="range" id="bl" min="0" max="150" value="20">
+</div>
+</div>
 
-        <textarea id="output"></textarea>
+<div class="buttons">
+<button class="primary" onclick="generateRadius()">
+Generate CSS
+</button>
 
-    </div>
+<button class="secondary" onclick="copyCSS()">
+Copy CSS
+</button>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<textarea id="output"></textarea>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Adjust each corner radius using the sliders and copy the generated CSS instantly.
+</div>
+
+<div class="preview-area">
+<div class="preview-box" id="previewBox"></div>
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>What is border-radius?</h2>
+
+<p>
+The CSS border-radius property rounds the corners of elements and is widely used in modern UI and web design.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Move the sliders to adjust each corner.</li>
+<li>Preview the shape live instantly.</li>
+<li>Copy the generated CSS code.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateRadius(){
 
-    const tl = document.getElementById("tl").value;
-    const tr = document.getElementById("tr").value;
-    const br = document.getElementById("br").value;
-    const bl = document.getElementById("bl").value;
+const tl=document.getElementById("tl").value;
+const tr=document.getElementById("tr").value;
+const br=document.getElementById("br").value;
+const bl=document.getElementById("bl").value;
 
-    document.getElementById("tlVal").innerText = tl + "px";
-    document.getElementById("trVal").innerText = tr + "px";
-    document.getElementById("brVal").innerText = br + "px";
-    document.getElementById("blVal").innerText = bl + "px";
+document.getElementById("tlVal").innerText=tl+"px";
+document.getElementById("trVal").innerText=tr+"px";
+document.getElementById("brVal").innerText=br+"px";
+document.getElementById("blVal").innerText=bl+"px";
 
-    const radius = `${tl}px ${tr}px ${br}px ${bl}px`;
+const radius=`${tl}px ${tr}px ${br}px ${bl}px`;
 
-    document.getElementById("previewBox").style.borderRadius = radius;
+document.getElementById("previewBox").style.borderRadius=radius;
 
-    document.getElementById("output").value =
+document.getElementById("output").value=
 `border-radius: ${radius};`;
 }
 
 function copyCSS(){
 
-    const output = document.getElementById("output");
+const output=document.getElementById("output");
 
-    navigator.clipboard.writeText(output.value);
+navigator.clipboard.writeText(output.value);
 
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", generateRadius);
+document.querySelectorAll("input").forEach(input=>{
+input.addEventListener("input",generateRadius);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateRadius();
 </script>
