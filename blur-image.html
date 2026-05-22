@@ -4,359 +4,281 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Blur Image Online — Toolivo</title>
-
-<meta name="description" content="Blur images online instantly with Toolivo. Adjust blur intensity and export high quality images for free.">
-
-<meta name="google-adsense-account" content="ca-pub-4422292009724522">
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
-
+<title>Base64 Encoder Decoder — Toolivo</title>
+<meta name="description" content="Encode and decode Base64 instantly with Toolivo. Free online Base64 encoder and decoder tool.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-:root{
---bg:#05070d;
---stroke:rgba(255,255,255,.11);
---text:#f7fbff;
---muted:#9ca8bb;
---muted2:#748098;
---cyan:#39e6d2;
---blue:#6ea8ff;
---radius:28px;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-*{
-box-sizing:border-box;
-}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-body{
-margin:0;
-font-family:Inter,sans-serif;
-background:
-radial-gradient(circle at 14% 6%,rgba(57,230,210,.18),transparent 34%),
-radial-gradient(circle at 86% 0%,rgba(110,168,255,.18),transparent 31%),
-linear-gradient(180deg,#05070d,#03050a 55%,#05070d);
-color:var(--text);
-min-height:100vh;
-overflow-x:hidden;
-}
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
 
-.wrap{
-width:min(1200px,calc(100% - 28px));
-margin:auto;
-}
-
-header{
-padding:26px 0;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:8px;
-font-size:32px;
-font-weight:900;
-letter-spacing:-2px;
-}
-
-.logo span{
-background:linear-gradient(90deg,#fff,#bafdf5,#8fb3ff);
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
 -webkit-background-clip:text;
-color:transparent;
+-webkit-text-fill-color:transparent;
 }
 
-.hero{
-text-align:center;
-padding:48px 0 24px;
-}
-
-.hero h1{
-font-size:76px;
-line-height:.92;
-letter-spacing:-5px;
-margin:0 0 18px;
-font-weight:900;
-}
-
-.hero h1 span{
-background:linear-gradient(90deg,#fff,#c9fff8,#9abfff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.hero p{
-max-width:760px;
-margin:auto;
-line-height:1.7;
-font-size:18px;
-color:var(--muted);
-}
-
-.app{
+.tool-grid{
 display:grid;
-grid-template-columns:.8fr 1.2fr;
-gap:16px;
-margin-top:36px;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
 }
 
 .panel{
-background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.045));
-border:1px solid var(--stroke);
-border-radius:var(--radius);
-padding:20px;
-backdrop-filter:blur(18px);
-}
-
-.section-title{
-font-size:13px;
-text-transform:uppercase;
-letter-spacing:.12em;
-color:var(--muted2);
-font-weight:900;
-margin:4px 0 14px;
-}
-
-.drop{
-min-height:240px;
-border:1px dashed rgba(255,255,255,.24);
-border-radius:24px;
-display:grid;
-place-items:center;
-text-align:center;
-padding:18px;
-cursor:pointer;
-background:rgba(255,255,255,.035);
-transition:.18s;
-}
-
-.drop:hover{
-border-color:var(--cyan);
-background:rgba(57,230,210,.075);
-}
-
-.drop b{
-display:block;
-font-size:24px;
-margin:10px 0 6px;
-}
-
-.drop span{
-color:var(--muted);
-line-height:1.5;
-}
-
-input[type=file]{
-display:none;
-}
-
-.slider{
-margin-bottom:18px;
-}
-
-.slider label{
-display:flex;
-justify-content:space-between;
-color:var(--muted);
-font-size:13px;
-font-weight:800;
-margin-bottom:8px;
-}
-
-input[type=range]{
-width:100%;
-accent-color:var(--cyan);
-}
-
-.btn{
-min-height:54px;
-border:none;
+background:#111827;
+border:1px solid #1e293b;
 border-radius:18px;
-font-weight:900;
-font-size:15px;
-cursor:pointer;
-transition:.18s;
+padding:20px;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
+margin-bottom:10px;
+}
+
+textarea{
 width:100%;
-margin-top:10px;
+min-height:260px;
+border-radius:18px;
+border:1px solid #334155;
+background:#020617;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.7;
+resize:vertical;
+outline:none;
+font-family:monospace;
 }
 
-.primary{
-background:linear-gradient(135deg,var(--cyan),var(--blue));
-color:#051018;
+textarea:focus{
+border-color:#38bdf8;
 }
 
-.primary:hover{
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:16px;
+}
+
+button{
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
 transform:translateY(-2px);
 }
 
-.viewer{
-min-height:620px;
-border-radius:24px;
-background:
-linear-gradient(45deg,rgba(255,255,255,.08) 25%,transparent 25%),
-linear-gradient(-45deg,rgba(255,255,255,.08) 25%,transparent 25%),
-linear-gradient(45deg,transparent 75%,rgba(255,255,255,.08) 75%),
-linear-gradient(-45deg,transparent 75%,rgba(255,255,255,.08) 75%);
-background-size:28px 28px;
-background-position:0 0,0 14px,14px -14px,-14px 0;
-border:1px solid rgba(255,255,255,.08);
-display:grid;
-place-items:center;
-overflow:hidden;
-padding:18px;
+.primary{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
-canvas{
-max-width:100%;
-max-height:560px;
-border-radius:18px;
-box-shadow:0 28px 90px rgba(0,0,0,.45);
-display:none;
-}
-
-.placeholder{
-text-align:center;
-color:var(--muted);
-line-height:1.7;
+.secondary{
+background:#020617;
+color:#cbd5e1;
+border:1px solid #334155;
 }
 
 .info{
-margin-top:16px;
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-padding:14px;
-border-radius:18px;
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
 line-height:1.6;
-color:var(--muted);
-font-size:14px;
+margin-bottom:14px;
 }
 
-footer{
-margin-top:70px;
-padding:28px 0;
-border-top:1px solid rgba(255,255,255,.08);
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
 text-align:center;
-color:var(--muted2);
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
 }
 
 @media(max-width:900px){
 
-.app{
+.tool-grid,
+.content{
 grid-template-columns:1fr;
 }
 
-.hero h1{
-font-size:52px;
+.header{
+flex-direction:column;
 }
 
-.viewer{
-min-height:420px;
+.logo img{
+width:95px;
+height:95px;
+}
+
+textarea{
+min-height:220px;
 }
 
 }
 
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<header>
-<div class="logo">
+<header class="header">
+
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
 <span>Toolivo</span>
-</div>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+
 </header>
 
-<section class="hero">
+<section class="tool-hero">
 
-<h1>
-<span>Blur</span><br>
-image tool.
-</h1>
+<h1>Base64 <span class="gradient">Encoder Decoder</span></h1>
 
 <p>
-Blur images instantly online with adjustable intensity and high quality export.
-Perfect for backgrounds, privacy blur and aesthetic edits.
+Encode and decode Base64 instantly with Toolivo. Convert plain text into Base64 format or decode Base64 back into readable text.
 </p>
 
 </section>
 
-<section class="app">
+<section class="tool-grid">
 
 <div class="panel">
 
-<div class="section-title">
-Upload image
-</div>
+<div class="label">Input</div>
 
-<label class="drop" for="fileInput">
+<textarea
+id="input"
+placeholder="Paste your text or Base64 here..."
+></textarea>
 
-<div style="font-size:58px">🌫️</div>
+<div class="buttons">
 
-<b>Drop image here</b>
-
-<span>
-or click to browse from your device.
-</span>
-
-</label>
-
-<input type="file" id="fileInput" accept="image/*">
-
-<div class="section-title" style="margin-top:18px">
-Blur settings
-</div>
-
-<div class="slider">
-
-<label>
-<span>Blur intensity</span>
-<span id="blurValue">12px</span>
-</label>
-
-<input type="range" id="blurSlider" min="0" max="50" value="12">
-
-</div>
-
-<button class="btn primary" id="downloadBtn">
-Download Blurred Image
+<button class="primary" onclick="encodeText()">
+Encode
 </button>
 
-<div class="info">
-• High quality export
-<br>
-• Instant blur rendering
-<br>
-• Works directly in browser
-<br>
-• No upload required
+<button class="primary" onclick="decodeText()">
+Decode
+</button>
+
+<button class="secondary" onclick="clearAll()">
+Clear
+</button>
+
 </div>
 
 </div>
 
 <div class="panel">
 
-<div class="viewer">
-
-<div class="placeholder" id="placeholder">
-
-<div style="font-size:58px">✨</div>
-
-<b>Your blurred preview will appear here.</b>
-
-<br>
-
-Upload an image to begin.
-
+<div class="info">
+Your converted Base64 result will appear below instantly.
 </div>
 
-<canvas id="canvas"></canvas>
+<div class="label">Output</div>
+
+<textarea
+id="output"
+readonly
+placeholder="Result will appear here..."
+></textarea>
+
+<div class="buttons">
+
+<button class="secondary" onclick="copyOutput()">
+Copy Output
+</button>
 
 </div>
 
@@ -364,97 +286,93 @@ Upload an image to begin.
 
 </section>
 
-<footer>
-© 2026 Toolivo — Blur Image Tool
+<section class="content">
+
+<article class="card">
+
+<h2>What is Base64?</h2>
+
+<p>
+Base64 is an encoding method used to safely transmit text and binary data over systems that handle text only.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Paste your text or Base64 string.</li>
+<li>Choose Encode or Decode.</li>
+<li>Copy the generated result instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
 </footer>
 
 </div>
 
 <script>
+const input=document.getElementById('input');
+const output=document.getElementById('output');
 
-const fileInput = document.getElementById('fileInput');
+function encodeText(){
 
-const canvas = document.getElementById('canvas');
-
-const ctx = canvas.getContext('2d');
-
-const placeholder = document.getElementById('placeholder');
-
-const blurSlider = document.getElementById('blurSlider');
-
-const blurValue = document.getElementById('blurValue');
-
-let img = null;
-
-let fileName = 'toolivo-image';
-
-function renderBlur(){
-
-if(!img) return;
-
-canvas.width = img.width;
-canvas.height = img.height;
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.filter = `blur(${blurSlider.value}px)`;
-
-ctx.drawImage(img,0,0);
-
-ctx.filter = 'none';
+try{
+output.value=btoa(unescape(encodeURIComponent(input.value)));
+}catch{
+output.value='Encoding error';
+}
 
 }
 
-fileInput.onchange = e => {
+function decodeText(){
 
-const file = e.target.files[0];
+try{
+output.value=decodeURIComponent(escape(atob(input.value)));
+}catch{
+output.value='Invalid Base64';
+}
 
-if(!file) return;
+}
 
-fileName = file.name.replace(/\.[^/.]+$/,'');
+function copyOutput(){
 
-const url = URL.createObjectURL(file);
+if(!output.value){
+alert('Nothing to copy.');
+return;
+}
 
-img = new Image();
+navigator.clipboard.writeText(output.value);
 
-img.onload = ()=>{
+alert('Copied!');
+}
 
-placeholder.style.display = 'none';
+function clearAll(){
+input.value='';
+output.value='';
+}
 
-canvas.style.display = 'block';
-
-renderBlur();
-
-URL.revokeObjectURL(url);
-
-};
-
-img.src = url;
-
-};
-
-blurSlider.oninput = ()=>{
-
-blurValue.textContent = blurSlider.value + 'px';
-
-renderBlur();
-
-};
-
-document.getElementById('downloadBtn').onclick = ()=>{
-
-if(!img) return;
-
-const link = document.createElement('a');
-
-link.download = fileName + '-blurred-toolivo.png';
-
-link.href = canvas.toDataURL('image/png');
-
-link.click();
-
-};
-
+document.getElementById('year').innerText=
+new Date().getFullYear();
 </script>
 
 </body>
