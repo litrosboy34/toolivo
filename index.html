@@ -294,8 +294,8 @@ card.className = "tool-card";
 card.href = tool.url;
 card.innerHTML = `
 <div class="tool-icon">${tool.icon}</div>
-<h3>${tool.title}</h3>
-<p>${tool.desc}</p>
+<h3>${tool.title[lang]}</h3>
+<p>${tool.desc[lang]}</p>
 <span class="tool-tag">${tool.cat.toUpperCase()} →</span>
 `;
 grid.appendChild(card);
