@@ -1,7 +1,7 @@
 .global-header{
 width:min(1100px,calc(100% - 32px));
 margin:0 auto;
-padding:18px 0 28px;
+padding:28px 0 40px;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -14,22 +14,24 @@ border:none;
 .global-logo{
 display:flex;
 align-items:center;
-gap:0;
+gap:4px;
 text-decoration:none;
 font-size:34px;
 font-weight:900;
-letter-spacing:-2px;
+letter-spacing:-1px;
 }
 
 .global-logo img{
-width:90px;
-height:90px;
+width:115px;
+height:115px;
 object-fit:contain;
-filter:drop-shadow(0 0 30px rgba(57,230,210,.45));
+filter:
+drop-shadow(0 0 34px rgba(57,230,210,.55))
+drop-shadow(0 20px 46px rgba(0,0,0,.62));
 }
 
 .global-logo span{
-background:linear-gradient(90deg,#39e6d2,#7aa2ff);
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
@@ -42,7 +44,7 @@ flex-wrap:wrap;
 }
 
 .global-nav a{
-color:#9ca8bb;
+color:#94a3b8;
 text-decoration:none;
 font-size:14px;
 font-weight:700;
@@ -54,87 +56,4 @@ transition:.2s;
 .global-nav a:hover{
 color:white;
 background:rgba(255,255,255,.08);
-}
-
-.global-footer{
-margin-top:80px;
-padding:40px 0;
-border-top:1px solid rgba(255,255,255,.08);
-background:transparent;
-}
-
-.global-footer-inner{
-width:min(1100px,calc(100% - 32px));
-margin:auto;
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:14px;
-text-align:center;
-}
-
-.global-footer-logo{
-font-size:26px;
-font-weight:900;
-background:linear-gradient(90deg,#39e6d2,#7aa2ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.global-footer-links{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.global-footer-links a{
-color:#9ca8bb;
-text-decoration:none;
-font-size:14px;
-font-weight:700;
-transition:.2s;
-}
-
-.global-footer-links a:hover{
-color:white;
-}
-
-.global-footer-copy{
-color:#64748b;
-font-size:14px;
-}
-
-@media(max-width:760px){
-
-.global-header{
-flex-direction:column;
-padding-top:10px;
-}
-
-.global-logo img{
-width:74px;
-height:74px;
-}
-
-.global-nav{
-justify-content:center;
-}
-
-.global-footer{
-padding:30px 0;
-}
-
-.global-footer-links{
-gap:12px;
-}
-
-}
-.global-footer{
-background:transparent !important;
-border-top:1px solid rgba(255,255,255,.08) !important;
-}
-
-footer{
-background:transparent !important;
 }
