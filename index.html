@@ -421,6 +421,24 @@ All rights reserved.
 
 const tools = [
 
+const tools = [
+
+{
+title:{en:"Background Remover",tr:"Arka Plan Kaldırıcı"},
+desc:{en:"Remove image backgrounds online.",tr:"Görsellerin arka planını kaldırın."},
+url:"/background-remover.html",
+cat:"image",
+icon:"🖼️"
+},
+
+{
+title:{en:"Image Compressor",tr:"Görsel Sıkıştırıcı"},
+desc:{en:"Compress images quickly.",tr:"Görselleri hızlıca sıkıştırın."},
+url:"/image-compressor.html",
+cat:"image",
+icon:"⚡"
+},
+
 {
 title:{en:"Resize Image",tr:"Görsel Yeniden Boyutlandır"},
 desc:{en:"Resize images for web and social media.",tr:"Görselleri yeniden boyutlandırın."},
@@ -534,19 +552,59 @@ icon:"🔁"
 },
 
 {
-title:{en:"JSON Formatter",tr:"JSON Düzenleyici"},
-desc:{en:"Format and beautify JSON.",tr:"JSON formatlayın."},
-url:"/json-formatter.html",
-cat:"developer",
-icon:"{}"
+title:{en:"Word Counter",tr:"Kelime Sayacı"},
+desc:{en:"Count words and characters.",tr:"Kelime ve karakter sayın."},
+url:"/word-counter.html",
+cat:"text",
+icon:"🔤"
 },
 
 {
-title:{en:"Regex Tester",tr:"Regex Test Aracı"},
-desc:{en:"Test regular expressions.",tr:"Regex ifadelerini test edin."},
-url:"/regex-tester.html",
+title:{en:"Case Converter",tr:"Büyük Küçük Harf Dönüştürücü"},
+desc:{en:"Convert text case instantly.",tr:"Metin harflerini dönüştürün."},
+url:"/case-converter.html",
+cat:"text",
+icon:"Aa"
+},
+
+{
+title:{en:"Lorem Ipsum Generator",tr:"Lorem Ipsum Oluşturucu"},
+desc:{en:"Generate placeholder text.",tr:"Lorem Ipsum metni oluşturun."},
+url:"/lorem-ipsum-generator.html",
+cat:"text",
+icon:"📝"
+},
+
+{
+title:{en:"Text Diff Checker",tr:"Metin Karşılaştırıcı"},
+desc:{en:"Compare two texts.",tr:"İki metni karşılaştırın."},
+url:"/text-diff-checker.html",
+cat:"text",
+icon:"🔎"
+},
+
+{
+title:{en:"Text to Slug",tr:"Slug Oluşturucu"},
+desc:{en:"Create SEO friendly slugs.",tr:"SEO uyumlu slug oluşturun."},
+url:"/text-to-slug.html",
+cat:"text",
+icon:"🔗"
+},
+
+{
+title:{en:"Markdown Previewer",tr:"Markdown Önizleme"},
+desc:{en:"Preview Markdown live.",tr:"Markdown önizleme yapın."},
+url:"/markdown-previewer.html",
+cat:"text",
+icon:"⬇️"
+},
+
+{
+title:{en:"Password Generator",tr:"Şifre Oluşturucu"},
+desc:{en:"Generate secure passwords.",tr:"Güvenli şifreler oluşturun."},
+url:"/password-generator.html",
 cat:"developer",
-icon:".*"
+icon:"🔐"
 },
 
 {
@@ -558,6 +616,38 @@ icon:"🆔"
 },
 
 {
+title:{en:"Base64 Encoder Decoder",tr:"Base64 Encode Decode"},
+desc:{en:"Encode and decode Base64.",tr:"Base64 encode decode yapın."},
+url:"/base64-encoder-decoder.html",
+cat:"developer",
+icon:"🧬"
+},
+
+{
+title:{en:"URL Encoder Decoder",tr:"URL Encode Decode"},
+desc:{en:"Encode and decode URLs.",tr:"URL encode decode yapın."},
+url:"/url-encoder-decoder.html",
+cat:"developer",
+icon:"🌐"
+},
+
+{
+title:{en:"JSON Formatter",tr:"JSON Düzenleyici"},
+desc:{en:"Format and beautify JSON.",tr:"JSON formatlayın."},
+url:"/json-formatter.html",
+cat:"developer",
+icon:"{}"
+},
+
+{
+title:{en:"JWT Decoder",tr:"JWT Çözücü"},
+desc:{en:"Decode JWT tokens.",tr:"JWT token çözün."},
+url:"/jwt-decoder.html",
+cat:"developer",
+icon:"🪪"
+},
+
+{
 title:{en:"SHA256 Generator",tr:"SHA256 Oluşturucu"},
 desc:{en:"Generate SHA256 hashes.",tr:"SHA256 hash oluşturun."},
 url:"/sha256-generator.html",
@@ -566,75 +656,11 @@ icon:"#"
 },
 
 {
-title:{en:"CSS Button Generator",tr:"CSS Buton Oluşturucu"},
-desc:{en:"Create CSS buttons.",tr:"CSS butonları oluşturun."},
-url:"/css-button-generator.html",
-cat:"css",
-icon:"🔘"
-},
-
-{
-title:{en:"Glassmorphism Generator",tr:"Glassmorphism Oluşturucu"},
-desc:{en:"Generate glass CSS effects.",tr:"Glassmorphism efektleri oluşturun."},
-url:"/glassmorphism-generator.html",
-cat:"css",
-icon:"🧊"
-},
-
-{
-title:{en:"Flexbox Generator",tr:"Flexbox Oluşturucu"},
-desc:{en:"Generate flexbox layouts.",tr:"Flexbox düzenleri oluşturun."},
-url:"/flexbox-generator.html",
-cat:"css",
-icon:"↔️"
-},
-
-{
-title:{en:"CSS Grid Generator",tr:"CSS Grid Oluşturucu"},
-desc:{en:"Generate CSS grid layouts.",tr:"CSS grid düzenleri oluşturun."},
-url:"/css-grid-generator.html",
-cat:"css",
-icon:"▦"
-},
-
-{
-title:{en:"Color Palette Generator",tr:"Renk Paleti Oluşturucu"},
-desc:{en:"Generate color palettes.",tr:"Renk paletleri oluşturun."},
-url:"/color-palette-generator.html",
-cat:"css",
-icon:"🎨"
-},
-
-{
-title:{en:"Favicon Generator",tr:"Favicon Oluşturucu"},
-desc:{en:"Generate favicon tags.",tr:"Favicon oluşturun."},
-url:"/favicon-generator.html",
-cat:"seo",
-icon:"🔖"
-},
-
-{
-title:{en:"Sitemap Generator",tr:"Sitemap Oluşturucu"},
-desc:{en:"Generate sitemap XML.",tr:"Sitemap XML oluşturun."},
-url:"/sitemap-generator.html",
-cat:"seo",
-icon:"🗺️"
-},
-
-{
-title:{en:"Robots.txt Generator",tr:"Robots.txt Oluşturucu"},
-desc:{en:"Generate robots.txt files.",tr:"Robots.txt oluşturun."},
-url:"/robots-txt-generator.html",
-cat:"seo",
-icon:"🤖"
-},
-
-{
-title:{en:"UTM Link Builder",tr:"UTM Link Oluşturucu"},
-desc:{en:"Build UTM campaign links.",tr:"UTM linkleri oluşturun."},
-url:"/utm-link-builder.html",
-cat:"seo",
-icon:"📈"
+title:{en:"Regex Tester",tr:"Regex Test Aracı"},
+desc:{en:"Test regular expressions.",tr:"Regex ifadelerini test edin."},
+url:"/regex-tester.html",
+cat:"developer",
+icon:".*"
 }
 ];
 
