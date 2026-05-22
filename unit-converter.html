@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Converter — Toolivo</title>
+<meta name="description" content="Convert length, weight and temperature units instantly with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1000px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+margin-top:18px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.field{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+}
+
+input,select{
+width:100%;
+height:54px;
+border-radius:16px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:0 16px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+.result{
+margin-top:18px;
+padding:22px;
+border-radius:18px;
+background:#05070d;
+border:1px solid #263244;
+font-size:22px;
+font-weight:800;
+line-height:1.7;
+word-break:break-word;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin-top:10px;
+}
+
+@media(max-width:800px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>Unit Converter</h1>
+
+<p>
+Convert length, weight and temperature units instantly.
+</p>
+
+<div class="panel">
+
+<div class="grid">
+
+<div class="field">
+<label>Category</label>
+<select id="category">
+<option value="length">Length</option>
+<option value="weight">Weight</option>
+<option value="temperature">Temperature</option>
+</select>
+</div>
+
+<div class="field">
+<label>Value</label>
+<input id="value" type="number" value="1">
+</div>
+
+<div class="field">
+<label>From</label>
+<select id="from"></select>
+</div>
+
+<div class="field">
+<label>To</label>
+<select id="to"></select>
+</div>
+
+</div>
+
+<button onclick="convert()">Convert</button>
+
+<div class="result" id="result">
+Result will appear here...
+</div>
+
+</div>
+
+</div>
+
+<script>
+const category=document.getElementById('category');
+const from=document.getElementById('from');
+const to=document.getElementById('to');
+const result=document.getElementById('result');
+
+const units={
+
+length:{
+meter:1,
+kilometer:1000,
+centimeter:0.01,
+millimeter:0.001,
+mile:1609.34,
+yard:0.9144,
+foot:0.3048
+},
+
+weight:{
+kilogram:1,
+gram:0.001,
+milligram:0.000001,
+pound:0.453592,
+ounce:0.0283495
+}
+
+};
+
+function loadUnits(){
+
+const type=category.value;
+
+from.innerHTML='';
+to.innerHTML='';
+
+if(type==='temperature'){
+
+['Celsius','Fahrenheit','Kelvin'].forEach(unit=>{
+
+from.innerHTML+=`<option>${unit}</option>`;
+to.innerHTML+=`<option>${unit}</option>`;
+
+});
+
+return;
+}
+
+Object.keys(units[type]).forEach(unit=>{
+
+from.innerHTML+=`<option>${unit}</option>`;
+to.innerHTML+=`<option>${unit}</option>`;
+
+});
+
+}
+
+function convert(){
+
+const type=category.value;
+const value=Number(document.getElementById('value').value);
+
+if(type==='temperature'){
+
+let res=0;
+
+if(from.value===to.value){
+res=value;
+}
+
+else if(from.value==='Celsius' && to.value==='Fahrenheit'){
+res=(value*9/5)+32;
+}
+
+else if(from.value==='Fahrenheit' && to.value==='Celsius'){
+res=(value-32)*5/9;
+}
+
+else if(from.value==='Celsius' && to.value==='Kelvin'){
+res=value+273.15;
+}
+
+else if(from.value==='Kelvin' && to.value==='Celsius'){
+res=value-273.15;
+}
+
+else if(from.value==='Fahrenheit' && to.value==='Kelvin'){
+res=(value-32)*5/9+273.15;
+}
+
+else if(from.value==='Kelvin' && to.value==='Fahrenheit'){
+res=(value-273.15)*9/5+32;
+}
+
+result.textContent=`${value} ${from.value} = ${res.toFixed(4)} ${to.value}`;
+
+return;
+}
+
+const base=value*units[type][from.value];
+const converted=base/units[type][to.value];
+
+result.textContent=`${value} ${from.value} = ${converted.toFixed(4)} ${to.value}`;
+
+}
+
+category.addEventListener('change',loadUnits);
+
+loadUnits();
+convert();
+</script>
+
+</body>
+</html>
