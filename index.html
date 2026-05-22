@@ -40,7 +40,14 @@ a{text-decoration:none;color:inherit}
 .container{max-width:1200px;margin:auto;padding:20px}
 .header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 0}
 .logo{display:flex;align-items:center;gap:10px;font-size:28px;font-weight:bold}
-.logo img{width:46px;height:46px}
+.logo img{
+width:88px;
+height:88px;
+object-fit:contain;
+display:block;
+filter:drop-shadow(0 0 26px rgba(57,230,210,.42)) drop-shadow(0 20px 42px rgba(0,0,0,.58));
+transform:translateY(2px) scale(1.08);
+}
 .logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav{display:flex;gap:14px;flex-wrap:wrap}
 .nav a{color:#94a3b8;font-size:14px}
