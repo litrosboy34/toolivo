@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UTM Link Builder - Toolivo</title>
+<meta name="description" content="Create UTM campaign links instantly for Google Analytics and marketing tracking.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;padding:20px}
+.container{max-width:950px;margin:auto}
+.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:750px){.grid{grid-template-columns:1fr}}
+label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
+input{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:12px;padding:14px;outline:none}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.copy{background:#1e293b;color:white}
+textarea{width:100%;height:160px;margin-top:18px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5}
+.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">UTM Link Builder</div>
+    <div class="desc">Create UTM campaign links instantly for analytics and marketing tracking.</div>
+
+    <div class="card">
+
+        <div class="grid">
+            <div>
+                <label>Website URL</label>
+                <input id="url" placeholder="https://toolivo.site">
+            </div>
+
+            <div>
+                <label>Campaign Source</label>
+                <input id="source" placeholder="google, instagram, newsletter">
+            </div>
+
+            <div>
+                <label>Campaign Medium</label>
+                <input id="medium" placeholder="cpc, social, email">
+            </div>
+
+            <div>
+                <label>Campaign Name</label>
+                <input id="campaign" placeholder="summer_sale">
+            </div>
+
+            <div>
+                <label>Campaign Term</label>
+                <input id="term" placeholder="keyword">
+            </div>
+
+            <div>
+                <label>Campaign Content</label>
+                <input id="content" placeholder="button_a">
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="generate" onclick="generateUTM()">Generate Link</button>
+            <button class="copy" onclick="copyLink()">Copy Link</button>
+        </div>
+
+        <textarea id="output" placeholder="Generated UTM link will appear here..."></textarea>
+
+    </div>
+
+    <div class="footer">Toolivo © 2026</div>
+
+</div>
+
+<script>
+function addParam(params, key, value){
+    if(value.trim()){
+        params.append(key, value.trim());
+    }
+}
+
+function generateUTM(){
+    const baseUrl = document.getElementById("url").value.trim();
+
+    if(!baseUrl){
+        alert("Please enter a website URL.");
+        return;
+    }
+
+    const source = document.getElementById("source").value;
+    const medium = document.getElementById("medium").value;
+    const campaign = document.getElementById("campaign").value;
+    const term = document.getElementById("term").value;
+    const content = document.getElementById("content").value;
+
+    const params = new URLSearchParams();
+
+    addParam(params, "utm_source", source);
+    addParam(params, "utm_medium", medium);
+    addParam(params, "utm_campaign", campaign);
+    addParam(params, "utm_term", term);
+    addParam(params, "utm_content", content);
+
+    const separator = baseUrl.includes("?") ? "&" : "?";
+    const finalUrl = baseUrl + separator + params.toString();
+
+    document.getElementById("output").value = finalUrl;
+}
+
+function copyLink(){
+    const output = document.getElementById("output");
+
+    if(!output.value){
+        alert("Generate a link first.");
+        return;
+    }
+
+    navigator.clipboard.writeText(output.value);
+    alert("Copied!");
+}
+
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", generateUTM);
+});
+</script>
+
+</body>
+</html>
