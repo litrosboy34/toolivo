@@ -5,377 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Open Graph Generator — Toolivo</title>
-
-<meta name="description" content="Generate Open Graph and Twitter Card meta tags instantly.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="description" content="Generate Open Graph and Twitter Card meta tags instantly with Toolivo.">
+<link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+.hero{text-align:center;padding:55px 0 40px}
+.badge{display:inline-block;padding:8px 14px;border:1px solid #1e293b;border-radius:999px;color:#38bdf8;background:#111827;margin-bottom:18px}
+.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.05;margin-bottom:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:720px;margin:auto;color:#94a3b8;line-height:1.7;font-size:18px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:22px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.input-group{display:flex;flex-direction:column;gap:9px}
+label{font-size:14px;font-weight:bold;color:#cbd5e1}
+input,textarea,select{width:100%;padding:15px 16px;border-radius:16px;border:1px solid #334155;background:#020617;color:white;outline:none;font-size:15px}
+input:focus,textarea:focus,select:focus{border-color:#38bdf8}
+textarea{resize:vertical;min-height:120px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:15px 22px;border:none;border-radius:16px;font-weight:bold;cursor:pointer;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.copy{background:#020617;color:#cbd5e1;border:1px solid #334155}
+.output{width:100%;height:310px;margin-top:20px;background:#020617;border:1px solid #334155;border-radius:18px;padding:18px;color:#67e8f9;font-family:monospace;font-size:14px;line-height:1.6;outline:none}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:25px 0 55px}
+.info-card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:18px}
+.info-card h2{font-size:20px;margin-bottom:8px}
+.info-card p{color:#94a3b8;font-size:14px;line-height:1.6}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+@media(max-width:750px){
+.grid,.info-grid{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+.buttons{flex-direction:column}
+button{width:100%}
 }
-
-body{
-font-family:Inter,sans-serif;
-background:
-radial-gradient(circle at top left,rgba(34,211,238,.18),transparent 30%),
-radial-gradient(circle at top right,rgba(96,165,250,.16),transparent 32%),
-linear-gradient(180deg,#162235 0%,#111827 50%,#0f172a 100%);
-color:white;
-min-height:100vh;
-overflow-x:hidden;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-.container{
-width:min(1120px,calc(100% - 32px));
-margin:auto;
-}
-
-.header{
-height:72px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:24px;
-}
-
-.logo{
-font-size:36px;
-font-weight:900;
-letter-spacing:-1.5px;
-background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.nav{
-display:flex;
-align-items:center;
-gap:22px;
-}
-
-.nav a{
-font-size:13px;
-font-weight:800;
-color:#d8e5f5;
-transition:.2s;
-}
-
-.nav a:hover{
-color:#22d3ee;
-}
-
-.tool-hero{
-padding:86px 0 60px;
-text-align:center;
-}
-
-.tool-hero h1{
-font-size:clamp(58px,8vw,88px);
-line-height:.92;
-letter-spacing:-4px;
-font-weight:900;
-margin-bottom:22px;
-}
-
-.gradient{
-background:linear-gradient(90deg,#ffffff 0%,#7dd3fc 55%,#38bdf8 100%);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.tool-hero p{
-max-width:720px;
-margin:auto;
-font-size:18px;
-line-height:1.7;
-color:#b8c7dd;
-}
-
-.tool{
-display:grid;
-grid-template-columns:1fr;
-gap:18px;
-margin-bottom:28px;
-}
-
-.panel{
-background:rgba(15,23,42,.58);
-border:1px solid rgba(148,163,184,.16);
-border-radius:26px;
-padding:24px;
-backdrop-filter:blur(18px);
-box-shadow:0 24px 80px rgba(0,0,0,.22);
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.input-group{
-display:flex;
-flex-direction:column;
-}
-
-.input-group label{
-margin-bottom:10px;
-font-size:14px;
-font-weight:800;
-color:#d7e3f5;
-}
-
-.input-group input,
-.input-group textarea,
-.input-group select{
-width:100%;
-background:#0b1120;
-border:1px solid rgba(148,163,184,.16);
-border-radius:18px;
-padding:16px;
-color:white;
-font-size:15px;
-outline:none;
-transition:.2s;
-font-family:Inter,sans-serif;
-}
-
-.input-group input:focus,
-.input-group textarea:focus,
-.input-group select:focus{
-border-color:#22d3ee;
-box-shadow:0 0 0 4px rgba(34,211,238,.08);
-}
-
-textarea{
-resize:vertical;
-min-height:120px;
-}
-
-.buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:22px;
-}
-
-button{
-height:56px;
-padding:0 24px;
-border:none;
-border-radius:18px;
-font-size:14px;
-font-weight:900;
-cursor:pointer;
-transition:.2s;
-}
-
-button:hover{
-transform:translateY(-2px);
-}
-
-.generate{
-background:linear-gradient(90deg,#22d3ee,#60a5fa);
-color:#020617;
-}
-
-.copy{
-background:#162235;
-color:white;
-border:1px solid rgba(148,163,184,.16);
-}
-
-.output{
-width:100%;
-height:320px;
-margin-top:22px;
-background:#0b1120;
-border:1px solid rgba(148,163,184,.16);
-border-radius:22px;
-padding:20px;
-font-size:14px;
-line-height:1.7;
-color:#67e8f9;
-resize:vertical;
-outline:none;
-font-family:monospace;
-}
-
-.info-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-bottom:72px;
-}
-
-.info-card{
-background:rgba(15,23,42,.58);
-border:1px solid rgba(148,163,184,.16);
-border-radius:24px;
-padding:24px;
-backdrop-filter:blur(18px);
-box-shadow:0 24px 80px rgba(0,0,0,.18);
-}
-
-.info-card h2{
-font-size:21px;
-margin-bottom:10px;
-letter-spacing:-.5px;
-}
-
-.info-card p{
-font-size:15px;
-line-height:1.7;
-color:#9fb0c7;
-}
-
-.footer{
-padding:28px 0;
-border-top:1px solid rgba(148,163,184,.14);
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px;
-flex-wrap:wrap;
-font-size:14px;
-color:#9fb0c7;
-}
-
-.footer-links{
-display:flex;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.footer-links a:hover{
-color:#22d3ee;
-}
-
-@media(max-width:900px){
-
-.header{
-height:auto;
-padding:20px 0;
-flex-direction:column;
-align-items:flex-start;
-}
-
-.nav{
-flex-wrap:wrap;
-gap:14px;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.info-grid{
-grid-template-columns:1fr;
-}
-
-.tool-hero{
-padding:60px 0 42px;
-}
-
-.tool-hero h1{
-font-size:52px;
-letter-spacing:-2px;
-}
-
-}
-
-@media(max-width:560px){
-
-.container{
-width:min(100% - 24px,1120px);
-}
-
-.logo{
-font-size:32px;
-}
-
-.nav a{
-font-size:12px;
-}
-
-.tool-hero h1{
-font-size:44px;
-}
-
-.tool-hero p{
-font-size:15px;
-}
-
-.panel{
-padding:18px;
-}
-
-.buttons{
-flex-direction:column;
-}
-
-button{
-width:100%;
-}
-
-.footer{
-flex-direction:column;
-align-items:flex-start;
-}
-
-}
-
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <header class="header">
-
-<a href="/" class="logo">Toolivo</a>
-
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 <nav class="nav">
 <a href="/">Home</a>
-<a href="/tools.html">Tools</a>
+<a href="/#tools">Tools</a>
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
 <a href="/contact.html">Contact</a>
 </nav>
-
 </header>
 
-<section class="tool-hero">
-
-<h1>
-<span class="gradient">Open Graph</span>
-<br>
-Generator
-</h1>
-
-<p>
-Generate Open Graph and Twitter Card meta tags instantly for websites, blogs, landing pages and social sharing previews.
-</p>
-
+<section class="hero">
+<div class="badge">SEO • Social Preview • Meta Tags</div>
+<h1>Open Graph <span class="gradient">Generator</span></h1>
+<p>Generate Open Graph and Twitter Card meta tags instantly for websites, blogs, landing pages and social sharing previews.</p>
 </section>
 
-<section class="tool">
-
-<div class="panel">
-
+<section class="panel">
 <div class="grid">
 
 <div class="input-group">
@@ -400,13 +103,11 @@ Generate Open Graph and Twitter Card meta tags instantly for websites, blogs, la
 
 <div class="input-group">
 <label>Website Type</label>
-
 <select id="typeInput">
 <option value="website">website</option>
 <option value="article">article</option>
 <option value="blog">blog</option>
 </select>
-
 </div>
 
 <div class="input-group">
@@ -417,57 +118,27 @@ Generate Open Graph and Twitter Card meta tags instantly for websites, blogs, la
 </div>
 
 <div class="buttons">
-
-<button class="generate" onclick="generateOG()">
-Generate
-</button>
-
-<button class="copy" onclick="copyOG()">
-Copy
-</button>
-
+<button class="generate" onclick="generateOG()">Generate</button>
+<button class="copy" onclick="copyOG()">Copy</button>
 </div>
 
-<textarea
-class="output"
-id="output"
-placeholder="Generated Open Graph tags will appear here..."
-></textarea>
-
-</div>
-
+<textarea class="output" id="output" placeholder="Generated Open Graph tags will appear here..."></textarea>
 </section>
 
 <section class="info-grid">
-
 <div class="info-card">
-
 <h2>Open Graph Support</h2>
-
-<p>
-Generate Open Graph and Twitter Card meta tags compatible with Facebook, X, Discord, LinkedIn and other social platforms.
-</p>
-
+<p>Generate Open Graph and Twitter Card meta tags compatible with Facebook, X, Discord, LinkedIn and other social platforms.</p>
 </div>
 
 <div class="info-card">
-
 <h2>Fast Meta Tag Builder</h2>
-
-<p>
-Create SEO-friendly social preview tags instantly and copy the generated code directly into your website.
-</p>
-
+<p>Create SEO-friendly social preview tags instantly and copy the generated code directly into your website.</p>
 </div>
-
 </section>
 
 <footer class="footer">
-
-<div>
-© 2026 Toolivo — Open Graph Generator
-</div>
-
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -475,32 +146,26 @@ Create SEO-friendly social preview tags instantly and copy the generated code di
 <a href="/contact.html">Contact</a>
 <a href="/sitemap.xml">Sitemap</a>
 </div>
-
 </footer>
 
 </div>
 
 <script>
+function escapeHtml(value){
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll('"',"&quot;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;");
+}
 
 function generateOG(){
-
-const title =
-document.getElementById("titleInput").value;
-
-const url =
-document.getElementById("urlInput").value;
-
-const desc =
-document.getElementById("descInput").value;
-
-const image =
-document.getElementById("imageInput").value;
-
-const type =
-document.getElementById("typeInput").value;
-
-const twitter =
-document.getElementById("twitterInput").value;
+const title = escapeHtml(document.getElementById("titleInput").value);
+const url = escapeHtml(document.getElementById("urlInput").value);
+const desc = escapeHtml(document.getElementById("descInput").value);
+const image = escapeHtml(document.getElementById("imageInput").value);
+const type = escapeHtml(document.getElementById("typeInput").value);
+const twitter = escapeHtml(document.getElementById("twitterInput").value);
 
 const code = `
 <meta property="og:type" content="${type}">
@@ -516,30 +181,20 @@ const code = `
 <meta name="twitter:site" content="${twitter}">
 `;
 
-document.getElementById("output").value =
-code.trim();
-
+document.getElementById("output").value = code.trim();
 }
 
 function copyOG(){
-
-const output =
-document.getElementById("output");
-
+const output = document.getElementById("output");
 if(!output.value){
-
 alert("Generate tags first.");
-
 return;
-
 }
-
 navigator.clipboard.writeText(output.value);
-
 alert("Copied!");
-
 }
 
+document.getElementById("year").innerText = new Date().getFullYear();
 </script>
 
 </body>
