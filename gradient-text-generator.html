@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gradient Text Generator - Toolivo</title>
+<meta name="description" content="Generate CSS gradient text instantly with live preview and copyable code.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;padding:20px}
+.container{max-width:1000px;margin:auto}
+.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:850px){.grid{grid-template-columns:1fr}}
+.control{margin-bottom:18px}
+label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
+input,select{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:12px;padding:14px;outline:none}
+input[type="color"]{height:58px;padding:5px;cursor:pointer}
+input[type="range"]{accent-color:#0ea5e9;padding:0}
+.value{margin-top:6px;color:#38bdf8;font-size:14px}
+.preview{
+    min-height:320px;
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+}
+.preview-text{
+    font-size:48px;
+    font-weight:800;
+    line-height:1.2;
+}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.copy{background:#1e293b;color:white}
+textarea{width:100%;height:210px;margin-top:18px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5}
+.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">Gradient Text Generator</div>
+    <div class="desc">Generate beautiful CSS gradient text with live preview and copyable CSS code.</div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div>
+                <div class="control">
+                    <label>Text</label>
+                    <input type="text" id="textInput" value="Gradient Text">
+                </div>
+
+                <div class="control">
+                    <label>First Color</label>
+                    <input type="color" id="color1" value="#06b6d4">
+                </div>
+
+                <div class="control">
+                    <label>Second Color</label>
+                    <input type="color" id="color2" value="#3b82f6">
+                </div>
+
+                <div class="control">
+                    <label>Angle</label>
+                    <input type="range" id="angle" min="0" max="360" value="90">
+                    <div class="value" id="angleValue">90deg</div>
+                </div>
+
+                <div class="control">
+                    <label>Font Size</label>
+                    <input type="range" id="fontSize" min="20" max="100" value="48">
+                    <div class="value" id="fontValue">48px</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="preview">
+                    <div class="preview-text" id="previewText">Gradient Text</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button class="generate" onclick="generateGradientText()">Generate</button>
+            <button class="copy" onclick="copyCSS()">Copy CSS</button>
+        </div>
+
+        <textarea id="output"></textarea>
+
+    </div>
+
+    <div class="footer">Toolivo © 2026</div>
+
+</div>
+
+<script>
+function generateGradientText(){
+
+    const text = document.getElementById("textInput").value;
+    const color1 = document.getElementById("color1").value;
+    const color2 = document.getElementById("color2").value;
+    const angle = document.getElementById("angle").value;
+    const fontSize = document.getElementById("fontSize").value;
+
+    const gradient = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+
+    document.getElementById("angleValue").innerText = angle + "deg";
+    document.getElementById("fontValue").innerText = fontSize + "px";
+
+    const preview = document.getElementById("previewText");
+    preview.innerText = text;
+    preview.style.fontSize = fontSize + "px";
+    preview.style.background = gradient;
+    preview.style.webkitBackgroundClip = "text";
+    preview.style.backgroundClip = "text";
+    preview.style.webkitTextFillColor = "transparent";
+    preview.style.color = "transparent";
+
+    const css =
+`.gradient-text{
+    background:${gradient};
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+    font-size:${fontSize}px;
+    font-weight:800;
+}`;
+
+    document.getElementById("output").value = css;
+}
+
+function copyCSS(){
+    navigator.clipboard.writeText(document.getElementById("output").value);
+    alert("Copied!");
+}
+
+document.querySelectorAll("input").forEach(el => {
+    el.addEventListener("input", generateGradientText);
+});
+
+generateGradientText();
+</script>
+
+</body>
+</html>
