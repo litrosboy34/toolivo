@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTTP Status Code Lookup — Toolivo</title>
+<meta name="description" content="Search and learn HTTP status codes instantly with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1000px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+margin-top:18px;
+}
+
+input{
+width:100%;
+height:56px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:0 18px;
+font-size:18px;
+box-sizing:border-box;
+}
+
+.result{
+margin-top:18px;
+padding:22px;
+border-radius:18px;
+background:#05070d;
+border:1px solid #263244;
+line-height:1.8;
+}
+
+.code{
+font-size:52px;
+font-weight:900;
+margin-bottom:8px;
+}
+
+.type{
+display:inline-block;
+padding:6px 12px;
+border-radius:999px;
+font-size:13px;
+font-weight:bold;
+margin-bottom:14px;
+}
+
+.success{
+background:#12321f;
+color:#7fffc5;
+}
+
+.redirect{
+background:#2a243f;
+color:#b9a7ff;
+}
+
+.client{
+background:#3a2515;
+color:#ffbf7a;
+}
+
+.server{
+background:#3a1717;
+color:#ff8b8b;
+}
+
+.info{
+background:#15273a;
+color:#8fd1ff;
+}
+
+.desc{
+color:#c9d3e3;
+font-size:17px;
+}
+
+.list{
+margin-top:22px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.item{
+background:#121935;
+border:1px solid #263244;
+padding:14px;
+border-radius:14px;
+cursor:pointer;
+transition:.2s;
+}
+
+.item:hover{
+transform:translateY(-2px);
+}
+
+.item b{
+display:block;
+margin-bottom:4px;
+}
+
+@media(max-width:800px){
+
+.list{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>HTTP Status Code Lookup</h1>
+
+<p>
+Search and learn HTTP response status codes instantly.
+</p>
+
+<div class="panel">
+
+<input id="search" placeholder="Search status code like 404, 500, 301...">
+
+<div class="result" id="result">
+<div class="code">200</div>
+<div class="type success">Success</div>
+<div><b>OK</b></div>
+<div class="desc">
+The request has succeeded successfully.
+</div>
+</div>
+
+<div class="list" id="list"></div>
+
+</div>
+
+</div>
+
+<script>
+const codes={
+
+100:{title:'Continue',type:'info',label:'Informational',desc:'The request headers were received.'},
+
+200:{title:'OK',type:'success',label:'Success',desc:'The request has succeeded successfully.'},
+
+201:{title:'Created',type:'success',label:'Success',desc:'A new resource has been created.'},
+
+204:{title:'No Content',type:'success',label:'Success',desc:'Request succeeded but returned no content.'},
+
+301:{title:'Moved Permanently',type:'redirect',label:'Redirect',desc:'The resource has permanently moved.'},
+
+302:{title:'Found',type:'redirect',label:'Redirect',desc:'Temporary redirect to another URL.'},
+
+304:{title:'Not Modified',type:'redirect',label:'Redirect',desc:'Cached version can be used.'},
+
+400:{title:'Bad Request',type:'client',label:'Client Error',desc:'The request was invalid.'},
+
+401:{title:'Unauthorized',type:'client',label:'Client Error',desc:'Authentication is required.'},
+
+403:{title:'Forbidden',type:'client',label:'Client Error',desc:'Access to this resource is forbidden.'},
+
+404:{title:'Not Found',type:'client',label:'Client Error',desc:'The requested resource was not found.'},
+
+429:{title:'Too Many Requests',type:'client',label:'Client Error',desc:'Rate limit exceeded.'},
+
+500:{title:'Internal Server Error',type:'server',label:'Server Error',desc:'The server encountered an error.'},
+
+502:{title:'Bad Gateway',type:'server',label:'Server Error',desc:'Invalid response from upstream server.'},
+
+503:{title:'Service Unavailable',type:'server',label:'Server Error',desc:'The server is temporarily unavailable.'},
+
+504:{title:'Gateway Timeout',type:'server',label:'Server Error',desc:'The upstream server timed out.'}
+
+};
+
+const search=document.getElementById('search');
+const result=document.getElementById('result');
+const list=document.getElementById('list');
+
+function render(code){
+
+const data=codes[code];
+
+if(!data){
+result.innerHTML=`
+<div class="code">?</div>
+<div class="desc">Status code not found.</div>
+`;
+return;
+}
+
+result.innerHTML=`
+<div class="code">${code}</div>
+<div class="type ${data.type}">${data.label}</div>
+<div><b>${data.title}</b></div>
+<div class="desc">${data.desc}</div>
+`;
+}
+
+Object.keys(codes).forEach(code=>{
+
+const div=document.createElement('div');
+
+div.className='item';
+
+div.innerHTML=`
+<b>${code} — ${codes[code].title}</b>
+<span>${codes[code].label}</span>
+`;
+
+div.onclick=()=>{
+
+search.value=code;
+
+render(code);
+
+};
+
+list.appendChild(div);
+
+});
+
+search.addEventListener('input',()=>{
+
+const val=search.value.trim();
+
+render(val);
+
+});
+
+render(200);
+</script>
+
+</body>
+</html>
