@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Formatter Validator — Toolivo</title>
+<meta name="description" content="Format, beautify, validate and minify JSON instantly with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1100px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+margin-bottom:10px;
+}
+
+textarea{
+width:100%;
+min-height:380px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.6;
+box-sizing:border-box;
+resize:vertical;
+font-family:monospace;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin:10px 10px 0 0;
+}
+
+.copy{
+background:#121935;
+color:white;
+border:1px solid #263244;
+}
+
+.status{
+margin-top:14px;
+padding:14px;
+border-radius:14px;
+font-weight:bold;
+}
+
+.success{
+background:#0d2a1e;
+border:1px solid #1f8f5f;
+color:#7fffc5;
+}
+
+.error{
+background:#2a1111;
+border:1px solid #a33;
+color:#ff8b8b;
+}
+
+@media(max-width:900px){
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>JSON Formatter / Validator</h1>
+
+<p>
+Beautify, validate and minify JSON instantly with Toolivo.
+</p>
+
+<div class="grid">
+
+<div class="panel">
+
+<div class="label">Input JSON</div>
+
+<textarea id="input" placeholder='Paste JSON here...'></textarea>
+
+<button onclick="formatJSON()">Format JSON</button>
+<button onclick="minifyJSON()">Minify JSON</button>
+<button class="copy" onclick="clearAll()">Clear</button>
+
+<div id="status"></div>
+
+</div>
+
+<div class="panel">
+
+<div class="label">Output</div>
+
+<textarea id="output" readonly placeholder="Formatted JSON will appear here..."></textarea>
+
+<button onclick="copyOutput()">Copy Output</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const input=document.getElementById('input');
+const output=document.getElementById('output');
+const status=document.getElementById('status');
+
+function setStatus(msg,type){
+status.className='status '+type;
+status.textContent=msg;
+}
+
+function formatJSON(){
+try{
+const parsed=JSON.parse(input.value);
+output.value=JSON.stringify(parsed,null,2);
+setStatus('Valid JSON ✔','success');
+}catch(err){
+setStatus('Invalid JSON ❌','error');
+}
+}
+
+function minifyJSON(){
+try{
+const parsed=JSON.parse(input.value);
+output.value=JSON.stringify(parsed);
+setStatus('JSON minified ✔','success');
+}catch(err){
+setStatus('Invalid JSON ❌','error');
+}
+}
+
+function copyOutput(){
+navigator.clipboard.writeText(output.value);
+}
+
+function clearAll(){
+input.value='';
+output.value='';
+status.textContent='';
+status.className='';
+}
+</script>
+
+</body>
+</html>
