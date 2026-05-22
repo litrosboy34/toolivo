@@ -4,26 +4,252 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Text to Slug Generator - Toolivo</title>
-<meta name="description" content="Convert text to SEO friendly URL slugs instantly.">
+<title>Text to Slug Generator — Toolivo</title>
+
+<meta name="description" content="Convert text to SEO friendly URL slugs instantly with Toolivo. Free online text to slug generator.">
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;padding:20px}
-.container{max-width:950px;margin:auto}
-.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
-.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
-label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
-textarea,input{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:12px;padding:14px;outline:none}
-textarea{height:160px;resize:vertical;margin-bottom:18px}
-input{margin-bottom:18px}
-.buttons{display:flex;gap:12px;flex-wrap:wrap}
-button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
-.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
-.copy{background:#1e293b;color:white}
-.clear{background:#020617;color:white;border:1px solid #334155}
-.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+a{text-decoration:none;color:inherit}
+
+.container{
+width:min(1100px,calc(100% - 32px));
+margin:auto;
+}
+
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{color:#22d3ee}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
+}
+
+.panel{
+margin-top:34px;
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
+}
+
+.field{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+}
+
+textarea,
+input{
+width:100%;
+border-radius:18px;
+border:1px solid rgba(148,163,184,.18);
+background:#020617;
+color:white;
+padding:16px;
+font-size:16px;
+outline:none;
+font-family:inherit;
+transition:.2s;
+}
+
+textarea{
+min-height:180px;
+resize:vertical;
+line-height:1.7;
+}
+
+input{
+height:56px;
+color:#67e8f9;
+}
+
+textarea:focus,
+input:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:8px;
+}
+
+button{
+height:56px;
+padding:0 22px;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+background:rgba(255,255,255,.06);
+color:white;
+border:1px solid rgba(148,163,184,.16);
+}
+
+button:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{color:#22d3ee}
+
+@media(max-width:768px){
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.tool-hero h1{
+letter-spacing:-2px;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.actions{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+}
 </style>
 </head>
 
@@ -31,70 +257,112 @@ button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:
 
 <div class="container">
 
-<div class="title">Text to Slug Generator</div>
-<div class="desc">Convert any text into a clean, SEO friendly URL slug.</div>
+<header class="header">
+<a href="/" class="logo">Toolivo</a>
 
-<div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
 
-<label>Text Input</label>
+<section class="tool-hero">
+<h1><span class="gradient">Text to Slug</span><br>Generator</h1>
+<p>Convert any text into a clean, SEO-friendly URL slug. Great for blog posts, product pages and web tools.</p>
+</section>
+
+<section class="panel">
+
+<div class="field">
+<label for="input">Text Input</label>
 <textarea id="input" placeholder="Example: Best Free Online Tools"></textarea>
+</div>
 
-<label>Slug Output</label>
+<div class="field">
+<label for="output">Slug Output</label>
 <input id="output" placeholder="best-free-online-tools" readonly>
+</div>
 
-<div class="buttons">
-<button class="generate" onclick="generateSlug()">Generate Slug</button>
-<button class="copy" onclick="copySlug()">Copy Slug</button>
-<button class="clear" onclick="clearAll()">Clear</button>
+<div class="actions">
+<button class="primary" onclick="generateSlug()">Generate Slug</button>
+<button onclick="copySlug()">Copy Slug</button>
+<button onclick="clearAll()">Clear</button>
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h2>What is a URL slug?</h2>
+<p>A slug is the readable part of a URL that describes a page, usually using lowercase words separated by hyphens.</p>
+</div>
+
+<div class="info-card">
+<h2>SEO friendly output</h2>
+<p>This tool removes special characters, converts spaces to hyphens and supports Turkish character normalization.</p>
 </div>
 
 </div>
 
-<div class="footer">Toolivo © 2026</div>
+</section>
+
+<footer class="footer">
+<div>© 2026 Toolivo — Text to Slug Generator</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
 function generateSlug(){
-    const text = document.getElementById("input").value;
+const text = document.getElementById("input").value;
 
-    const trMap = {
-        "ç":"c","ğ":"g","ı":"i","ö":"o","ş":"s","ü":"u",
-        "Ç":"c","Ğ":"g","İ":"i","Ö":"o","Ş":"s","Ü":"u"
-    };
+const trMap = {
+"ç":"c","ğ":"g","ı":"i","ö":"o","ş":"s","ü":"u",
+"Ç":"c","Ğ":"g","İ":"i","Ö":"o","Ş":"s","Ü":"u"
+};
 
-    let slug = text.replace(/[çğıöşüÇĞİÖŞÜ]/g, char => trMap[char] || char);
+let slug = text.replace(/[çğıöşüÇĞİÖŞÜ]/g, char => trMap[char] || char);
 
-    slug = slug
-        .toLowerCase()
-        .trim()
-        .replace(/&/g, " and ")
-        .replace(/[^a-z0-9\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-")
-        .replace(/^-|-$/g, "");
+slug = slug
+.toLowerCase()
+.trim()
+.replace(/&/g," and ")
+.replace(/[^a-z0-9\s-]/g,"")
+.replace(/\s+/g,"-")
+.replace(/-+/g,"-")
+.replace(/^-|-$/g,"");
 
-    document.getElementById("output").value = slug;
+document.getElementById("output").value = slug;
 }
 
 function copySlug(){
-    const output = document.getElementById("output");
+const output = document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate a slug first.");
-        return;
-    }
+if(!output.value){
+alert("Generate a slug first.");
+return;
+}
 
-    navigator.clipboard.writeText(output.value);
-    alert("Copied!");
+navigator.clipboard.writeText(output.value);
+alert("Copied!");
 }
 
 function clearAll(){
-    document.getElementById("input").value = "";
-    document.getElementById("output").value = "";
+document.getElementById("input").value = "";
+document.getElementById("output").value = "";
 }
 
-document.getElementById("input").addEventListener("input", generateSlug);
+document.getElementById("input").addEventListener("input",generateSlug);
 </script>
 
 </body>
