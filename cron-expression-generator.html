@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron Expression Generator — Toolivo</title>
+<meta name="description" content="Generate cron expressions instantly with Toolivo. Create schedules for minutes, hours, days, weeks and months.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:white}
+.wrap{width:min(1000px,calc(100% - 28px));margin:auto;padding:40px 0}
+h1{font-size:56px;margin:20px 0 10px}
+p{color:#9ca8bb}
+.panel{background:#0b1020;border:1px solid #263244;border-radius:20px;padding:18px;margin-top:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;color:#9ca8bb;font-weight:bold;margin-bottom:8px}
+select,input{width:100%;height:52px;border-radius:14px;border:1px solid #263244;background:#05070d;color:white;padding:0 14px;font-size:16px;box-sizing:border-box}
+.output{margin-top:18px;background:#05070d;border:1px solid #263244;border-radius:18px;padding:18px;font-size:26px;font-family:monospace;word-break:break-all}
+button{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#39e6d2,#6ea8ff);font-weight:800;cursor:pointer;margin:12px 10px 0 0}
+.copy{background:#121935;color:white;border:1px solid #263244}
+.desc{margin-top:14px;color:#9ca8bb;line-height:1.7}
+@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:42px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Cron Expression Generator</h1>
+<p>Create cron expressions for scheduled jobs instantly.</p>
+
+<div class="panel">
+<div class="grid">
+<div>
+<label>Schedule Type</label>
+<select id="type">
+<option value="everyMinute">Every minute</option>
+<option value="hourly">Hourly</option>
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+<option value="monthly">Monthly</option>
+<option value="custom">Custom</option>
+</select>
+</div>
+
+<div>
+<label>Minute</label>
+<input id="minute" type="number" min="0" max="59" value="0">
+</div>
+
+<div>
+<label>Hour</label>
+<input id="hour" type="number" min="0" max="23" value="9">
+</div>
+
+<div>
+<label>Day of Month</label>
+<input id="day" type="number" min="1" max="31" value="1">
+</div>
+
+<div>
+<label>Month</label>
+<input id="month" type="number" min="1" max="12" value="*">
+</div>
+
+<div>
+<label>Day of Week</label>
+<select id="week">
+<option value="*">Every day</option>
+<option value="1">Monday</option>
+<option value="2">Tuesday</option>
+<option value="3">Wednesday</option>
+<option value="4">Thursday</option>
+<option value="5">Friday</option>
+<option value="6">Saturday</option>
+<option value="0">Sunday</option>
+</select>
+</div>
+</div>
+
+<button onclick="generate()">Generate Cron</button>
+<button class="copy" onclick="copyCron()">Copy</button>
+
+<div class="output" id="output">* * * * *</div>
+<div class="desc" id="desc">Runs every minute.</div>
+</div>
+</div>
+
+<script>
+const type=document.getElementById('type');
+const output=document.getElementById('output');
+const desc=document.getElementById('desc');
+
+function v(id){return document.getElementById(id).value || '*'}
+
+function generate(){
+let cron='* * * * *';
+let text='Runs every minute.';
+
+if(type.value==='everyMinute'){
+cron='* * * * *';
+text='Runs every minute.';
+}
+
+if(type.value==='hourly'){
+cron=`${v('minute')} * * * *`;
+text=`Runs every hour at minute ${v('minute')}.`;
+}
+
+if(type.value==='daily'){
+cron=`${v('minute')} ${v('hour')} * * *`;
+text=`Runs every day at ${v('hour')}:${String(v('minute')).padStart(2,'0')}.`;
+}
+
+if(type.value==='weekly'){
+cron=`${v('minute')} ${v('hour')} * * ${v('week')}`;
+text='Runs weekly on the selected day and time.';
+}
+
+if(type.value==='monthly'){
+cron=`${v('minute')} ${v('hour')} ${v('day')} * *`;
+text=`Runs monthly on day ${v('day')} at ${v('hour')}:${String(v('minute')).padStart(2,'0')}.`;
+}
+
+if(type.value==='custom'){
+cron=`${v('minute')} ${v('hour')} ${v('day')} ${v('month')} ${v('week')}`;
+text='Custom cron expression.';
+}
+
+output.textContent=cron;
+desc.textContent=text;
+}
+
+function copyCron(){
+navigator.clipboard.writeText(output.textContent);
+}
+
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',generate));
+generate();
+</script>
+</body>
+</html>
