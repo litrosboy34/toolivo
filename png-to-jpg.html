@@ -1,40 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PNG to JPG Converter — Toolivo</title>
-  <meta name="description" content="Convert PNG images to JPG instantly with Toolivo. Free, fast and private online PNG to JPG converter that runs directly in your browser." />
-  <meta name="keywords" content="png to jpg, png to jpeg, convert png to jpg, online image converter, Toolivo" />
-  <meta name="author" content="Toolivo" />
-  <meta property="og:title" content="PNG to JPG Converter — Toolivo" />
-  <meta property="og:description" content="Free online PNG to JPG converter. Fast, private and easy to use." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#05070d" />
-  <meta name="google-adsense-account" content="ca-pub-4422292009724522">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="apple-touch-icon" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root{--bg:#05070d;--card2:rgba(255,255,255,.12);--stroke:rgba(255,255,255,.14);--text:#f7fbff;--muted:#a8b3c7;--muted2:#748098;--cyan:#39e6d2;--blue:#6ea8ff;--radius:28px;--shadow:0 24px 80px rgba(0,0,0,.45)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 18% 8%,rgba(57,230,210,.18),transparent 34%),radial-gradient(circle at 78% 0%,rgba(157,123,255,.18),transparent 31%),linear-gradient(180deg,var(--bg),#03050a 52%,#05070d);color:var(--text);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 72%)}a{color:inherit;text-decoration:none}.wrap{width:min(1080px,calc(100% - 34px));margin:0 auto}header{position:sticky;top:0;z-index:50;backdrop-filter:blur(24px);background:linear-gradient(180deg,rgba(5,7,13,.82),rgba(5,7,13,.56));border-bottom:1px solid rgba(255,255,255,.08)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:4px;font-weight:900;letter-spacing:-.055em;font-size:28px}.brand span:last-child{background:linear-gradient(100deg,#fff,#d9fffb 42%,#b9cfff);-webkit-background-clip:text;color:transparent}.logo{width:92px;height:92px;display:grid;place-items:center;overflow:visible;flex-shrink:0;margin-right:-8px}.logo img{width:92px;height:92px;object-fit:contain;display:block;filter:drop-shadow(0 0 26px rgba(57,230,210,.42)) drop-shadow(0 20px 42px rgba(0,0,0,.58));transform:translateY(2px) scale(1.08)}.navlinks{display:flex;align-items:center;gap:8px}.navlinks a,.lang-btn{border:1px solid transparent;color:var(--muted);padding:10px 13px;border-radius:999px;font-weight:650;font-size:14px;background:transparent;cursor:pointer}.navlinks a:hover,.lang-btn:hover{color:var(--text);border-color:var(--stroke);background:rgba(255,255,255,.06)}.hero{padding:86px 0 38px;text-align:center}.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border-radius:999px;border:1px solid rgba(57,230,210,.28);background:rgba(57,230,210,.08);color:#d8fffb;font-weight:700;font-size:14px}.pulse{width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 0 7px rgba(57,230,210,.14)}h1{margin:22px auto 16px;max-width:930px;font-size:clamp(42px,7vw,82px);line-height:.96;letter-spacing:-.078em;font-weight:950}.gradient{background:linear-gradient(100deg,#fff,#c8fff8 36%,#9bbfff 65%,#decfff);-webkit-background-clip:text;color:transparent}.lead{max-width:720px;margin:0 auto;color:var(--muted);font-size:clamp(17px,2vw,21px);line-height:1.65}.section{padding:36px 0}.panel,.card{border:1px solid var(--stroke);background:linear-gradient(180deg,var(--card2),rgba(255,255,255,.052));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(20px)}.tool{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;align-items:stretch}.panel{padding:24px}.drop{min-height:360px;border:1px dashed rgba(255,255,255,.26);border-radius:24px;display:grid;place-items:center;text-align:center;padding:24px;background:rgba(255,255,255,.045);transition:.2s ease;cursor:pointer}.drop.drag{border-color:var(--cyan);background:rgba(57,230,210,.08)}.icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);font-size:25px;margin:0 auto 16px}.drop strong{display:block;font-size:24px;letter-spacing:-.04em;margin:10px 0 8px}.drop span{color:var(--muted);line-height:1.5}input[type=file]{display:none}.preview{display:none;margin-top:16px;border:1px solid rgba(255,255,255,.12);border-radius:22px;overflow:hidden;background:rgba(0,0,0,.20)}.preview img{width:100%;display:block;max-height:360px;object-fit:contain;background:#111722}.controls{display:grid;gap:14px}.control,.info{padding:16px;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:rgba(255,255,255,.045);color:var(--muted);line-height:1.55}.control label{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-weight:750;font-size:14px;margin-bottom:10px}input[type=range]{width:100%;padding:0;accent-color:var(--cyan)}.btn{border:1px solid var(--stroke);background:rgba(255,255,255,.08);color:var(--text);min-height:54px;padding:0 20px;border-radius:16px;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:.22s ease;width:100%}.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.13)}.btn.primary{border:0;color:#031017;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 20px 58px rgba(57,230,210,.18),inset 0 1px 0 rgba(255,255,255,.45)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.result{color:var(--muted);line-height:1.55;font-size:14px;min-height:22px}.content{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:22px;box-shadow:none}.card h2{margin:0 0 10px;font-size:26px;letter-spacing:-.04em}.card p,.card li{color:var(--muted);line-height:1.7}.card ul{margin:12px 0 0;padding-left:18px}footer{padding:44px 0 38px;color:var(--muted2);border-top:1px solid rgba(255,255,255,.08);margin-top:36px}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:14px;flex-wrap:wrap}.footer-links a:hover{color:var(--text)}@media(max-width:860px){.navlinks a{display:none}.tool,.content{grid-template-columns:1fr}.hero{padding-top:54px}.brand{font-size:25px}.logo{width:74px;height:74px}.logo img{width:74px;height:74px}h1{letter-spacing:-.062em}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PNG to JPG Converter — Toolivo</title>
+
+<meta name="description" content="Convert PNG images to JPG instantly with Toolivo. Free, fast and private online PNG to JPG converter.">
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:min(1150px,calc(100% - 32px));
+margin:auto;
+}
+
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{
+color:#22d3ee;
+}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
+}
+
+.tool{
+margin-top:40px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
+}
+
+.drop{
+border:2px dashed rgba(148,163,184,.18);
+min-height:340px;
+border-radius:24px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+cursor:pointer;
+transition:.2s;
+background:rgba(2,6,23,.3);
+}
+
+.drop.drag,
+.drop:hover{
+border-color:#22d3ee;
+background:rgba(34,211,238,.06);
+}
+
+.drop h2{
+margin:16px 0 10px;
+font-size:30px;
+}
+
+.drop p{
+max-width:320px;
+line-height:1.7;
+color:#94a3b8;
+margin:0;
+}
+
+input[type=file]{
+display:none;
+}
+
+.preview{
+display:none;
+margin-top:18px;
+overflow:hidden;
+border-radius:22px;
+border:1px solid rgba(148,163,184,.16);
+background:#020617;
+}
+
+.preview img{
+width:100%;
+max-height:360px;
+object-fit:contain;
+display:block;
+background:#020617;
+}
+
+.controls{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.info{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:20px;
+padding:18px;
+color:#94a3b8;
+line-height:1.7;
+}
+
+.slider-wrap{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:20px;
+padding:18px;
+}
+
+.slider-wrap label{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+}
+
+input[type=range]{
+width:100%;
+accent-color:#22d3ee;
+}
+
+.btn{
+height:58px;
+border:none;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.btn:disabled{
+opacity:.5;
+cursor:not-allowed;
+transform:none;
+}
+
+.result{
+color:#94a3b8;
+line-height:1.6;
+font-size:14px;
+min-height:22px;
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{
+color:#22d3ee;
+}
+
+@media(max-width:860px){
+
+.tool,
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.tool-hero h1{
+font-size:52px;
+letter-spacing:-2px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-<header><div class="wrap nav"><a class="brand" href="/" aria-label="Toolivo Home"><span class="logo"><img src="https://i.imgur.com/7qzyyTa.png" alt=""></span><span>Toolivo</span></a><nav class="navlinks"><a href="/" data-i18n="home">Home</a><a href="#converter" data-i18n="converter">Converter</a><a href="#faq">FAQ</a><button class="lang-btn" id="langBtn">TR</button></nav></div></header>
-<main>
-  <section class="hero wrap"><div class="badge"><span class="pulse"></span><span data-i18n="badge">Private browser-based converter</span></div><h1><span data-i18n="heroA">PNG to JPG</span><br><span class="gradient" data-i18n="heroB">converter.</span></h1><p class="lead" data-i18n="lead">Convert PNG images to JPG instantly. Choose quality, reduce file size and download a clean JPEG directly from your browser.</p></section>
-  <section class="section wrap" id="converter"><div class="tool"><div class="panel"><label class="drop" id="dropZone" for="fileInput"><div><div class="icon">🖼️</div><strong data-i18n="dropTitle">Drop your PNG image here</strong><span data-i18n="dropText">or tap to browse from your device.</span></div></label><input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp"><div class="preview" id="preview"><img id="previewImg" alt="Preview"></div></div><div class="panel controls"><div class="info" id="fileInfo" data-i18n="idle">Choose a PNG image to begin.</div><div class="control"><label><span data-i18n="quality">JPG quality</span><span id="qualityValue">90%</span></label><input id="qualityRange" type="range" min="10" max="100" value="90"></div><button class="btn primary" id="downloadBtn" disabled data-i18n="download">Convert and download JPG</button><div class="result" id="result"></div><div class="info" data-i18n="privacy">Toolivo converts images locally in your browser. The selected file is not uploaded by this page.</div></div></div></section>
-  <section class="section wrap" id="faq"><div class="content"><article class="card"><h2 data-i18n="whyTitle">Why convert PNG to JPG?</h2><p data-i18n="whyText">JPG files are often smaller and easier to share, upload or use on websites. They are ideal for photos and images that do not need transparency.</p></article><article class="card"><h2 data-i18n="howTitle">How it works</h2><ul><li data-i18n="s1">Select or drop a PNG image.</li><li data-i18n="s2">Choose the JPG quality.</li><li data-i18n="s3">Download the new JPG file instantly.</li></ul></article></div></section>
-</main>
-<footer><div class="wrap footer-inner"><div>© <span id="year"></span> Toolivo. <span data-i18n="rights">All rights reserved.</span></div><div class="footer-links"><a href="/about.html" data-i18n="aboutF">About</a><a href="/privacy.html" data-i18n="privacyF">Privacy</a><a href="/terms.html" data-i18n="termsF">Terms</a><a href="/contact.html" data-i18n="contactF">Contact</a></div></div></footer>
+
+<div class="container">
+
+<header class="header">
+
+<a href="/" class="logo">
+Toolivo
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+
+</header>
+
+<section class="tool-hero">
+
+<h1>
+<span class="gradient">PNG to JPG</span><br>
+Converter
+</h1>
+
+<p>
+Convert PNG images to JPG instantly. Reduce file size and download clean JPEG images directly in your browser.
+</p>
+
+</section>
+
+<section class="tool">
+
+<div class="panel">
+
+<label class="drop" id="dropZone" for="fileInput">
+
+<div style="font-size:60px">🖼️</div>
+
+<h2>Drop your PNG image</h2>
+
+<p>
+or click to browse from your device.
+Supports PNG, JPG and WEBP images.
+</p>
+
+</label>
+
+<input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp">
+
+<div class="preview" id="preview">
+<img id="previewImg" alt="Preview">
+</div>
+
+</div>
+
+<div class="panel controls">
+
+<div class="info" id="fileInfo">
+Choose a PNG image to begin conversion.
+</div>
+
+<div class="slider-wrap">
+
+<label>
+<span>JPG Quality</span>
+<span id="qualityValue">90%</span>
+</label>
+
+<input id="qualityRange" type="range" min="10" max="100" value="90">
+
+</div>
+
+<button class="btn primary" id="downloadBtn" disabled>
+Convert & Download JPG
+</button>
+
+<div class="result" id="result"></div>
+
+<div class="info">
+Toolivo converts images locally in your browser. Your image is never uploaded to a server.
+</div>
+
+</div>
+
+</section>
+
+<section class="info-grid">
+
+<div class="info-card">
+<h2>Why convert PNG to JPG?</h2>
+<p>
+JPG images are usually smaller and easier to upload, share and optimize for websites and marketplaces.
+</p>
+</div>
+
+<div class="info-card">
+<h2>How it works</h2>
+<p>
+Select or drop your PNG image, choose JPG quality and download the converted image instantly.
+</p>
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© 2026 Toolivo — PNG to JPG Converter
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
+
+</div>
+
 <script>
-const tr={home:'Ana sayfa',converter:'Dönüştürücü',badge:'Tarayıcı içinde gizli dönüştürücü',heroA:'PNG → JPG',heroB:'dönüştürücü.',lead:'PNG görselleri anında JPG’ye dönüştür. Kalite seç, dosya boyutunu düşür ve temiz JPEG dosyasını doğrudan tarayıcından indir.',dropTitle:'PNG görselini buraya bırak',dropText:'veya cihazından seçmek için dokun.',idle:'Başlamak için bir PNG görsel seç.',quality:'JPG kalitesi',download:'JPG’ye dönüştür ve indir',privacy:'Toolivo görselleri tarayıcında yerel olarak dönüştürür. Seçilen dosya bu sayfa tarafından sunucuya yüklenmez.',whyTitle:'PNG neden JPG’ye çevrilir?',whyText:'JPG dosyaları genellikle daha küçük olur ve paylaşmak, yüklemek veya web sitelerinde kullanmak daha kolaydır. Şeffaflık gerektirmeyen fotoğraflar ve görseller için idealdir.',howTitle:'Nasıl çalışır?',s1:'Bir PNG görsel seç veya sürükle bırak.',s2:'JPG kalitesini seç.',s3:'Yeni JPG dosyasını anında indir.',rights:'Tüm hakları saklıdır.',aboutF:'Hakkında',privacyF:'Gizlilik',termsF:'Şartlar',contactF:'İletişim'};
-const en={home:'Home',converter:'Converter',badge:'Private browser-based converter',heroA:'PNG to JPG',heroB:'converter.',lead:'Convert PNG images to JPG instantly. Choose quality, reduce file size and download a clean JPEG directly from your browser.',dropTitle:'Drop your PNG image here',dropText:'or tap to browse from your device.',idle:'Choose a PNG image to begin.',quality:'JPG quality',download:'Convert and download JPG',privacy:'Toolivo converts images locally in your browser. The selected file is not uploaded by this page.',whyTitle:'Why convert PNG to JPG?',whyText:'JPG files are often smaller and easier to share, upload or use on websites. They are ideal for photos and images that do not need transparency.',howTitle:'How it works',s1:'Select or drop a PNG image.',s2:'Choose the JPG quality.',s3:'Download the new JPG file instantly.',rights:'All rights reserved.',aboutF:'About',privacyF:'Privacy',termsF:'Terms',contactF:'Contact'};
-let lang=localStorage.getItem('toolivo_lang')||((navigator.language||'').toLowerCase().startsWith('tr')?'tr':'en');const q=s=>document.querySelector(s),qa=s=>document.querySelectorAll(s);function applyLang(){const d=lang==='tr'?tr:en;document.documentElement.lang=lang;qa('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.textContent=d[k]});q('#langBtn').textContent=lang==='tr'?'EN':'TR';document.title=lang==='tr'?'PNG JPG Dönüştürücü — Toolivo':'PNG to JPG Converter — Toolivo'}q('#langBtn').onclick=()=>{lang=lang==='tr'?'en':'tr';localStorage.setItem('toolivo_lang',lang);applyLang()};applyLang();q('#year').textContent=new Date().getFullYear();
-let bitmap=null,fileName='toolivo-image';const fileInput=q('#fileInput'),drop=q('#dropZone'),preview=q('#preview'),previewImg=q('#previewImg'),fileInfo=q('#fileInfo'),download=q('#downloadBtn'),result=q('#result'),quality=q('#qualityRange'),qualityValue=q('#qualityValue');quality.oninput=()=>qualityValue.textContent=quality.value+'%';async function loadFile(file){if(!file||!file.type.startsWith('image/'))return;fileName=file.name.replace(/\.[^.]+$/,'')||'toolivo-image';const url=URL.createObjectURL(file);previewImg.src=url;preview.style.display='block';bitmap=await createImageBitmap(file);fileInfo.textContent=`${file.name} • ${bitmap.width}×${bitmap.height} • ${(file.size/1024).toFixed(1)} KB`;download.disabled=false;result.textContent=''}fileInput.onchange=e=>loadFile(e.target.files[0]);['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag')}));drop.addEventListener('drop',e=>loadFile(e.dataTransfer.files[0]));download.onclick=()=>{if(!bitmap)return;const canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0);canvas.toBlob(blob=>{if(!blob){result.textContent='Export failed.';return}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`${fileName}-toolivo.jpg`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);result.textContent=`Done • ${(blob.size/1024).toFixed(1)} KB`},'image/jpeg',Number(quality.value)/100)};
+
+let bitmap = null;
+let fileName = 'toolivo-image';
+
+const fileInput =
+document.getElementById('fileInput');
+
+const drop =
+document.getElementById('dropZone');
+
+const preview =
+document.getElementById('preview');
+
+const previewImg =
+document.getElementById('previewImg');
+
+const fileInfo =
+document.getElementById('fileInfo');
+
+const download =
+document.getElementById('downloadBtn');
+
+const result =
+document.getElementById('result');
+
+const quality =
+document.getElementById('qualityRange');
+
+const qualityValue =
+document.getElementById('qualityValue');
+
+quality.oninput = () => {
+
+qualityValue.textContent =
+quality.value + '%';
+
+};
+
+async function loadFile(file){
+
+if(!file || !file.type.startsWith('image/')) return;
+
+fileName =
+file.name.replace(/\.[^.]+$/,'') || 'toolivo-image';
+
+const url =
+URL.createObjectURL(file);
+
+previewImg.src = url;
+
+preview.style.display = 'block';
+
+bitmap =
+await createImageBitmap(file);
+
+fileInfo.innerHTML = `
+<strong>${file.name}</strong><br>
+${bitmap.width} × ${bitmap.height}<br>
+${(file.size / 1024).toFixed(1)} KB
+`;
+
+download.disabled = false;
+
+result.textContent = '';
+
+}
+
+fileInput.onchange = e => {
+loadFile(e.target.files[0]);
+};
+
+['dragenter','dragover'].forEach(ev => {
+
+drop.addEventListener(ev,e => {
+
+e.preventDefault();
+
+drop.classList.add('drag');
+
+});
+
+});
+
+['dragleave','drop'].forEach(ev => {
+
+drop.addEventListener(ev,e => {
+
+e.preventDefault();
+
+drop.classList.remove('drag');
+
+});
+
+});
+
+drop.addEventListener('drop',e => {
+
+loadFile(e.dataTransfer.files[0]);
+
+});
+
+download.onclick = () => {
+
+if(!bitmap) return;
+
+const canvas =
+document.createElement('canvas');
+
+canvas.width = bitmap.width;
+canvas.height = bitmap.height;
+
+const ctx =
+canvas.getContext('2d');
+
+ctx.imageSmoothingEnabled = true;
+ctx.imageSmoothingQuality = 'high';
+
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.drawImage(bitmap,0,0);
+
+canvas.toBlob(blob => {
+
+if(!blob){
+
+result.textContent = 'Export failed.';
+return;
+
+}
+
+const url =
+URL.createObjectURL(blob);
+
+const a =
+document.createElement('a');
+
+a.href = url;
+
+a.download =
+`${fileName}-toolivo.jpg`;
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+URL.revokeObjectURL(url);
+
+result.textContent =
+`Done • ${(blob.size / 1024).toFixed(1)} KB`;
+
+},'image/jpeg',
+Number(quality.value)/100);
+
+};
+
 </script>
+
 </body>
 </html>
