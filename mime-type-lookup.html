@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIME Type Lookup — Toolivo</title>
+<meta name="description" content="Find MIME types and file extensions instantly with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1000px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+margin-top:18px;
+}
+
+input{
+width:100%;
+height:58px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:0 18px;
+font-size:18px;
+box-sizing:border-box;
+}
+
+.result{
+margin-top:18px;
+padding:22px;
+border-radius:18px;
+background:#05070d;
+border:1px solid #263244;
+line-height:1.8;
+}
+
+.big{
+font-size:34px;
+font-weight:900;
+margin-bottom:8px;
+word-break:break-all;
+}
+
+.desc{
+color:#9ca8bb;
+font-size:16px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:20px;
+}
+
+.item{
+background:#121935;
+border:1px solid #263244;
+padding:14px;
+border-radius:14px;
+cursor:pointer;
+transition:.2s;
+}
+
+.item:hover{
+transform:translateY(-2px);
+}
+
+.item b{
+display:block;
+margin-bottom:5px;
+}
+
+@media(max-width:800px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>MIME Type Lookup</h1>
+
+<p>
+Search file extensions and MIME types instantly.
+</p>
+
+<div class="panel">
+
+<input id="search" placeholder="Search extension like png, pdf, mp4, json...">
+
+<div class="result" id="result">
+<div class="big">image/png</div>
+<div><b>.png</b></div>
+<div class="desc">
+Portable Network Graphics image format.
+</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+</div>
+
+</div>
+
+<script>
+const types={
+
+png:{
+mime:'image/png',
+ext:'.png',
+desc:'Portable Network Graphics image format.'
+},
+
+jpg:{
+mime:'image/jpeg',
+ext:'.jpg',
+desc:'JPEG image format.'
+},
+
+jpeg:{
+mime:'image/jpeg',
+ext:'.jpeg',
+desc:'JPEG image format.'
+},
+
+gif:{
+mime:'image/gif',
+ext:'.gif',
+desc:'GIF image format.'
+},
+
+webp:{
+mime:'image/webp',
+ext:'.webp',
+desc:'Modern image format.'
+},
+
+svg:{
+mime:'image/svg+xml',
+ext:'.svg',
+desc:'Scalable vector graphic.'
+},
+
+json:{
+mime:'application/json',
+ext:'.json',
+desc:'JavaScript Object Notation.'
+},
+
+pdf:{
+mime:'application/pdf',
+ext:'.pdf',
+desc:'Portable Document Format.'
+},
+
+zip:{
+mime:'application/zip',
+ext:'.zip',
+desc:'Compressed ZIP archive.'
+},
+
+mp4:{
+mime:'video/mp4',
+ext:'.mp4',
+desc:'MP4 video file.'
+},
+
+mp3:{
+mime:'audio/mpeg',
+ext:'.mp3',
+desc:'MP3 audio file.'
+},
+
+html:{
+mime:'text/html',
+ext:'.html',
+desc:'HTML document.'
+},
+
+css:{
+mime:'text/css',
+ext:'.css',
+desc:'CSS stylesheet.'
+},
+
+js:{
+mime:'application/javascript',
+ext:'.js',
+desc:'JavaScript file.'
+},
+
+xml:{
+mime:'application/xml',
+ext:'.xml',
+desc:'XML document.'
+}
+
+};
+
+const search=document.getElementById('search');
+const result=document.getElementById('result');
+const grid=document.getElementById('grid');
+
+function render(key){
+
+const data=types[key];
+
+if(!data){
+
+result.innerHTML=`
+<div class="big">Not found</div>
+<div class="desc">No MIME type found.</div>
+`;
+
+return;
+}
+
+result.innerHTML=`
+<div class="big">${data.mime}</div>
+<div><b>${data.ext}</b></div>
+<div class="desc">${data.desc}</div>
+`;
+
+}
+
+Object.keys(types).forEach(key=>{
+
+const div=document.createElement('div');
+
+div.className='item';
+
+div.innerHTML=`
+<b>${types[key].ext}</b>
+<span>${types[key].mime}</span>
+`;
+
+div.onclick=()=>{
+
+search.value=key;
+
+render(key);
+
+};
+
+grid.appendChild(div);
+
+});
+
+search.addEventListener('input',()=>{
+
+const val=search.value
+.toLowerCase()
+.replace('.','')
+.trim();
+
+render(val);
+
+});
+
+render('png');
+</script>
+
+</body>
+</html>
