@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Agent Parser — Toolivo</title>
+<meta name="description" content="Parse user agent strings instantly with Toolivo. Detect browser, operating system and device type.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:white}
+.wrap{width:min(1000px,calc(100% - 28px));margin:auto;padding:40px 0}
+h1{font-size:56px;margin:20px 0 10px}
+p{color:#9ca8bb}
+.panel{background:#0b1020;border:1px solid #263244;border-radius:20px;padding:18px;margin-top:18px}
+textarea{width:100%;min-height:180px;border-radius:18px;border:1px solid #263244;background:#05070d;color:white;padding:18px;font-size:15px;line-height:1.6;box-sizing:border-box;resize:vertical}
+button{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#39e6d2,#6ea8ff);font-weight:800;cursor:pointer;margin:10px 10px 0 0}
+.copy{background:#121935;color:white;border:1px solid #263244}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+.card{background:#05070d;border:1px solid #263244;border-radius:16px;padding:16px}
+.card b{display:block;font-size:14px;color:#9ca8bb;margin-bottom:6px}
+.card span{font-size:18px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:42px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>User Agent Parser</h1>
+<p>Paste a user agent string and detect browser, OS and device type.</p>
+
+<div class="panel">
+<textarea id="ua" placeholder="Paste user agent here..."></textarea>
+<button onclick="parseUA()">Parse User Agent</button>
+<button class="copy" onclick="useMine()">Use My User Agent</button>
+</div>
+
+<div class="panel">
+<div class="grid">
+<div class="card"><b>Browser</b><span id="browser">-</span></div>
+<div class="card"><b>Operating System</b><span id="os">-</span></div>
+<div class="card"><b>Device</b><span id="device">-</span></div>
+<div class="card"><b>Engine</b><span id="engine">-</span></div>
+</div>
+</div>
+</div>
+
+<script>
+const ua=document.getElementById('ua');
+
+function parseUA(){
+ const text=ua.value;
+
+ let browser='Unknown';
+ let os='Unknown';
+ let device='Desktop';
+ let engine='Unknown';
+
+ if(/Chrome/i.test(text) && !/Edg/i.test(text)) browser='Chrome';
+ if(/Firefox/i.test(text)) browser='Firefox';
+ if(/Safari/i.test(text) && !/Chrome/i.test(text)) browser='Safari';
+ if(/Edg/i.test(text)) browser='Microsoft Edge';
+ if(/Opera|OPR/i.test(text)) browser='Opera';
+
+ if(/Windows/i.test(text)) os='Windows';
+ if(/Mac OS/i.test(text)) os='macOS';
+ if(/Android/i.test(text)) os='Android';
+ if(/iPhone|iPad|iOS/i.test(text)) os='iOS';
+ if(/Linux/i.test(text) && !/Android/i.test(text)) os='Linux';
+
+ if(/Mobile|iPhone|Android/i.test(text)) device='Mobile';
+ if(/iPad|Tablet/i.test(text)) device='Tablet';
+
+ if(/AppleWebKit/i.test(text)) engine='WebKit/Blink';
+ if(/Gecko/i.test(text) && /Firefox/i.test(text)) engine='Gecko';
+
+ document.getElementById('browser').textContent=browser;
+ document.getElementById('os').textContent=os;
+ document.getElementById('device').textContent=device;
+ document.getElementById('engine').textContent=engine;
+}
+
+function useMine(){
+ ua.value=navigator.userAgent;
+ parseUA();
+}
+
+useMine();
+</script>
+</body>
+</html>
