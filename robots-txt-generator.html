@@ -4,38 +4,295 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Robots.txt Generator - Toolivo</title>
-<meta name="description" content="Generate robots.txt files instantly with sitemap URL, crawl delay, allow and disallow rules.">
+<title>Robots.txt Generator — Toolivo</title>
+
+<meta name="description" content="Generate robots.txt files instantly with sitemap URL, crawl delay, allow and disallow rules using Toolivo.">
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;padding:20px}
-.container{max-width:950px;margin:auto}
-.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.desc{color:#94a3b8;margin-bottom:30px;line-height:1.6}
-.card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:20px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.input-group{display:flex;flex-direction:column}
-.input-group label{margin-bottom:8px;color:#cbd5e1;font-size:14px}
-.input-group input,.input-group select,.input-group textarea{
-    background:#020617;border:1px solid #1e293b;color:white;
-    padding:14px;border-radius:12px;outline:none;
+
+*{
+box-sizing:border-box;
 }
-textarea{resize:vertical;min-height:100px}
-.buttons{display:flex;gap:15px;margin-top:20px;flex-wrap:wrap}
+
+body{
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:min(1150px,calc(100% - 32px));
+margin:auto;
+}
+
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{
+color:#22d3ee;
+}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
+}
+
+.panel{
+margin-top:34px;
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.input-group{
+display:flex;
+flex-direction:column;
+}
+
+label{
+margin-bottom:8px;
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+}
+
+input,
+select,
+textarea{
+width:100%;
+background:#020617;
+border:1px solid rgba(148,163,184,.18);
+color:white;
+padding:16px;
+border-radius:18px;
+outline:none;
+font-family:inherit;
+font-size:15px;
+transition:.2s;
+}
+
+input,
+select{
+height:56px;
+}
+
+textarea{
+resize:vertical;
+min-height:120px;
+line-height:1.7;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:22px;
+}
+
 button{
-    padding:14px 20px;border:none;border-radius:12px;
-    cursor:pointer;font-weight:bold;transition:.2s;
+height:56px;
+padding:0 22px;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+background:rgba(255,255,255,.06);
+color:white;
+border:1px solid rgba(148,163,184,.16);
 }
-.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
-.copy{background:#1e293b;color:white}
-button:hover{opacity:.9;transform:translateY(-2px)}
+
+button:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
+}
+
 .output{
-    width:100%;height:350px;background:#020617;border:1px solid #1e293b;
-    color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5;
+width:100%;
+height:360px;
+margin-top:18px;
+background:#020617;
+border:1px solid rgba(148,163,184,.16);
+color:#67e8f9;
+border-radius:22px;
+padding:18px;
+resize:vertical;
+line-height:1.7;
+outline:none;
+font-family:Consolas,Monaco,monospace;
+font-size:15px;
 }
-.footer{text-align:center;color:#64748b;margin-top:30px;font-size:14px}
+
+.output:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{
+color:#22d3ee;
+}
+
+@media(max-width:850px){
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.grid,
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.tool-hero h1{
+letter-spacing:-2px;
+}
+
+.actions{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
+
 </style>
 </head>
 
@@ -43,145 +300,265 @@ button:hover{opacity:.9;transform:translateY(-2px)}
 
 <div class="container">
 
-    <div class="title">Robots.txt Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate a robots.txt file for your website. Add sitemap URL, crawl delay,
-        allow rules, disallow rules and custom bot instructions.
-    </div>
+<a href="/" class="logo">
+Toolivo
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div class="input-group">
-                <label>Bot Rule</label>
-                <select id="botRule">
-                    <option value="allow">Allow all bots</option>
-                    <option value="block">Block all bots</option>
-                    <option value="custom">Custom user-agent</option>
-                </select>
-            </div>
+<section class="tool-hero">
 
-            <div class="input-group">
-                <label>Custom User-Agent</label>
-                <input type="text" id="customAgent" placeholder="Googlebot">
-            </div>
+<h1>
+<span class="gradient">Robots.txt</span><br>
+Generator
+</h1>
 
-            <div class="input-group">
-                <label>Sitemap URL</label>
-                <input type="text" id="sitemapUrl" placeholder="https://toolivo.site/sitemap.xml">
-            </div>
+<p>
+Generate robots.txt files instantly with sitemap URL, crawl delay, allow and disallow rules for SEO and search engines.
+</p>
 
-            <div class="input-group">
-                <label>Crawl Delay</label>
-                <input type="number" id="crawlDelay" placeholder="10">
-            </div>
+</section>
 
-            <div class="input-group">
-                <label>Disallow Paths</label>
-                <textarea id="disallowPaths" placeholder="/admin&#10;/private&#10;/test"></textarea>
-            </div>
+<section class="panel">
 
-            <div class="input-group">
-                <label>Allow Paths</label>
-                <textarea id="allowPaths" placeholder="/&#10;/tools"></textarea>
-            </div>
+<div class="grid">
 
-        </div>
+<div class="input-group">
+<label for="botRule">Bot Rule</label>
 
-        <div class="input-group" style="margin-top:15px;">
-            <label>Custom Rules</label>
-            <textarea id="customRules" placeholder="Add extra robots.txt rules here..."></textarea>
-        </div>
+<select id="botRule">
+<option value="allow">Allow all bots</option>
+<option value="block">Block all bots</option>
+<option value="custom">Custom user-agent</option>
+</select>
+</div>
 
-        <div class="buttons">
-            <button class="generate" onclick="generateRobots()">Generate</button>
-            <button class="copy" onclick="copyRobots()">Copy</button>
-        </div>
+<div class="input-group">
+<label for="customAgent">Custom User-Agent</label>
+<input type="text" id="customAgent" placeholder="Googlebot">
+</div>
 
-    </div>
+<div class="input-group">
+<label for="sitemapUrl">Sitemap URL</label>
+<input type="text" id="sitemapUrl" placeholder="https://toolivo.site/sitemap.xml">
+</div>
 
-    <div class="card">
-        <textarea class="output" id="output" placeholder="Generated robots.txt will appear here..."></textarea>
-    </div>
+<div class="input-group">
+<label for="crawlDelay">Crawl Delay</label>
+<input type="number" id="crawlDelay" placeholder="10">
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="input-group">
+<label for="disallowPaths">Disallow Paths</label>
+<textarea id="disallowPaths" placeholder="/admin&#10;/private&#10;/test"></textarea>
+</div>
+
+<div class="input-group">
+<label for="allowPaths">Allow Paths</label>
+<textarea id="allowPaths" placeholder="/&#10;/tools"></textarea>
+</div>
+
+</div>
+
+<div class="input-group" style="margin-top:18px;">
+<label for="customRules">Custom Rules</label>
+<textarea id="customRules" placeholder="Add extra robots.txt rules here..."></textarea>
+</div>
+
+<div class="actions">
+
+<button class="primary" onclick="generateRobots()">
+Generate Robots.txt
+</button>
+
+<button onclick="copyRobots()">
+Copy Robots.txt
+</button>
+
+<button onclick="clearAll()">
+Clear
+</button>
+
+</div>
+
+<textarea class="output" id="output" placeholder="Generated robots.txt will appear here..." readonly></textarea>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h2>What is robots.txt?</h2>
+<p>
+robots.txt tells search engine crawlers which pages or folders they can or cannot access on your website.
+</p>
+</div>
+
+<div class="info-card">
+<h2>Why add a sitemap?</h2>
+<p>
+Including your sitemap URL helps search engines discover and index pages more efficiently.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© 2026 Toolivo — Robots.txt Generator
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
+
 function generateRobots(){
 
-    const botRule = document.getElementById("botRule").value;
-    const customAgent = document.getElementById("customAgent").value.trim();
-    const sitemapUrl = document.getElementById("sitemapUrl").value.trim();
-    const crawlDelay = document.getElementById("crawlDelay").value.trim();
-    const disallowPaths = document.getElementById("disallowPaths").value.trim();
-    const allowPaths = document.getElementById("allowPaths").value.trim();
-    const customRules = document.getElementById("customRules").value.trim();
+const botRule =
+document.getElementById("botRule").value;
 
-    let code = "";
+const customAgent =
+document.getElementById("customAgent").value.trim();
 
-    if(botRule === "allow"){
-        code += "User-agent: *\n";
-        code += "Allow: /\n";
-    }
+const sitemapUrl =
+document.getElementById("sitemapUrl").value.trim();
 
-    if(botRule === "block"){
-        code += "User-agent: *\n";
-        code += "Disallow: /\n";
-    }
+const crawlDelay =
+document.getElementById("crawlDelay").value.trim();
 
-    if(botRule === "custom"){
-        code += "User-agent: " + (customAgent || "*") + "\n";
-    }
+const disallowPaths =
+document.getElementById("disallowPaths").value.trim();
 
-    if(disallowPaths){
-        disallowPaths.split("\n").forEach(path => {
-            if(path.trim()){
-                code += "Disallow: " + path.trim() + "\n";
-            }
-        });
-    }
+const allowPaths =
+document.getElementById("allowPaths").value.trim();
 
-    if(allowPaths){
-        allowPaths.split("\n").forEach(path => {
-            if(path.trim()){
-                code += "Allow: " + path.trim() + "\n";
-            }
-        });
-    }
+const customRules =
+document.getElementById("customRules").value.trim();
 
-    if(crawlDelay){
-        code += "Crawl-delay: " + crawlDelay + "\n";
-    }
+let code = "";
 
-    if(sitemapUrl){
-        code += "\nSitemap: " + sitemapUrl + "\n";
-    }
+if(botRule === "allow"){
 
-    if(customRules){
-        code += "\n" + customRules + "\n";
-    }
+code += "User-agent: *\n";
+code += "Allow: /\n";
 
-    document.getElementById("output").value = code.trim();
+}
+
+if(botRule === "block"){
+
+code += "User-agent: *\n";
+code += "Disallow: /\n";
+
+}
+
+if(botRule === "custom"){
+
+code += "User-agent: " + (customAgent || "*") + "\n";
+
+}
+
+if(disallowPaths){
+
+disallowPaths.split("\n").forEach(path => {
+
+if(path.trim()){
+
+code += "Disallow: " + path.trim() + "\n";
+
+}
+
+});
+
+}
+
+if(allowPaths){
+
+allowPaths.split("\n").forEach(path => {
+
+if(path.trim()){
+
+code += "Allow: " + path.trim() + "\n";
+
+}
+
+});
+
+}
+
+if(crawlDelay){
+
+code += "Crawl-delay: " + crawlDelay + "\n";
+
+}
+
+if(sitemapUrl){
+
+code += "\nSitemap: " + sitemapUrl + "\n";
+
+}
+
+if(customRules){
+
+code += "\n" + customRules + "\n";
+
+}
+
+document.getElementById("output").value =
+code.trim();
+
 }
 
 function copyRobots(){
 
-    const output = document.getElementById("output");
+const output =
+document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate robots.txt first.");
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-    alert("Copied!");
+if(!output.value){
+alert("Generate robots.txt first.");
+return;
 }
+
+navigator.clipboard.writeText(output.value);
+
+alert("Copied!");
+
+}
+
+function clearAll(){
+
+document.getElementById("customAgent").value = "";
+document.getElementById("sitemapUrl").value = "";
+document.getElementById("crawlDelay").value = "";
+document.getElementById("disallowPaths").value = "";
+document.getElementById("allowPaths").value = "";
+document.getElementById("customRules").value = "";
+document.getElementById("output").value = "";
+
+}
+
+generateRobots();
+
 </script>
 
 </body>
