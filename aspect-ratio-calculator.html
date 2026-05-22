@@ -6,7 +6,7 @@
 
 <title>Aspect Ratio Calculator - Toolivo</title>
 <meta name="description" content="Calculate aspect ratios instantly with live preview and common ratio detection.">
-
+<link rel="stylesheet" href="/global.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 
@@ -144,6 +144,15 @@ button{
 </head>
 
 <body>
+    <div id="globalHeader"></div>
+
+<script>
+fetch('/header.html')
+.then(res => res.text())
+.then(html => {
+document.getElementById('globalHeader').innerHTML = html;
+});
+</script>
 
 <div class="container">
 
