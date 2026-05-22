@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHA256 Hash Generator — Toolivo</title>
+<meta name="description" content="Generate SHA256 hashes instantly with Toolivo. Free online SHA256 hash generator.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1000px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+margin-top:18px;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+margin-bottom:10px;
+}
+
+textarea{
+width:100%;
+min-height:220px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:18px;
+font-size:16px;
+line-height:1.6;
+box-sizing:border-box;
+resize:vertical;
+}
+
+.output{
+margin-top:18px;
+padding:18px;
+border-radius:18px;
+background:#05070d;
+border:1px solid #263244;
+word-break:break-all;
+font-family:monospace;
+font-size:16px;
+line-height:1.7;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin:12px 10px 0 0;
+}
+
+.copy{
+background:#121935;
+color:white;
+border:1px solid #263244;
+}
+
+.info{
+margin-top:16px;
+padding:14px;
+border-radius:14px;
+background:#121935;
+border:1px solid #263244;
+color:#9ca8bb;
+font-size:14px;
+line-height:1.7;
+}
+
+@media(max-width:800px){
+h1{
+font-size:42px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>SHA256 Hash Generator</h1>
+
+<p>
+Generate secure SHA256 hashes instantly with Toolivo.
+</p>
+
+<div class="panel">
+
+<div class="label">Input Text</div>
+
+<textarea id="input" placeholder="Type or paste text here..."></textarea>
+
+<button onclick="generateHash()">Generate SHA256</button>
+<button class="copy" onclick="copyHash()">Copy Hash</button>
+<button class="copy" onclick="clearAll()">Clear</button>
+
+<div class="output" id="output">
+Your SHA256 hash will appear here...
+</div>
+
+<div class="info">
+SHA256 is commonly used for security, hashing, verification and checksums.
+</div>
+
+</div>
+
+</div>
+
+<script>
+const input=document.getElementById('input');
+const output=document.getElementById('output');
+
+async function generateHash(){
+
+const text=input.value;
+
+if(!text){
+output.textContent='Please enter text.';
+return;
+}
+
+const encoder=new TextEncoder();
+const data=encoder.encode(text);
+
+const hashBuffer=await crypto.subtle.digest('SHA-256',data);
+
+const hashArray=Array.from(new Uint8Array(hashBuffer));
+
+const hashHex=hashArray.map(b=>b.toString(16).padStart(2,'0')).join('');
+
+output.textContent=hashHex;
+}
+
+function copyHash(){
+navigator.clipboard.writeText(output.textContent);
+}
+
+function clearAll(){
+input.value='';
+output.textContent='Your SHA256 hash will appear here...';
+}
+</script>
+
+</body>
+</html>
