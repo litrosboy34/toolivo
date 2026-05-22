@@ -4,125 +4,238 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Meta Pixel Helper - Toolivo</title>
-<meta name="description" content="Generate Meta Pixel code instantly for Facebook Ads tracking.">
+<title>Meta Pixel Helper — Toolivo</title>
+<meta name="description" content="Generate Meta Pixel tracking code instantly for Facebook and Instagram Ads with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.container{
-    max-width:950px;
-    margin:auto;
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.input-group{
+display:flex;
+flex-direction:column;
+gap:8px;
+margin-bottom:16px;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
+.input-group label{
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
 }
 
-label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+input,
+select{
+width:100%;
+padding:15px 16px;
+border-radius:16px;
+border:1px solid #334155;
+background:#020617;
+color:white;
+outline:none;
+font-size:15px;
 }
 
-input,select{
-    width:100%;
-    background:#020617;
-    border:1px solid #334155;
-    color:white;
-    border-radius:12px;
-    padding:14px;
-    outline:none;
-    margin-bottom:18px;
+input:focus,
+select:focus{
+border-color:#38bdf8;
 }
 
 .preview{
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:14px;
-    padding:20px;
-    margin-top:20px;
+background:#020617;
+border:1px solid #334155;
+border-radius:16px;
+padding:18px;
+margin-top:8px;
 }
 
 .preview h3{
-    margin-bottom:10px;
-    color:#38bdf8;
+margin-bottom:10px;
+color:#38bdf8;
+font-size:20px;
 }
 
 .preview p{
-    color:#94a3b8;
-    line-height:1.6;
+color:#94a3b8;
+line-height:1.7;
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+margin-top:18px;
+flex-wrap:wrap;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+flex:1;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#1e293b;
-    color:white;
+background:#020617;
+color:#cbd5e1;
+border:1px solid #334155;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
 }
 
 textarea{
-    width:100%;
-    height:320px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:500px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:18px;
+resize:vertical;
+line-height:1.6;
+outline:none;
+font-family:monospace;
+font-size:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+textarea{
+height:340px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+.generate,
+.copy{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -131,75 +244,153 @@ textarea{
 
 <div class="container">
 
-    <div class="title">Meta Pixel Helper</div>
+<header class="header">
 
-    <div class="desc">
-        Generate Meta Pixel tracking code instantly for Facebook and Instagram Ads.
-    </div>
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <label>Meta Pixel ID</label>
-        <input type="text" id="pixelId" placeholder="123456789012345">
+</header>
 
-        <label>Event Type</label>
-        <select id="eventType">
-            <option value="PageView">PageView</option>
-            <option value="Purchase">Purchase</option>
-            <option value="Lead">Lead</option>
-            <option value="AddToCart">AddToCart</option>
-            <option value="CompleteRegistration">CompleteRegistration</option>
-        </select>
+<section class="tool-hero">
 
-        <div class="preview">
+<h1>Meta Pixel <span class="gradient">Helper</span></h1>
 
-            <h3>What is Meta Pixel?</h3>
+<p>
+Generate Meta Pixel tracking code instantly for Facebook and Instagram Ads. Create conversion tracking scripts for websites, landing pages and e-commerce stores.
+</p>
 
-            <p>
-                Meta Pixel helps you track conversions, optimize ads,
-                build audiences, and measure campaign performance
-                across Facebook and Instagram.
-            </p>
+</section>
 
-        </div>
+<section class="tool-grid">
 
-        <div class="buttons">
+<div class="panel">
 
-            <button class="generate" onclick="generatePixel()">
-                Generate
-            </button>
+<div class="input-group">
+<label>Meta Pixel ID</label>
+<input type="text" id="pixelId" placeholder="123456789012345">
+</div>
 
-            <button class="copy" onclick="copyCode()">
-                Copy Code
-            </button>
+<div class="input-group">
+<label>Event Type</label>
 
-        </div>
+<select id="eventType">
+<option value="PageView">PageView</option>
+<option value="Purchase">Purchase</option>
+<option value="Lead">Lead</option>
+<option value="AddToCart">AddToCart</option>
+<option value="CompleteRegistration">CompleteRegistration</option>
+</select>
 
-        <textarea id="output" placeholder="Generated Meta Pixel code will appear here..."></textarea>
+</div>
 
-    </div>
+<div class="preview">
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<h3>What is Meta Pixel?</h3>
+
+<p>
+Meta Pixel helps you track conversions, optimize ads, build custom audiences and measure ad campaign performance across Facebook and Instagram.
+</p>
+
+</div>
+
+<div class="buttons">
+
+<button class="generate" onclick="generatePixel()">
+Generate
+</button>
+
+<button class="copy" onclick="copyCode()">
+Copy Code
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Generated Meta Pixel code will appear below. Copy the code and paste it before the closing head tag of your website.
+</div>
+
+<textarea
+id="output"
+placeholder="Generated Meta Pixel code will appear here..."
+></textarea>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use Meta Pixel?</h2>
+
+<p>
+Meta Pixel allows you to track visitors, optimize advertising campaigns and measure important actions like purchases, leads and registrations.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Enter your Meta Pixel ID.</li>
+<li>Select the event type you want to track.</li>
+<li>Generate and copy the tracking code instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generatePixel(){
 
-    const pixelId =
-    document.getElementById("pixelId").value.trim();
+const pixelId=
+document.getElementById("pixelId").value.trim();
 
-    const eventType =
-    document.getElementById("eventType").value;
+const eventType=
+document.getElementById("eventType").value;
 
-    if(!pixelId){
-        alert("Please enter a Meta Pixel ID.");
-        return;
-    }
+if(!pixelId){
+alert("Please enter a Meta Pixel ID.");
+return;
+}
 
-    const code =
+const code=
 `<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -230,23 +421,25 @@ src="https://www.facebook.com/tr?id=${pixelId}&ev=${eventType}&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->`;
 
-    document.getElementById("output").value = code;
+document.getElementById("output").value=code;
 }
 
 function copyCode(){
 
-    const output =
-    document.getElementById("output");
+const output=
+document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate code first.");
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
+if(!output.value){
+alert("Generate code first.");
+return;
 }
+
+navigator.clipboard.writeText(output.value);
+
+alert("Copied!");
+}
+
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
