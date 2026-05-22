@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flexbox Generator - Toolivo</title>
+
+<meta name="description" content="Generate CSS Flexbox layouts instantly with live preview and copyable code.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+@media(max-width:850px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.control{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+select,
+input{
+    width:100%;
+    background:#020617;
+    border:1px solid #334155;
+    color:white;
+    border-radius:12px;
+    padding:14px;
+    outline:none;
+}
+
+.preview{
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    min-height:350px;
+    padding:20px;
+    display:flex;
+    gap:10px;
+}
+
+.item{
+    width:70px;
+    height:70px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#06b6d4,#3b82f6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+button{
+    padding:13px 20px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#1e293b;
+    color:white;
+}
+
+textarea{
+    width:100%;
+    height:220px;
+    margin-top:18px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:25px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">Flexbox Generator</div>
+
+    <div class="desc">
+        Generate CSS Flexbox layouts instantly with live preview and copyable CSS code.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div>
+
+                <div class="control">
+                    <label>Flex Direction</label>
+
+                    <select id="direction">
+                        <option value="row">row</option>
+                        <option value="column">column</option>
+                        <option value="row-reverse">row-reverse</option>
+                        <option value="column-reverse">column-reverse</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <label>Justify Content</label>
+
+                    <select id="justify">
+                        <option value="flex-start">flex-start</option>
+                        <option value="center">center</option>
+                        <option value="flex-end">flex-end</option>
+                        <option value="space-between">space-between</option>
+                        <option value="space-around">space-around</option>
+                        <option value="space-evenly">space-evenly</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <label>Align Items</label>
+
+                    <select id="align">
+                        <option value="stretch">stretch</option>
+                        <option value="flex-start">flex-start</option>
+                        <option value="center">center</option>
+                        <option value="flex-end">flex-end</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <label>Gap</label>
+
+                    <input type="range" id="gap" min="0" max="60" value="10">
+                </div>
+
+                <div class="control">
+                    <label>Flex Wrap</label>
+
+                    <select id="wrap">
+                        <option value="nowrap">nowrap</option>
+                        <option value="wrap">wrap</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="preview" id="preview">
+
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                    <div class="item">4</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="generate" onclick="generateFlex()">
+                Generate
+            </button>
+
+            <button class="copy" onclick="copyCSS()">
+                Copy CSS
+            </button>
+
+        </div>
+
+        <textarea id="output"></textarea>
+
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function generateFlex(){
+
+    const direction =
+    document.getElementById("direction").value;
+
+    const justify =
+    document.getElementById("justify").value;
+
+    const align =
+    document.getElementById("align").value;
+
+    const gap =
+    document.getElementById("gap").value;
+
+    const wrap =
+    document.getElementById("wrap").value;
+
+    const preview =
+    document.getElementById("preview");
+
+    preview.style.flexDirection = direction;
+    preview.style.justifyContent = justify;
+    preview.style.alignItems = align;
+    preview.style.gap = gap + "px";
+    preview.style.flexWrap = wrap;
+
+    const css =
+`.flex-container{
+    display:flex;
+    flex-direction:${direction};
+    justify-content:${justify};
+    align-items:${align};
+    gap:${gap}px;
+    flex-wrap:${wrap};
+}`;
+
+    document.getElementById("output").value = css;
+}
+
+function copyCSS(){
+
+    navigator.clipboard.writeText(
+        document.getElementById("output").value
+    );
+
+    alert("Copied!");
+}
+
+document.querySelectorAll("select,input").forEach(el => {
+    el.addEventListener("input", generateFlex);
+});
+
+generateFlex();
+</script>
+
+</body>
+</html>
