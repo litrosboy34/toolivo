@@ -3,46 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Timestamp Converter — Toolivo</title>
-<meta name="description" content="Convert Unix timestamps to readable dates instantly with Toolivo.">
+
+<meta name="description" content="Convert Unix timestamps to readable dates instantly with Toolivo. Free online timestamp converter.">
+
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
+*{box-sizing:border-box}
+
 body{
 margin:0;
-font-family:Arial,sans-serif;
-background:#05070d;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
 color:white;
+min-height:100vh;
+overflow-x:hidden;
 }
 
-.wrap{
-width:min(1000px,calc(100% - 28px));
+a{text-decoration:none;color:inherit}
+
+.container{
+width:min(1100px,calc(100% - 32px));
 margin:auto;
-padding:40px 0;
 }
 
-h1{
-font-size:56px;
-margin:20px 0 10px;
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
 }
 
-.panel{
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
-padding:18px;
-margin-top:18px;
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{color:#22d3ee}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
 }
 
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:18px;
+margin-top:34px;
+}
+
+.panel{
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
 }
 
 .field{
@@ -53,82 +121,179 @@ label{
 display:block;
 margin-bottom:8px;
 font-size:14px;
-font-weight:bold;
-color:#9ca8bb;
+font-weight:700;
+color:#cbd5e1;
 }
 
 input{
 width:100%;
-height:54px;
+height:56px;
 border-radius:16px;
-border:1px solid #263244;
-background:#05070d;
+border:1px solid rgba(148,163,184,.18);
+background:#020617;
 color:white;
 padding:0 16px;
 font-size:16px;
-box-sizing:border-box;
+outline:none;
+font-family:inherit;
+transition:.2s;
 }
 
-.output{
-margin-top:16px;
-padding:18px;
-border-radius:18px;
-background:#05070d;
-border:1px solid #263244;
-line-height:1.8;
-font-size:16px;
+input:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:8px;
 }
 
 button{
-padding:15px 20px;
-border:0;
-border-radius:16px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+height:56px;
+padding:0 22px;
+border-radius:18px;
 font-weight:800;
+font-size:15px;
 cursor:pointer;
-margin-right:10px;
-margin-top:10px;
-}
-
-.copy{
-background:#121935;
+transition:.2s;
+background:rgba(255,255,255,.06);
 color:white;
-border:1px solid #263244;
+border:1px solid rgba(148,163,184,.16);
 }
 
-@media(max-width:800px){
+button:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
 
-.grid{
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
+}
+
+.output{
+margin-top:18px;
+padding:20px;
+border-radius:22px;
+background:#020617;
+border:1px solid rgba(148,163,184,.16);
+line-height:1.9;
+font-size:16px;
+color:#e2e8f0;
+word-break:break-word;
+min-height:120px;
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{color:#22d3ee}
+
+@media(max-width:850px){
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.grid,.info-grid{
 grid-template-columns:1fr;
 }
 
-h1{
-font-size:42px;
+.tool-hero h1{
+letter-spacing:-2px;
 }
 
+.actions{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>Timestamp Converter</h1>
+<header class="header">
+<a href="/" class="logo">Toolivo</a>
 
-<p>
-Convert Unix timestamps into readable dates instantly.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
 
-<div class="grid">
+<section class="tool-hero">
+<h1><span class="gradient">Timestamp</span><br>Converter</h1>
+<p>Convert Unix timestamps into readable local, UTC and ISO dates instantly. You can also convert dates back to Unix time.</p>
+</section>
+
+<section class="grid">
 
 <div class="panel">
 
 <div class="field">
-<label>Unix Timestamp</label>
+<label for="timestampInput">Unix Timestamp</label>
 <input id="timestampInput" placeholder="Example: 1716336000">
 </div>
 
-<button onclick="convertTimestamp()">Convert Timestamp</button>
+<div class="actions">
+<button class="primary" onclick="convertTimestamp()">Convert Timestamp</button>
+<button onclick="copyTimestampResult()">Copy Result</button>
+</div>
 
 <div class="output" id="timestampOutput">
 Result will appear here...
@@ -139,12 +304,15 @@ Result will appear here...
 <div class="panel">
 
 <div class="field">
-<label>Date & Time</label>
+<label for="dateInput">Date & Time</label>
 <input id="dateInput" type="datetime-local">
 </div>
 
-<button onclick="convertDate()">Convert To Timestamp</button>
-<button class="copy" onclick="setNow()">Use Current Time</button>
+<div class="actions">
+<button class="primary" onclick="convertDate()">Convert To Timestamp</button>
+<button onclick="setNow()">Use Current Time</button>
+<button onclick="copyDateResult()">Copy Result</button>
+</div>
 
 <div class="output" id="dateOutput">
 Timestamp will appear here...
@@ -152,73 +320,104 @@ Timestamp will appear here...
 
 </div>
 
+</section>
+
+<section class="info-grid">
+
+<div class="info-card">
+<h2>What is a Unix timestamp?</h2>
+<p>A Unix timestamp is the number of seconds or milliseconds since January 1, 1970 UTC.</p>
 </div>
+
+<div class="info-card">
+<h2>Seconds or milliseconds?</h2>
+<p>This converter automatically detects common 10-digit second timestamps and 13-digit millisecond timestamps.</p>
+</div>
+
+</section>
+
+<footer class="footer">
+<div>© 2026 Toolivo — Timestamp Converter</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
-const timestampInput=document.getElementById('timestampInput');
-const timestampOutput=document.getElementById('timestampOutput');
-
-const dateInput=document.getElementById('dateInput');
-const dateOutput=document.getElementById('dateOutput');
+const timestampInput = document.getElementById('timestampInput');
+const timestampOutput = document.getElementById('timestampOutput');
+const dateInput = document.getElementById('dateInput');
+const dateOutput = document.getElementById('dateOutput');
 
 function convertTimestamp(){
-
-let ts=timestampInput.value.trim();
+let ts = timestampInput.value.trim();
 
 if(!ts){
-timestampOutput.textContent='Please enter a timestamp.';
+timestampOutput.textContent = 'Please enter a timestamp.';
 return;
 }
 
-if(ts.length===10){
-ts=ts*1000;
+if(ts.length === 10){
+ts = Number(ts) * 1000;
 }
 
-const date=new Date(Number(ts));
+const date = new Date(Number(ts));
 
 if(isNaN(date.getTime())){
-timestampOutput.textContent='Invalid timestamp.';
+timestampOutput.textContent = 'Invalid timestamp.';
 return;
 }
 
-timestampOutput.innerHTML=`
-Local: ${date.toLocaleString()}<br>
-UTC: ${date.toUTCString()}<br>
-ISO: ${date.toISOString()}
+timestampOutput.innerHTML = `
+<strong>Local:</strong> ${date.toLocaleString()}<br>
+<strong>UTC:</strong> ${date.toUTCString()}<br>
+<strong>ISO:</strong> ${date.toISOString()}
 `;
 }
 
 function convertDate(){
-
 if(!dateInput.value){
-dateOutput.textContent='Please select a date.';
+dateOutput.textContent = 'Please select a date.';
 return;
 }
 
-const date=new Date(dateInput.value);
+const date = new Date(dateInput.value);
 
-dateOutput.innerHTML=`
-Unix (seconds): ${Math.floor(date.getTime()/1000)}<br>
-Unix (milliseconds): ${date.getTime()}
+dateOutput.innerHTML = `
+<strong>Unix seconds:</strong> ${Math.floor(date.getTime() / 1000)}<br>
+<strong>Unix milliseconds:</strong> ${date.getTime()}
 `;
 }
 
 function setNow(){
+const now = new Date();
+const offset = now.getTimezoneOffset();
 
-const now=new Date();
-
-const offset=now.getTimezoneOffset();
-
-const local=new Date(now.getTime()-offset*60000)
+const local = new Date(now.getTime() - offset * 60000)
 .toISOString()
 .slice(0,16);
 
-dateInput.value=local;
-
+dateInput.value = local;
 convertDate();
 }
+
+function copyTimestampResult(){
+navigator.clipboard.writeText(timestampOutput.innerText);
+}
+
+function copyDateResult(){
+navigator.clipboard.writeText(dateOutput.innerText);
+}
+
+timestampInput.addEventListener('input',convertTimestamp);
+dateInput.addEventListener('input',convertDate);
 
 setNow();
 </script>
