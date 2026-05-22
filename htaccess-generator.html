@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>.htaccess Generator - Toolivo</title>
+
+<meta name="description" content="Generate .htaccess rules instantly. Create HTTPS redirects, caching, gzip compression, hotlink protection and more.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.option{
+    margin-bottom:15px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.option input{
+    width:18px;
+    height:18px;
+}
+
+label{
+    cursor:pointer;
+}
+
+textarea{
+    width:100%;
+    height:350px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+button{
+    padding:14px 20px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#1e293b;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+    transform:translateY(-2px);
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:30px;
+    font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="title">.htaccess Generator</div>
+
+    <div class="desc">
+        Generate Apache .htaccess rules instantly.  
+        Enable HTTPS redirects, caching, gzip compression,
+        security headers and more.
+    </div>
+
+    <div class="card">
+
+        <div class="option">
+            <input type="checkbox" id="https">
+            <label for="https">Force HTTPS Redirect</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="www">
+            <label for="www">Force WWW</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="nonwww">
+            <label for="nonwww">Remove WWW</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="gzip">
+            <label for="gzip">Enable Gzip Compression</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="cache">
+            <label for="cache">Enable Browser Caching</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="hotlink">
+            <label for="hotlink">Block Hotlinking</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="listing">
+            <label for="listing">Disable Directory Listing</label>
+        </div>
+
+        <div class="option">
+            <input type="checkbox" id="security">
+            <label for="security">Add Security Headers</label>
+        </div>
+
+        <div class="buttons">
+            <button class="generate" onclick="generateHtaccess()">
+                Generate
+            </button>
+
+            <button class="copy" onclick="copyCode()">
+                Copy
+            </button>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <textarea id="output" placeholder="Your .htaccess code will appear here..."></textarea>
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function generateHtaccess(){
+
+    let code = "";
+
+    if(document.getElementById("https").checked){
+        code += `
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+`;
+    }
+
+    if(document.getElementById("www").checked){
+        code += `
+RewriteCond %{HTTP_HOST} !^www\\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+`;
+    }
+
+    if(document.getElementById("nonwww").checked){
+        code += `
+RewriteCond %{HTTP_HOST} ^www\\.(.*)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+`;
+    }
+
+    if(document.getElementById("gzip").checked){
+        code += `
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
+</IfModule>
+
+`;
+    }
+
+    if(document.getElementById("cache").checked){
+        code += `
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+`;
+    }
+
+    if(document.getElementById("hotlink").checked){
+        code += `
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\\.)?yourdomain.com [NC]
+RewriteRule \\.(jpg|jpeg|png|gif)$ - [F]
+
+`;
+    }
+
+    if(document.getElementById("listing").checked){
+        code += `
+Options -Indexes
+
+`;
+    }
+
+    if(document.getElementById("security").checked){
+        code += `
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+`;
+    }
+
+    document.getElementById("output").value = code.trim();
+}
+
+function copyCode(){
+
+    const output = document.getElementById("output");
+
+    if(!output.value){
+        alert("Generate code first.");
+        return;
+    }
+
+    navigator.clipboard.writeText(output.value);
+
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
