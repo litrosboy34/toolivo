@@ -4,26 +4,264 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UTM Link Builder - Toolivo</title>
-<meta name="description" content="Create UTM campaign links instantly for Google Analytics and marketing tracking.">
+<title>UTM Link Builder — Toolivo</title>
+
+<meta name="description" content="Create UTM campaign links instantly for Google Analytics and marketing tracking with Toolivo.">
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;padding:20px}
-.container{max-width:950px;margin:auto}
-.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
-.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:750px){.grid{grid-template-columns:1fr}}
-label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
-input{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:12px;padding:14px;outline:none}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
-.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
-.copy{background:#1e293b;color:white}
-textarea{width:100%;height:160px;margin-top:18px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5}
-.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:min(1100px,calc(100% - 32px));
+margin:auto;
+}
+
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{
+color:#22d3ee;
+}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
+}
+
+.panel{
+margin-top:34px;
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.field label{
+display:block;
+margin-bottom:8px;
+color:#cbd5e1;
+font-size:14px;
+font-weight:700;
+}
+
+input,
+textarea{
+width:100%;
+background:#020617;
+border:1px solid rgba(148,163,184,.18);
+color:white;
+border-radius:16px;
+padding:15px;
+outline:none;
+font:inherit;
+transition:.2s;
+}
+
+input:focus,
+textarea:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+textarea{
+height:160px;
+margin-top:18px;
+resize:vertical;
+line-height:1.6;
+color:#67e8f9;
+}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+button{
+height:56px;
+padding:0 22px;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+background:rgba(255,255,255,.06);
+color:white;
+border:1px solid rgba(148,163,184,.16);
+}
+
+button:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{
+color:#22d3ee;
+}
+
+@media(max-width:768px){
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.tool-hero h1{
+letter-spacing:-2px;
+}
+
+.grid,
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
+
 </style>
 </head>
 
@@ -31,106 +269,205 @@ textarea{width:100%;height:160px;margin-top:18px;background:#020617;border:1px s
 
 <div class="container">
 
-    <div class="title">UTM Link Builder</div>
-    <div class="desc">Create UTM campaign links instantly for analytics and marketing tracking.</div>
+<header class="header">
 
-    <div class="card">
+<a href="/" class="logo">
+Toolivo
+</a>
 
-        <div class="grid">
-            <div>
-                <label>Website URL</label>
-                <input id="url" placeholder="https://toolivo.site">
-            </div>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-            <div>
-                <label>Campaign Source</label>
-                <input id="source" placeholder="google, instagram, newsletter">
-            </div>
+</header>
 
-            <div>
-                <label>Campaign Medium</label>
-                <input id="medium" placeholder="cpc, social, email">
-            </div>
+<section class="tool-hero">
 
-            <div>
-                <label>Campaign Name</label>
-                <input id="campaign" placeholder="summer_sale">
-            </div>
+<h1>
+<span class="gradient">UTM Link</span><br>
+Builder
+</h1>
 
-            <div>
-                <label>Campaign Term</label>
-                <input id="term" placeholder="keyword">
-            </div>
+<p>
+Create UTM campaign links instantly for Google Analytics, social media ads, newsletters and marketing tracking.
+</p>
 
-            <div>
-                <label>Campaign Content</label>
-                <input id="content" placeholder="button_a">
-            </div>
-        </div>
+</section>
 
-        <div class="buttons">
-            <button class="generate" onclick="generateUTM()">Generate Link</button>
-            <button class="copy" onclick="copyLink()">Copy Link</button>
-        </div>
+<section class="panel">
 
-        <textarea id="output" placeholder="Generated UTM link will appear here..."></textarea>
+<div class="grid">
 
-    </div>
+<div class="field">
+<label for="url">Website URL</label>
+<input id="url" placeholder="https://toolivo.site">
+</div>
 
-    <div class="footer">Toolivo © 2026</div>
+<div class="field">
+<label for="source">Campaign Source</label>
+<input id="source" placeholder="google, instagram, newsletter">
+</div>
+
+<div class="field">
+<label for="medium">Campaign Medium</label>
+<input id="medium" placeholder="cpc, social, email">
+</div>
+
+<div class="field">
+<label for="campaign">Campaign Name</label>
+<input id="campaign" placeholder="summer_sale">
+</div>
+
+<div class="field">
+<label for="term">Campaign Term</label>
+<input id="term" placeholder="keyword">
+</div>
+
+<div class="field">
+<label for="content">Campaign Content</label>
+<input id="content" placeholder="button_a">
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="primary" onclick="generateUTM()">Generate Link</button>
+<button onclick="copyLink()">Copy Link</button>
+<button onclick="clearFields()">Clear</button>
+</div>
+
+<textarea id="output" placeholder="Generated UTM link will appear here..." readonly></textarea>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h2>What is a UTM link?</h2>
+<p>
+A UTM link adds tracking parameters to your URL so you can measure campaign performance in analytics tools.
+</p>
+</div>
+
+<div class="info-card">
+<h2>Does this upload data?</h2>
+<p>
+No. This UTM builder works locally in your browser and only creates the tracking link on your device.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© 2026 Toolivo — UTM Link Builder
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
-function addParam(params, key, value){
-    if(value.trim()){
-        params.append(key, value.trim());
-    }
+
+function addParam(params,key,value){
+
+if(value.trim()){
+params.append(key,value.trim());
+}
+
+}
+
+function normalizeUrl(url){
+
+if(!url){
+return "";
+}
+
+if(!/^https?:\/\//i.test(url)){
+return "https://" + url;
+}
+
+return url;
+
 }
 
 function generateUTM(){
-    const baseUrl = document.getElementById("url").value.trim();
 
-    if(!baseUrl){
-        alert("Please enter a website URL.");
-        return;
-    }
+const rawUrl = document.getElementById("url").value.trim();
 
-    const source = document.getElementById("source").value;
-    const medium = document.getElementById("medium").value;
-    const campaign = document.getElementById("campaign").value;
-    const term = document.getElementById("term").value;
-    const content = document.getElementById("content").value;
+if(!rawUrl){
+document.getElementById("output").value = "";
+return;
+}
 
-    const params = new URLSearchParams();
+const baseUrl = normalizeUrl(rawUrl);
 
-    addParam(params, "utm_source", source);
-    addParam(params, "utm_medium", medium);
-    addParam(params, "utm_campaign", campaign);
-    addParam(params, "utm_term", term);
-    addParam(params, "utm_content", content);
+const source = document.getElementById("source").value;
+const medium = document.getElementById("medium").value;
+const campaign = document.getElementById("campaign").value;
+const term = document.getElementById("term").value;
+const content = document.getElementById("content").value;
 
-    const separator = baseUrl.includes("?") ? "&" : "?";
-    const finalUrl = baseUrl + separator + params.toString();
+const params = new URLSearchParams();
 
-    document.getElementById("output").value = finalUrl;
+addParam(params,"utm_source",source);
+addParam(params,"utm_medium",medium);
+addParam(params,"utm_campaign",campaign);
+addParam(params,"utm_term",term);
+addParam(params,"utm_content",content);
+
+if(!params.toString()){
+document.getElementById("output").value = baseUrl;
+return;
+}
+
+const separator = baseUrl.includes("?") ? "&" : "?";
+
+document.getElementById("output").value = baseUrl + separator + params.toString();
+
 }
 
 function copyLink(){
-    const output = document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate a link first.");
-        return;
-    }
+const output = document.getElementById("output");
 
-    navigator.clipboard.writeText(output.value);
-    alert("Copied!");
+if(!output.value){
+alert("Generate a link first.");
+return;
+}
+
+navigator.clipboard.writeText(output.value);
+alert("Copied!");
+
+}
+
+function clearFields(){
+
+document.querySelectorAll("input").forEach(input => {
+input.value = "";
+});
+
+document.getElementById("output").value = "";
+
 }
 
 document.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", generateUTM);
+input.addEventListener("input",generateUTM);
 });
+
 </script>
 
 </body>
