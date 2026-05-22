@@ -4,302 +4,451 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aspect Ratio Calculator - Toolivo</title>
+<title>Aspect Ratio Calculator — Toolivo</title>
 <meta name="description" content="Calculate aspect ratios instantly with live preview and common ratio detection.">
-<link rel="stylesheet" href="/global.css">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.container{
-    max-width:950px;
-    margin:auto;
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.input-group{
+display:flex;
+flex-direction:column;
+gap:8px;
+margin-bottom:16px;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-@media(max-width:800px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
-
-label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+.input-group label{
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
 }
 
 input{
-    width:100%;
-    background:#020617;
-    border:1px solid #334155;
-    color:white;
-    border-radius:12px;
-    padding:14px;
-    outline:none;
-    margin-bottom:18px;
+width:100%;
+padding:15px 16px;
+border-radius:16px;
+border:1px solid #334155;
+background:#020617;
+color:white;
+outline:none;
+font-size:15px;
 }
 
-.result{
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-top:20px;
-}
-
-.result h3{
-    color:#38bdf8;
-    margin-bottom:15px;
-}
-
-.result p{
-    margin-bottom:10px;
-    color:#cbd5e1;
-}
-
-.preview{
-    min-height:320px;
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.preview-box{
-    background:linear-gradient(135deg,#06b6d4,#3b82f6);
-    border-radius:16px;
-    transition:0.2s;
+input:focus{
+border-color:#38bdf8;
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+margin-top:18px;
+flex-wrap:wrap;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+flex:1;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#1e293b;
-    color:white;
+background:#020617;
+color:#cbd5e1;
+border:1px solid #334155;
+}
+
+.result{
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:20px;
+margin-top:20px;
+}
+
+.result h3{
+color:#38bdf8;
+margin-bottom:15px;
+font-size:22px;
+}
+
+.result p{
+margin-bottom:10px;
+color:#cbd5e1;
+line-height:1.7;
+}
+
+.preview{
+min-height:420px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+overflow:hidden;
+}
+
+.preview-box{
+background:linear-gradient(135deg,#06b6d4,#3b82f6);
+border-radius:18px;
+transition:.2s;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+min-height:300px;
+}
+
 }
 </style>
 </head>
 
 <body>
-    <div id="globalHeader"></div>
-
-<script>
-fetch('/header.html')
-.then(res => res.text())
-.then(html => {
-document.getElementById('globalHeader').innerHTML = html;
-});
-</script>
 
 <div class="container">
 
-    <div class="title">Aspect Ratio Calculator</div>
+<header class="header">
 
-    <div class="desc">
-        Calculate aspect ratios instantly with common ratio detection and live preview.
-    </div>
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <label>Width</label>
-                <input type="number" id="width" value="1920">
+<h1>Aspect Ratio <span class="gradient">Calculator</span></h1>
 
-                <label>Height</label>
-                <input type="number" id="height" value="1080">
+<p>
+Calculate aspect ratios instantly with live preview, decimal ratio calculation and common ratio detection for video, images and screens.
+</p>
 
-                <div class="buttons">
-                    <button class="generate" onclick="calculateRatio()">
-                        Calculate
-                    </button>
+</section>
 
-                    <button class="copy" onclick="copyRatio()">
-                        Copy Ratio
-                    </button>
-                </div>
+<section class="tool-grid">
 
-                <div class="result">
+<div class="panel">
 
-                    <h3>Result</h3>
+<div class="input-group">
+<label>Width</label>
+<input type="number" id="width" value="1920">
+</div>
 
-                    <p id="ratioText">Aspect Ratio: 16:9</p>
+<div class="input-group">
+<label>Height</label>
+<input type="number" id="height" value="1080">
+</div>
 
-                    <p id="decimalText">Decimal Ratio: 1.78</p>
+<div class="buttons">
 
-                    <p id="commonText">Common Ratio: Widescreen (16:9)</p>
+<button class="generate" onclick="calculateRatio()">
+Calculate
+</button>
 
-                </div>
+<button class="copy" onclick="copyRatio()">
+Copy Ratio
+</button>
 
-            </div>
+</div>
 
-            <div>
+<div class="result">
 
-                <div class="preview">
+<h3>Result</h3>
 
-                    <div class="preview-box" id="previewBox"></div>
+<p id="ratioText">Aspect Ratio: 16:9</p>
 
-                </div>
+<p id="decimalText">Decimal Ratio: 1.78</p>
 
-            </div>
+<p id="commonText">Common Ratio: Widescreen (16:9)</p>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="panel">
+
+<div class="info">
+Live aspect ratio preview updates automatically when width or height changes.
+</div>
+
+<div class="preview">
+
+<div class="preview-box" id="previewBox"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Common Aspect Ratios</h2>
+
+<ul>
+<li>16:9 — Widescreen video</li>
+<li>4:3 — Standard displays</li>
+<li>1:1 — Square social media</li>
+<li>21:9 — Ultrawide monitors</li>
+<li>9:16 — Vertical mobile video</li>
+</ul>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Enter width and height values.</li>
+<li>Calculate simplified aspect ratio instantly.</li>
+<li>Preview the ratio visually in real time.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function gcd(a,b){
-    return b === 0 ? a : gcd(b, a % b);
+return b===0?a:gcd(b,a%b);
 }
 
 function getCommonRatio(ratio){
 
-    const ratios = {
-        "16:9":"Widescreen",
-        "4:3":"Standard",
-        "1:1":"Square",
-        "21:9":"Ultrawide",
-        "3:2":"Photography",
-        "9:16":"Vertical Video"
-    };
+const ratios={
+"16:9":"Widescreen",
+"4:3":"Standard",
+"1:1":"Square",
+"21:9":"Ultrawide",
+"3:2":"Photography",
+"9:16":"Vertical Video"
+};
 
-    return ratios[ratio] || "Custom Ratio";
+return ratios[ratio]||"Custom Ratio";
 }
 
 function calculateRatio(){
 
-    const width =
-    parseInt(document.getElementById("width").value);
+const width=
+parseInt(document.getElementById("width").value);
 
-    const height =
-    parseInt(document.getElementById("height").value);
+const height=
+parseInt(document.getElementById("height").value);
 
-    if(!width || !height){
-        return;
-    }
+if(!width||!height){
+return;
+}
 
-    const divisor = gcd(width,height);
+const divisor=gcd(width,height);
 
-    const ratioWidth = width / divisor;
-    const ratioHeight = height / divisor;
+const ratioWidth=width/divisor;
+const ratioHeight=height/divisor;
 
-    const ratio =
-    ratioWidth + ":" + ratioHeight;
+const ratio=
+ratioWidth+":"+ratioHeight;
 
-    const decimal =
-    (width / height).toFixed(2);
+const decimal=
+(width/height).toFixed(2);
 
-    const common =
-    getCommonRatio(ratio);
+const common=
+getCommonRatio(ratio);
 
-    document.getElementById("ratioText").innerText =
-    "Aspect Ratio: " + ratio;
+document.getElementById("ratioText").innerText=
+"Aspect Ratio: "+ratio;
 
-    document.getElementById("decimalText").innerText =
-    "Decimal Ratio: " + decimal;
+document.getElementById("decimalText").innerText=
+"Decimal Ratio: "+decimal;
 
-    document.getElementById("commonText").innerText =
-    "Common Ratio: " + common + " (" + ratio + ")";
+document.getElementById("commonText").innerText=
+"Common Ratio: "+common+" ("+ratio+")";
 
-    const preview =
-    document.getElementById("previewBox");
+const preview=
+document.getElementById("previewBox");
 
-    let maxWidth = 320;
+let maxWidth=320;
 
-    let calculatedHeight =
-    (height / width) * maxWidth;
+let calculatedHeight=
+(height/width)*maxWidth;
 
-    preview.style.width =
-    maxWidth + "px";
+preview.style.width=
+maxWidth+"px";
 
-    preview.style.height =
-    calculatedHeight + "px";
+preview.style.height=
+calculatedHeight+"px";
 }
 
 function copyRatio(){
 
-    const text =
-    document.getElementById("ratioText").innerText;
+const text=
+document.getElementById("ratioText").innerText;
 
-    navigator.clipboard.writeText(text);
+navigator.clipboard.writeText(text);
 
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("input").forEach(el => {
-    el.addEventListener("input", calculateRatio);
+document.querySelectorAll("input").forEach(el=>{
+el.addEventListener("input",calculateRatio);
 });
+
+document.getElementById("year").innerText=new Date().getFullYear();
 
 calculateRatio();
 </script>
