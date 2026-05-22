@@ -5,47 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Word Counter — Toolivo</title>
-
 <meta name="description" content="Count words, characters, sentences, paragraphs and reading time instantly with Toolivo.">
 
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
-<link rel="stylesheet" href="/global.css">
-
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
-background:#05070d;
+}
+
+body{
+background:#0f172a;
+color:white;
+min-height:100vh;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
+}
+
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:
+drop-shadow(0 0 34px rgba(57,230,210,.55))
+drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
+}
+
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
 color:white;
 }
 
-.wrap{
-width:min(1000px,calc(100% - 28px));
-margin:auto;
-padding:40px 0;
+.tool-hero{
+padding:45px 0 28px;
 }
 
-h1{
-font-size:56px;
-margin:30px 0 10px;
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
 }
 
-p{
-color:#9ca8bb;
+.tool-hero p{
+max-width:720px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 textarea{
 width:100%;
-min-height:300px;
-border-radius:20px;
-border:1px solid #263244;
-background:#0b1020;
+min-height:320px;
+border-radius:18px;
+border:1px solid #334155;
+background:#020617;
 color:white;
 padding:18px;
 font-size:17px;
 line-height:1.6;
 box-sizing:border-box;
+outline:none;
+resize:vertical;
 }
 
 .grid{
@@ -56,8 +130,8 @@ margin-top:18px;
 }
 
 .card{
-background:#0b1020;
-border:1px solid #263244;
+background:#111827;
+border:1px solid #1e293b;
 border-radius:18px;
 padding:18px;
 text-align:center;
@@ -69,7 +143,7 @@ display:block;
 }
 
 .card span{
-color:#9ca8bb;
+color:#94a3b8;
 font-size:14px;
 }
 
@@ -78,9 +152,30 @@ margin-top:14px;
 padding:14px 20px;
 border:0;
 border-radius:14px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 font-weight:800;
 cursor:pointer;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
 }
 
 @media(max-width:800px){
@@ -89,8 +184,13 @@ cursor:pointer;
 grid-template-columns:1fr 1fr;
 }
 
-h1{
-font-size:42px;
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
 }
 
 }
@@ -99,23 +199,36 @@ font-size:42px;
 
 <body>
 
-<div id="globalHeader"></div>
+<div class="container">
 
-<script>
-fetch('/header.html')
-.then(res => res.text())
-.then(html => {
-document.getElementById('globalHeader').innerHTML = html;
-});
-</script>
+<header class="header">
 
-<div class="wrap">
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-<h1>Word Counter</h1>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+
+</header>
+
+<section class="tool-hero">
+
+<h1>
+Word <span class="gradient">Counter</span>
+</h1>
 
 <p>
 Paste your text and instantly count words, characters, sentences, paragraphs and reading time.
 </p>
+
+</section>
 
 <textarea id="text" placeholder="Paste or type your text here..."></textarea>
 
@@ -157,17 +270,24 @@ Paste your text and instantly count words, characters, sentences, paragraphs and
 Clear Text
 </button>
 
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo.
+All rights reserved.
 </div>
 
-<div id="globalFooter"></div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
 
-<script>
-fetch('/footer.html')
-.then(res => res.text())
-.then(html => {
-document.getElementById('globalFooter').innerHTML = html;
-});
-</script>
+</footer>
+
+</div>
 
 <script>
 const text=document.getElementById('text');
@@ -199,6 +319,9 @@ document.getElementById('clear').onclick=()=>{
 text.value='';
 count();
 };
+
+document.getElementById("year").innerText =
+new Date().getFullYear();
 
 count();
 </script>
