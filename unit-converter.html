@@ -3,40 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Unit Converter — Toolivo</title>
-<meta name="description" content="Convert length, weight and temperature units instantly with Toolivo.">
+
+<meta name="description" content="Convert length, weight and temperature units instantly with Toolivo. Free online unit converter.">
+
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
+*{box-sizing:border-box}
+
 body{
 margin:0;
-font-family:Arial,sans-serif;
-background:#05070d;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
 color:white;
+min-height:100vh;
+overflow-x:hidden;
 }
 
-.wrap{
-width:min(1000px,calc(100% - 28px));
+a{text-decoration:none;color:inherit}
+
+.container{
+width:min(1100px,calc(100% - 32px));
 margin:auto;
-padding:40px 0;
 }
 
-h1{
-font-size:56px;
-margin:20px 0 10px;
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{color:#22d3ee}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
 }
 
 .panel{
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
-padding:18px;
-margin-top:18px;
+margin-top:34px;
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
 }
 
 .grid{
@@ -45,81 +113,176 @@ grid-template-columns:1fr 1fr;
 gap:18px;
 }
 
-.field{
-margin-bottom:18px;
-}
-
-label{
+.field label{
 display:block;
 margin-bottom:8px;
 font-size:14px;
-font-weight:bold;
-color:#9ca8bb;
+font-weight:700;
+color:#cbd5e1;
 }
 
 input,select{
 width:100%;
-height:54px;
+height:56px;
 border-radius:16px;
-border:1px solid #263244;
-background:#05070d;
+border:1px solid rgba(148,163,184,.18);
+background:#020617;
 color:white;
 padding:0 16px;
 font-size:16px;
-box-sizing:border-box;
+outline:none;
+font-family:inherit;
+transition:.2s;
+}
+
+input:focus,select:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+button{
+height:56px;
+padding:0 22px;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+background:rgba(255,255,255,.06);
+color:white;
+border:1px solid rgba(148,163,184,.16);
+}
+
+button:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
 }
 
 .result{
 margin-top:18px;
-padding:22px;
-border-radius:18px;
-background:#05070d;
-border:1px solid #263244;
+padding:24px;
+border-radius:22px;
+background:#020617;
+border:1px solid rgba(148,163,184,.16);
 font-size:22px;
 font-weight:800;
 line-height:1.7;
 word-break:break-word;
+color:#e2e8f0;
 }
 
-button{
-padding:15px 20px;
-border:0;
-border-radius:16px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
-font-weight:800;
-cursor:pointer;
-margin-top:10px;
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
 }
 
-@media(max-width:800px){
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
 
-.grid{
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{color:#22d3ee}
+
+@media(max-width:768px){
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.grid,.info-grid{
 grid-template-columns:1fr;
 }
 
-h1{
-font-size:42px;
+.tool-hero h1{
+letter-spacing:-2px;
 }
 
+.actions{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>Unit Converter</h1>
+<header class="header">
+<a href="/" class="logo">Toolivo</a>
 
-<p>
-Convert length, weight and temperature units instantly.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
 
-<div class="panel">
+<section class="tool-hero">
+<h1><span class="gradient">Unit</span><br>Converter</h1>
+<p>Convert length, weight and temperature units instantly with Toolivo. Fast, simple and browser-based.</p>
+</section>
+
+<section class="panel">
 
 <div class="grid">
 
 <div class="field">
-<label>Category</label>
+<label for="category">Category</label>
 <select id="category">
 <option value="length">Length</option>
 <option value="weight">Weight</option>
@@ -128,40 +291,70 @@ Convert length, weight and temperature units instantly.
 </div>
 
 <div class="field">
-<label>Value</label>
+<label for="value">Value</label>
 <input id="value" type="number" value="1">
 </div>
 
 <div class="field">
-<label>From</label>
+<label for="from">From</label>
 <select id="from"></select>
 </div>
 
 <div class="field">
-<label>To</label>
+<label for="to">To</label>
 <select id="to"></select>
 </div>
 
 </div>
 
-<button onclick="convert()">Convert</button>
+<div class="actions">
+<button class="primary" onclick="convert()">Convert</button>
+<button onclick="copyResult()">Copy Result</button>
+<button onclick="resetTool()">Reset</button>
+</div>
 
 <div class="result" id="result">
 Result will appear here...
 </div>
 
+<div class="info-grid">
+
+<div class="info-card">
+<h2>What can I convert?</h2>
+<p>This unit converter supports common length, weight and temperature conversions for quick everyday calculations.</p>
 </div>
+
+<div class="info-card">
+<h2>Is it local?</h2>
+<p>Yes. All conversions happen directly in your browser. Nothing is uploaded or sent anywhere.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+<div>© 2026 Toolivo — Unit Converter</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
-const category=document.getElementById('category');
-const from=document.getElementById('from');
-const to=document.getElementById('to');
-const result=document.getElementById('result');
+const category = document.getElementById('category');
+const from = document.getElementById('from');
+const to = document.getElementById('to');
+const result = document.getElementById('result');
+const valueInput = document.getElementById('value');
 
-const units={
-
+const units = {
 length:{
 meter:1,
 kilometer:1000,
@@ -169,9 +362,9 @@ centimeter:0.01,
 millimeter:0.001,
 mile:1609.34,
 yard:0.9144,
-foot:0.3048
+foot:0.3048,
+inch:0.0254
 },
-
 weight:{
 kilogram:1,
 gram:0.001,
@@ -179,90 +372,81 @@ milligram:0.000001,
 pound:0.453592,
 ounce:0.0283495
 }
-
 };
 
 function loadUnits(){
+const type = category.value;
 
-const type=category.value;
+from.innerHTML = '';
+to.innerHTML = '';
 
-from.innerHTML='';
-to.innerHTML='';
-
-if(type==='temperature'){
-
-['Celsius','Fahrenheit','Kelvin'].forEach(unit=>{
-
-from.innerHTML+=`<option>${unit}</option>`;
-to.innerHTML+=`<option>${unit}</option>`;
-
+if(type === 'temperature'){
+['Celsius','Fahrenheit','Kelvin'].forEach(unit => {
+from.innerHTML += `<option>${unit}</option>`;
+to.innerHTML += `<option>${unit}</option>`;
 });
 
+to.selectedIndex = 1;
+convert();
 return;
 }
 
-Object.keys(units[type]).forEach(unit=>{
-
-from.innerHTML+=`<option>${unit}</option>`;
-to.innerHTML+=`<option>${unit}</option>`;
-
+Object.keys(units[type]).forEach(unit => {
+from.innerHTML += `<option>${unit}</option>`;
+to.innerHTML += `<option>${unit}</option>`;
 });
 
+to.selectedIndex = 1;
+convert();
 }
 
 function convert(){
+const type = category.value;
+const value = Number(valueInput.value);
 
-const type=category.value;
-const value=Number(document.getElementById('value').value);
-
-if(type==='temperature'){
-
-let res=0;
-
-if(from.value===to.value){
-res=value;
-}
-
-else if(from.value==='Celsius' && to.value==='Fahrenheit'){
-res=(value*9/5)+32;
-}
-
-else if(from.value==='Fahrenheit' && to.value==='Celsius'){
-res=(value-32)*5/9;
-}
-
-else if(from.value==='Celsius' && to.value==='Kelvin'){
-res=value+273.15;
-}
-
-else if(from.value==='Kelvin' && to.value==='Celsius'){
-res=value-273.15;
-}
-
-else if(from.value==='Fahrenheit' && to.value==='Kelvin'){
-res=(value-32)*5/9+273.15;
-}
-
-else if(from.value==='Kelvin' && to.value==='Fahrenheit'){
-res=(value-273.15)*9/5+32;
-}
-
-result.textContent=`${value} ${from.value} = ${res.toFixed(4)} ${to.value}`;
-
+if(valueInput.value === ''){
+result.textContent = 'Enter a value to convert.';
 return;
 }
 
-const base=value*units[type][from.value];
-const converted=base/units[type][to.value];
+if(type === 'temperature'){
+let res = 0;
 
-result.textContent=`${value} ${from.value} = ${converted.toFixed(4)} ${to.value}`;
+if(from.value === to.value) res = value;
+else if(from.value === 'Celsius' && to.value === 'Fahrenheit') res = (value * 9 / 5) + 32;
+else if(from.value === 'Fahrenheit' && to.value === 'Celsius') res = (value - 32) * 5 / 9;
+else if(from.value === 'Celsius' && to.value === 'Kelvin') res = value + 273.15;
+else if(from.value === 'Kelvin' && to.value === 'Celsius') res = value - 273.15;
+else if(from.value === 'Fahrenheit' && to.value === 'Kelvin') res = (value - 32) * 5 / 9 + 273.15;
+else if(from.value === 'Kelvin' && to.value === 'Fahrenheit') res = (value - 273.15) * 9 / 5 + 32;
 
+result.textContent = `${value} ${from.value} = ${res.toFixed(4)} ${to.value}`;
+return;
+}
+
+const base = value * units[type][from.value];
+const converted = base / units[type][to.value];
+
+result.textContent = `${value} ${from.value} = ${converted.toFixed(4)} ${to.value}`;
+}
+
+function copyResult(){
+if(!result.textContent || result.textContent === 'Result will appear here...') return;
+navigator.clipboard.writeText(result.textContent);
+}
+
+function resetTool(){
+category.value = 'length';
+valueInput.value = 1;
+loadUnits();
 }
 
 category.addEventListener('change',loadUnits);
+valueInput.addEventListener('input',convert);
+from.addEventListener('change',convert);
+to.addEventListener('change',convert);
 
 loadUnits();
-convert();
 </script>
 
 </body>
