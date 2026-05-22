@@ -18,7 +18,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 box-sizing:border-box;
 }
@@ -59,6 +58,7 @@ height:110px;
 object-fit:contain;
 filter:drop-shadow(0 0 30px rgba(57,230,210,.45));
 }
+
 .logo span{
 background:linear-gradient(90deg,#39e6d2,#7aa2ff);
 -webkit-background-clip:text;
@@ -135,6 +135,13 @@ width:100%;
 transform:translateY(-2px);
 }
 
+.secondary-btn{
+margin-top:12px;
+background:rgba(255,255,255,0.08);
+color:white;
+border:1px solid rgba(255,255,255,0.12);
+}
+
 .qr-wrap{
 display:flex;
 align-items:center;
@@ -178,15 +185,18 @@ font-size:52px;
 }
 
 }
-
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
 <header>
-<div class="logo"><span>Toolivo</span></div>
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 </header>
 
 <section class="hero">
@@ -212,6 +222,10 @@ placeholder="Paste link or enter text..."
 
 <button class="btn" id="generateBtn">
 Generate QR Code
+</button>
+
+<button class="btn secondary-btn" id="downloadBtn">
+Download QR
 </button>
 
 <div class="info">
@@ -241,12 +255,10 @@ WIFI:T:WPA;S:MyWiFi;P:12345678;;
 </div>
 
 <script>
-
 const qrInput = document.getElementById('qrInput');
-
 const qrContainer = document.getElementById('qrcode');
-
 const generateBtn = document.getElementById('generateBtn');
+const downloadBtn = document.getElementById('downloadBtn');
 
 let qr = null;
 
@@ -254,7 +266,10 @@ function generateQR(){
 
 const value = qrInput.value.trim();
 
-if(!value) return;
+if(!value){
+alert("Please enter a link or text first.");
+return;
+}
 
 qrContainer.innerHTML = '';
 
@@ -269,7 +284,82 @@ correctLevel:QRCode.CorrectLevel.H
 
 }
 
+function downloadQR(){
+
+const canvas = document.querySelector('#qrcode canvas');
+
+if(!canvas){
+alert("Generate QR first.");
+return;
+}
+
+const image = canvas.toDataURL("image/png");
+
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+if(isMobile){
+
+const newWindow = window.open();
+
+if(newWindow){
+newWindow.document.write(`
+<html>
+<head>
+<title>Toolivo QR Code</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+margin:0;
+background:#0f172a;
+color:white;
+font-family:Arial,sans-serif;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+padding:20px;
+text-align:center;
+}
+img{
+max-width:90vw;
+background:white;
+padding:16px;
+border-radius:20px;
+}
+p{
+color:#cbd5e1;
+line-height:1.6;
+}
+</style>
+</head>
+<body>
+<img src="${image}" alt="QR Code">
+<p>Press and hold the QR code image, then choose Save Image.</p>
+</body>
+</html>
+`);
+newWindow.document.close();
+}
+
+return;
+}
+
+const link = document.createElement("a");
+
+link.href = image;
+link.download = "toolivo-qr.png";
+
+document.body.appendChild(link);
+
+link.click();
+
+document.body.removeChild(link);
+
+}
+
 generateBtn.onclick = generateQR;
+downloadBtn.onclick = downloadQR;
 
 qrInput.addEventListener('keydown',e=>{
 
@@ -282,7 +372,6 @@ generateQR();
 qrInput.value = 'https://toolivo.site';
 
 generateQR();
-
 </script>
 
 </body>
