@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Diff Checker — Toolivo</title>
+<meta name="description" content="Compare two texts instantly and highlight differences with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1200px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+margin-bottom:10px;
+}
+
+textarea{
+width:100%;
+min-height:320px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.7;
+box-sizing:border-box;
+resize:vertical;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin:12px 10px 0 0;
+}
+
+.copy{
+background:#121935;
+color:white;
+border:1px solid #263244;
+}
+
+.result{
+margin-top:18px;
+padding:22px;
+border-radius:18px;
+background:#05070d;
+border:1px solid #263244;
+line-height:1.9;
+font-size:16px;
+white-space:pre-wrap;
+word-break:break-word;
+}
+
+.added{
+background:#12321f;
+color:#7fffc5;
+padding:3px 6px;
+border-radius:6px;
+}
+
+.removed{
+background:#3a1717;
+color:#ff8b8b;
+padding:3px 6px;
+border-radius:6px;
+text-decoration:line-through;
+}
+
+.stats{
+margin-top:14px;
+color:#9ca8bb;
+}
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>Text Diff Checker</h1>
+
+<p>
+Compare two texts instantly and highlight the differences.
+</p>
+
+<div class="grid">
+
+<div class="panel">
+
+<div class="label">Original Text</div>
+
+<textarea id="oldText">Toolivo makes simple tools for everyone.</textarea>
+
+</div>
+
+<div class="panel">
+
+<div class="label">Updated Text</div>
+
+<textarea id="newText">Toolivo makes powerful and simple tools for everyone online.</textarea>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<button onclick="compareTexts()">Compare Texts</button>
+<button class="copy" onclick="clearAll()">Clear</button>
+
+<div class="stats" id="stats">
+Ready to compare.
+</div>
+
+<div class="result" id="result">
+Differences will appear here...
+</div>
+
+</div>
+
+</div>
+
+<script>
+const oldText=document.getElementById('oldText');
+const newText=document.getElementById('newText');
+
+const result=document.getElementById('result');
+const stats=document.getElementById('stats');
+
+function compareTexts(){
+
+const oldWords=oldText.value.split(/\s+/);
+const newWords=newText.value.split(/\s+/);
+
+let output='';
+
+let added=0;
+let removed=0;
+
+newWords.forEach(word=>{
+
+if(!oldWords.includes(word)){
+
+output+=`<span class="added">${word}</span> `;
+added++;
+
+}else{
+
+output+=word+' ';
+
+}
+
+});
+
+oldWords.forEach(word=>{
+
+if(!newWords.includes(word)){
+
+output+=` <span class="removed">${word}</span>`;
+removed++;
+
+}
+
+});
+
+result.innerHTML=output.trim();
+
+stats.innerHTML=`
+Added words: ${added}<br>
+Removed words: ${removed}
+`;
+
+}
+
+function clearAll(){
+
+oldText.value='';
+newText.value='';
+
+result.textContent='Differences will appear here...';
+
+stats.textContent='Ready to compare.';
+
+}
+
+compareTexts();
+</script>
+
+</body>
+</html>
