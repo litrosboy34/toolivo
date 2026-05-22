@@ -117,5 +117,12 @@ text.addEventListener('input',count);
 document.getElementById('clear').onclick=()=>{text.value='';count()};
 count();
 </script>
+ <script>
+fetch('/header.html')
+.then(res => res.text())
+.then(data => {
+document.getElementById('header').innerHTML = data;
+});
+</script>
 </body>
 </html>
