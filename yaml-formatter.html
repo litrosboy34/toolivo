@@ -3,82 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>YAML Formatter — Toolivo</title>
+
 <meta name="description" content="Format and clean YAML text instantly with Toolivo. Free online YAML formatter.">
+
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="stylesheet" href="/global.css">
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:white}
-.wrap{width:min(1100px,calc(100% - 28px));margin:auto;padding:40px 0}
-h1{font-size:56px;margin:20px 0 10px}
-p{color:#9ca8bb}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.panel{background:#0b1020;border:1px solid #263244;border-radius:20px;padding:18px}
-textarea{width:100%;min-height:420px;border-radius:18px;border:1px solid #263244;background:#05070d;color:white;padding:18px;font-size:15px;line-height:1.7;box-sizing:border-box;resize:vertical;font-family:monospace}
-.label{font-size:14px;font-weight:bold;color:#9ca8bb;margin-bottom:10px}
-button{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#39e6d2,#6ea8ff);font-weight:800;cursor:pointer;margin:10px 10px 0 0}
-.copy{background:#121935;color:white;border:1px solid #263244}
-.status{margin-top:14px;padding:14px;border-radius:14px;background:#121935;border:1px solid #263244;color:#9ca8bb}
-@media(max-width:900px){.grid{grid-template-columns:1fr}h1{font-size:42px}}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1100px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+}
+
+textarea{
+width:100%;
+min-height:420px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.7;
+box-sizing:border-box;
+resize:vertical;
+font-family:monospace;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+margin-bottom:10px;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin:10px 10px 0 0;
+}
+
+.copy{
+background:#121935;
+color:white;
+border:1px solid #263244;
+}
+
+.status{
+margin-top:14px;
+padding:14px;
+border-radius:14px;
+background:#121935;
+border:1px solid #263244;
+color:#9ca8bb;
+}
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
 </style>
 </head>
+
 <body>
+
+<div id="globalHeader"></div>
+
+<script>
+fetch('/header.html')
+.then(res => res.text())
+.then(html => {
+document.getElementById('globalHeader').innerHTML = html;
+});
+</script>
+
 <div class="wrap">
+
 <h1>YAML Formatter</h1>
-<p>Clean and format YAML-style config text instantly.</p>
+
+<p>
+Clean and format YAML-style config text instantly.
+</p>
 
 <div class="grid">
+
 <div class="panel">
-<div class="label">Input YAML</div>
+
+<div class="label">
+Input YAML
+</div>
+
 <textarea id="input">name: Toolivo
 version: 1.0
 features:
 - fast
 - free
 - browser based</textarea>
-<button onclick="formatYAML()">Format YAML</button>
-<button class="copy" onclick="clearAll()">Clear</button>
-<div class="status" id="status">Ready.</div>
+
+<button onclick="formatYAML()">
+Format YAML
+</button>
+
+<button class="copy" onclick="clearAll()">
+Clear
+</button>
+
+<div class="status" id="status">
+Ready.
+</div>
+
 </div>
 
 <div class="panel">
-<div class="label">Formatted Output</div>
+
+<div class="label">
+Formatted Output
+</div>
+
 <textarea id="output" readonly></textarea>
-<button onclick="copyOutput()">Copy Output</button>
+
+<button onclick="copyOutput()">
+Copy Output
+</button>
+
 </div>
+
 </div>
+
 </div>
+
+<div id="globalFooter"></div>
 
 <script>
-const input=document.getElementById('input');
-const output=document.getElementById('output');
-const status=document.getElementById('status');
+fetch('/footer.html')
+.then(res => res.text())
+.then(html => {
+document.getElementById('globalFooter').innerHTML = html;
+});
+</script>
+
+<script>
+
+const input =
+document.getElementById('input');
+
+const output =
+document.getElementById('output');
+
+const status =
+document.getElementById('status');
 
 function formatYAML(){
-let lines=input.value.split('\n');
-let formatted=lines
+
+let lines =
+input.value.split('\n');
+
+let formatted =
+lines
 .map(line=>line.trim())
 .filter(line=>line.length>0)
 .map(line=>{
- if(line.startsWith('-')) return '  '+line;
- return line;
+
+if(line.startsWith('-'))
+return '  '+line;
+
+return line;
+
 })
 .join('\n');
 
-output.value=formatted;
-status.textContent='YAML cleaned ✔';
+output.value = formatted;
+
+status.textContent =
+'YAML cleaned ✔';
+
 }
 
 function copyOutput(){
-navigator.clipboard.writeText(output.value);
+
+navigator.clipboard.writeText(
+output.value
+);
+
 }
 
 function clearAll(){
+
 input.value='';
+
 output.value='';
+
 status.textContent='Ready.';
+
 }
 
 formatYAML();
+
 </script>
+
 </body>
 </html>
