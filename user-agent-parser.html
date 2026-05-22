@@ -3,87 +3,492 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>User Agent Parser — Toolivo</title>
+
 <meta name="description" content="Parse user agent strings instantly with Toolivo. Detect browser, operating system and device type.">
+
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:white}
-.wrap{width:min(1000px,calc(100% - 28px));margin:auto;padding:40px 0}
-h1{font-size:56px;margin:20px 0 10px}
-p{color:#9ca8bb}
-.panel{background:#0b1020;border:1px solid #263244;border-radius:20px;padding:18px;margin-top:18px}
-textarea{width:100%;min-height:180px;border-radius:18px;border:1px solid #263244;background:#05070d;color:white;padding:18px;font-size:15px;line-height:1.6;box-sizing:border-box;resize:vertical}
-button{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#39e6d2,#6ea8ff);font-weight:800;cursor:pointer;margin:10px 10px 0 0}
-.copy{background:#121935;color:white;border:1px solid #263244}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-.card{background:#05070d;border:1px solid #263244;border-radius:16px;padding:16px}
-.card b{display:block;font-size:14px;color:#9ca8bb;margin-bottom:6px}
-.card span{font-size:18px}
-@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:42px}}
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:min(1100px,calc(100% - 32px));
+margin:auto;
+}
+
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{
+color:#22d3ee;
+}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
+}
+
+.panel{
+margin-top:34px;
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
+}
+
+textarea{
+width:100%;
+min-height:220px;
+border-radius:22px;
+border:1px solid rgba(148,163,184,.18);
+background:#020617;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.7;
+resize:vertical;
+outline:none;
+transition:.2s;
+font-family:inherit;
+}
+
+textarea:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:18px;
+}
+
+button{
+height:56px;
+padding:0 22px;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+background:rgba(255,255,255,.06);
+color:white;
+border:1px solid rgba(148,163,184,.16);
+}
+
+button:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+margin-top:22px;
+}
+
+.card{
+background:rgba(2,6,23,.36);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:20px;
+}
+
+.card b{
+display:block;
+font-size:13px;
+font-weight:700;
+letter-spacing:.5px;
+text-transform:uppercase;
+color:#94a3b8;
+margin-bottom:10px;
+}
+
+.card span{
+font-size:22px;
+font-weight:700;
+color:#f8fafc;
+word-break:break-word;
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
+line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{
+color:#22d3ee;
+}
+
+@media(max-width:768px){
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.tool-hero h1{
+letter-spacing:-2px;
+}
+
+.grid,
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.actions{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
+
 </style>
 </head>
+
 <body>
-<div class="wrap">
-<h1>User Agent Parser</h1>
-<p>Paste a user agent string and detect browser, OS and device type.</p>
 
-<div class="panel">
+<div class="container">
+
+<header class="header">
+
+<a href="/" class="logo">
+Toolivo
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+
+</header>
+
+<section class="tool-hero">
+
+<h1>
+<span class="gradient">User Agent</span><br>
+Parser
+</h1>
+
+<p>
+Paste a user agent string and instantly detect browser, operating system, rendering engine and device type.
+</p>
+
+</section>
+
+<section class="panel">
+
 <textarea id="ua" placeholder="Paste user agent here..."></textarea>
-<button onclick="parseUA()">Parse User Agent</button>
-<button class="copy" onclick="useMine()">Use My User Agent</button>
+
+<div class="actions">
+
+<button class="primary" onclick="parseUA()">
+Parse User Agent
+</button>
+
+<button onclick="useMine()">
+Use My User Agent
+</button>
+
+<button onclick="clearUA()">
+Clear
+</button>
+
 </div>
 
-<div class="panel">
 <div class="grid">
-<div class="card"><b>Browser</b><span id="browser">-</span></div>
-<div class="card"><b>Operating System</b><span id="os">-</span></div>
-<div class="card"><b>Device</b><span id="device">-</span></div>
-<div class="card"><b>Engine</b><span id="engine">-</span></div>
+
+<div class="card">
+<b>Browser</b>
+<span id="browser">-</span>
 </div>
+
+<div class="card">
+<b>Operating System</b>
+<span id="os">-</span>
 </div>
+
+<div class="card">
+<b>Device Type</b>
+<span id="device">-</span>
+</div>
+
+<div class="card">
+<b>Rendering Engine</b>
+<span id="engine">-</span>
+</div>
+
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h2>What is a user agent?</h2>
+<p>
+A user agent string identifies the browser, operating system and device visiting a website.
+</p>
+</div>
+
+<div class="info-card">
+<h2>Why parse user agents?</h2>
+<p>
+Developers and marketers use user agent parsing for analytics, compatibility testing and device detection.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© 2026 Toolivo — User Agent Parser
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
+
 </div>
 
 <script>
-const ua=document.getElementById('ua');
+
+const ua = document.getElementById('ua');
 
 function parseUA(){
- const text=ua.value;
 
- let browser='Unknown';
- let os='Unknown';
- let device='Desktop';
- let engine='Unknown';
+const text = ua.value;
 
- if(/Chrome/i.test(text) && !/Edg/i.test(text)) browser='Chrome';
- if(/Firefox/i.test(text)) browser='Firefox';
- if(/Safari/i.test(text) && !/Chrome/i.test(text)) browser='Safari';
- if(/Edg/i.test(text)) browser='Microsoft Edge';
- if(/Opera|OPR/i.test(text)) browser='Opera';
+let browser = 'Unknown';
+let os = 'Unknown';
+let device = 'Desktop';
+let engine = 'Unknown';
 
- if(/Windows/i.test(text)) os='Windows';
- if(/Mac OS/i.test(text)) os='macOS';
- if(/Android/i.test(text)) os='Android';
- if(/iPhone|iPad|iOS/i.test(text)) os='iOS';
- if(/Linux/i.test(text) && !/Android/i.test(text)) os='Linux';
+if(/Chrome/i.test(text) && !/Edg/i.test(text) && !/OPR/i.test(text)){
+browser = 'Chrome';
+}
 
- if(/Mobile|iPhone|Android/i.test(text)) device='Mobile';
- if(/iPad|Tablet/i.test(text)) device='Tablet';
+if(/Firefox/i.test(text)){
+browser = 'Firefox';
+}
 
- if(/AppleWebKit/i.test(text)) engine='WebKit/Blink';
- if(/Gecko/i.test(text) && /Firefox/i.test(text)) engine='Gecko';
+if(/Safari/i.test(text) && !/Chrome/i.test(text)){
+browser = 'Safari';
+}
 
- document.getElementById('browser').textContent=browser;
- document.getElementById('os').textContent=os;
- document.getElementById('device').textContent=device;
- document.getElementById('engine').textContent=engine;
+if(/Edg/i.test(text)){
+browser = 'Microsoft Edge';
+}
+
+if(/Opera|OPR/i.test(text)){
+browser = 'Opera';
+}
+
+if(/Windows/i.test(text)){
+os = 'Windows';
+}
+
+if(/Mac OS|Macintosh/i.test(text)){
+os = 'macOS';
+}
+
+if(/Android/i.test(text)){
+os = 'Android';
+}
+
+if(/iPhone|iPad|iOS/i.test(text)){
+os = 'iOS';
+}
+
+if(/Linux/i.test(text) && !/Android/i.test(text)){
+os = 'Linux';
+}
+
+if(/Mobile|iPhone|Android/i.test(text)){
+device = 'Mobile';
+}
+
+if(/iPad|Tablet/i.test(text)){
+device = 'Tablet';
+}
+
+if(/AppleWebKit/i.test(text)){
+engine = 'WebKit / Blink';
+}
+
+if(/Gecko/i.test(text) && /Firefox/i.test(text)){
+engine = 'Gecko';
+}
+
+document.getElementById('browser').textContent = browser;
+document.getElementById('os').textContent = os;
+document.getElementById('device').textContent = device;
+document.getElementById('engine').textContent = engine;
+
 }
 
 function useMine(){
- ua.value=navigator.userAgent;
- parseUA();
+
+ua.value = navigator.userAgent;
+
+parseUA();
+
+}
+
+function clearUA(){
+
+ua.value = '';
+
+document.getElementById('browser').textContent = '-';
+document.getElementById('os').textContent = '-';
+document.getElementById('device').textContent = '-';
+document.getElementById('engine').textContent = '-';
+
 }
 
 useMine();
+
 </script>
+
 </body>
 </html>
