@@ -4,236 +4,414 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Meta Tag Generator - Toolivo</title>
-
-<meta name="description" content="Generate SEO meta tags instantly including Open Graph and Twitter Card tags.">
+<title>Meta Tag Generator — Toolivo</title>
+<meta name="description" content="Generate SEO meta tags instantly including Open Graph and Twitter Card tags with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
 }
 
-.container{
-    max-width:950px;
-    margin:auto;
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.desc{
-    color:#94a3b8;
-    margin-bottom:30px;
-    line-height:1.6;
-}
-
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-@media(max-width:700px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+.form-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:14px;
 }
 
 .input-group{
-    display:flex;
-    flex-direction:column;
+display:flex;
+flex-direction:column;
+gap:8px;
 }
 
 .input-group label{
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
 }
 
-.input-group input,
-.input-group textarea,
-.input-group select{
-    background:#020617;
-    border:1px solid #1e293b;
-    color:white;
-    padding:14px;
-    border-radius:12px;
-    outline:none;
+input,
+textarea,
+select{
+width:100%;
+padding:15px 16px;
+border-radius:16px;
+border:1px solid #334155;
+background:#020617;
+color:white;
+outline:none;
+font-size:15px;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+border-color:#38bdf8;
 }
 
 textarea{
-    min-height:100px;
-    resize:vertical;
+resize:vertical;
+min-height:110px;
 }
 
 .buttons{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
+display:flex;
+gap:12px;
+margin-top:16px;
+flex-wrap:wrap;
 }
 
 button{
-    padding:14px 20px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.2s;
-}
-
-.generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
-}
-
-.copy{
-    background:#1e293b;
-    color:white;
+padding:15px 20px;
+border:0;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
 }
 
 button:hover{
-    opacity:0.9;
-    transform:translateY(-2px);
+transform:translateY(-2px);
+}
+
+.generate{
+flex:1;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+
+.copy{
+background:#020617;
+color:#cbd5e1;
+border:1px solid #334155;
 }
 
 .output{
-    width:100%;
-    height:350px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:580px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:18px;
+color:#67e8f9;
+font-family:monospace;
+font-size:14px;
+line-height:1.6;
+resize:vertical;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:30px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.output{
+height:360px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+.generate,
+.copy{
+width:100%;
+}
+
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <div class="title">Meta Tag Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate SEO meta tags including Open Graph and Twitter Card tags instantly.
-    </div>
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div class="input-group">
-                <label>Website Title</label>
-                <input type="text" id="titleInput" placeholder="Toolivo">
-            </div>
+<section class="tool-hero">
 
-            <div class="input-group">
-                <label>Website URL</label>
-                <input type="text" id="urlInput" placeholder="https://toolivo.site">
-            </div>
+<h1>Meta Tag <span class="gradient">Generator</span></h1>
 
-            <div class="input-group">
-                <label>Description</label>
-                <textarea id="descInput" placeholder="Website description"></textarea>
-            </div>
+<p>
+Generate SEO meta tags instantly including Open Graph, Twitter Card, canonical and robots meta tags for websites, blogs and landing pages.
+</p>
 
-            <div class="input-group">
-                <label>Keywords</label>
-                <textarea id="keywordsInput" placeholder="seo, tools, generator"></textarea>
-            </div>
+</section>
 
-            <div class="input-group">
-                <label>Author</label>
-                <input type="text" id="authorInput" placeholder="Toolivo">
-            </div>
+<section class="tool-grid">
 
-            <div class="input-group">
-                <label>Robots</label>
-                <select id="robotsInput">
-                    <option value="index, follow">index, follow</option>
-                    <option value="noindex, nofollow">noindex, nofollow</option>
-                </select>
-            </div>
+<div class="panel">
 
-            <div class="input-group">
-                <label>Open Graph Image URL</label>
-                <input type="text" id="imageInput" placeholder="https://example.com/image.jpg">
-            </div>
+<div class="form-grid">
 
-            <div class="input-group">
-                <label>Favicon URL</label>
-                <input type="text" id="faviconInput" placeholder="/favicon.ico">
-            </div>
+<div class="input-group">
+<label>Website Title</label>
+<input type="text" id="titleInput" placeholder="Toolivo">
+</div>
 
-        </div>
+<div class="input-group">
+<label>Website URL</label>
+<input type="text" id="urlInput" placeholder="https://toolivo.site">
+</div>
 
-        <div class="buttons">
-            <button class="generate" onclick="generateMeta()">
-                Generate
-            </button>
+<div class="input-group">
+<label>Description</label>
+<textarea id="descInput" placeholder="Website description"></textarea>
+</div>
 
-            <button class="copy" onclick="copyMeta()">
-                Copy
-            </button>
-        </div>
+<div class="input-group">
+<label>Keywords</label>
+<textarea id="keywordsInput" placeholder="seo, tools, generator"></textarea>
+</div>
 
-    </div>
+<div class="input-group">
+<label>Author</label>
+<input type="text" id="authorInput" placeholder="Toolivo">
+</div>
 
-    <div class="card">
-        <textarea class="output" id="output" placeholder="Generated meta tags will appear here..."></textarea>
-    </div>
+<div class="input-group">
+<label>Robots</label>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<select id="robotsInput">
+<option value="index, follow">index, follow</option>
+<option value="noindex, nofollow">noindex, nofollow</option>
+</select>
+
+</div>
+
+<div class="input-group">
+<label>Open Graph Image URL</label>
+<input type="text" id="imageInput" placeholder="https://example.com/image.jpg">
+</div>
+
+<div class="input-group">
+<label>Favicon URL</label>
+<input type="text" id="faviconInput" placeholder="/favicon.ico">
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="generate" onclick="generateMeta()">
+Generate
+</button>
+
+<button class="copy" onclick="copyMeta()">
+Copy
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Generated SEO meta tags will appear below. Copy the code and paste it inside the head section of your website.
+</div>
+
+<textarea
+class="output"
+id="output"
+placeholder="Generated meta tags will appear here..."
+></textarea>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use meta tags?</h2>
+
+<p>
+Meta tags help search engines and social platforms understand your website content. They improve SEO visibility and control how pages appear when shared online.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Fill in your website details.</li>
+<li>Generate SEO, Open Graph and Twitter Card tags.</li>
+<li>Copy the generated code into your website head section.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
+function escapeHtml(value){
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll('"',"&quot;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;");
+}
+
 function generateMeta(){
 
-    const title = document.getElementById("titleInput").value;
-    const url = document.getElementById("urlInput").value;
-    const desc = document.getElementById("descInput").value;
-    const keywords = document.getElementById("keywordsInput").value;
-    const author = document.getElementById("authorInput").value;
-    const robots = document.getElementById("robotsInput").value;
-    const image = document.getElementById("imageInput").value;
-    const favicon = document.getElementById("faviconInput").value;
+const title=escapeHtml(document.getElementById("titleInput").value);
+const url=escapeHtml(document.getElementById("urlInput").value);
+const desc=escapeHtml(document.getElementById("descInput").value);
+const keywords=escapeHtml(document.getElementById("keywordsInput").value);
+const author=escapeHtml(document.getElementById("authorInput").value);
+const robots=escapeHtml(document.getElementById("robotsInput").value);
+const image=escapeHtml(document.getElementById("imageInput").value);
+const favicon=escapeHtml(document.getElementById("faviconInput").value);
 
-    const meta = `
+const meta=`
 <title>${title}</title>
 
 <meta name="title" content="${title}">
@@ -257,22 +435,24 @@ function generateMeta(){
 <meta name="twitter:image" content="${image}">
 `;
 
-    document.getElementById("output").value = meta.trim();
+document.getElementById("output").value=meta.trim();
 }
 
 function copyMeta(){
 
-    const output = document.getElementById("output");
+const output=document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate meta tags first.");
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
+if(!output.value){
+alert("Generate meta tags first.");
+return;
 }
+
+navigator.clipboard.writeText(output.value);
+
+alert("Copied!");
+}
+
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
