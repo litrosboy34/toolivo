@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HTML Table Generator - Toolivo</title>
+
+<meta name="description" content="Generate HTML tables instantly with live preview and copyable code.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#94a3b8;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+@media(max-width:850px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.control{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+input{
+    width:100%;
+    accent-color:#0ea5e9;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.preview{
+    min-height:340px;
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:20px;
+    overflow:auto;
+}
+
+.preview table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.preview th,
+.preview td{
+    border:1px solid #334155;
+    padding:12px;
+    text-align:center;
+}
+
+.preview th{
+    background:#06b6d4;
+    color:white;
+}
+
+.preview td{
+    background:#111827;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+button{
+    padding:13px 20px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#1e293b;
+    color:white;
+}
+
+textarea{
+    width:100%;
+    height:260px;
+    margin-top:18px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    margin-top:25px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">HTML Table Generator</div>
+
+    <div class="desc">
+        Generate HTML tables instantly with live preview and copyable code.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div>
+
+                <div class="control">
+                    <label>Rows</label>
+                    <input type="range" id="rows" min="1" max="15" value="4">
+                </div>
+
+                <div class="control">
+                    <label>Columns</label>
+                    <input type="range" id="columns" min="1" max="10" value="4">
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" id="header" checked>
+                    <label for="header">Include Header Row</label>
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="preview" id="preview"></div>
+
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="generate" onclick="generateTable()">
+                Generate
+            </button>
+
+            <button class="copy" onclick="copyHTML()">
+                Copy HTML
+            </button>
+
+        </div>
+
+        <textarea id="output"></textarea>
+
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function generateTable(){
+
+    const rows =
+    parseInt(document.getElementById("rows").value);
+
+    const columns =
+    parseInt(document.getElementById("columns").value);
+
+    const header =
+    document.getElementById("header").checked;
+
+    let html = "<table>\\n";
+
+    if(header){
+
+        html += "  <thead>\\n";
+        html += "    <tr>\\n";
+
+        for(let i=1;i<=columns;i++){
+
+            html += `      <th>Header ${i}</th>\\n`;
+        }
+
+        html += "    </tr>\\n";
+        html += "  </thead>\\n";
+    }
+
+    html += "  <tbody>\\n";
+
+    for(let r=1;r<=rows;r++){
+
+        html += "    <tr>\\n";
+
+        for(let c=1;c<=columns;c++){
+
+            html += `      <td>Row ${r} Col ${c}</td>\\n`;
+        }
+
+        html += "    </tr>\\n";
+    }
+
+    html += "  </tbody>\\n";
+    html += "</table>";
+
+    document.getElementById("output").value = html;
+
+    document.getElementById("preview").innerHTML = html;
+}
+
+function copyHTML(){
+
+    navigator.clipboard.writeText(
+        document.getElementById("output").value
+    );
+
+    alert("Copied!");
+}
+
+document.querySelectorAll("input").forEach(el => {
+    el.addEventListener("input", generateTable);
+});
+
+generateTable();
+</script>
+
+</body>
+</html>
