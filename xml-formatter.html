@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XML Formatter — Toolivo</title>
+<meta name="description" content="Format and beautify XML instantly with Toolivo. Free online XML formatter and validator.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1100px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+}
+
+.label{
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+margin-bottom:10px;
+}
+
+textarea{
+width:100%;
+min-height:420px;
+border-radius:18px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:18px;
+font-size:15px;
+line-height:1.7;
+box-sizing:border-box;
+resize:vertical;
+font-family:monospace;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin:10px 10px 0 0;
+}
+
+.copy{
+background:#121935;
+color:white;
+border:1px solid #263244;
+}
+
+.status{
+margin-top:14px;
+padding:14px;
+border-radius:14px;
+background:#121935;
+border:1px solid #263244;
+color:#9ca8bb;
+line-height:1.7;
+}
+
+.success{
+color:#7fffc5;
+}
+
+.error{
+color:#ff8b8b;
+}
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>XML Formatter</h1>
+
+<p>
+Beautify and validate XML instantly with Toolivo.
+</p>
+
+<div class="grid">
+
+<div class="panel">
+
+<div class="label">Input XML</div>
+
+<textarea id="input"><note><to>Yunus</to><from>Toolivo</from><message>Hello</message></note></textarea>
+
+<button onclick="formatXML()">Format XML</button>
+<button class="copy" onclick="clearAll()">Clear</button>
+
+<div class="status" id="status">
+Ready.
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="label">Formatted Output</div>
+
+<textarea id="output" readonly></textarea>
+
+<button onclick="copyOutput()">Copy Output</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const input=document.getElementById('input');
+const output=document.getElementById('output');
+const status=document.getElementById('status');
+
+function formatXML(){
+
+try{
+
+const parser=new DOMParser();
+const xmlDoc=parser.parseFromString(input.value,'application/xml');
+
+if(xmlDoc.querySelector('parsererror')){
+throw new Error('Invalid XML');
+}
+
+const serializer=new XMLSerializer();
+const xmlString=serializer.serializeToString(xmlDoc);
+
+let formatted='';
+let indent=0;
+
+xmlString
+.replace(/(>)(<)(\\/*)/g,'$1\\n$2$3')
+.split('\\n')
+.forEach(line=>{
+
+if(line.match(/^<\\/\\w/)){
+indent--;
+}
+
+formatted+=`${'  '.repeat(indent)}${line}\\n`;
+
+if(line.match(/^<[^!?].*[^/]>/) && !line.includes('</')){
+indent++;
+}
+
+});
+
+output.value=formatted.trim();
+
+status.textContent='Valid XML ✔';
+status.className='status success';
+
+}catch(err){
+
+output.value='';
+
+status.textContent='Invalid XML ❌';
+status.className='status error';
+
+}
+
+}
+
+function copyOutput(){
+navigator.clipboard.writeText(output.value);
+}
+
+function clearAll(){
+input.value='';
+output.value='';
+status.textContent='Ready.';
+status.className='status';
+}
+
+formatXML();
+</script>
+
+</body>
+</html>
