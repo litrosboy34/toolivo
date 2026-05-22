@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
 <script>
@@ -12,399 +11,96 @@ gtag('config', 'G-3QBF2V9J5T');
 </script>
 
 <meta name="google-adsense-account" content="ca-pub-4422292009724522">
-
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522"
-crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Toolivo - Free Online Tools</title>
-
-<meta name="description" content="Free online tools for images, text, SEO, CSS, developers and converters.">
-
+<meta name="description" content="Free online tools for images, text, SEO, CSS, developers and converters. Fast, simple and mobile friendly.">
+<meta name="keywords" content="free online tools, image tools, seo tools, css tools, developer tools, text tools, converters, Toolivo">
+<meta name="author" content="Toolivo">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:title" content="Toolivo - Free Online Tools">
+<meta property="og:description" content="Free online tools for images, text, SEO, CSS, developers and converters.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site">
+<meta property="og:image" content="https://i.imgur.com/7qzyyTa.png">
 <link rel="canonical" href="https://toolivo.site/">
-
-<link rel="icon"
-type="image/png"
-href="https://i.imgur.com/7qzyyTa.png">
-
+<link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png">
+<link rel="apple-touch-icon" href="https://i.imgur.com/7qzyyTa.png">
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0f172a;
-color:white;
-min-height:100vh;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-}
-
-.header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-padding:6px 0;
-flex-wrap:wrap;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:0px;
-font-size:34px;
-font-weight:bold;
-}
-
-.logo img{
-width:115px;
-height:115px;
-object-fit:contain;
-filter:
-drop-shadow(0 0 34px rgba(57,230,210,.55))
-drop-shadow(0 20px 46px rgba(0,0,0,.62));
-transform:translateY(4px);
-}
-
-.logo span{
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.nav{
-display:flex;
-align-items:center;
-gap:14px;
-flex-wrap:wrap;
-}
-
-.nav a{
-color:#94a3b8;
-font-size:14px;
-transition:.2s;
-}
-
-.nav a:hover{
-color:white;
-}
-
-.lang-btn{
-padding:8px 13px;
-border-radius:999px;
-border:1px solid #334155;
-background:#111827;
-color:#cbd5e1;
-cursor:pointer;
-font-weight:bold;
-transition:.2s;
-}
-
-.lang-btn:hover{
-color:white;
-border-color:#38bdf8;
-}
-
-.hero{
-text-align:center;
-padding:55px 0 40px;
-}
-
-.badge{
-display:inline-block;
-padding:8px 14px;
-border:1px solid #1e293b;
-border-radius:999px;
-color:#38bdf8;
-background:#111827;
-margin-bottom:18px;
-}
-
-.hero h1{
-font-size:clamp(42px,7vw,78px);
-line-height:1.05;
-margin-bottom:18px;
-}
-
-.gradient{
-background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero p{
-max-width:720px;
-margin:auto;
-color:#94a3b8;
-line-height:1.7;
-font-size:18px;
-}
-
-.search-box{
-margin:30px auto 0;
-max-width:650px;
-}
-
-.search-box input{
-width:100%;
-padding:17px 20px;
-border-radius:16px;
-border:1px solid #334155;
-background:#020617;
-color:white;
-outline:none;
-font-size:16px;
-}
-
-.categories{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
-margin:25px 0 40px;
-}
-
-.cat-btn{
-padding:11px 16px;
-border-radius:999px;
-border:1px solid #334155;
-background:#111827;
-color:#cbd5e1;
-cursor:pointer;
-font-weight:bold;
-}
-
-.cat-btn.active,
-.cat-btn:hover{
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
-color:white;
-border-color:transparent;
-}
-
-.section-title{
-font-size:30px;
-margin:35px 0 18px;
-}
-
-.tools-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:16px;
-}
-
-.tool-card{
-background:#111827;
-border:1px solid #1e293b;
-border-radius:18px;
-padding:18px;
-transition:.2s;
-display:block;
-min-height:150px;
-}
-
-.tool-card:hover{
-transform:translateY(-4px);
-border-color:#38bdf8;
-box-shadow:0 0 35px rgba(56,189,248,.08);
-}
-
-.tool-icon{
-font-size:28px;
-margin-bottom:12px;
-}
-
-.tool-card h3{
-font-size:18px;
-margin-bottom:8px;
-}
-
-.tool-card p{
-color:#94a3b8;
-font-size:14px;
-line-height:1.5;
-}
-
-.tool-tag{
-display:inline-block;
-margin-top:12px;
-font-size:12px;
-color:#38bdf8;
-font-weight:bold;
-}
-
-.footer{
-margin-top:55px;
-padding:30px 0;
-border-top:1px solid #1e293b;
-color:#64748b;
-text-align:center;
-}
-
-.footer-links{
-display:flex;
-gap:16px;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:12px;
-}
-
-.footer-links a:hover{
-color:white;
-}
-
-@media(max-width:1000px){
-
-.tools-grid{
-grid-template-columns:repeat(3,1fr);
-}
-}
-
-@media(max-width:750px){
-
-.tools-grid{
-grid-template-columns:1fr;
-}
-
-.header{
-flex-direction:column;
-}
-
-.logo img{
-width:95px;
-height:95px;
-}
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+.lang-btn{padding:8px 13px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold;transition:.2s}
+.lang-btn:hover{color:white;border-color:#38bdf8}
+.hero{text-align:center;padding:55px 0 40px}
+.badge{display:inline-block;padding:8px 14px;border:1px solid #1e293b;border-radius:999px;color:#38bdf8;background:#111827;margin-bottom:18px}
+.hero h1{font-size:clamp(42px,7vw,78px);line-height:1.05;margin-bottom:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:720px;margin:auto;color:#94a3b8;line-height:1.7;font-size:18px}
+.search-box{margin:30px auto 0;max-width:650px}
+.search-box input{width:100%;padding:17px 20px;border-radius:16px;border:1px solid #334155;background:#020617;color:white;outline:none;font-size:16px}
+.categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:25px 0 40px}
+.cat-btn{padding:11px 16px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold}
+.cat-btn.active,.cat-btn:hover{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;border-color:transparent}
+.section-title{font-size:30px;margin:35px 0 18px}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tool-card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:18px;transition:.2s;display:block;min-height:150px}
+.tool-card:hover{transform:translateY(-4px);border-color:#38bdf8;box-shadow:0 0 35px rgba(56,189,248,.08)}
+.tool-icon{font-size:28px;margin-bottom:12px}
+.tool-card h3{font-size:18px;margin-bottom:8px}
+.tool-card p{color:#94a3b8;font-size:14px;line-height:1.5}
+.tool-tag{display:inline-block;margin-top:12px;font-size:12px;color:#38bdf8;font-weight:bold}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+@media(max-width:1000px){.tools-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:750px){.tools-grid{grid-template-columns:1fr}.header{flex-direction:column}.logo img{width:95px;height:95px}}
 </style>
 </head>
-
 <body>
-
 <div class="container">
-
 <header class="header">
-
 <a class="logo" href="/">
 <img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
 <span>Toolivo</span>
 </a>
-
 <nav class="nav">
-
-<a href="#tools" id="navTools">
-Tools
-</a>
-
-<a href="/about.html" id="navAbout">
-About
-</a>
-
-<a href="/privacy.html" id="navPrivacy">
-Privacy
-</a>
-
-<a href="/contact.html" id="navContact">
-Contact
-</a>
-
-<button class="lang-btn" id="langBtn">
-TR
-</button>
-
+<a href="#tools" id="navTools">Tools</a>
+<a href="/about.html" id="navAbout">About</a>
+<a href="/privacy.html" id="navPrivacy">Privacy</a>
+<a href="/contact.html" id="navContact">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
 </nav>
-
 </header>
-
 <section class="hero">
-
-<div class="badge" id="badge">
-Fast • Free • Mobile Friendly
-</div>
-
-<h1 id="heroTitle">
-Free Online <span class="gradient">Tools</span>
-</h1>
-
-<p id="heroText">
-Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.
-</p>
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search tools..."
->
-
-</div>
-
+<div class="badge" id="badge">Fast • Free • Mobile Friendly</div>
+<h1 id="heroTitle">Free Online <span class="gradient">Tools</span></h1>
+<p id="heroText">Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.</p>
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search tools..."></div>
 </section>
-
 <div class="categories">
-
-<button class="cat-btn active" data-category="all">
-All
-</button>
-
-<button class="cat-btn" data-category="image">
-Image
-</button>
-
-<button class="cat-btn" data-category="text">
-Text
-</button>
-
-<button class="cat-btn" data-category="developer">
-Developer
-</button>
-
-<button class="cat-btn" data-category="css">
-CSS
-</button>
-
-<button class="cat-btn" data-category="seo">
-SEO
-</button>
-
-<button class="cat-btn" data-category="converter">
-Converter
-</button>
-
+<button class="cat-btn active" data-category="all" id="catAll">All</button>
+<button class="cat-btn" data-category="image" id="catImage">Image</button>
+<button class="cat-btn" data-category="text" id="catText">Text</button>
+<button class="cat-btn" data-category="developer" id="catDeveloper">Developer</button>
+<button class="cat-btn" data-category="css" id="catCss">CSS</button>
+<button class="cat-btn" data-category="seo" id="catSeo">SEO</button>
+<button class="cat-btn" data-category="converter" id="catConverter">Converter</button>
 </div>
-
-<h2 class="section-title" id="tools">
-All Tools
-</h2>
-
+<h2 class="section-title" id="tools">All Tools</h2>
 <div class="tools-grid" id="toolsGrid"></div>
-
 <footer class="footer">
-
-<div>
-© <span id="year"></span> Toolivo.
-<span id="rightsText">
-All rights reserved.
-</span>
-</div>
-
+<div>© <span id="year"></span> Toolivo. <span id="rightsText">All rights reserved.</span></div>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -412,15 +108,10 @@ All rights reserved.
 <a href="/contact.html">Contact</a>
 <a href="/sitemap.xml">Sitemap</a>
 </div>
-
 </footer>
-
 </div>
-
 <script>
-
 const tools = [
-
 {
 title:{en:"Background Remover",tr:"Arka Plan Kaldırıcı"},
 desc:{en:"Remove image backgrounds online.",tr:"Görsellerin arka planını kaldırın."},
@@ -503,7 +194,7 @@ icon:"▦"
 
 {
 title:{en:"PNG to JPG",tr:"PNG → JPG"},
-desc:{en:"Convert PNG images to JPG.",tr:"PNG görselleri JPG dönüştürün."},
+desc:{en:"Convert PNG images to JPG.",tr:"PNG görselleri JPG'ye dönüştürün."},
 url:"/png-to-jpg.html",
 cat:"converter",
 icon:"🔁"
@@ -511,7 +202,7 @@ icon:"🔁"
 
 {
 title:{en:"PNG to WEBP",tr:"PNG → WEBP"},
-desc:{en:"Convert PNG images to WEBP.",tr:"PNG görselleri WEBP dönüştürün."},
+desc:{en:"Convert PNG images to WEBP.",tr:"PNG görselleri WEBP'ye dönüştürün."},
 url:"/png-to-webp.html",
 cat:"converter",
 icon:"🔁"
@@ -519,7 +210,7 @@ icon:"🔁"
 
 {
 title:{en:"JPG to PNG",tr:"JPG → PNG"},
-desc:{en:"Convert JPG images to PNG.",tr:"JPG görselleri PNG dönüştürün."},
+desc:{en:"Convert JPG images to PNG.",tr:"JPG görselleri PNG'ye dönüştürün."},
 url:"/jpg-to-png.html",
 cat:"converter",
 icon:"🔁"
@@ -527,7 +218,7 @@ icon:"🔁"
 
 {
 title:{en:"JPG to WEBP",tr:"JPG → WEBP"},
-desc:{en:"Convert JPG images to WEBP.",tr:"JPG görselleri WEBP dönüştürün."},
+desc:{en:"Convert JPG images to WEBP.",tr:"JPG görselleri WEBP'ye dönüştürün."},
 url:"/jpg-to-webp.html",
 cat:"converter",
 icon:"🔁"
@@ -535,7 +226,7 @@ icon:"🔁"
 
 {
 title:{en:"WEBP to PNG",tr:"WEBP → PNG"},
-desc:{en:"Convert WEBP images to PNG.",tr:"WEBP görselleri PNG dönüştürün."},
+desc:{en:"Convert WEBP images to PNG.",tr:"WEBP görselleri PNG'ye dönüştürün."},
 url:"/webp-to-png.html",
 cat:"converter",
 icon:"🔁"
@@ -543,10 +234,42 @@ icon:"🔁"
 
 {
 title:{en:"WEBP to JPG",tr:"WEBP → JPG"},
-desc:{en:"Convert WEBP images to JPG.",tr:"WEBP görselleri JPG dönüştürün."},
+desc:{en:"Convert WEBP images to JPG.",tr:"WEBP görselleri JPG'ye dönüştürün."},
 url:"/webp-to-jpg.html",
 cat:"converter",
 icon:"🔁"
+},
+
+{
+title:{en:"Color Picker Converter",tr:"Renk Dönüştürücü"},
+desc:{en:"Convert color formats.",tr:"Renk formatlarını dönüştürün."},
+url:"/color-picker-converter.html",
+cat:"converter",
+icon:"🎨"
+},
+
+{
+title:{en:"CSV to JSON",tr:"CSV → JSON"},
+desc:{en:"Convert CSV data to JSON.",tr:"CSV verisini JSON'a dönüştürün."},
+url:"/csv-to-json.html",
+cat:"converter",
+icon:"📊"
+},
+
+{
+title:{en:"JSON to CSV",tr:"JSON → CSV"},
+desc:{en:"Convert JSON data to CSV.",tr:"JSON verisini CSV'ye dönüştürün."},
+url:"/json-to-csv.html",
+cat:"converter",
+icon:"📊"
+},
+
+{
+title:{en:"Unit Converter",tr:"Birim Dönüştürücü"},
+desc:{en:"Convert common units.",tr:"Birim dönüştürün."},
+url:"/unit-converter.html",
+cat:"converter",
+icon:"📏"
 },
 
 {
@@ -595,6 +318,14 @@ desc:{en:"Preview Markdown live.",tr:"Markdown önizleme yapın."},
 url:"/markdown-previewer.html",
 cat:"text",
 icon:"⬇️"
+},
+
+{
+title:{en:"Markdown Table Generator",tr:"Markdown Tablo Oluşturucu"},
+desc:{en:"Generate Markdown tables.",tr:"Markdown tablolar oluşturun."},
+url:"/markdown-table-generator.html",
+cat:"text",
+icon:"📋"
 },
 
 {
@@ -659,247 +390,425 @@ desc:{en:"Test regular expressions.",tr:"Regex ifadelerini test edin."},
 url:"/regex-tester.html",
 cat:"developer",
 icon:".*"
+},
+
+{
+title:{en:"Cron Expression Generator",tr:"Cron Oluşturucu"},
+desc:{en:"Generate cron expressions.",tr:"Cron ifadeleri oluşturun."},
+url:"/cron-expression-generator.html",
+cat:"developer",
+icon:"🕒"
+},
+
+{
+title:{en:"HTAccess Generator",tr:"HTAccess Oluşturucu"},
+desc:{en:"Generate .htaccess rules.",tr:"HTAccess kuralları oluşturun."},
+url:"/htaccess-generator.html",
+cat:"developer",
+icon:"⚙️"
+},
+
+{
+title:{en:"HTML Minifier",tr:"HTML Minify"},
+desc:{en:"Minify HTML code.",tr:"HTML kodunu küçültün."},
+url:"/html-minifier.html",
+cat:"developer",
+icon:"HTML"
+},
+
+{
+title:{en:"CSS Minifier",tr:"CSS Minify"},
+desc:{en:"Minify CSS code.",tr:"CSS kodunu küçültün."},
+url:"/css-minifier.html",
+cat:"developer",
+icon:"CSS"
+},
+
+{
+title:{en:"JavaScript Minifier",tr:"JavaScript Minify"},
+desc:{en:"Minify JavaScript code.",tr:"JavaScript kodunu küçültün."},
+url:"/javascript-minifier.html",
+cat:"developer",
+icon:"JS"
+},
+
+{
+title:{en:"SQL Formatter",tr:"SQL Düzenleyici"},
+desc:{en:"Format SQL queries.",tr:"SQL sorgularını düzenleyin."},
+url:"/sql-formatter.html",
+cat:"developer",
+icon:"SQL"
+},
+
+{
+title:{en:"XML Formatter",tr:"XML Düzenleyici"},
+desc:{en:"Format XML code.",tr:"XML kodunu düzenleyin."},
+url:"/xml-formatter.html",
+cat:"developer",
+icon:"XML"
+},
+
+{
+title:{en:"YAML Formatter",tr:"YAML Düzenleyici"},
+desc:{en:"Format YAML code.",tr:"YAML kodunu düzenleyin."},
+url:"/yaml-formatter.html",
+cat:"developer",
+icon:"YAML"
+},
+
+{
+title:{en:"HTML Table Generator",tr:"HTML Tablo Oluşturucu"},
+desc:{en:"Generate HTML tables.",tr:"HTML tablolar oluşturun."},
+url:"/html-table-generator.html",
+cat:"developer",
+icon:"📋"
+},
+
+{
+title:{en:"HTTP Status Codes",tr:"HTTP Status Kodları"},
+desc:{en:"Search HTTP status codes.",tr:"HTTP durum kodlarını inceleyin."},
+url:"/http-status-codes.html",
+cat:"developer",
+icon:"📡"
+},
+
+{
+title:{en:"User Agent Parser",tr:"User Agent Parser"},
+desc:{en:"Parse user agent strings.",tr:"User agent verisini çözümleyin."},
+url:"/user-agent-parser.html",
+cat:"developer",
+icon:"🧭"
+},
+
+{
+title:{en:"MIME Type Lookup",tr:"MIME Type Bulucu"},
+desc:{en:"Find MIME types quickly.",tr:"MIME type bulun."},
+url:"/mime-type-lookup.html",
+cat:"developer",
+icon:"📦"
+},
+
+{
+title:{en:"Timestamp Converter",tr:"Timestamp Dönüştürücü"},
+desc:{en:"Convert Unix timestamps.",tr:"Unix timestamp dönüştürün."},
+url:"/timestamp-converter.html",
+cat:"developer",
+icon:"⏱️"
+},
+
+{
+title:{en:"CSS Gradient Generator",tr:"CSS Gradient Oluşturucu"},
+desc:{en:"Generate CSS gradients.",tr:"CSS gradient oluşturun."},
+url:"/css-gradient-generator.html",
+cat:"css",
+icon:"🌈"
+},
+
+{
+title:{en:"CSS Box Shadow Generator",tr:"CSS Box Shadow Oluşturucu"},
+desc:{en:"Generate CSS box shadows.",tr:"CSS gölge oluşturun."},
+url:"/css-box-shadow-generator.html",
+cat:"css",
+icon:"⬛"
+},
+
+{
+title:{en:"Box Shadow Generator",tr:"Box Shadow Oluşturucu"},
+desc:{en:"Create box shadow CSS.",tr:"Box shadow oluşturun."},
+url:"/box-shadow-generator.html",
+cat:"css",
+icon:"⬛"
+},
+
+{
+title:{en:"Border Radius Generator",tr:"Border Radius Oluşturucu"},
+desc:{en:"Generate border radius CSS.",tr:"Border radius oluşturun."},
+url:"/border-radius-generator.html",
+cat:"css",
+icon:"◼️"
+},
+
+{
+title:{en:"Color Contrast Checker",tr:"Renk Kontrast Kontrolü"},
+desc:{en:"Check WCAG color contrast.",tr:"Renk kontrastını kontrol edin."},
+url:"/color-contrast-checker.html",
+cat:"css",
+icon:"🎨"
+},
+
+{
+title:{en:"Color Palette Generator",tr:"Renk Paleti Oluşturucu"},
+desc:{en:"Generate color palettes.",tr:"Renk paletleri oluşturun."},
+url:"/color-palette-generator.html",
+cat:"css",
+icon:"🎨"
+},
+
+{
+title:{en:"CSS Button Generator",tr:"CSS Buton Oluşturucu"},
+desc:{en:"Create CSS buttons.",tr:"CSS butonları oluşturun."},
+url:"/css-button-generator.html",
+cat:"css",
+icon:"🔘"
+},
+
+{
+title:{en:"Glassmorphism Generator",tr:"Glassmorphism Oluşturucu"},
+desc:{en:"Generate glass CSS effects.",tr:"Glassmorphism efektleri oluşturun."},
+url:"/glassmorphism-generator.html",
+cat:"css",
+icon:"🧊"
+},
+
+{
+title:{en:"Flexbox Generator",tr:"Flexbox Oluşturucu"},
+desc:{en:"Generate flexbox layouts.",tr:"Flexbox düzenleri oluşturun."},
+url:"/flexbox-generator.html",
+cat:"css",
+icon:"↔️"
+},
+
+{
+title:{en:"CSS Grid Generator",tr:"CSS Grid Oluşturucu"},
+desc:{en:"Generate CSS grid layouts.",tr:"CSS grid düzenleri oluşturun."},
+url:"/css-grid-generator.html",
+cat:"css",
+icon:"▦"
+},
+
+{
+title:{en:"CSS Clamp Generator",tr:"CSS Clamp Oluşturucu"},
+desc:{en:"Generate responsive clamp values.",tr:"Clamp değerleri oluşturun."},
+url:"/css-clamp-generator.html",
+cat:"css",
+icon:"📏"
+},
+
+{
+title:{en:"CSS Animation Generator",tr:"CSS Animasyon Oluşturucu"},
+desc:{en:"Generate CSS animations.",tr:"CSS animasyonları oluşturun."},
+url:"/css-animation-generator.html",
+cat:"css",
+icon:"✨"
+},
+
+{
+title:{en:"CSS Loader Generator",tr:"CSS Loader Oluşturucu"},
+desc:{en:"Generate CSS loaders.",tr:"CSS loader oluşturun."},
+url:"/css-loader-generator.html",
+cat:"css",
+icon:"⭕"
+},
+
+{
+title:{en:"Gradient Text Generator",tr:"Gradient Yazı Oluşturucu"},
+desc:{en:"Create gradient text CSS.",tr:"Gradient yazılar oluşturun."},
+url:"/gradient-text-generator.html",
+cat:"css",
+icon:"🌈"
+},
+
+{
+title:{en:"Neon Text Generator",tr:"Neon Yazı Oluşturucu"},
+desc:{en:"Create neon text CSS.",tr:"Neon yazılar oluşturun."},
+url:"/neon-text-generator.html",
+cat:"css",
+icon:"💡"
+},
+
+{
+title:{en:"CSS Transform Generator",tr:"CSS Transform Oluşturucu"},
+desc:{en:"Generate transform CSS.",tr:"CSS transform oluşturun."},
+url:"/css-transform-generator.html",
+cat:"css",
+icon:"🔄"
+},
+
+{
+title:{en:"CSS Filter Generator",tr:"CSS Filter Oluşturucu"},
+desc:{en:"Generate CSS filters.",tr:"CSS filtreleri oluşturun."},
+url:"/css-filter-generator.html",
+cat:"css",
+icon:"🎛️"
+},
+
+{
+title:{en:"SVG Blob Generator",tr:"SVG Blob Oluşturucu"},
+desc:{en:"Generate SVG blobs.",tr:"SVG blob oluşturun."},
+url:"/svg-blob-generator.html",
+cat:"css",
+icon:"🫧"
+},
+
+{
+title:{en:"CSS Wave Generator",tr:"CSS Wave Oluşturucu"},
+desc:{en:"Generate SVG waves.",tr:"SVG dalgaları oluşturun."},
+url:"/css-wave-generator.html",
+cat:"css",
+icon:"🌊"
+},
+
+{
+title:{en:"Meta Tag Generator",tr:"Meta Etiket Oluşturucu"},
+desc:{en:"Generate SEO meta tags.",tr:"SEO meta etiketleri oluşturun."},
+url:"/meta-tag-generator.html",
+cat:"seo",
+icon:"🏷️"
+},
+
+{
+title:{en:"Canonical URL Generator",tr:"Canonical URL Oluşturucu"},
+desc:{en:"Generate canonical tags.",tr:"Canonical etiket oluşturun."},
+url:"/canonical-url-generator.html",
+cat:"seo",
+icon:"🔗"
+},
+
+{
+title:{en:"Schema Markup Generator",tr:"Schema Markup Oluşturucu"},
+desc:{en:"Generate JSON-LD schema.",tr:"Schema markup oluşturun."},
+url:"/schema-markup-generator.html",
+cat:"seo",
+icon:"⭐"
+},
+
+{
+title:{en:"Open Graph Generator",tr:"Open Graph Oluşturucu"},
+desc:{en:"Generate OG meta tags.",tr:"Open Graph meta etiketleri oluşturun."},
+url:"/open-graph-generator.html",
+cat:"seo",
+icon:"📣"
+},
+
+{
+title:{en:"Open Graph Previewer",tr:"Open Graph Önizleme"},
+desc:{en:"Preview social cards.",tr:"Sosyal kart önizleme yapın."},
+url:"/open-graph-previewer.html",
+cat:"seo",
+icon:"👁️"
+},
+
+{
+title:{en:"Meta Pixel Helper",tr:"Meta Pixel Yardımcısı"},
+desc:{en:"Generate Meta Pixel code.",tr:"Meta Pixel kodu oluşturun."},
+url:"/meta-pixel-helper.html",
+cat:"seo",
+icon:"📊"
+},
+
+{
+title:{en:"Favicon Generator",tr:"Favicon Oluşturucu"},
+desc:{en:"Generate favicon tags.",tr:"Favicon oluşturun."},
+url:"/favicon-generator.html",
+cat:"seo",
+icon:"🔖"
+},
+
+{
+title:{en:"Sitemap Generator",tr:"Sitemap Oluşturucu"},
+desc:{en:"Generate sitemap XML.",tr:"Sitemap XML oluşturun."},
+url:"/sitemap-generator.html",
+cat:"seo",
+icon:"🗺️"
+},
+
+{
+title:{en:"Robots.txt Generator",tr:"Robots.txt Oluşturucu"},
+desc:{en:"Generate robots.txt files.",tr:"Robots.txt oluşturun."},
+url:"/robots-txt-generator.html",
+cat:"seo",
+icon:"🤖"
+},
+
+{
+title:{en:"UTM Link Builder",tr:"UTM Link Oluşturucu"},
+desc:{en:"Build UTM campaign links.",tr:"UTM linkleri oluşturun."},
+url:"/utm-link-builder.html",
+cat:"seo",
+icon:"📈"
+},
+
+{
+title:{en:"Aspect Ratio Calculator",tr:"Aspect Ratio Hesaplayıcı"},
+desc:{en:"Calculate aspect ratios.",tr:"Aspect ratio hesaplayın."},
+url:"/aspect-ratio-calculator.html",
+cat:"seo",
+icon:"📐"
 }
 ];
 
-const grid =
-document.getElementById("toolsGrid");
-
-const searchInput =
-document.getElementById("searchInput");
-
-const buttons =
-document.querySelectorAll(".cat-btn");
-
-const langBtn =
-document.getElementById("langBtn");
-
+const grid = document.getElementById("toolsGrid");
+const searchInput = document.getElementById("searchInput");
+const buttons = document.querySelectorAll(".cat-btn");
+const langBtn = document.getElementById("langBtn");
 let activeCategory = "all";
+let lang = localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
 
-let lang =
-localStorage.getItem("toolivo_lang") ||
-((navigator.language || "")
-.toLowerCase()
-.startsWith("tr")
-? "tr"
-: "en");
+const ui = {
+  en: {badge:"Fast • Free • Mobile Friendly", hero:'Free Online <span class="gradient">Tools</span>', heroText:"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.", search:"Search tools...", allTools:"All Tools", navTools:"Tools", navAbout:"About", navPrivacy:"Privacy", navContact:"Contact", all:"All", image:"Image", text:"Text", developer:"Developer", css:"CSS", seo:"SEO", converter:"Converter", rights:"All rights reserved.", notFound:"No tools found."},
+  tr: {badge:"Hızlı • Ücretsiz • Mobil Uyumlu", hero:'Ücretsiz Online <span class="gradient">Araçlar</span>', heroText:"Toolivo; görsel, metin, SEO, CSS, geliştirici ve dönüştürücü araçları için hızlı online araçlar sunar.", search:"Araç ara...", allTools:"Tüm Araçlar", navTools:"Araçlar", navAbout:"Hakkında", navPrivacy:"Gizlilik", navContact:"İletişim", all:"Tümü", image:"Görsel", text:"Metin", developer:"Geliştirici", css:"CSS", seo:"SEO", converter:"Dönüştürücü", rights:"Tüm hakları saklıdır.", notFound:"Araç bulunamadı."}
+};
 
-function getTitle(tool){
-
-if(typeof tool.title === "object"){
-return tool.title[lang];
-}
-
-return tool.title;
-}
-
-function getDesc(tool){
-
-if(typeof tool.desc === "object"){
-return tool.desc[lang];
-}
-
-return tool.desc;
-}
-
+function getTitle(tool){ return typeof tool.title === "object" ? tool.title[lang] : tool.title; }
+function getDesc(tool){ return typeof tool.desc === "object" ? tool.desc[lang] : tool.desc; }
 function applyLanguage(){
-
-if(lang === "tr"){
-
-document.getElementById("badge")
-.innerText =
-"Hızlı • Ücretsiz • Mobil Uyumlu";
-
-document.getElementById("heroTitle")
-.innerHTML =
-'Ücretsiz Online <span class="gradient">Araçlar</span>';
-
-document.getElementById("heroText")
-.innerText =
-"Toolivo; görsel, metin, SEO, CSS, geliştirici ve dönüştürücü araçları için hızlı online araçlar sunar.";
-
-document.getElementById("searchInput")
-.placeholder =
-"Araç ara...";
-
-document.querySelector(".section-title")
-.innerText =
-"Tüm Araçlar";
-
-document.getElementById("navTools")
-.innerText =
-"Araçlar";
-
-document.getElementById("navAbout")
-.innerText =
-"Hakkında";
-
-document.getElementById("navPrivacy")
-.innerText =
-"Gizlilik";
-
-document.getElementById("navContact")
-.innerText =
-"İletişim";
-
-document.getElementById("rightsText")
-.innerText =
-"Tüm hakları saklıdır.";
-
-langBtn.innerText = "EN";
-
-}else{
-
-document.getElementById("badge")
-.innerText =
-"Fast • Free • Mobile Friendly";
-
-document.getElementById("heroTitle")
-.innerHTML =
-'Free Online <span class="gradient">Tools</span>';
-
-document.getElementById("heroText")
-.innerText =
-"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.";
-
-document.getElementById("searchInput")
-.placeholder =
-"Search tools...";
-
-document.querySelector(".section-title")
-.innerText =
-"All Tools";
-
-document.getElementById("navTools")
-.innerText =
-"Tools";
-
-document.getElementById("navAbout")
-.innerText =
-"About";
-
-document.getElementById("navPrivacy")
-.innerText =
-"Privacy";
-
-document.getElementById("navContact")
-.innerText =
-"Contact";
-
-document.getElementById("rightsText")
-.innerText =
-"All rights reserved.";
-
-langBtn.innerText = "TR";
+  const t = ui[lang];
+  document.documentElement.lang = lang;
+  document.getElementById("badge").innerText = t.badge;
+  document.getElementById("heroTitle").innerHTML = t.hero;
+  document.getElementById("heroText").innerText = t.heroText;
+  searchInput.placeholder = t.search;
+  document.querySelector(".section-title").innerText = t.allTools;
+  document.getElementById("navTools").innerText = t.navTools;
+  document.getElementById("navAbout").innerText = t.navAbout;
+  document.getElementById("navPrivacy").innerText = t.navPrivacy;
+  document.getElementById("navContact").innerText = t.navContact;
+  document.getElementById("catAll").innerText = t.all;
+  document.getElementById("catImage").innerText = t.image;
+  document.getElementById("catText").innerText = t.text;
+  document.getElementById("catDeveloper").innerText = t.developer;
+  document.getElementById("catCss").innerText = t.css;
+  document.getElementById("catSeo").innerText = t.seo;
+  document.getElementById("catConverter").innerText = t.converter;
+  document.getElementById("rightsText").innerText = t.rights;
+  langBtn.innerText = lang === "tr" ? "EN" : "TR";
+  renderTools();
 }
-
-renderTools();
-}
-
 function renderTools(){
-
-const query =
-searchInput.value.toLowerCase().trim();
-
-grid.innerHTML = "";
-
-const filtered =
-tools.filter(tool => {
-
-const title =
-getTitle(tool);
-
-const desc =
-getDesc(tool);
-
-const matchesCategory =
-activeCategory === "all" ||
-tool.cat === activeCategory;
-
-const matchesSearch =
-title.toLowerCase().includes(query) ||
-desc.toLowerCase().includes(query);
-
-return matchesCategory && matchesSearch;
-});
-
-filtered.forEach(tool => {
-
-const card =
-document.createElement("a");
-
-card.className =
-"tool-card";
-
-card.href =
-tool.url;
-
-card.innerHTML = `
-<div class="tool-icon">
-${tool.icon}
-</div>
-
-<h3>
-${getTitle(tool)}
-</h3>
-
-<p>
-${getDesc(tool)}
-</p>
-
-<span class="tool-tag">
-${tool.cat.toUpperCase()} →
-</span>
-`;
-
-grid.appendChild(card);
-});
+  const query = searchInput.value.toLowerCase().trim();
+  grid.innerHTML = "";
+  const filtered = tools.filter(tool => {
+    const title = getTitle(tool);
+    const desc = getDesc(tool);
+    const matchesCategory = activeCategory === "all" || tool.cat === activeCategory;
+    const matchesSearch = title.toLowerCase().includes(query) || desc.toLowerCase().includes(query);
+    return matchesCategory && matchesSearch;
+  });
+  filtered.forEach(tool => {
+    const card = document.createElement("a");
+    card.className = "tool-card";
+    card.href = tool.url;
+    card.innerHTML = `<div class="tool-icon">${tool.icon}</div><h3>${getTitle(tool)}</h3><p>${getDesc(tool)}</p><span class="tool-tag">${tool.cat.toUpperCase()} →</span>`;
+    grid.appendChild(card);
+  });
+  if(filtered.length === 0){ grid.innerHTML = `<p style="color:#94a3b8;">${ui[lang].notFound}</p>`; }
 }
-
 buttons.forEach(btn => {
-
-btn.addEventListener("click", () => {
-
-buttons.forEach(b =>
-b.classList.remove("active")
-);
-
-btn.classList.add("active");
-
-activeCategory =
-btn.dataset.category;
-
-renderTools();
+  btn.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeCategory = btn.dataset.category;
+    renderTools();
+  });
 });
-});
-
-searchInput.addEventListener(
-"input",
-renderTools
-);
-
+searchInput.addEventListener("input", renderTools);
 langBtn.addEventListener("click", () => {
-
-lang =
-lang === "tr"
-? "en"
-: "tr";
-
-localStorage.setItem(
-"toolivo_lang",
-lang
-);
-
-applyLanguage();
+  lang = lang === "tr" ? "en" : "tr";
+  localStorage.setItem("toolivo_lang", lang);
+  applyLanguage();
 });
-
-document.getElementById("year")
-.innerText =
-new Date().getFullYear();
-
+document.getElementById("year").innerText = new Date().getFullYear();
 applyLanguage();
-
 </script>
-
 </body>
 </html>
