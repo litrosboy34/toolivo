@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Glassmorphism Generator - Toolivo</title>
+
+<meta name="description" content="Generate beautiful glassmorphism CSS instantly with live preview and copyable code.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(135deg,#0ea5e9,#2563eb,#7c3aed);
+    min-height:100vh;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.desc{
+    color:#dbeafe;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.card{
+    background:rgba(17,24,39,0.7);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    backdrop-filter:blur(12px);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+@media(max-width:800px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.control{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#dbeafe;
+    font-size:14px;
+}
+
+input[type="range"],
+input[type="color"]{
+    width:100%;
+}
+
+input[type="range"]{
+    accent-color:#38bdf8;
+}
+
+.preview-area{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:340px;
+    border-radius:18px;
+    background:
+    linear-gradient(135deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02));
+}
+
+.preview-box{
+    width:260px;
+    height:260px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+button{
+    padding:13px 20px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.generate{
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+}
+
+.copy{
+    background:#111827;
+    color:white;
+}
+
+textarea{
+    width:100%;
+    height:220px;
+    margin-top:18px;
+    background:#020617;
+    border:1px solid #1e293b;
+    color:#38bdf8;
+    border-radius:12px;
+    padding:15px;
+    resize:vertical;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#dbeafe;
+    margin-top:25px;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">Glassmorphism Generator</div>
+
+    <div class="desc">
+        Generate beautiful glassmorphism CSS instantly with live preview and copyable code.
+    </div>
+
+    <div class="card">
+
+        <div class="grid">
+
+            <div>
+
+                <div class="control">
+                    <label>Glass Color</label>
+                    <input type="color" id="glassColor" value="#ffffff">
+                </div>
+
+                <div class="control">
+                    <label>Opacity</label>
+                    <input type="range" id="opacity" min="0.05" max="1" step="0.01" value="0.15">
+                </div>
+
+                <div class="control">
+                    <label>Blur Amount</label>
+                    <input type="range" id="blur" min="0" max="40" value="15">
+                </div>
+
+                <div class="control">
+                    <label>Border Radius</label>
+                    <input type="range" id="radius" min="0" max="60" value="24">
+                </div>
+
+                <div class="control">
+                    <label>Border Opacity</label>
+                    <input type="range" id="borderOpacity" min="0" max="1" step="0.01" value="0.2">
+                </div>
+
+            </div>
+
+            <div class="preview-area">
+
+                <div class="preview-box" id="previewBox">
+                    Glass Effect
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="generate" onclick="generateGlass()">
+                Generate
+            </button>
+
+            <button class="copy" onclick="copyCSS()">
+                Copy CSS
+            </button>
+
+        </div>
+
+        <textarea id="output"></textarea>
+
+    </div>
+
+    <div class="footer">
+        Toolivo © 2026
+    </div>
+
+</div>
+
+<script>
+function hexToRgb(hex){
+
+    hex = hex.replace("#","");
+
+    return {
+        r: parseInt(hex.substring(0,2),16),
+        g: parseInt(hex.substring(2,4),16),
+        b: parseInt(hex.substring(4,6),16)
+    };
+}
+
+function generateGlass(){
+
+    const color = document.getElementById("glassColor").value;
+    const opacity = document.getElementById("opacity").value;
+    const blur = document.getElementById("blur").value;
+    const radius = document.getElementById("radius").value;
+    const borderOpacity = document.getElementById("borderOpacity").value;
+
+    const rgb = hexToRgb(color);
+
+    const glass =
+`rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+
+    const border =
+`rgba(255,255,255,${borderOpacity})`;
+
+    const box = document.getElementById("previewBox");
+
+    box.style.background = glass;
+    box.style.backdropFilter = `blur(${blur}px)`;
+    box.style.webkitBackdropFilter = `blur(${blur}px)`;
+    box.style.borderRadius = radius + "px";
+    box.style.border = `1px solid ${border}`;
+
+    const css =
+`.glass{
+    background:${glass};
+    backdrop-filter:blur(${blur}px);
+    -webkit-backdrop-filter:blur(${blur}px);
+    border-radius:${radius}px;
+    border:1px solid ${border};
+}`;
+
+    document.getElementById("output").value = css;
+}
+
+function copyCSS(){
+
+    navigator.clipboard.writeText(
+        document.getElementById("output").value
+    );
+
+    alert("Copied!");
+}
+
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", generateGlass);
+});
+
+generateGlass();
+</script>
+
+</body>
+</html>
