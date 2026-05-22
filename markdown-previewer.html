@@ -3,158 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Markdown Previewer — Toolivo</title>
 <meta name="description" content="Write Markdown and preview it live instantly with Toolivo.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#05070d;
-color:white;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-.wrap{
-width:min(1200px,calc(100% - 28px));
-margin:auto;
-padding:40px 0;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-h1{
-font-size:56px;
-margin:20px 0 10px;
-}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
-}
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:720px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
 
-.panel{
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
-padding:18px;
-}
-
-.label{
-font-size:14px;
-font-weight:bold;
-color:#9ca8bb;
-margin-bottom:10px;
-}
+.label{font-size:14px;font-weight:bold;color:#cbd5e1;margin-bottom:10px}
 
 textarea{
 width:100%;
 min-height:500px;
 border-radius:18px;
-border:1px solid #263244;
-background:#05070d;
+border:1px solid #334155;
+background:#020617;
 color:white;
 padding:18px;
 font-size:15px;
 line-height:1.7;
-box-sizing:border-box;
 resize:vertical;
 font-family:monospace;
+outline:none;
 }
+
+textarea:focus{border-color:#38bdf8}
 
 .preview{
 min-height:500px;
 border-radius:18px;
-border:1px solid #263244;
-background:#05070d;
+border:1px solid #334155;
+background:#020617;
 padding:22px;
 line-height:1.8;
 overflow:auto;
+color:#e5eefb;
 }
 
-.preview h1,
-.preview h2,
-.preview h3{
-margin-top:24px;
-}
+.preview h1,.preview h2,.preview h3{margin:18px 0 10px}
+.preview p{margin:10px 0}
+.preview ul{padding-left:22px;margin:10px 0}
+.preview li{margin:6px 0}
+.preview code{background:#111827;border:1px solid #1e293b;padding:3px 7px;border-radius:6px;font-family:monospace;color:#67e8f9}
+.preview pre{background:#111827;border:1px solid #1e293b;padding:16px;border-radius:14px;overflow:auto;margin:12px 0}
+.preview blockquote{border-left:4px solid #38bdf8;padding-left:14px;margin:12px 0;color:#94a3b8}
+.preview a{color:#38bdf8}
 
-.preview code{
-background:#121935;
-padding:3px 7px;
-border-radius:6px;
-font-family:monospace;
-}
-
-.preview pre{
-background:#121935;
-padding:16px;
-border-radius:14px;
-overflow:auto;
-}
-
-.preview blockquote{
-border-left:4px solid #39e6d2;
-padding-left:14px;
-margin-left:0;
-color:#9ca8bb;
-}
-
-.preview a{
-color:#39e6d2;
-}
-
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
 button{
 padding:15px 20px;
 border:0;
 border-radius:16px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 font-weight:800;
 cursor:pointer;
-margin-top:12px;
+transition:.2s;
 }
+button:hover{transform:translateY(-2px)}
 
-.copy{
-background:#121935;
-color:white;
-border:1px solid #263244;
-margin-left:8px;
-}
+.info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
 
 @media(max-width:900px){
-
-.grid{
-grid-template-columns:1fr;
-}
-
-h1{
-font-size:42px;
-}
-
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+textarea,.preview{min-height:360px}
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>Markdown Previewer</h1>
+<header class="header">
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-<p>
-Write Markdown on the left and preview it live on the right.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
 
-<div class="grid">
+<section class="tool-hero">
+<h1>Markdown <span class="gradient">Previewer</span></h1>
+<p>Write Markdown on the left and preview it live on the right. Perfect for notes, README files, documentation and quick formatting checks.</p>
+</section>
+
+<section class="tool-grid">
 
 <div class="panel">
-
 <div class="label">Markdown Input</div>
 
-<textarea id="input">
-# Toolivo Markdown Previewer
+<textarea id="input"># Toolivo Markdown Previewer
 
 ## Live preview
 
@@ -172,22 +151,46 @@ Write Markdown on the left and preview it live on the right.
 console.log("Toolivo");
 \`\`\`
 
-[Visit Toolivo](https://toolivo.site)
-</textarea>
+[Visit Toolivo](https://toolivo.site)</textarea>
 
+<div class="buttons">
 <button onclick="copyMarkdown()">Copy Markdown</button>
-
+</div>
 </div>
 
 <div class="panel">
-
-<div class="label">Preview</div>
-
+<div class="info">Live preview updates instantly as you type.</div>
 <div class="preview" id="preview"></div>
-
 </div>
 
+</section>
+
+<section class="content">
+<article class="card">
+<h2>Why use Markdown?</h2>
+<p>Markdown is a simple formatting language used in README files, documentation, notes, blog drafts and developer tools.</p>
+</article>
+
+<article class="card">
+<h2>How it works</h2>
+<ul>
+<li>Write or paste Markdown into the editor.</li>
+<li>Preview the formatted result instantly.</li>
+<li>Copy the Markdown whenever you need it.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
 </div>
+</footer>
 
 </div>
 
@@ -195,29 +198,28 @@ console.log("Toolivo");
 const input=document.getElementById('input');
 const preview=document.getElementById('preview');
 
+function escapeHtml(str){
+return str
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;");
+}
+
 function parseMarkdown(md){
+let html=escapeHtml(md);
 
-let html=md;
-
+html=html.replace(/```([\s\S]*?)```/gim,'<pre><code>$1</code></pre>');
 html=html.replace(/^### (.*$)/gim,'<h3>$1</h3>');
 html=html.replace(/^## (.*$)/gim,'<h2>$1</h2>');
 html=html.replace(/^# (.*$)/gim,'<h1>$1</h1>');
-
 html=html.replace(/\*\*(.*?)\*\*/gim,'<strong>$1</strong>');
 html=html.replace(/\*(.*?)\*/gim,'<em>$1</em>');
-
 html=html.replace(/^\> (.*$)/gim,'<blockquote>$1</blockquote>');
-
 html=html.replace(/^\- (.*$)/gim,'<li>$1</li>');
 html=html.replace(/(<li>.*<\/li>)/gims,'<ul>$1</ul>');
-
-html=html.replace(/\`(.*?)\`/gim,'<code>$1</code>');
-
-html=html.replace(/\`\`\`([\s\S]*?)\`\`\`/gim,'<pre><code>$1</code></pre>');
-
+html=html.replace(/`(.*?)`/gim,'<code>$1</code>');
 html=html.replace(/\[(.*?)\]\((.*?)\)/gim,'<a href="$2" target="_blank">$1</a>');
-
-html=html.replace(/\n$/gim,'<br>');
+html=html.replace(/\n/gim,'<br>');
 
 return html;
 }
@@ -228,10 +230,12 @@ preview.innerHTML=parseMarkdown(input.value);
 
 function copyMarkdown(){
 navigator.clipboard.writeText(input.value);
+alert("Copied!");
 }
 
 input.addEventListener('input',updatePreview);
 
+document.getElementById("year").innerText=new Date().getFullYear();
 updatePreview();
 </script>
 
