@@ -3,174 +3,357 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SHA256 Hash Generator — Toolivo</title>
+
 <meta name="description" content="Generate SHA256 hashes instantly with Toolivo. Free online SHA256 hash generator.">
+
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
+*{box-sizing:border-box}
+
 body{
 margin:0;
-font-family:Arial,sans-serif;
-background:#05070d;
+font-family:Inter,Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
+radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
+#0f172a;
 color:white;
+min-height:100vh;
+overflow-x:hidden;
 }
 
-.wrap{
-width:min(1000px,calc(100% - 28px));
+a{text-decoration:none;color:inherit}
+
+.container{
+width:min(1100px,calc(100% - 32px));
 margin:auto;
-padding:40px 0;
 }
 
-h1{
-font-size:56px;
-margin:20px 0 10px;
+.header{
+padding:22px 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:-1.5px;
+background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.nav a{
+font-size:14px;
+font-weight:700;
+color:#cbd5e1;
+transition:.2s;
+}
+
+.nav a:hover{color:#22d3ee}
+
+.tool-hero{
+padding:58px 0 24px;
+text-align:center;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,74px);
+line-height:.95;
+letter-spacing:-4px;
+margin:0 0 18px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+line-height:1.7;
+font-size:18px;
+color:#94a3b8;
 }
 
 .panel{
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
-padding:18px;
-margin-top:18px;
+margin-top:34px;
+background:rgba(15,23,42,.78);
+border:1px solid rgba(148,163,184,.16);
+border-radius:28px;
+padding:24px;
+backdrop-filter:blur(14px);
+box-shadow:0 24px 70px rgba(0,0,0,.22);
 }
 
 .label{
-font-size:14px;
-font-weight:bold;
-color:#9ca8bb;
-margin-bottom:10px;
+font-size:13px;
+font-weight:700;
+letter-spacing:.5px;
+text-transform:uppercase;
+color:#94a3b8;
+margin-bottom:12px;
 }
 
 textarea{
 width:100%;
-min-height:220px;
-border-radius:18px;
-border:1px solid #263244;
-background:#05070d;
+min-height:230px;
+border-radius:22px;
+border:1px solid rgba(148,163,184,.18);
+background:#020617;
 color:white;
 padding:18px;
 font-size:16px;
-line-height:1.6;
-box-sizing:border-box;
+line-height:1.7;
 resize:vertical;
+outline:none;
+font-family:inherit;
+transition:.2s;
+}
+
+textarea:focus{
+border-color:#22d3ee;
+box-shadow:0 0 0 4px rgba(34,211,238,.08);
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:18px;
+}
+
+button{
+height:56px;
+padding:0 22px;
+border-radius:18px;
+font-weight:800;
+font-size:15px;
+cursor:pointer;
+transition:.2s;
+background:rgba(255,255,255,.06);
+color:white;
+border:1px solid rgba(148,163,184,.16);
+}
+
+button:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,.1);
+border-color:rgba(34,211,238,.35);
+}
+
+.primary{
+background:linear-gradient(90deg,#22d3ee,#60a5fa);
+color:#020617;
+border:none;
 }
 
 .output{
 margin-top:18px;
-padding:18px;
-border-radius:18px;
-background:#05070d;
-border:1px solid #263244;
+padding:20px;
+border-radius:22px;
+background:#020617;
+border:1px solid rgba(148,163,184,.16);
 word-break:break-all;
-font-family:monospace;
+font-family:Consolas,Monaco,monospace;
 font-size:16px;
+line-height:1.8;
+color:#67e8f9;
+min-height:90px;
+}
+
+.info-grid{
+margin-top:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.info-card{
+background:rgba(2,6,23,.34);
+border:1px solid rgba(148,163,184,.14);
+border-radius:22px;
+padding:18px;
+}
+
+.info-card h2{
+margin:0 0 10px;
+font-size:20px;
+}
+
+.info-card p{
+margin:0;
 line-height:1.7;
+color:#94a3b8;
+}
+
+.footer{
+margin-top:70px;
+padding:26px 0;
+border-top:1px solid rgba(148,163,184,.14);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+flex-wrap:wrap;
+color:#94a3b8;
+font-size:14px;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.footer-links a:hover{color:#22d3ee}
+
+@media(max-width:768px){
+.header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.tool-hero h1{
+letter-spacing:-2px;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.actions{
+flex-direction:column;
 }
 
 button{
-padding:15px 20px;
-border:0;
-border-radius:16px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
-font-weight:800;
-cursor:pointer;
-margin:12px 10px 0 0;
-}
-
-.copy{
-background:#121935;
-color:white;
-border:1px solid #263244;
-}
-
-.info{
-margin-top:16px;
-padding:14px;
-border-radius:14px;
-background:#121935;
-border:1px solid #263244;
-color:#9ca8bb;
-font-size:14px;
-line-height:1.7;
-}
-
-@media(max-width:800px){
-h1{
-font-size:42px;
+width:100%;
 }
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>SHA256 Hash Generator</h1>
+<header class="header">
+<a href="/" class="logo">Toolivo</a>
 
-<p>
-Generate secure SHA256 hashes instantly with Toolivo.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
 
-<div class="panel">
+<section class="tool-hero">
+<h1><span class="gradient">SHA256 Hash</span><br>Generator</h1>
+<p>Generate secure SHA256 hashes instantly in your browser. Useful for checksums, verification and developer workflows.</p>
+</section>
+
+<section class="panel">
 
 <div class="label">Input Text</div>
 
 <textarea id="input" placeholder="Type or paste text here..."></textarea>
 
-<button onclick="generateHash()">Generate SHA256</button>
-<button class="copy" onclick="copyHash()">Copy Hash</button>
-<button class="copy" onclick="clearAll()">Clear</button>
+<div class="actions">
+<button class="primary" onclick="generateHash()">Generate SHA256</button>
+<button onclick="copyHash()">Copy Hash</button>
+<button onclick="clearAll()">Clear</button>
+</div>
 
 <div class="output" id="output">
 Your SHA256 hash will appear here...
 </div>
 
-<div class="info">
-SHA256 is commonly used for security, hashing, verification and checksums.
+<div class="info-grid">
+
+<div class="info-card">
+<h2>What is SHA256?</h2>
+<p>SHA256 is a cryptographic hash function that creates a fixed-length 256-bit hash from text or data.</p>
+</div>
+
+<div class="info-card">
+<h2>Is my text uploaded?</h2>
+<p>No. The hash is generated locally in your browser using the Web Crypto API.</p>
 </div>
 
 </div>
+
+</section>
+
+<footer class="footer">
+<div>© 2026 Toolivo — SHA256 Hash Generator</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
-const input=document.getElementById('input');
-const output=document.getElementById('output');
+const input = document.getElementById('input');
+const output = document.getElementById('output');
 
 async function generateHash(){
-
-const text=input.value;
+const text = input.value;
 
 if(!text){
-output.textContent='Please enter text.';
+output.textContent = 'Please enter text.';
 return;
 }
 
-const encoder=new TextEncoder();
-const data=encoder.encode(text);
+const encoder = new TextEncoder();
+const data = encoder.encode(text);
 
-const hashBuffer=await crypto.subtle.digest('SHA-256',data);
+const hashBuffer = await crypto.subtle.digest('SHA-256',data);
+const hashArray = Array.from(new Uint8Array(hashBuffer));
+const hashHex = hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
 
-const hashArray=Array.from(new Uint8Array(hashBuffer));
-
-const hashHex=hashArray.map(b=>b.toString(16).padStart(2,'0')).join('');
-
-output.textContent=hashHex;
+output.textContent = hashHex;
 }
 
 function copyHash(){
+if(!output.textContent || output.textContent === 'Your SHA256 hash will appear here...') return;
 navigator.clipboard.writeText(output.textContent);
 }
 
 function clearAll(){
-input.value='';
-output.textContent='Your SHA256 hash will appear here...';
+input.value = '';
+output.textContent = 'Your SHA256 hash will appear here...';
 }
+
+input.addEventListener('input',generateHash);
 </script>
 
 </body>
