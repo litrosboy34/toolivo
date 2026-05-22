@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timestamp Converter — Toolivo</title>
+<meta name="description" content="Convert Unix timestamps to readable dates instantly with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#05070d;
+color:white;
+}
+
+.wrap{
+width:min(1000px,calc(100% - 28px));
+margin:auto;
+padding:40px 0;
+}
+
+h1{
+font-size:56px;
+margin:20px 0 10px;
+}
+
+p{
+color:#9ca8bb;
+margin-bottom:25px;
+}
+
+.panel{
+background:#0b1020;
+border:1px solid #263244;
+border-radius:20px;
+padding:18px;
+margin-top:18px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.field{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+font-weight:bold;
+color:#9ca8bb;
+}
+
+input{
+width:100%;
+height:54px;
+border-radius:16px;
+border:1px solid #263244;
+background:#05070d;
+color:white;
+padding:0 16px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+.output{
+margin-top:16px;
+padding:18px;
+border-radius:18px;
+background:#05070d;
+border:1px solid #263244;
+line-height:1.8;
+font-size:16px;
+}
+
+button{
+padding:15px 20px;
+border:0;
+border-radius:16px;
+background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+font-weight:800;
+cursor:pointer;
+margin-right:10px;
+margin-top:10px;
+}
+
+.copy{
+background:#121935;
+color:white;
+border:1px solid #263244;
+}
+
+@media(max-width:800px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:42px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<h1>Timestamp Converter</h1>
+
+<p>
+Convert Unix timestamps into readable dates instantly.
+</p>
+
+<div class="grid">
+
+<div class="panel">
+
+<div class="field">
+<label>Unix Timestamp</label>
+<input id="timestampInput" placeholder="Example: 1716336000">
+</div>
+
+<button onclick="convertTimestamp()">Convert Timestamp</button>
+
+<div class="output" id="timestampOutput">
+Result will appear here...
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="field">
+<label>Date & Time</label>
+<input id="dateInput" type="datetime-local">
+</div>
+
+<button onclick="convertDate()">Convert To Timestamp</button>
+<button class="copy" onclick="setNow()">Use Current Time</button>
+
+<div class="output" id="dateOutput">
+Timestamp will appear here...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const timestampInput=document.getElementById('timestampInput');
+const timestampOutput=document.getElementById('timestampOutput');
+
+const dateInput=document.getElementById('dateInput');
+const dateOutput=document.getElementById('dateOutput');
+
+function convertTimestamp(){
+
+let ts=timestampInput.value.trim();
+
+if(!ts){
+timestampOutput.textContent='Please enter a timestamp.';
+return;
+}
+
+if(ts.length===10){
+ts=ts*1000;
+}
+
+const date=new Date(Number(ts));
+
+if(isNaN(date.getTime())){
+timestampOutput.textContent='Invalid timestamp.';
+return;
+}
+
+timestampOutput.innerHTML=`
+Local: ${date.toLocaleString()}<br>
+UTC: ${date.toUTCString()}<br>
+ISO: ${date.toISOString()}
+`;
+}
+
+function convertDate(){
+
+if(!dateInput.value){
+dateOutput.textContent='Please select a date.';
+return;
+}
+
+const date=new Date(dateInput.value);
+
+dateOutput.innerHTML=`
+Unix (seconds): ${Math.floor(date.getTime()/1000)}<br>
+Unix (milliseconds): ${date.getTime()}
+`;
+}
+
+function setNow(){
+
+const now=new Date();
+
+const offset=now.getTimezoneOffset();
+
+const local=new Date(now.getTime()-offset*60000)
+.toISOString()
+.slice(0,16);
+
+dateInput.value=local;
+
+convertDate();
+}
+
+setNow();
+</script>
+
+</body>
+</html>
