@@ -4,136 +4,279 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Canonical URL Generator - Toolivo</title>
-
-<meta name="description" content="Generate canonical URL tags instantly for SEO optimization.">
+<title>Canonical URL Generator — Toolivo</title>
+<meta name="description" content="Generate canonical URL tags instantly for SEO optimization and duplicate content prevention.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.container{
-    max-width:900px;
-    margin:auto;
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:30px;
-    line-height:1.6;
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
 label{
-    display:block;
-    margin-bottom:10px;
-    color:#cbd5e1;
-    font-size:14px;
+display:block;
+margin-bottom:10px;
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
 }
 
 input{
-    width:100%;
-    background:#020617;
-    border:1px solid #334155;
-    color:white;
-    border-radius:12px;
-    padding:15px;
-    outline:none;
+width:100%;
+background:#020617;
+border:1px solid #334155;
+color:white;
+border-radius:16px;
+padding:16px;
+outline:none;
+font-size:15px;
+transition:.2s;
+}
+
+input:focus{
+border-color:#38bdf8;
 }
 
 .preview{
-    margin-top:20px;
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:14px;
-    padding:20px;
+margin-top:20px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:20px;
 }
 
 .preview h3{
-    margin-bottom:12px;
-    color:#38bdf8;
+margin-bottom:12px;
+color:#67e8f9;
+font-size:22px;
 }
 
 .preview p{
-    color:#94a3b8;
-    line-height:1.6;
+color:#94a3b8;
+line-height:1.7;
 }
 
 .buttons{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:14px 20px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.2s;
-}
-
-.generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
-}
-
-.copy{
-    background:#1e293b;
-    color:white;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
 }
 
 button:hover{
-    opacity:0.9;
-    transform:translateY(-2px);
+transform:translateY(-2px);
+}
+
+.primary{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+
+.secondary{
+background:#020617;
+border:1px solid #334155;
+color:#cbd5e1;
 }
 
 textarea{
-    width:100%;
-    height:160px;
-    margin-top:20px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:180px;
+margin-top:20px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:18px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:30px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -142,87 +285,160 @@ textarea{
 
 <div class="container">
 
-    <div class="title">Canonical URL Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate canonical URL tags instantly for SEO optimization and duplicate content prevention.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <label>Canonical URL</label>
+</header>
 
-        <input
-            type="text"
-            id="urlInput"
-            placeholder="https://toolivo.site/page"
-        >
+<section class="tool-hero">
 
-        <div class="preview">
+<h1>Canonical URL <span class="gradient">Generator</span></h1>
 
-            <h3>What is a Canonical URL?</h3>
+<p>
+Generate canonical URL tags instantly for SEO optimization, indexing clarity and duplicate content prevention.
+</p>
 
-            <p>
-                Canonical tags help search engines understand the main version
-                of a webpage and prevent duplicate content SEO issues.
-            </p>
+</section>
 
-        </div>
+<section class="tool-grid">
 
-        <div class="buttons">
+<div class="panel">
 
-            <button class="generate" onclick="generateCanonical()">
-                Generate
-            </button>
+<label>Canonical URL</label>
 
-            <button class="copy" onclick="copyCode()">
-                Copy
-            </button>
+<input
+type="text"
+id="urlInput"
+placeholder="https://toolivo.site/page"
+>
 
-        </div>
+<div class="buttons">
 
-        <textarea
-            id="output"
-            placeholder="Generated canonical tag will appear here..."
-        ></textarea>
+<button class="primary" onclick="generateCanonical()">
+Generate Tag
+</button>
 
-    </div>
+<button class="secondary" onclick="copyCode()">
+Copy Code
+</button>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+</div>
+
+<textarea
+id="output"
+placeholder="Generated canonical tag will appear here..."
+></textarea>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Canonical tags help search engines understand the preferred version of a page and avoid duplicate content issues.
+</div>
+
+<div class="preview">
+
+<h3>What is a Canonical URL?</h3>
+
+<p>
+A canonical URL tells search engines which page version should be indexed as the primary page when similar or duplicate pages exist.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use canonical tags?</h2>
+
+<p>
+Canonical tags improve SEO consistency, prevent duplicate indexing and help consolidate ranking signals into one preferred page.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Enter your preferred page URL.</li>
+<li>Generate the canonical HTML tag instantly.</li>
+<li>Copy and paste it into your website head section.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateCanonical(){
 
-    const url = document.getElementById("urlInput").value.trim();
+const url=document.getElementById("urlInput").value.trim();
 
-    if(!url){
-        alert("Please enter a URL.");
-        return;
-    }
+if(!url){
+alert("Please enter a URL.");
+return;
+}
 
-    const code =
+const code=
 `<link rel="canonical" href="${url}">`;
 
-    document.getElementById("output").value = code;
+document.getElementById("output").value=code;
 }
 
 function copyCode(){
 
-    const output = document.getElementById("output");
+const output=document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate canonical tag first.");
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
+if(!output.value){
+alert("Generate canonical tag first.");
+return;
 }
+
+navigator.clipboard.writeText(output.value);
+
+alert("Copied!");
+}
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 </script>
 
 </body>
