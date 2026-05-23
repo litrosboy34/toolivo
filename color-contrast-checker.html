@@ -4,34 +4,321 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Color Contrast Checker - Toolivo</title>
+<title>Color Contrast Checker — Toolivo</title>
 <meta name="description" content="Check color contrast ratio instantly for WCAG AA and AAA accessibility standards.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;padding:20px}
-.container{max-width:950px;margin:auto}
-.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
-.card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:20px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:750px){.grid{grid-template-columns:1fr}}
-label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
-input[type="color"]{width:100%;height:60px;background:#020617;border:1px solid #334155;border-radius:12px;padding:5px;cursor:pointer}
-input[type="text"]{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:12px;padding:14px;margin-top:10px}
-.preview{min-height:220px;border-radius:16px;border:1px solid #334155;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;font-size:28px;font-weight:bold;margin-top:20px}
-.result{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
-@media(max-width:750px){.result{grid-template-columns:1fr}}
-.box{background:#020617;border:1px solid #1e293b;border-radius:14px;padding:18px;text-align:center}
-.box h3{font-size:15px;color:#94a3b8;margin-bottom:8px}
-.box p{font-size:24px;font-weight:bold;color:#38bdf8}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
+}
+
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
+}
+
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+label{
+display:block;
+margin-bottom:10px;
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
+}
+
+input[type="color"]{
+width:100%;
+height:65px;
+background:#020617;
+border:1px solid #334155;
+border-radius:16px;
+padding:5px;
+cursor:pointer;
+}
+
+input[type="text"]{
+width:100%;
+background:#020617;
+border:1px solid #334155;
+color:white;
+border-radius:16px;
+padding:15px;
+margin-top:10px;
+outline:none;
+font-size:15px;
+}
+
+input[type="text"]:focus{
+border-color:#38bdf8;
+}
+
+.preview{
+min-height:260px;
+border-radius:18px;
+border:1px solid #334155;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:25px;
+font-size:34px;
+font-weight:900;
+margin-top:22px;
+background:#020617;
+transition:.2s;
+}
+
+.result{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:22px;
+}
+
+.box{
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:20px;
+text-align:center;
+}
+
+.box h3{
+font-size:15px;
+color:#94a3b8;
+margin-bottom:10px;
+}
+
+.box p{
+font-size:28px;
+font-weight:bold;
+color:#38bdf8;
+}
+
 .pass{color:#22c55e!important}
 .fail{color:#ef4444!important}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
-.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
-.copy{background:#1e293b;color:white}
-.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+button{
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+.primary{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+
+.secondary{
+background:#020617;
+border:1px solid #334155;
+color:#cbd5e1;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content,
+.grid{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+font-size:28px;
+min-height:220px;
+}
+
+}
+
+@media(max-width:700px){
+
+.result{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
 </style>
 </head>
 
@@ -39,164 +326,285 @@ button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:
 
 <div class="container">
 
-    <div class="title">Color Contrast Checker</div>
-    <div class="desc">
-        Check text and background color contrast ratio instantly for WCAG AA and AAA accessibility standards.
-    </div>
+<header class="header">
 
-    <div class="card">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-        <div class="grid">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-            <div>
-                <label>Text Color</label>
-                <input type="color" id="textColor" value="#ffffff">
-                <input type="text" id="textHex" value="#ffffff">
-            </div>
+</header>
 
-            <div>
-                <label>Background Color</label>
-                <input type="color" id="bgColor" value="#0f172a">
-                <input type="text" id="bgHex" value="#0f172a">
-            </div>
+<section class="tool-hero">
 
-        </div>
+<h1>Color Contrast <span class="gradient">Checker</span></h1>
 
-        <div class="preview" id="preview">
-            Sample Text Preview
-        </div>
+<p>
+Check text and background color contrast instantly for WCAG AA and AAA accessibility standards and better UI readability.
+</p>
 
-        <div class="result">
+</section>
 
-            <div class="box">
-                <h3>Contrast Ratio</h3>
-                <p id="ratio">0:1</p>
-            </div>
+<section class="tool-grid">
 
-            <div class="box">
-                <h3>WCAG AA</h3>
-                <p id="aa">-</p>
-            </div>
+<div class="panel">
 
-            <div class="box">
-                <h3>WCAG AAA</h3>
-                <p id="aaa">-</p>
-            </div>
+<div class="grid">
 
-        </div>
+<div>
+<label>Text Color</label>
+<input type="color" id="textColor" value="#ffffff">
+<input type="text" id="textHex" value="#ffffff">
+</div>
 
-        <div class="buttons">
-            <button class="generate" onclick="checkContrast()">Check Contrast</button>
-            <button class="copy" onclick="copyColors()">Copy Colors</button>
-        </div>
+<div>
+<label>Background Color</label>
+<input type="color" id="bgColor" value="#0f172a">
+<input type="text" id="bgHex" value="#0f172a">
+</div>
 
-    </div>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="preview" id="preview">
+Sample Text Preview
+</div>
+
+<div class="buttons">
+<button class="primary" onclick="checkContrast()">
+Check Contrast
+</button>
+
+<button class="secondary" onclick="copyColors()">
+Copy Colors
+</button>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+WCAG accessibility standards help ensure readable and accessible text contrast for websites and applications.
+</div>
+
+<div class="result">
+
+<div class="box">
+<h3>Contrast Ratio</h3>
+<p id="ratio">0:1</p>
+</div>
+
+<div class="box">
+<h3>WCAG AA</h3>
+<p id="aa">-</p>
+</div>
+
+<div class="box">
+<h3>WCAG AAA</h3>
+<p id="aaa">-</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why contrast matters</h2>
+
+<p>
+Good color contrast improves readability, accessibility and usability for all users including visually impaired visitors.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Select text and background colors.</li>
+<li>Check the contrast ratio instantly.</li>
+<li>See if your colors pass WCAG AA or AAA standards.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function hexToRgb(hex){
-    hex = hex.replace("#","");
 
-    if(hex.length === 3){
-        hex = hex.split("").map(c => c + c).join("");
-    }
+hex=hex.replace("#","");
 
-    return {
-        r: parseInt(hex.substring(0,2),16),
-        g: parseInt(hex.substring(2,4),16),
-        b: parseInt(hex.substring(4,6),16)
-    };
+if(hex.length===3){
+hex=hex.split("").map(c=>c+c).join("");
+}
+
+return{
+r:parseInt(hex.substring(0,2),16),
+g:parseInt(hex.substring(2,4),16),
+b:parseInt(hex.substring(4,6),16)
+};
+
 }
 
 function luminance(r,g,b){
-    const values = [r,g,b].map(v => {
-        v = v / 255;
-        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-    });
 
-    return values[0] * 0.2126 + values[1] * 0.7152 + values[2] * 0.0722;
+const values=[r,g,b].map(v=>{
+
+v=v/255;
+
+return v<=0.03928
+? v/12.92
+: Math.pow((v+0.055)/1.055,2.4);
+
+});
+
+return values[0]*0.2126+
+values[1]*0.7152+
+values[2]*0.0722;
+
 }
 
-function getContrast(hex1, hex2){
-    const c1 = hexToRgb(hex1);
-    const c2 = hexToRgb(hex2);
+function getContrast(hex1,hex2){
 
-    const l1 = luminance(c1.r,c1.g,c1.b);
-    const l2 = luminance(c2.r,c2.g,c2.b);
+const c1=hexToRgb(hex1);
+const c2=hexToRgb(hex2);
 
-    const lighter = Math.max(l1,l2);
-    const darker = Math.min(l1,l2);
+const l1=luminance(c1.r,c1.g,c1.b);
+const l2=luminance(c2.r,c2.g,c2.b);
 
-    return (lighter + 0.05) / (darker + 0.05);
+const lighter=Math.max(l1,l2);
+const darker=Math.min(l1,l2);
+
+return (lighter+0.05)/(darker+0.05);
+
 }
 
 function checkContrast(){
 
-    const text = document.getElementById("textHex").value.trim();
-    const bg = document.getElementById("bgHex").value.trim();
+const text=document.getElementById("textHex").value.trim();
+const bg=document.getElementById("bgHex").value.trim();
 
-    if(!text.startsWith("#") || !bg.startsWith("#")){
-        alert("Please enter valid HEX colors.");
-        return;
-    }
+if(!text.startsWith("#") || !bg.startsWith("#")){
+return;
+}
 
-    document.getElementById("textColor").value = text;
-    document.getElementById("bgColor").value = bg;
+document.getElementById("textColor").value=text;
+document.getElementById("bgColor").value=bg;
 
-    const ratio = getContrast(text,bg);
-    const rounded = ratio.toFixed(2);
+const ratio=getContrast(text,bg);
+const rounded=ratio.toFixed(2);
 
-    const preview = document.getElementById("preview");
-    preview.style.color = text;
-    preview.style.background = bg;
+const preview=document.getElementById("preview");
 
-    document.getElementById("ratio").innerText = rounded + ":1";
+preview.style.color=text;
+preview.style.background=bg;
 
-    const aa = document.getElementById("aa");
-    const aaa = document.getElementById("aaa");
+document.getElementById("ratio").innerText=
+rounded+":1";
 
-    if(ratio >= 4.5){
-        aa.innerText = "PASS";
-        aa.className = "pass";
-    }else{
-        aa.innerText = "FAIL";
-        aa.className = "fail";
-    }
+const aa=document.getElementById("aa");
+const aaa=document.getElementById("aaa");
 
-    if(ratio >= 7){
-        aaa.innerText = "PASS";
-        aaa.className = "pass";
-    }else{
-        aaa.innerText = "FAIL";
-        aaa.className = "fail";
-    }
+if(ratio>=4.5){
+
+aa.innerText="PASS";
+aa.className="pass";
+
+}else{
+
+aa.innerText="FAIL";
+aa.className="fail";
+
+}
+
+if(ratio>=7){
+
+aaa.innerText="PASS";
+aaa.className="pass";
+
+}else{
+
+aaa.innerText="FAIL";
+aaa.className="fail";
+
+}
+
 }
 
 function copyColors(){
-    const text = document.getElementById("textHex").value;
-    const bg = document.getElementById("bgHex").value;
 
-    navigator.clipboard.writeText("Text: " + text + "\nBackground: " + bg);
-    alert("Copied!");
+const text=document.getElementById("textHex").value;
+const bg=document.getElementById("bgHex").value;
+
+navigator.clipboard.writeText(
+`Text: ${text}
+Background: ${bg}`
+);
+
+alert("Copied!");
 }
 
-document.getElementById("textColor").addEventListener("input", function(){
-    document.getElementById("textHex").value = this.value;
-    checkContrast();
+document.getElementById("textColor")
+.addEventListener("input",function(){
+
+document.getElementById("textHex").value=
+this.value;
+
+checkContrast();
+
 });
 
-document.getElementById("bgColor").addEventListener("input", function(){
-    document.getElementById("bgHex").value = this.value;
-    checkContrast();
+document.getElementById("bgColor")
+.addEventListener("input",function(){
+
+document.getElementById("bgHex").value=
+this.value;
+
+checkContrast();
+
 });
 
-document.getElementById("textHex").addEventListener("input", checkContrast);
-document.getElementById("bgHex").addEventListener("input", checkContrast);
+document.getElementById("textHex")
+.addEventListener("input",checkContrast);
+
+document.getElementById("bgHex")
+.addEventListener("input",checkContrast);
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 checkContrast();
 </script>
