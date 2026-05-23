@@ -4,148 +4,94 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CSS Gradient Generator - Toolivo</title>
-
+<title>CSS Gradient Generator — Toolivo</title>
 <meta name="description" content="Generate beautiful CSS gradients instantly with live preview and copyable CSS code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-.container{
-    max-width:950px;
-    margin:auto;
-}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:30px;
-    line-height:1.6;
-}
-
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-@media(max-width:700px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
-
-.input-group{
-    display:flex;
-    flex-direction:column;
-}
-
-.input-group label{
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
-}
-
-.input-group input,
-.input-group select{
-    background:#020617;
-    border:1px solid #1e293b;
-    color:white;
-    padding:14px;
-    border-radius:12px;
-    outline:none;
-}
-
-input[type="color"]{
-    height:60px;
-    padding:5px;
-    cursor:pointer;
-}
+.input-group{display:flex;flex-direction:column}
+.input-group label{margin-bottom:8px;color:#cbd5e1;font-size:14px;font-weight:bold}
+.input-group input,.input-group select{background:#020617;border:1px solid #334155;color:white;padding:14px;border-radius:16px;outline:none;font-size:15px}
+.input-group input:focus,.input-group select:focus{border-color:#38bdf8}
+input[type="color"]{height:64px;padding:5px;cursor:pointer}
+input[type="range"]{accent-color:#38bdf8}
 
 .preview{
-    width:100%;
-    height:220px;
-    border-radius:16px;
-    border:1px solid #1e293b;
-    margin-top:20px;
+width:100%;
+min-height:390px;
+border-radius:18px;
+border:1px solid #334155;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
-.buttons{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
-}
-
-button{
-    padding:14px 20px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.2s;
-}
-
-.generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
-}
-
-.copy{
-    background:#1e293b;
-    color:white;
-}
-
-button:hover{
-    opacity:0.9;
-    transform:translateY(-2px);
-}
+.buttons{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+button{padding:15px 20px;border:none;border-radius:16px;cursor:pointer;font-weight:800;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.copy{background:#020617;border:1px solid #334155;color:white}
 
 .output{
-    width:100%;
-    height:180px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
-    margin-top:20px;
+width:100%;
+height:200px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+margin-top:20px;
+font-family:monospace;
+font-size:14px;
+outline:none;
 }
 
-.footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:30px;
-    font-size:14px;
+.info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+.preview{min-height:260px}
+}
+
+@media(max-width:600px){
+.grid{grid-template-columns:1fr}
+.buttons{flex-direction:column}
+button{width:100%}
 }
 </style>
 </head>
@@ -154,99 +100,136 @@ button:hover{
 
 <div class="container">
 
-    <div class="title">CSS Gradient Generator</div>
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="desc">
-        Generate beautiful CSS gradients instantly with live preview and copyable CSS code.
-    </div>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
 
-    <div class="card">
+<section class="tool-hero">
+<h1>CSS Gradient <span class="gradient">Generator</span></h1>
+<p>Generate beautiful CSS gradients instantly with live preview and copyable CSS code for backgrounds, buttons, cards and UI sections.</p>
+</section>
 
-        <div class="grid">
+<section class="tool-grid">
 
-            <div class="input-group">
-                <label>First Color</label>
-                <input type="color" id="color1" value="#06b6d4">
-            </div>
+<div class="panel">
+<div class="grid">
 
-            <div class="input-group">
-                <label>Second Color</label>
-                <input type="color" id="color2" value="#3b82f6">
-            </div>
+<div class="input-group">
+<label>First Color</label>
+<input type="color" id="color1" value="#06b6d4">
+</div>
 
-            <div class="input-group">
-                <label>Gradient Type</label>
-                <select id="gradientType">
-                    <option value="linear">Linear</option>
-                    <option value="radial">Radial</option>
-                </select>
-            </div>
+<div class="input-group">
+<label>Second Color</label>
+<input type="color" id="color2" value="#3b82f6">
+</div>
 
-            <div class="input-group">
-                <label>Angle</label>
-                <input type="range" id="angle" min="0" max="360" value="90">
-            </div>
+<div class="input-group">
+<label>Gradient Type</label>
+<select id="gradientType">
+<option value="linear">Linear</option>
+<option value="radial">Radial</option>
+</select>
+</div>
 
-        </div>
+<div class="input-group">
+<label>Angle</label>
+<input type="range" id="angle" min="0" max="360" value="90">
+</div>
 
-        <div class="preview" id="preview"></div>
+</div>
 
-        <div class="buttons">
-            <button class="generate" onclick="generateGradient()">
-                Generate
-            </button>
+<div class="buttons">
+<button class="generate" onclick="generateGradient()">Generate Gradient</button>
+<button class="copy" onclick="copyCSS()">Copy CSS</button>
+</div>
 
-            <button class="copy" onclick="copyCSS()">
-                Copy CSS
-            </button>
-        </div>
+<textarea class="output" id="output" placeholder="Generated CSS code will appear here..."></textarea>
+</div>
 
-        <textarea class="output" id="output" placeholder="Generated CSS code will appear here..."></textarea>
+<div class="panel">
+<div class="info">Preview your gradient live and copy the generated CSS background code instantly.</div>
+<div class="preview" id="preview"></div>
+</div>
 
-    </div>
+</section>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<section class="content">
+<article class="card">
+<h2>Why use gradients?</h2>
+<p>Gradients create modern depth and visual interest for hero sections, cards, buttons, banners and backgrounds.</p>
+</article>
+
+<article class="card">
+<h2>How it works</h2>
+<ul>
+<li>Choose two colors.</li>
+<li>Select linear or radial gradient.</li>
+<li>Adjust angle and copy the CSS code.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
 function generateGradient(){
+const color1=document.getElementById("color1").value;
+const color2=document.getElementById("color2").value;
+const type=document.getElementById("gradientType").value;
+const angle=document.getElementById("angle").value;
 
-    const color1 = document.getElementById("color1").value;
-    const color2 = document.getElementById("color2").value;
-    const type = document.getElementById("gradientType").value;
-    const angle = document.getElementById("angle").value;
+let gradient="";
 
-    let gradient = "";
+if(type==="linear"){
+gradient=`linear-gradient(${angle}deg, ${color1}, ${color2})`;
+}else{
+gradient=`radial-gradient(circle, ${color1}, ${color2})`;
+}
 
-    if(type === "linear"){
-        gradient = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
-    } else {
-        gradient = `radial-gradient(circle, ${color1}, ${color2})`;
-    }
-
-    document.getElementById("preview").style.background = gradient;
-
-    document.getElementById("output").value =
-`background: ${gradient};`;
+document.getElementById("preview").style.background=gradient;
+document.getElementById("output").value=`background: ${gradient};`;
 }
 
 function copyCSS(){
+const output=document.getElementById("output");
 
-    const output = document.getElementById("output");
-
-    if(!output.value){
-        alert("Generate gradient first.");
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
+if(!output.value){
+alert("Generate gradient first.");
+return;
 }
 
+navigator.clipboard.writeText(output.value);
+alert("Copied!");
+}
+
+document.querySelectorAll("input,select").forEach(el=>{
+el.addEventListener("input",generateGradient);
+});
+
+document.getElementById("year").innerText=new Date().getFullYear();
 generateGradient();
 </script>
 
