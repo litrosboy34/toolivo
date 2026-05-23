@@ -4,164 +4,313 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CSS Loader Generator - Toolivo</title>
-
+<title>CSS Loader Generator — Toolivo</title>
 <meta name="description" content="Generate CSS loaders instantly with live preview and copyable code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-@media(max-width:850px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
 }
 
 .control{
-    margin-bottom:18px;
+margin-bottom:18px;
 }
 
 label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+display:block;
+margin-bottom:8px;
+color:#cbd5e1;
+font-size:14px;
+font-weight:bold;
 }
 
-select,
 input{
-    width:100%;
-    background:#020617;
-    border:1px solid #334155;
-    color:white;
-    border-radius:12px;
-    padding:14px;
-    outline:none;
+width:100%;
+background:#020617;
+border:1px solid #334155;
+color:white;
+border-radius:16px;
+padding:14px;
+outline:none;
+font-size:15px;
 }
 
 input[type="range"]{
-    accent-color:#0ea5e9;
-    padding:0;
+accent-color:#38bdf8;
+padding:0;
 }
 
 input[type="color"]{
-    height:60px;
-    cursor:pointer;
+height:64px;
+cursor:pointer;
+padding:4px;
+}
+
+.value{
+margin-top:6px;
+color:#67e8f9;
+font-size:14px;
+font-weight:bold;
 }
 
 .preview{
-    min-height:340px;
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+min-height:380px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
 }
 
 .loader{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    border:8px solid rgba(255,255,255,0.15);
-    border-top-color:#06b6d4;
-    animation:spin 1s linear infinite;
+width:70px;
+height:70px;
+border-radius:50%;
+border:8px solid rgba(255,255,255,.15);
+border-top-color:#06b6d4;
+animation:spin 1s linear infinite;
 }
 
 @keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+to{
+transform:rotate(360deg);
+}
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#1e293b;
-    color:white;
+background:#020617;
+border:1px solid #334155;
+color:white;
 }
 
 textarea{
-    width:100%;
-    height:240px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:240px;
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+min-height:280px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -170,98 +319,195 @@ textarea{
 
 <div class="container">
 
-    <div class="title">CSS Loader Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate CSS loaders instantly with live preview and copyable CSS code.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Loader Size</label>
-                    <input type="range" id="size" min="20" max="150" value="70">
-                </div>
+<h1>CSS Loader <span class="gradient">Generator</span></h1>
 
-                <div class="control">
-                    <label>Border Size</label>
-                    <input type="range" id="border" min="2" max="20" value="8">
-                </div>
+<p>
+Generate animated CSS loaders instantly with live preview and copyable CSS code for websites, apps and loading screens.
+</p>
 
-                <div class="control">
-                    <label>Animation Speed</label>
-                    <input type="range" id="speed" min="0.2" max="5" step="0.1" value="1">
-                </div>
+</section>
 
-                <div class="control">
-                    <label>Loader Color</label>
-                    <input type="color" id="color" value="#06b6d4">
-                </div>
+<section class="tool-grid">
 
-            </div>
+<div class="panel">
 
-            <div>
+<div class="grid">
 
-                <div class="preview">
-                    <div class="loader" id="loader"></div>
-                </div>
+<div class="control">
+<label>Loader Size</label>
 
-            </div>
+<input type="range" id="size" min="20" max="150" value="70">
 
-        </div>
+<div class="value" id="sizeValue">
+70px
+</div>
+</div>
 
-        <div class="buttons">
+<div class="control">
+<label>Border Size</label>
 
-            <button class="generate" onclick="generateLoader()">
-                Generate
-            </button>
+<input type="range" id="border" min="2" max="20" value="8">
 
-            <button class="copy" onclick="copyCSS()">
-                Copy CSS
-            </button>
+<div class="value" id="borderValue">
+8px
+</div>
+</div>
 
-        </div>
+<div class="control">
+<label>Animation Speed</label>
 
-        <textarea id="output"></textarea>
+<input type="range" id="speed" min="0.2" max="5" step="0.1" value="1">
 
-    </div>
+<div class="value" id="speedValue">
+1s
+</div>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="control">
+<label>Loader Color</label>
+
+<input type="color" id="color" value="#06b6d4">
+</div>
+
+<div class="buttons">
+
+<button class="generate" onclick="generateLoader()">
+Generate Loader
+</button>
+
+<button class="copy" onclick="copyCSS()">
+Copy CSS
+</button>
+
+</div>
+
+<textarea id="output"></textarea>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Customize size, border thickness, speed and color to create animated CSS loaders instantly.
+</div>
+
+<div class="preview">
+
+<div class="loader" id="loader"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use CSS loaders?</h2>
+
+<p>
+CSS loaders improve user experience by visually indicating loading states while content or data is being processed.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Adjust size and border thickness.</li>
+<li>Customize speed and colors.</li>
+<li>Preview the animation live.</li>
+<li>Copy the generated CSS instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateLoader(){
 
-    const size =
-    document.getElementById("size").value;
+const size=
+document.getElementById("size").value;
 
-    const border =
-    document.getElementById("border").value;
+const border=
+document.getElementById("border").value;
 
-    const speed =
-    document.getElementById("speed").value;
+const speed=
+document.getElementById("speed").value;
 
-    const color =
-    document.getElementById("color").value;
+const color=
+document.getElementById("color").value;
 
-    const loader =
-    document.getElementById("loader");
+document.getElementById("sizeValue").innerText=
+size+"px";
 
-    loader.style.width = size + "px";
-    loader.style.height = size + "px";
-    loader.style.borderWidth = border + "px";
-    loader.style.borderTopColor = color;
-    loader.style.animation =
-    `spin ${speed}s linear infinite`;
+document.getElementById("borderValue").innerText=
+border+"px";
 
-    const css =
+document.getElementById("speedValue").innerText=
+speed+"s";
+
+const loader=
+document.getElementById("loader");
+
+loader.style.width=
+size+"px";
+
+loader.style.height=
+size+"px";
+
+loader.style.borderWidth=
+border+"px";
+
+loader.style.borderTopColor=
+color;
+
+loader.style.animation=
+`spin ${speed}s linear infinite`;
+
+const css=
 `.loader{
     width:${size}px;
     height:${size}px;
@@ -277,21 +523,25 @@ function generateLoader(){
     }
 }`;
 
-    document.getElementById("output").value = css;
+document.getElementById("output").value=
+css;
 }
 
 function copyCSS(){
 
-    navigator.clipboard.writeText(
-        document.getElementById("output").value
-    );
+navigator.clipboard.writeText(
+document.getElementById("output").value
+);
 
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("input").forEach(el => {
-    el.addEventListener("input", generateLoader);
+document.querySelectorAll("input").forEach(el=>{
+el.addEventListener("input",generateLoader);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateLoader();
 </script>
