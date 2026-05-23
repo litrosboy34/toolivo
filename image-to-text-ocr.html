@@ -1,119 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Image to Text OCR - Toolivo</title>
-
-<meta name="description"
-content="Extract text from images online for free using OCR. Fast and mobile friendly.">
+<title>Image to Text OCR — Toolivo</title>
+<meta name="description" content="Extract text from images online for free using OCR. Fast, mobile friendly and browser based.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-body{
-background:#0f172a;
-color:white;
-padding:30px;
-min-height:100vh;
-}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.container{
-max-width:900px;
-margin:auto;
-}
-
-h1{
-font-size:42px;
-margin-bottom:12px;
-}
-
-p{
-color:#94a3b8;
-margin-bottom:30px;
-line-height:1.6;
-}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:20px;padding:20px}
 
 .upload-box{
 border:2px dashed #334155;
 border-radius:20px;
-padding:40px;
+padding:42px 20px;
 text-align:center;
-background:#111827;
+background:#020617;
 cursor:pointer;
 transition:.2s;
+display:block;
 }
 
 .upload-box:hover{
 border-color:#38bdf8;
+background:rgba(56,189,248,.06);
+box-shadow:0 0 34px rgba(56,189,248,.15);
+transform:translateY(-2px);
 }
 
-input{
-display:none;
-}
+.upload-box h2{font-size:26px;margin-bottom:10px}
+.upload-box p{color:#94a3b8;line-height:1.6}
+input[type=file]{display:none}
 
 .preview{
-margin-top:25px;
+margin-top:20px;
 text-align:center;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:16px;
+min-height:240px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#64748b;
 }
 
 .preview img{
 max-width:100%;
+max-height:360px;
 border-radius:16px;
+display:block;
 }
 
-button{
-margin-top:25px;
-padding:14px 22px;
-border:none;
-border-radius:14px;
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-button:hover{
-opacity:.9;
-}
-
-.result{
-margin-top:35px;
-background:#111827;
-padding:25px;
-border-radius:18px;
-border:1px solid #1e293b;
+.status{
+margin-top:16px;
+padding:14px 16px;
+border-radius:16px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+font-weight:800;
+min-height:50px;
+line-height:1.5;
 }
 
 textarea{
 width:100%;
-height:300px;
+height:380px;
 background:#020617;
 color:white;
 border:1px solid #334155;
-border-radius:14px;
+border-radius:18px;
+padding:18px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+textarea:focus{border-color:#38bdf8}
+
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+button{
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;border:1px solid #334155;color:white}
+
+.info{
 padding:16px;
-resize:none;
-margin-top:15px;
+border-radius:16px;
+background:#020617;
+border:1px solid #334155;
+color:#94a3b8;
+line-height:1.7;
+margin-bottom:16px;
 }
 
-.status{
-margin-top:18px;
-color:#38bdf8;
-font-weight:bold;
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+textarea{height:300px}
 }
 
+@media(max-width:520px){
+.buttons{flex-direction:column}
+button{width:100%}
+}
 </style>
 </head>
 
@@ -121,148 +157,180 @@ font-weight:bold;
 
 <div class="container">
 
-<h1>Image to Text OCR</h1>
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-<p>
-Extract text from images online using AI OCR technology.
-Supports screenshots, documents and photos.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1>Image to Text <span class="gradient">OCR</span></h1>
+<p>Extract text from images online using OCR technology. Upload screenshots, documents or photos and copy the extracted text instantly.</p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
 
 <label class="upload-box">
-
 <input type="file" id="imageInput" accept="image/*">
-
 <h2>Click to Upload Image</h2>
-<p>PNG, JPG, WEBP supported</p>
-
+<p>PNG, JPG and WEBP supported</p>
 </label>
 
-<div class="preview" id="preview"></div>
+<div class="preview" id="preview">
+Preview will appear here
+</div>
 
-<div style="text-align:center;">
+<div class="buttons">
+<button class="primary" id="extractBtn">Extract Text</button>
+</div>
 
-<button id="extractBtn">
-Extract Text
-</button>
+<div class="status" id="status">Choose an image to begin.</div>
 
 </div>
 
-<div class="status" id="status"></div>
+<div class="panel">
 
-<div class="result">
+<div class="info">
+OCR output will appear below. For best results, use clear images with readable text and good contrast.
+</div>
 
-<h2>Extracted Text</h2>
+<textarea id="resultText" placeholder="OCR result will appear here..."></textarea>
 
-<textarea id="resultText"
-placeholder="OCR result will appear here..."></textarea>
-
-<button id="copyBtn">
-Copy Text
-</button>
+<div class="buttons">
+<button class="secondary" id="copyBtn">Copy Text</button>
+<button class="secondary" id="clearBtn">Clear</button>
+</div>
 
 </div>
+
+</section>
+
+<section class="content">
+<article class="card">
+<h2>Why use image OCR?</h2>
+<p>OCR helps extract text from screenshots, scanned documents, receipts, notes, product labels and images without manually typing everything.</p>
+</article>
+
+<article class="card">
+<h2>How it works</h2>
+<ul>
+<li>Upload an image with readable text.</li>
+<li>Click Extract Text.</li>
+<li>Copy the OCR result instantly.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
+const imageInput=document.getElementById("imageInput");
+const preview=document.getElementById("preview");
+const extractBtn=document.getElementById("extractBtn");
+const resultText=document.getElementById("resultText");
+const statusText=document.getElementById("status");
+const copyBtn=document.getElementById("copyBtn");
+const clearBtn=document.getElementById("clearBtn");
 
-const imageInput =
-document.getElementById("imageInput");
+let uploadedImage=null;
 
-const preview =
-document.getElementById("preview");
+imageInput.addEventListener("change",e=>{
+const file=e.target.files[0];
 
-const extractBtn =
-document.getElementById("extractBtn");
+if(!file)return;
 
-const resultText =
-document.getElementById("resultText");
+uploadedImage=file;
 
-const statusText =
-document.getElementById("status");
+const reader=new FileReader();
 
-const copyBtn =
-document.getElementById("copyBtn");
-
-let uploadedImage = null;
-
-imageInput.addEventListener("change", e => {
-
-const file = e.target.files[0];
-
-if(!file) return;
-
-uploadedImage = file;
-
-const reader = new FileReader();
-
-reader.onload = () => {
-
-preview.innerHTML = `
-<img src="${reader.result}">
-`;
-
+reader.onload=()=>{
+preview.innerHTML=`<img src="${reader.result}" alt="Uploaded image">`;
+statusText.innerText="Image loaded. Ready for OCR.";
 };
 
 reader.readAsDataURL(file);
-
 });
 
-extractBtn.addEventListener("click", async () => {
+extractBtn.addEventListener("click",async()=>{
 
 if(!uploadedImage){
-
 alert("Please upload an image first.");
-
 return;
 }
 
-statusText.innerText =
-"Processing OCR...";
+statusText.innerText="Processing OCR...";
+resultText.value="";
 
-resultText.value = "";
-
-const {
-data:{text}
-} = await Tesseract.recognize(
+try{
+const {data:{text}}=await Tesseract.recognize(
 uploadedImage,
 "eng",
 {
-logger:m => {
-
+logger:m=>{
 if(m.status){
-
-statusText.innerText =
-m.status + " " +
-Math.floor((m.progress || 0)*100) + "%";
+statusText.innerText=
+m.status+" "+Math.floor((m.progress||0)*100)+"%";
 }
 }
 }
 );
 
-resultText.value = text;
-
-statusText.innerText =
-"OCR completed.";
+resultText.value=text;
+statusText.innerText="OCR completed.";
+}catch(error){
+statusText.innerText="OCR failed. Please try another image.";
+}
 
 });
 
-copyBtn.addEventListener("click", () => {
+copyBtn.addEventListener("click",()=>{
 
-navigator.clipboard.writeText(
-resultText.value
-);
+if(!resultText.value){
+alert("Nothing to copy.");
+return;
+}
 
-copyBtn.innerText = "Copied!";
+navigator.clipboard.writeText(resultText.value);
 
-setTimeout(() => {
+copyBtn.innerText="Copied!";
 
-copyBtn.innerText = "Copy Text";
-
+setTimeout(()=>{
+copyBtn.innerText="Copy Text";
 },1500);
 
 });
 
+clearBtn.addEventListener("click",()=>{
+uploadedImage=null;
+imageInput.value="";
+preview.innerHTML="Preview will appear here";
+resultText.value="";
+statusText.innerText="Choose an image to begin.";
+});
+
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
