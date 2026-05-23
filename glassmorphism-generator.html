@@ -4,152 +4,375 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Glassmorphism Generator - Toolivo</title>
-
+<title>Glassmorphism Generator — Toolivo</title>
 <meta name="description" content="Generate beautiful glassmorphism CSS instantly with live preview and copyable code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 
 body{
-    background:
-    linear-gradient(135deg,#0ea5e9,#2563eb,#7c3aed);
-    min-height:100vh;
-    color:white;
-    padding:20px;
+background:#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,#06b6d4 0%,transparent 30%),
+radial-gradient(circle at bottom right,#7c3aed 0%,transparent 30%),
+linear-gradient(135deg,#0f172a,#111827,#020617);
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+background:rgba(255,255,255,.03);
+filter:blur(120px);
+border-radius:50%;
+top:-120px;
+right:-120px;
+z-index:-1;
+}
+
+a{
+text-decoration:none;
+color:inherit;
 }
 
 .container{
-    max-width:1000px;
-    margin:auto;
+max-width:1200px;
+margin:auto;
+padding:20px;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-.desc{
-    color:#dbeafe;
-    margin-bottom:25px;
-    line-height:1.6;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.card{
-    background:rgba(17,24,39,0.7);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
-    backdrop-filter:blur(12px);
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-@media(max-width:800px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+text-align:center;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,70px);
+line-height:1;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+color:#cbd5e1;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border-radius:24px;
+padding:22px;
+box-shadow:0 20px 50px rgba(0,0,0,.28);
 }
 
 .control{
-    margin-bottom:18px;
+margin-bottom:18px;
 }
 
 label{
-    display:block;
-    margin-bottom:8px;
-    color:#dbeafe;
-    font-size:14px;
+display:block;
+margin-bottom:8px;
+color:#dbeafe;
+font-size:14px;
+font-weight:bold;
 }
 
 input[type="range"],
 input[type="color"]{
-    width:100%;
+width:100%;
 }
 
 input[type="range"]{
-    accent-color:#38bdf8;
+accent-color:#38bdf8;
+}
+
+input[type="color"]{
+height:64px;
+border:none;
+border-radius:18px;
+background:#020617;
+padding:4px;
+cursor:pointer;
 }
 
 .preview-area{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:340px;
-    border-radius:18px;
-    background:
-    linear-gradient(135deg,
-    rgba(255,255,255,0.08),
-    rgba(255,255,255,0.02));
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:420px;
+border-radius:24px;
+background:
+linear-gradient(135deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02));
+border:1px solid rgba(255,255,255,.06);
+overflow:hidden;
+position:relative;
+}
+
+.preview-area::before{
+content:"";
+position:absolute;
+width:260px;
+height:260px;
+background:rgba(255,255,255,.08);
+border-radius:50%;
+top:-60px;
+left:-60px;
+filter:blur(40px);
 }
 
 .preview-box{
-    width:260px;
-    height:260px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    font-size:22px;
-    font-weight:bold;
-    transition:0.2s;
+width:280px;
+height:280px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+font-size:24px;
+font-weight:800;
+transition:.2s;
+position:relative;
+overflow:hidden;
+}
+
+.preview-box::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+135deg,
+rgba(255,255,255,.25),
+rgba(255,255,255,.02)
+);
+pointer-events:none;
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#111827;
-    color:white;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+color:white;
 }
 
 textarea{
-    width:100%;
-    height:220px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:240px;
+margin-top:18px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+background:rgba(255,255,255,.03);
+color:#cbd5e1;
+line-height:1.7;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(16px);
+border-radius:20px;
+padding:22px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#cbd5e1;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#dbeafe;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid rgba(255,255,255,.08);
+color:#94a3b8;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview-area{
+min-height:320px;
+}
+
+.preview-box{
+width:220px;
+height:220px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -158,114 +381,178 @@ textarea{
 
 <div class="container">
 
-    <div class="title">Glassmorphism Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate beautiful glassmorphism CSS instantly with live preview and copyable code.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Glass Color</label>
-                    <input type="color" id="glassColor" value="#ffffff">
-                </div>
+<h1><span class="gradient">Glassmorphism</span><br>Generator</h1>
 
-                <div class="control">
-                    <label>Opacity</label>
-                    <input type="range" id="opacity" min="0.05" max="1" step="0.01" value="0.15">
-                </div>
+<p>
+Generate beautiful glassmorphism CSS instantly with live preview and copyable glass effect code for modern UI designs.
+</p>
 
-                <div class="control">
-                    <label>Blur Amount</label>
-                    <input type="range" id="blur" min="0" max="40" value="15">
-                </div>
+</section>
 
-                <div class="control">
-                    <label>Border Radius</label>
-                    <input type="range" id="radius" min="0" max="60" value="24">
-                </div>
+<section class="tool-grid">
 
-                <div class="control">
-                    <label>Border Opacity</label>
-                    <input type="range" id="borderOpacity" min="0" max="1" step="0.01" value="0.2">
-                </div>
+<div class="panel">
 
-            </div>
+<div class="control">
+<label>Glass Color</label>
+<input type="color" id="glassColor" value="#ffffff">
+</div>
 
-            <div class="preview-area">
+<div class="control">
+<label>Opacity</label>
+<input type="range" id="opacity" min="0.05" max="1" step="0.01" value="0.15">
+</div>
 
-                <div class="preview-box" id="previewBox">
-                    Glass Effect
-                </div>
+<div class="control">
+<label>Blur Amount</label>
+<input type="range" id="blur" min="0" max="40" value="15">
+</div>
 
-            </div>
+<div class="control">
+<label>Border Radius</label>
+<input type="range" id="radius" min="0" max="60" value="24">
+</div>
 
-        </div>
+<div class="control">
+<label>Border Opacity</label>
+<input type="range" id="borderOpacity" min="0" max="1" step="0.01" value="0.2">
+</div>
 
-        <div class="buttons">
+<div class="buttons">
 
-            <button class="generate" onclick="generateGlass()">
-                Generate
-            </button>
+<button class="generate" onclick="generateGlass()">
+Generate Glass
+</button>
 
-            <button class="copy" onclick="copyCSS()">
-                Copy CSS
-            </button>
+<button class="copy" onclick="copyCSS()">
+Copy CSS
+</button>
 
-        </div>
+</div>
 
-        <textarea id="output"></textarea>
+<textarea id="output"></textarea>
 
-    </div>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="panel">
+
+<div class="info">
+Customize blur, transparency and borders to generate realistic glassmorphism effects instantly.
+</div>
+
+<div class="preview-area">
+
+<div class="preview-box" id="previewBox">
+Glass Effect
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>What is glassmorphism?</h2>
+
+<p>
+Glassmorphism is a modern UI style using blur, transparency and soft borders to create frosted glass interface effects.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Select glass color.</li>
+<li>Adjust blur and transparency.</li>
+<li>Preview the glass effect live.</li>
+<li>Copy the generated CSS instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function hexToRgb(hex){
 
-    hex = hex.replace("#","");
+hex=hex.replace("#","");
 
-    return {
-        r: parseInt(hex.substring(0,2),16),
-        g: parseInt(hex.substring(2,4),16),
-        b: parseInt(hex.substring(4,6),16)
-    };
+return{
+r:parseInt(hex.substring(0,2),16),
+g:parseInt(hex.substring(2,4),16),
+b:parseInt(hex.substring(4,6),16)
+};
 }
 
 function generateGlass(){
 
-    const color = document.getElementById("glassColor").value;
-    const opacity = document.getElementById("opacity").value;
-    const blur = document.getElementById("blur").value;
-    const radius = document.getElementById("radius").value;
-    const borderOpacity = document.getElementById("borderOpacity").value;
+const color=document.getElementById("glassColor").value;
+const opacity=document.getElementById("opacity").value;
+const blur=document.getElementById("blur").value;
+const radius=document.getElementById("radius").value;
+const borderOpacity=document.getElementById("borderOpacity").value;
 
-    const rgb = hexToRgb(color);
+const rgb=hexToRgb(color);
 
-    const glass =
+const glass=
 `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
 
-    const border =
+const border=
 `rgba(255,255,255,${borderOpacity})`;
 
-    const box = document.getElementById("previewBox");
+const box=document.getElementById("previewBox");
 
-    box.style.background = glass;
-    box.style.backdropFilter = `blur(${blur}px)`;
-    box.style.webkitBackdropFilter = `blur(${blur}px)`;
-    box.style.borderRadius = radius + "px";
-    box.style.border = `1px solid ${border}`;
+box.style.background=glass;
+box.style.backdropFilter=`blur(${blur}px)`;
+box.style.webkitBackdropFilter=`blur(${blur}px)`;
+box.style.borderRadius=radius+"px";
+box.style.border=`1px solid ${border}`;
 
-    const css =
+const css=
 `.glass{
     background:${glass};
     backdrop-filter:blur(${blur}px);
@@ -274,21 +561,24 @@ function generateGlass(){
     border:1px solid ${border};
 }`;
 
-    document.getElementById("output").value = css;
+document.getElementById("output").value=css;
 }
 
 function copyCSS(){
 
-    navigator.clipboard.writeText(
-        document.getElementById("output").value
-    );
+navigator.clipboard.writeText(
+document.getElementById("output").value
+);
 
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", generateGlass);
+document.querySelectorAll("input").forEach(input=>{
+input.addEventListener("input",generateGlass);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateGlass();
 </script>
