@@ -1,240 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>.htaccess Generator - Toolivo</title>
-
-<meta name="description" content="Generate .htaccess rules instantly. Create HTTPS redirects, caching, gzip compression, hotlink protection and more.">
+<title>.htaccess Generator — Toolivo</title>
+<meta name="description" content="Generate Apache .htaccess rules instantly with live preview and copyable code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 
 body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+background:#0f172a;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,#06b6d4 0%,transparent 30%),
+radial-gradient(circle at bottom right,#7c3aed 0%,transparent 30%),
+linear-gradient(135deg,#0f172a,#111827,#020617);
+z-index:-2;
+}
+
+a{
+text-decoration:none;
+color:inherit;
 }
 
 .container{
-    max-width:900px;
-    margin:auto;
+max-width:1200px;
+margin:auto;
+padding:20px;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:30px;
-    line-height:1.6;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
+}
+
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+text-align:center;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,70px);
+line-height:1;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+margin:auto;
+color:#cbd5e1;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border-radius:24px;
+padding:22px;
+box-shadow:0 20px 50px rgba(0,0,0,.28);
 }
 
 .option{
-    margin-bottom:15px;
-    display:flex;
-    align-items:center;
-    gap:10px;
+display:flex;
+align-items:center;
+gap:12px;
+padding:14px;
+border-radius:16px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.05);
+margin-bottom:14px;
+transition:.2s;
+}
+
+.option:hover{
+background:rgba(255,255,255,.06);
 }
 
 .option input{
-    width:18px;
-    height:18px;
+width:20px;
+height:20px;
+accent-color:#38bdf8;
+cursor:pointer;
 }
 
-label{
-    cursor:pointer;
+.option label{
+cursor:pointer;
+font-weight:bold;
+color:#dbeafe;
+font-size:15px;
+}
+
+.preview{
+min-height:520px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:18px;
+overflow:auto;
 }
 
 textarea{
-    width:100%;
-    height:350px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    font-size:14px;
-    line-height:1.5;
+width:100%;
+height:480px;
+background:transparent;
+border:none;
+color:#67e8f9;
+font-size:14px;
+line-height:1.7;
+resize:none;
+outline:none;
+font-family:monospace;
 }
 
 .buttons{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:14px 20px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.2s;
-}
-
-.generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
-}
-
-.copy{
-    background:#1e293b;
-    color:white;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
 }
 
 button:hover{
-    opacity:0.9;
-    transform:translateY(-2px);
+transform:translateY(-2px);
+}
+
+.generate{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+
+.copy{
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+color:white;
+}
+
+.info{
+padding:16px;
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+background:rgba(255,255,255,.03);
+color:#cbd5e1;
+line-height:1.7;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(16px);
+border-radius:20px;
+padding:22px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#cbd5e1;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:30px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid rgba(255,255,255,.08);
+color:#94a3b8;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+min-height:360px;
+}
+
+textarea{
+height:320px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <div class="title">.htaccess Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate Apache .htaccess rules instantly.  
-        Enable HTTPS redirects, caching, gzip compression,
-        security headers and more.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="option">
-            <input type="checkbox" id="https">
-            <label for="https">Force HTTPS Redirect</label>
-        </div>
+</header>
 
-        <div class="option">
-            <input type="checkbox" id="www">
-            <label for="www">Force WWW</label>
-        </div>
+<section class="tool-hero">
 
-        <div class="option">
-            <input type="checkbox" id="nonwww">
-            <label for="nonwww">Remove WWW</label>
-        </div>
+<h1><span class="gradient">.htaccess</span><br>Generator</h1>
 
-        <div class="option">
-            <input type="checkbox" id="gzip">
-            <label for="gzip">Enable Gzip Compression</label>
-        </div>
+<p>
+Generate Apache .htaccess rules instantly for redirects, caching, security headers, gzip compression and more.
+</p>
 
-        <div class="option">
-            <input type="checkbox" id="cache">
-            <label for="cache">Enable Browser Caching</label>
-        </div>
+</section>
 
-        <div class="option">
-            <input type="checkbox" id="hotlink">
-            <label for="hotlink">Block Hotlinking</label>
-        </div>
+<section class="tool-grid">
 
-        <div class="option">
-            <input type="checkbox" id="listing">
-            <label for="listing">Disable Directory Listing</label>
-        </div>
+<div class="panel">
 
-        <div class="option">
-            <input type="checkbox" id="security">
-            <label for="security">Add Security Headers</label>
-        </div>
+<div class="option">
+<input type="checkbox" id="https">
+<label for="https">Force HTTPS Redirect</label>
+</div>
 
-        <div class="buttons">
-            <button class="generate" onclick="generateHtaccess()">
-                Generate
-            </button>
+<div class="option">
+<input type="checkbox" id="www">
+<label for="www">Force WWW</label>
+</div>
 
-            <button class="copy" onclick="copyCode()">
-                Copy
-            </button>
-        </div>
+<div class="option">
+<input type="checkbox" id="nonwww">
+<label for="nonwww">Remove WWW</label>
+</div>
 
-    </div>
+<div class="option">
+<input type="checkbox" id="gzip">
+<label for="gzip">Enable Gzip Compression</label>
+</div>
 
-    <div class="card">
-        <textarea id="output" placeholder="Your .htaccess code will appear here..."></textarea>
-    </div>
+<div class="option">
+<input type="checkbox" id="cache">
+<label for="cache">Enable Browser Caching</label>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="option">
+<input type="checkbox" id="hotlink">
+<label for="hotlink">Block Hotlinking</label>
+</div>
+
+<div class="option">
+<input type="checkbox" id="listing">
+<label for="listing">Disable Directory Listing</label>
+</div>
+
+<div class="option">
+<input type="checkbox" id="security">
+<label for="security">Add Security Headers</label>
+</div>
+
+<div class="buttons">
+
+<button class="generate" onclick="generateHtaccess()">
+Generate
+</button>
+
+<button class="copy" onclick="copyCode()">
+Copy Code
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Select the rules you want and generate optimized Apache .htaccess code instantly.
+</div>
+
+<div class="preview">
+
+<textarea id="output" placeholder="Your .htaccess code will appear here..."></textarea>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use .htaccess?</h2>
+
+<p>
+.htaccess allows you to control redirects, security, caching, compression and Apache server behavior without editing server configuration files.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Select the rules you need.</li>
+<li>Generate optimized Apache code.</li>
+<li>Copy the generated .htaccess instantly.</li>
+<li>Paste it into your server root folder.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateHtaccess(){
 
-    let code = "";
+let code="";
 
-    if(document.getElementById("https").checked){
-        code += `
+if(document.getElementById("https").checked){
+
+code+=`
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 `;
-    }
+}
 
-    if(document.getElementById("www").checked){
-        code += `
+if(document.getElementById("www").checked){
+
+code+=`
 RewriteCond %{HTTP_HOST} !^www\\. [NC]
 RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 `;
-    }
+}
 
-    if(document.getElementById("nonwww").checked){
-        code += `
+if(document.getElementById("nonwww").checked){
+
+code+=`
 RewriteCond %{HTTP_HOST} ^www\\.(.*)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
 `;
-    }
+}
 
-    if(document.getElementById("gzip").checked){
-        code += `
+if(document.getElementById("gzip").checked){
+
+code+=`
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
 </IfModule>
 
 `;
-    }
+}
 
-    if(document.getElementById("cache").checked){
-        code += `
+if(document.getElementById("cache").checked){
+
+code+=`
 <IfModule mod_expires.c>
 ExpiresActive On
 ExpiresByType image/jpg "access plus 1 year"
@@ -245,26 +521,29 @@ ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 
 `;
-    }
+}
 
-    if(document.getElementById("hotlink").checked){
-        code += `
+if(document.getElementById("hotlink").checked){
+
+code+=`
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www\\.)?yourdomain.com [NC]
 RewriteRule \\.(jpg|jpeg|png|gif)$ - [F]
 
 `;
-    }
+}
 
-    if(document.getElementById("listing").checked){
-        code += `
+if(document.getElementById("listing").checked){
+
+code+=`
 Options -Indexes
 
 `;
-    }
+}
 
-    if(document.getElementById("security").checked){
-        code += `
+if(document.getElementById("security").checked){
+
+code+=`
 <IfModule mod_headers.c>
 Header set X-Content-Type-Options "nosniff"
 Header set X-Frame-Options "SAMEORIGIN"
@@ -272,24 +551,31 @@ Header set X-XSS-Protection "1; mode=block"
 </IfModule>
 
 `;
-    }
+}
 
-    document.getElementById("output").value = code.trim();
+document.getElementById("output").value=
+code.trim();
 }
 
 function copyCode(){
 
-    const output = document.getElementById("output");
+const output=
+document.getElementById("output");
 
-    if(!output.value){
-        alert("Generate code first.");
-        return;
-    }
+if(!output.value){
 
-    navigator.clipboard.writeText(output.value);
+alert("Generate code first.");
 
-    alert("Copied!");
+return;
 }
+
+navigator.clipboard.writeText(output.value);
+
+alert("Copied!");
+}
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 </script>
 
 </body>
