@@ -11,7 +11,7 @@ gtag('config', 'G-3QBF2V9J5T');
 </script>
 
 <meta name="google-adsense-account" content="ca-pub-4422292009724522">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4422292009724522" crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,11 +60,40 @@ a{text-decoration:none;color:inherit}
 .tool-card h3{font-size:18px;margin-bottom:8px}
 .tool-card p{color:#94a3b8;font-size:14px;line-height:1.5}
 .tool-tag{display:inline-block;margin-top:12px;font-size:12px;color:#38bdf8;font-weight:bold}
-.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
-.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+
+.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px auto 0}
+.stats span{padding:9px 13px;border-radius:999px;border:1px solid #1e293b;background:#111827;color:#cbd5e1;font-size:13px;font-weight:bold}
+
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:35px 0 18px}
+.section-head h2{font-size:30px}
+.section-head p{color:#94a3b8;max-width:520px;line-height:1.6;font-size:14px}
+.popular-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+.popular-card{position:relative;overflow:hidden;background:linear-gradient(180deg,#111827,#0b1220);border:1px solid #1e293b;border-radius:20px;padding:20px;min-height:170px;display:block;transition:.25s}
+.popular-card:before{content:"";position:absolute;inset:auto -20px -45px auto;width:120px;height:120px;border-radius:50%;background:rgba(56,189,248,.12);filter:blur(4px)}
+.popular-card:hover{transform:translateY(-5px);border-color:#38bdf8;box-shadow:0 0 35px rgba(56,189,248,.12)}
+.popular-card .tool-icon{font-size:30px}
+.popular-card h3{font-size:19px;margin:10px 0 8px}
+.popular-card p{color:#94a3b8;font-size:14px;line-height:1.5}
+.popular-badge{display:inline-block;margin-top:14px;color:#38bdf8;font-size:12px;font-weight:bold}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.why-card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.why-card h3{font-size:20px;margin-bottom:8px}
+.why-card p{color:#94a3b8;line-height:1.6;font-size:14px}
+.seo-box{margin-top:28px;background:#111827;border:1px solid #1e293b;border-radius:18px;padding:22px}
+.seo-box h2{font-size:26px;margin-bottom:10px}
+.seo-box p{color:#94a3b8;line-height:1.8}
+
+.footer{margin-top:55px;padding:34px 0;border-top:1px solid #1e293b;color:#64748b;text-align:left}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:20px}
+.footer h3{color:white;font-size:16px;margin-bottom:10px}
+.footer p{line-height:1.7;color:#64748b}
+.footer-links{display:flex;flex-direction:column;gap:9px;margin-top:0}
 .footer-links a:hover{color:white}
-@media(max-width:1000px){.tools-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:750px){.tools-grid{grid-template-columns:1fr}.header{flex-direction:column}.logo img{width:95px;height:95px}}
+.footer-bottom{text-align:center;border-top:1px solid #1e293b;margin-top:28px;padding-top:20px}
+
+@media(max-width:1000px){.tools-grid,.popular-grid{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:750px){.tools-grid,.popular-grid,.why-grid,.footer-grid{grid-template-columns:1fr}.header{flex-direction:column}.nav{justify-content:center}.logo img{width:95px;height:95px}.hero{padding-top:35px}.section-head{display:block}.section-head p{margin-top:8px}.footer{text-align:center}.footer-links{align-items:center}}
 </style>
 </head>
 <body>
@@ -87,6 +116,21 @@ a{text-decoration:none;color:inherit}
 <h1 id="heroTitle">Free Online <span class="gradient">Tools</span></h1>
 <p id="heroText">Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.</p>
 <div class="search-box"><input type="text" id="searchInput" placeholder="Search tools..."></div>
+<div class="stats">
+<span id="statTools">80+ Tools</span>
+<span id="statFree">Free Forever</span>
+<span id="statMobile">Mobile Friendly</span>
+</div>
+</section>
+
+<section class="popular-section">
+<div class="section-head">
+<div>
+<h2 id="popularTitle">Popular Tools</h2>
+</div>
+<p id="popularText">Start with the tools people use most for development, images, SEO and everyday tasks.</p>
+</div>
+<div class="popular-grid" id="popularGrid"></div>
 </section>
 <div class="categories">
 <button class="cat-btn active" data-category="all" id="catAll">All</button>
@@ -99,8 +143,51 @@ a{text-decoration:none;color:inherit}
 </div>
 <h2 class="section-title" id="tools">All Tools</h2>
 <div class="tools-grid" id="toolsGrid"></div>
+<section class="why-section">
+<div class="section-head">
+<div>
+<h2 id="whyTitle">Why Toolivo?</h2>
+</div>
+<p id="whyText">Toolivo is built for quick, simple and practical online work without unnecessary steps.</p>
+</div>
+<div class="why-grid">
+<div class="why-card"><h3 id="whyFastTitle">Fast</h3><p id="whyFastText">Lightweight tools that open quickly and work instantly.</p></div>
+<div class="why-card"><h3 id="whyPrivateTitle">Private</h3><p id="whyPrivateText">Many tools run directly in your browser without uploading files.</p></div>
+<div class="why-card"><h3 id="whyFreeTitle">Free</h3><p id="whyFreeText">No signup, no complicated dashboard, no unnecessary steps.</p></div>
+</div>
+</section>
+
+<section class="seo-box">
+<h2 id="seoTitle">Free online tools for creators, developers and everyday users</h2>
+<p id="seoText">Toolivo provides browser-based utilities for image conversion, text editing, code formatting, SEO generation, CSS design and developer workflows. Use fast tools like JSON Formatter, QR Generator, Password Generator, JWT Decoder, image converters, CSS generators and more from one clean platform.</p>
+</section>
+
 <footer class="footer">
-<div>© <span id="year"></span> Toolivo. <span id="rightsText">All rights reserved.</span></div>
+<div class="footer-grid">
+<div>
+<h3>Toolivo</h3>
+<p id="footerText">Fast, simple and mobile friendly online tools for everyday work.</p>
+</div>
+<div>
+<h3 id="footerToolsTitle">Tools</h3>
+<div class="footer-links">
+<a href="/json-formatter.html">JSON Formatter</a>
+<a href="/qr-generator.html">QR Generator</a>
+<a href="/password-generator.html">Password Generator</a>
+<a href="/jwt-decoder.html">JWT Decoder</a>
+</div>
+</div>
+<div>
+<h3 id="footerCategoriesTitle">Categories</h3>
+<div class="footer-links">
+<a href="/#tools">Developer</a>
+<a href="/#tools">Image</a>
+<a href="/#tools">Text</a>
+<a href="/#tools">SEO</a>
+</div>
+</div>
+<div>
+<h3 id="footerCompanyTitle">Company</h3>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -108,6 +195,9 @@ a{text-decoration:none;color:inherit}
 <a href="/contact.html">Contact</a>
 <a href="/sitemap.xml">Sitemap</a>
 </div>
+</div>
+</div>
+<div class="footer-bottom">© <span id="year"></span> Toolivo. <span id="rightsText">All rights reserved.</span></div>
 </footer>
 </div>
 <script>
@@ -742,11 +832,12 @@ const searchInput = document.getElementById("searchInput");
 const buttons = document.querySelectorAll(".cat-btn");
 const langBtn = document.getElementById("langBtn");
 let activeCategory = "all";
+const popularUrls = ["/json-formatter.html","/qr-generator.html","/password-generator.html","/jwt-decoder.html"];
 let lang = localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
 
 const ui = {
-  en: {badge:"Fast • Free • Mobile Friendly", hero:'Free Online <span class="gradient">Tools</span>', heroText:"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.", search:"Search tools...", allTools:"All Tools", navTools:"Tools", navAbout:"About", navPrivacy:"Privacy", navContact:"Contact", all:"All", image:"Image", text:"Text", developer:"Developer", css:"CSS", seo:"SEO", converter:"Converter", rights:"All rights reserved.", notFound:"No tools found."},
-  tr: {badge:"Hızlı • Ücretsiz • Mobil Uyumlu", hero:'Ücretsiz Online <span class="gradient">Araçlar</span>', heroText:"Toolivo; görsel, metin, SEO, CSS, geliştirici ve dönüştürücü araçları için hızlı online araçlar sunar.", search:"Araç ara...", allTools:"Tüm Araçlar", navTools:"Araçlar", navAbout:"Hakkında", navPrivacy:"Gizlilik", navContact:"İletişim", all:"Tümü", image:"Görsel", text:"Metin", developer:"Geliştirici", css:"CSS", seo:"SEO", converter:"Dönüştürücü", rights:"Tüm hakları saklıdır.", notFound:"Araç bulunamadı."}
+  en: {badge:"Fast • Free • Mobile Friendly", hero:'Free Online <span class="gradient">Tools</span>', heroText:"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.", search:"Search tools...", allTools:"All Tools", navTools:"Tools", navAbout:"About", navPrivacy:"Privacy", navContact:"Contact", all:"All", image:"Image", text:"Text", developer:"Developer", css:"CSS", seo:"SEO", converter:"Converter", rights:"All rights reserved.", notFound:"No tools found.", statTools:"80+ Tools", statFree:"Free Forever", statMobile:"Mobile Friendly", popularTitle:"Popular Tools", popularText:"Start with the tools people use most for development, images, SEO and everyday tasks.", popularBadge:"Open Tool →", whyTitle:"Why Toolivo?", whyText:"Toolivo is built for quick, simple and practical online work without unnecessary steps.", whyFastTitle:"Fast", whyFastText:"Lightweight tools that open quickly and work instantly.", whyPrivateTitle:"Private", whyPrivateText:"Many tools run directly in your browser without uploading files.", whyFreeTitle:"Free", whyFreeText:"No signup, no complicated dashboard, no unnecessary steps.", seoTitle:"Free online tools for creators, developers and everyday users", seoText:"Toolivo provides browser-based utilities for image conversion, text editing, code formatting, SEO generation, CSS design and developer workflows. Use fast tools like JSON Formatter, QR Generator, Password Generator, JWT Decoder, image converters, CSS generators and more from one clean platform.", footerText:"Fast, simple and mobile friendly online tools for everyday work.", footerToolsTitle:"Tools", footerCategoriesTitle:"Categories", footerCompanyTitle:"Company"},
+  tr: {badge:"Hızlı • Ücretsiz • Mobil Uyumlu", hero:'Ücretsiz Online <span class="gradient">Araçlar</span>', heroText:"Toolivo; görsel, metin, SEO, CSS, geliştirici ve dönüştürücü araçları için hızlı online araçlar sunar.", search:"Araç ara...", allTools:"Tüm Araçlar", navTools:"Araçlar", navAbout:"Hakkında", navPrivacy:"Gizlilik", navContact:"İletişim", all:"Tümü", image:"Görsel", text:"Metin", developer:"Geliştirici", css:"CSS", seo:"SEO", converter:"Dönüştürücü", rights:"Tüm hakları saklıdır.", notFound:"Araç bulunamadı.", statTools:"80+ Araç", statFree:"Daima Ücretsiz", statMobile:"Mobil Uyumlu", popularTitle:"Popüler Araçlar", popularText:"Geliştirme, görsel, SEO ve günlük işler için en çok kullanılan araçlarla başlayın.", popularBadge:"Aracı Aç →", whyTitle:"Neden Toolivo?", whyText:"Toolivo gereksiz adımlar olmadan hızlı, sade ve pratik online işler için hazırlandı.", whyFastTitle:"Hızlı", whyFastText:"Hızlı açılan ve anında çalışan hafif araçlar.", whyPrivateTitle:"Gizlilik Odaklı", whyPrivateText:"Birçok araç dosyaları yüklemeden doğrudan tarayıcıda çalışır.", whyFreeTitle:"Ücretsiz", whyFreeText:"Üyelik yok, karmaşık panel yok, gereksiz adım yok.", seoTitle:"İçerik üreticileri, geliştiriciler ve günlük kullanıcılar için ücretsiz online araçlar", seoText:"Toolivo; görsel dönüştürme, metin düzenleme, kod formatlama, SEO üreticileri, CSS tasarım araçları ve geliştirici iş akışları için tarayıcı tabanlı araçlar sunar. JSON Formatter, QR Generator, Password Generator, JWT Decoder, görsel dönüştürücüler, CSS araçları ve daha fazlasını tek temiz platformdan kullanın.", footerText:"Günlük işler için hızlı, sade ve mobil uyumlu online araçlar.", footerToolsTitle:"Araçlar", footerCategoriesTitle:"Kategoriler", footerCompanyTitle:"Kurumsal"}
 };
 
 function getTitle(tool){ return typeof tool.title === "object" ? tool.title[lang] : tool.title; }
@@ -771,9 +862,45 @@ function applyLanguage(){
   document.getElementById("catSeo").innerText = t.seo;
   document.getElementById("catConverter").innerText = t.converter;
   document.getElementById("rightsText").innerText = t.rights;
+  document.getElementById("statTools").innerText = t.statTools;
+  document.getElementById("statFree").innerText = t.statFree;
+  document.getElementById("statMobile").innerText = t.statMobile;
+  document.getElementById("popularTitle").innerText = t.popularTitle;
+  document.getElementById("popularText").innerText = t.popularText;
+  document.getElementById("whyTitle").innerText = t.whyTitle;
+  document.getElementById("whyText").innerText = t.whyText;
+  document.getElementById("whyFastTitle").innerText = t.whyFastTitle;
+  document.getElementById("whyFastText").innerText = t.whyFastText;
+  document.getElementById("whyPrivateTitle").innerText = t.whyPrivateTitle;
+  document.getElementById("whyPrivateText").innerText = t.whyPrivateText;
+  document.getElementById("whyFreeTitle").innerText = t.whyFreeTitle;
+  document.getElementById("whyFreeText").innerText = t.whyFreeText;
+  document.getElementById("seoTitle").innerText = t.seoTitle;
+  document.getElementById("seoText").innerText = t.seoText;
+  document.getElementById("footerText").innerText = t.footerText;
+  document.getElementById("footerToolsTitle").innerText = t.footerToolsTitle;
+  document.getElementById("footerCategoriesTitle").innerText = t.footerCategoriesTitle;
+  document.getElementById("footerCompanyTitle").innerText = t.footerCompanyTitle;
   langBtn.innerText = lang === "tr" ? "EN" : "TR";
+  renderPopular();
   renderTools();
 }
+
+function renderPopular(){
+  const popularGrid = document.getElementById("popularGrid");
+  if(!popularGrid) return;
+  popularGrid.innerHTML = "";
+  popularUrls.forEach(url => {
+    const tool = tools.find(t => t.url === url);
+    if(!tool) return;
+    const card = document.createElement("a");
+    card.className = "popular-card";
+    card.href = tool.url;
+    card.innerHTML = `<div class="tool-icon">${tool.icon}</div><h3>${getTitle(tool)}</h3><p>${getDesc(tool)}</p><span class="popular-badge">${ui[lang].popularBadge}</span>`;
+    popularGrid.appendChild(card);
+  });
+}
+
 function renderTools(){
   const query = searchInput.value.toLowerCase().trim();
   grid.innerHTML = "";
