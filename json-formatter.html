@@ -3,45 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>JSON Formatter Validator — Toolivo</title>
+
 <meta name="description" content="Format, beautify, validate and minify JSON instantly with Toolivo.">
+
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
-background:#05070d;
+}
+
+body{
+background:#0f172a;
+color:white;
+min-height:100vh;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
+}
+
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:
+drop-shadow(0 0 34px rgba(57,230,210,.55))
+drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
+}
+
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+margin-left:auto;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
 color:white;
 }
 
-.wrap{
-width:min(1100px,calc(100% - 28px));
-margin:auto;
-padding:40px 0;
+.lang-btn{
+padding:8px 13px;
+border-radius:999px;
+border:1px solid #334155;
+background:#111827;
+color:#cbd5e1;
+cursor:pointer;
+font-weight:bold;
+font-size:14px;
+transition:.2s;
 }
 
-h1{
-font-size:56px;
-margin:20px 0 10px;
+.lang-btn:hover{
+color:white;
+border-color:#38bdf8;
 }
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
+.tool-hero{
+padding:45px 0 28px;
+text-align:left;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:720px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:18px;
+margin-top:20px;
 }
 
 .panel{
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
-padding:18px;
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
 .label{
@@ -55,31 +152,43 @@ textarea{
 width:100%;
 min-height:380px;
 border-radius:18px;
-border:1px solid #263244;
-background:#05070d;
+border:1px solid #334155;
+background:#020617;
 color:white;
 padding:18px;
 font-size:15px;
 line-height:1.6;
-box-sizing:border-box;
 resize:vertical;
 font-family:monospace;
+outline:none;
 }
 
-button{
+textarea:focus{
+border-color:#38bdf8;
+}
+
+.main-btn{
 padding:15px 20px;
 border:0;
 border-radius:16px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 font-weight:800;
 cursor:pointer;
 margin:10px 10px 0 0;
+font-size:15px;
 }
 
-.copy{
-background:#121935;
+.secondary-btn{
+padding:15px 20px;
+border-radius:16px;
+background:#020617;
 color:white;
-border:1px solid #263244;
+border:1px solid #334155;
+font-weight:800;
+cursor:pointer;
+margin:10px 10px 0 0;
+font-size:15px;
 }
 
 .status{
@@ -101,38 +210,139 @@ border:1px solid #a33;
 color:#ff8b8b;
 }
 
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
 @media(max-width:900px){
-.grid{
+
+.grid,
+.content{
 grid-template-columns:1fr;
 }
 
-h1{
+.header{
+flex-direction:column;
+}
+
+.nav{
+margin-left:0;
+justify-content:center;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.tool-hero h1{
 font-size:42px;
 }
+
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>JSON Formatter / Validator</h1>
+<header class="header">
 
-<p>
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
+</nav>
+
+</header>
+
+<section class="tool-hero">
+
+<h1 id="heroTitle">
+JSON <span class="gradient">Formatter</span>
+</h1>
+
+<p id="heroText">
 Beautify, validate and minify JSON instantly with Toolivo.
 </p>
+
+</section>
 
 <div class="grid">
 
 <div class="panel">
 
-<div class="label">Input JSON</div>
+<div class="label" id="inputLabel">
+Input JSON
+</div>
 
 <textarea id="input" placeholder='Paste JSON here...'></textarea>
 
-<button onclick="formatJSON()">Format JSON</button>
-<button onclick="minifyJSON()">Minify JSON</button>
-<button class="copy" onclick="clearAll()">Clear</button>
+<button class="main-btn" onclick="formatJSON()" id="formatBtn">
+Format JSON
+</button>
+
+<button class="main-btn" onclick="minifyJSON()" id="minifyBtn">
+Minify JSON
+</button>
+
+<button class="secondary-btn" onclick="clearAll()" id="clearBtn">
+Clear
+</button>
 
 <div id="status"></div>
 
@@ -140,15 +350,66 @@ Beautify, validate and minify JSON instantly with Toolivo.
 
 <div class="panel">
 
-<div class="label">Output</div>
+<div class="label" id="outputLabel">
+Output
+</div>
 
 <textarea id="output" readonly placeholder="Formatted JSON will appear here..."></textarea>
 
-<button onclick="copyOutput()">Copy Output</button>
+<button class="main-btn" onclick="copyOutput()" id="copyBtn">
+Copy Output
+</button>
 
 </div>
 
 </div>
+
+<section class="content">
+
+<article class="card">
+
+<h2 id="whyTitle">
+Why use a JSON formatter?
+</h2>
+
+<p id="whyText">
+Formatting JSON makes it easier to read, debug and validate API responses, configuration files and developer data structures.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2 id="howTitle">
+How it works
+</h2>
+
+<ul>
+<li id="step1">Paste your JSON data.</li>
+<li id="step2">Format or minify instantly.</li>
+<li id="step3">Copy the result with one click.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo.
+<span id="rightsText">All rights reserved.</span>
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
@@ -156,6 +417,94 @@ Beautify, validate and minify JSON instantly with Toolivo.
 const input=document.getElementById('input');
 const output=document.getElementById('output');
 const status=document.getElementById('status');
+const langBtn=document.getElementById('langBtn');
+
+let lang=localStorage.getItem("toolivo_lang") ||
+((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
+
+const ui={
+en:{
+title:"JSON Formatter Validator — Toolivo",
+heroTitle:'JSON <span class="gradient">Formatter</span>',
+heroText:"Beautify, validate and minify JSON instantly with Toolivo.",
+input:"Input JSON",
+output:"Output",
+format:"Format JSON",
+minify:"Minify JSON",
+clear:"Clear",
+copy:"Copy Output",
+placeholder:"Paste JSON here...",
+outputPlaceholder:"Formatted JSON will appear here...",
+success:"Valid JSON ✔",
+minified:"JSON minified ✔",
+error:"Invalid JSON ❌",
+copied:"Copied ✔",
+whyTitle:"Why use a JSON formatter?",
+whyText:"Formatting JSON makes it easier to read, debug and validate API responses, configuration files and developer data structures.",
+howTitle:"How it works",
+step1:"Paste your JSON data.",
+step2:"Format or minify instantly.",
+step3:"Copy the result with one click.",
+rights:"All rights reserved."
+},
+tr:{
+title:"JSON Formatter Validator — Toolivo",
+heroTitle:'JSON <span class="gradient">Formatter</span>',
+heroText:"JSON verilerini anında düzenle, doğrula ve küçült.",
+input:"JSON Girişi",
+output:"Çıktı",
+format:"JSON Düzenle",
+minify:"JSON Küçült",
+clear:"Temizle",
+copy:"Çıktıyı Kopyala",
+placeholder:"JSON verisini buraya yapıştır...",
+outputPlaceholder:"Düzenlenmiş JSON burada görünecek...",
+success:"Geçerli JSON ✔",
+minified:"JSON küçültüldü ✔",
+error:"Geçersiz JSON ❌",
+copied:"Kopyalandı ✔",
+whyTitle:"Neden JSON formatter kullanılır?",
+whyText:"JSON düzenleme araçları API cevaplarını, yapılandırma dosyalarını ve veri yapılarını daha okunabilir hale getirir.",
+howTitle:"Nasıl çalışır?",
+step1:"JSON verisini yapıştır.",
+step2:"Anında düzenle veya küçült.",
+step3:"Tek tıkla sonucu kopyala.",
+rights:"Tüm hakları saklıdır."
+}
+};
+
+function applyLang(){
+const t=ui[lang];
+
+document.documentElement.lang=lang;
+document.title=t.title;
+
+document.getElementById("heroTitle").innerHTML=t.heroTitle;
+document.getElementById("heroText").innerText=t.heroText;
+
+document.getElementById("inputLabel").innerText=t.input;
+document.getElementById("outputLabel").innerText=t.output;
+
+document.getElementById("formatBtn").innerText=t.format;
+document.getElementById("minifyBtn").innerText=t.minify;
+document.getElementById("clearBtn").innerText=t.clear;
+document.getElementById("copyBtn").innerText=t.copy;
+
+input.placeholder=t.placeholder;
+output.placeholder=t.outputPlaceholder;
+
+document.getElementById("whyTitle").innerText=t.whyTitle;
+document.getElementById("whyText").innerText=t.whyText;
+
+document.getElementById("howTitle").innerText=t.howTitle;
+document.getElementById("step1").innerText=t.step1;
+document.getElementById("step2").innerText=t.step2;
+document.getElementById("step3").innerText=t.step3;
+
+document.getElementById("rightsText").innerText=t.rights;
+
+langBtn.innerText=lang==="tr" ? "EN" : "TR";
+}
 
 function setStatus(msg,type){
 status.className='status '+type;
@@ -166,9 +515,9 @@ function formatJSON(){
 try{
 const parsed=JSON.parse(input.value);
 output.value=JSON.stringify(parsed,null,2);
-setStatus('Valid JSON ✔','success');
+setStatus(ui[lang].success,'success');
 }catch(err){
-setStatus('Invalid JSON ❌','error');
+setStatus(ui[lang].error,'error');
 }
 }
 
@@ -176,14 +525,15 @@ function minifyJSON(){
 try{
 const parsed=JSON.parse(input.value);
 output.value=JSON.stringify(parsed);
-setStatus('JSON minified ✔','success');
+setStatus(ui[lang].minified,'success');
 }catch(err){
-setStatus('Invalid JSON ❌','error');
+setStatus(ui[lang].error,'error');
 }
 }
 
 function copyOutput(){
 navigator.clipboard.writeText(output.value);
+setStatus(ui[lang].copied,'success');
 }
 
 function clearAll(){
@@ -192,6 +542,16 @@ output.value='';
 status.textContent='';
 status.className='';
 }
+
+langBtn.onclick=()=>{
+lang=lang==="tr" ? "en" : "tr";
+localStorage.setItem("toolivo_lang",lang);
+applyLang();
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
+
+applyLang();
 </script>
 
 </body>
