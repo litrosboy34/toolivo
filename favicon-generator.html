@@ -5,98 +5,118 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Favicon Generator — Toolivo</title>
-
-<meta name="description" content="Generate favicons instantly with Toolivo. Create 16x16, 32x32 and app icons online for free.">
-
+<meta name="description" content="Generate favicons instantly with Toolivo. Create browser and app icons online for free.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 
 body{
-margin:0;
-font-family:Inter,sans-serif;
-background:
-radial-gradient(circle at top left,#0d3f35 0%,transparent 30%),
-radial-gradient(circle at top right,#1b2557 0%,transparent 30%),
-#05070d;
+background:#0f172a;
 color:white;
 min-height:100vh;
-overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
 }
 
 .container{
-width:min(1150px,calc(100% - 32px));
+max-width:1200px;
 margin:auto;
+padding:20px;
 }
 
-header{
-padding:28px 0;
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
 .logo{
+display:flex;
+align-items:center;
+gap:0;
 font-size:34px;
-font-weight:900;
-letter-spacing:-2px;
+font-weight:bold;
+}
+
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
 .logo span{
-background:linear-gradient(90deg,#39e6d2,#7aa2ff);
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
 -webkit-background-clip:text;
-color:transparent;
+-webkit-text-fill-color:transparent;
 }
 
-.hero{
-padding:60px 0 28px;
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
 text-align:center;
 }
 
-.hero h1{
-font-size:72px;
-line-height:0.95;
-letter-spacing:-4px;
-margin:0 0 18px;
+.tool-hero h1{
+font-size:clamp(42px,7vw,70px);
+line-height:1;
+margin-bottom:14px;
 }
 
-.hero h1 span{
-background:linear-gradient(90deg,#fff,#89dfff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.hero p{
+.tool-hero p{
 max-width:760px;
 margin:auto;
+color:#94a3b8;
 line-height:1.7;
 font-size:18px;
-color:#9ca8bb;
 }
 
-.tool{
-margin-top:40px;
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:18px;
+margin-top:20px;
 }
 
 .panel{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:28px;
+background:#111827;
+border:1px solid #1e293b;
+border-radius:22px;
 padding:22px;
-backdrop-filter:blur(14px);
 }
 
 .drop{
-border:2px dashed rgba(255,255,255,0.14);
+border:2px dashed rgba(255,255,255,.12);
 min-height:320px;
 border-radius:22px;
 display:flex;
@@ -105,27 +125,43 @@ justify-content:center;
 flex-direction:column;
 cursor:pointer;
 text-align:center;
-transition:0.2s;
+transition:.2s;
+background:#020617;
 }
 
 .drop:hover{
-border-color:#39e6d2;
-background:rgba(57,230,210,0.05);
+border-color:#38bdf8;
+background:rgba(56,189,248,.06);
+}
+
+.drop-icon{
+font-size:64px;
+margin-bottom:10px;
 }
 
 .drop h2{
-margin:14px 0 10px;
-font-size:28px;
+font-size:30px;
+margin-bottom:10px;
 }
 
 .drop p{
 max-width:320px;
 line-height:1.6;
-color:#9ca8bb;
+color:#94a3b8;
 }
 
 input[type=file]{
 display:none;
+}
+
+.info{
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+padding:18px;
+border-radius:18px;
+line-height:1.7;
+color:#94a3b8;
 }
 
 .preview-grid{
@@ -135,8 +171,8 @@ gap:16px;
 }
 
 .preview-card{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
+background:#020617;
+border:1px solid #334155;
 border-radius:20px;
 padding:18px;
 text-align:center;
@@ -147,103 +183,179 @@ background:white;
 padding:10px;
 border-radius:14px;
 margin-bottom:12px;
+max-width:100%;
 }
 
 .preview-card h3{
-margin:0;
 font-size:16px;
+margin-bottom:6px;
 }
 
 .preview-card p{
-margin-top:6px;
-color:#9ca8bb;
 font-size:14px;
+color:#94a3b8;
 }
 
-.btn{
-margin-top:18px;
-height:58px;
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+button{
+padding:15px 20px;
 border:none;
-border-radius:18px;
+border-radius:16px;
 font-weight:800;
-font-size:16px;
 cursor:pointer;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
-color:#051018;
-transition:0.2s;
-width:100%;
+font-size:15px;
+transition:.2s;
 }
 
-.btn:hover{
+button:hover{
 transform:translateY(-2px);
 }
 
-.info{
-margin-top:18px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-padding:16px;
+.primary{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+
+.secondary{
+background:#020617;
+border:1px solid #334155;
+color:white;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
 border-radius:18px;
-line-height:1.6;
-color:#9ca8bb;
+padding:20px;
 }
 
-footer{
-margin-top:70px;
-padding:26px 0;
-border-top:1px solid rgba(255,255,255,0.08);
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
 text-align:center;
-color:#7c8799;
 }
 
-@media(max-width:860px){
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
 
-.tool{
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
 grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
 }
 
 .preview-grid{
 grid-template-columns:1fr;
 }
 
-.hero h1{
-font-size:52px;
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
 }
 
 }
-
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-<header>
-<div class="logo"><span>Toolivo</span></div>
+<header class="header">
+
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+
 </header>
 
-<section class="hero">
+<section class="tool-hero">
 
-<h1><span>Favicon</span><br>generator.</h1>
+<h1><span class="gradient">Favicon</span><br>Generator</h1>
 
 <p>
-Generate modern favicon icons instantly for websites, apps and browsers.
+Generate browser and app favicons instantly with live preview and downloadable PNG icons.
 </p>
 
 </section>
 
-<section class="tool">
+<section class="tool-grid">
 
 <div class="panel">
 
 <label class="drop" for="fileInput">
 
-<div style="font-size:58px">⭐</div>
+<div class="drop-icon">⭐</div>
 
-<h2>Drop your logo</h2>
+<h2>Upload Your Logo</h2>
 
 <p>
-or click to browse from your device.
+Click or drag your image here to generate favicon icons instantly.
 </p>
 
 </label>
@@ -292,40 +404,79 @@ Recommended:
 
 </div>
 
-<button class="btn" id="downloadBtn">
-Download 180x180 PNG
+<div class="buttons">
+<button class="primary" id="downloadBtn">
+Download 180×180 PNG
 </button>
+</div>
 
 </div>
 
 </section>
 
-<footer>
-© 2026 Toolivo — Favicon Generator
+<section class="content">
+
+<article class="card">
+
+<h2>Why use favicons?</h2>
+
+<p>
+Favicons help users recognize your website in browser tabs, bookmarks, shortcuts and mobile devices.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Upload your logo or icon.</li>
+<li>Preview multiple favicon sizes instantly.</li>
+<li>Download the generated favicon PNG.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
 </footer>
 
 </div>
 
 <script>
+const fileInput=document.getElementById('fileInput');
 
-const fileInput = document.getElementById('fileInput');
-
-const canvases = [
+const canvases=[
 16,
 32,
 64,
 180
 ];
 
-let img = null;
+let img=null;
 
 function drawFavicons(){
 
 canvases.forEach(size=>{
 
-const canvas = document.getElementById(`icon${size}`);
+const canvas=document.getElementById(`icon${size}`);
 
-const ctx = canvas.getContext('2d');
+const ctx=canvas.getContext('2d');
 
 ctx.clearRect(0,0,size,size);
 
@@ -335,40 +486,42 @@ ctx.drawImage(img,0,0,size,size);
 
 }
 
-fileInput.onchange = e => {
+fileInput.onchange=e=>{
 
-const file = e.target.files[0];
+const file=e.target.files[0];
 
-if(!file) return;
+if(!file)return;
 
-const url = URL.createObjectURL(file);
+const url=URL.createObjectURL(file);
 
-img = new Image();
+img=new Image();
 
-img.onload = () => {
+img.onload=()=>{
 
 drawFavicons();
 
 };
 
-img.src = url;
+img.src=url;
 
 };
 
-document.getElementById('downloadBtn').onclick = ()=>{
+document.getElementById('downloadBtn').onclick=()=>{
 
-const canvas = document.getElementById('icon180');
+const canvas=document.getElementById('icon180');
 
-const link = document.createElement('a');
+const link=document.createElement('a');
 
-link.download = 'toolivo-favicon-180.png';
+link.download='toolivo-favicon-180.png';
 
-link.href = canvas.toDataURL('image/png');
+link.href=canvas.toDataURL('image/png');
 
 link.click();
 
 };
 
+document.getElementById("year").innerText=
+new Date().getFullYear();
 </script>
 
 </body>
