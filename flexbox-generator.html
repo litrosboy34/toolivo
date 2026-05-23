@@ -4,150 +4,309 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Flexbox Generator - Toolivo</title>
-
+<title>Flexbox Generator — Toolivo</title>
 <meta name="description" content="Generate CSS Flexbox layouts instantly with live preview and copyable code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 
 body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+background:#0f172a;
+color:white;
+min-height:100vh;
+}
+
+a{
+text-decoration:none;
+color:inherit;
 }
 
 .container{
-    max-width:1100px;
-    margin:auto;
+max-width:1200px;
+margin:auto;
+padding:20px;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-@media(max-width:850px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,68px);
+line-height:1;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:22px;
+padding:22px;
 }
 
 .control{
-    margin-bottom:18px;
+margin-bottom:18px;
 }
 
 label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+display:block;
+margin-bottom:8px;
+color:#cbd5e1;
+font-size:14px;
+font-weight:bold;
 }
 
 select,
 input{
-    width:100%;
-    background:#020617;
-    border:1px solid #334155;
-    color:white;
-    border-radius:12px;
-    padding:14px;
-    outline:none;
+width:100%;
+background:#020617;
+border:1px solid #334155;
+color:white;
+border-radius:16px;
+padding:14px;
+outline:none;
+font-size:15px;
+}
+
+input[type="range"]{
+accent-color:#38bdf8;
+padding:0;
 }
 
 .preview{
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    min-height:350px;
-    padding:20px;
-    display:flex;
-    gap:10px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+min-height:380px;
+padding:20px;
+display:flex;
+gap:10px;
+transition:.2s;
+overflow:hidden;
 }
 
 .item{
-    width:70px;
-    height:70px;
-    border-radius:14px;
-    background:linear-gradient(135deg,#06b6d4,#3b82f6);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
+width:74px;
+height:74px;
+border-radius:18px;
+background:linear-gradient(135deg,#06b6d4,#3b82f6);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:800;
+font-size:18px;
+box-shadow:0 14px 35px rgba(0,0,0,.3);
+flex-shrink:0;
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#1e293b;
-    color:white;
+background:#020617;
+border:1px solid #334155;
+color:white;
 }
 
 textarea{
-    width:100%;
-    height:220px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:220px;
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+min-height:280px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -156,135 +315,195 @@ textarea{
 
 <div class="container">
 
-    <div class="title">Flexbox Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate CSS Flexbox layouts instantly with live preview and copyable CSS code.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Flex Direction</label>
+<h1>Flexbox <span class="gradient">Generator</span></h1>
 
-                    <select id="direction">
-                        <option value="row">row</option>
-                        <option value="column">column</option>
-                        <option value="row-reverse">row-reverse</option>
-                        <option value="column-reverse">column-reverse</option>
-                    </select>
-                </div>
+<p>
+Generate CSS Flexbox layouts instantly with live preview and copyable CSS code for responsive website layouts and UI components.
+</p>
 
-                <div class="control">
-                    <label>Justify Content</label>
+</section>
 
-                    <select id="justify">
-                        <option value="flex-start">flex-start</option>
-                        <option value="center">center</option>
-                        <option value="flex-end">flex-end</option>
-                        <option value="space-between">space-between</option>
-                        <option value="space-around">space-around</option>
-                        <option value="space-evenly">space-evenly</option>
-                    </select>
-                </div>
+<section class="tool-grid">
 
-                <div class="control">
-                    <label>Align Items</label>
+<div class="panel">
 
-                    <select id="align">
-                        <option value="stretch">stretch</option>
-                        <option value="flex-start">flex-start</option>
-                        <option value="center">center</option>
-                        <option value="flex-end">flex-end</option>
-                    </select>
-                </div>
+<div class="control">
+<label>Flex Direction</label>
 
-                <div class="control">
-                    <label>Gap</label>
+<select id="direction">
+<option value="row">row</option>
+<option value="column">column</option>
+<option value="row-reverse">row-reverse</option>
+<option value="column-reverse">column-reverse</option>
+</select>
+</div>
 
-                    <input type="range" id="gap" min="0" max="60" value="10">
-                </div>
+<div class="control">
+<label>Justify Content</label>
 
-                <div class="control">
-                    <label>Flex Wrap</label>
+<select id="justify">
+<option value="flex-start">flex-start</option>
+<option value="center">center</option>
+<option value="flex-end">flex-end</option>
+<option value="space-between">space-between</option>
+<option value="space-around">space-around</option>
+<option value="space-evenly">space-evenly</option>
+</select>
+</div>
 
-                    <select id="wrap">
-                        <option value="nowrap">nowrap</option>
-                        <option value="wrap">wrap</option>
-                    </select>
-                </div>
+<div class="control">
+<label>Align Items</label>
 
-            </div>
+<select id="align">
+<option value="stretch">stretch</option>
+<option value="flex-start">flex-start</option>
+<option value="center">center</option>
+<option value="flex-end">flex-end</option>
+</select>
+</div>
 
-            <div>
+<div class="control">
+<label>Gap</label>
 
-                <div class="preview" id="preview">
+<input type="range" id="gap" min="0" max="60" value="10">
+</div>
 
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                    <div class="item">4</div>
+<div class="control">
+<label>Flex Wrap</label>
 
-                </div>
+<select id="wrap">
+<option value="nowrap">nowrap</option>
+<option value="wrap">wrap</option>
+</select>
+</div>
 
-            </div>
+<div class="buttons">
 
-        </div>
+<button class="generate" onclick="generateFlex()">
+Generate Flexbox
+</button>
 
-        <div class="buttons">
+<button class="copy" onclick="copyCSS()">
+Copy CSS
+</button>
 
-            <button class="generate" onclick="generateFlex()">
-                Generate
-            </button>
+</div>
 
-            <button class="copy" onclick="copyCSS()">
-                Copy CSS
-            </button>
+<textarea id="output"></textarea>
 
-        </div>
+</div>
 
-        <textarea id="output"></textarea>
+<div class="panel">
 
-    </div>
+<div class="info">
+Customize flex direction, alignment, wrapping and spacing to generate responsive Flexbox layouts instantly.
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="preview" id="preview">
+
+<div class="item">1</div>
+<div class="item">2</div>
+<div class="item">3</div>
+<div class="item">4</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use Flexbox?</h2>
+
+<p>
+Flexbox makes it easy to align, distribute and organize content responsively for modern websites and interfaces.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Select direction and alignment.</li>
+<li>Adjust spacing and wrapping.</li>
+<li>Preview the layout live.</li>
+<li>Copy the generated CSS instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateFlex(){
 
-    const direction =
-    document.getElementById("direction").value;
+const direction=
+document.getElementById("direction").value;
 
-    const justify =
-    document.getElementById("justify").value;
+const justify=
+document.getElementById("justify").value;
 
-    const align =
-    document.getElementById("align").value;
+const align=
+document.getElementById("align").value;
 
-    const gap =
-    document.getElementById("gap").value;
+const gap=
+document.getElementById("gap").value;
 
-    const wrap =
-    document.getElementById("wrap").value;
+const wrap=
+document.getElementById("wrap").value;
 
-    const preview =
-    document.getElementById("preview");
+const preview=
+document.getElementById("preview");
 
-    preview.style.flexDirection = direction;
-    preview.style.justifyContent = justify;
-    preview.style.alignItems = align;
-    preview.style.gap = gap + "px";
-    preview.style.flexWrap = wrap;
+preview.style.flexDirection=direction;
+preview.style.justifyContent=justify;
+preview.style.alignItems=align;
+preview.style.gap=gap+"px";
+preview.style.flexWrap=wrap;
 
-    const css =
+const css=
 `.flex-container{
     display:flex;
     flex-direction:${direction};
@@ -294,21 +513,24 @@ function generateFlex(){
     flex-wrap:${wrap};
 }`;
 
-    document.getElementById("output").value = css;
+document.getElementById("output").value=css;
 }
 
 function copyCSS(){
 
-    navigator.clipboard.writeText(
-        document.getElementById("output").value
-    );
+navigator.clipboard.writeText(
+document.getElementById("output").value
+);
 
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("select,input").forEach(el => {
-    el.addEventListener("input", generateFlex);
+document.querySelectorAll("select,input").forEach(el=>{
+el.addEventListener("input",generateFlex);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateFlex();
 </script>
