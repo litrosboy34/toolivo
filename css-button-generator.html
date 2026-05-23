@@ -4,159 +4,313 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CSS Button Generator - Toolivo</title>
-
+<title>CSS Button Generator — Toolivo</title>
 <meta name="description" content="Generate beautiful CSS buttons instantly with live preview and copyable code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-@media(max-width:800px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
 }
 
 .control{
-    margin-bottom:18px;
+margin-bottom:18px;
 }
 
 label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+display:block;
+margin-bottom:8px;
+color:#cbd5e1;
+font-size:14px;
+font-weight:bold;
 }
 
 input[type="text"],
 input[type="number"]{
-    width:100%;
-    background:#020617;
-    border:1px solid #334155;
-    color:white;
-    border-radius:12px;
-    padding:14px;
-    outline:none;
+width:100%;
+background:#020617;
+border:1px solid #334155;
+color:white;
+border-radius:16px;
+padding:14px;
+outline:none;
+font-size:15px;
+}
+
+input[type="text"]:focus{
+border-color:#38bdf8;
 }
 
 input[type="color"]{
-    width:100%;
-    height:55px;
-    border:none;
-    border-radius:12px;
-    background:none;
-    cursor:pointer;
+width:100%;
+height:60px;
+border:none;
+border-radius:16px;
+background:#020617;
+padding:4px;
+cursor:pointer;
 }
 
 input[type="range"]{
-    width:100%;
-    accent-color:#0ea5e9;
+width:100%;
+accent-color:#38bdf8;
 }
 
 .preview-area{
-    min-height:320px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:16px;
+min-height:380px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:20px;
 }
 
 .preview-button{
-    border:none;
-    cursor:pointer;
-    transition:0.2s;
+border:none;
+cursor:pointer;
+transition:.2s;
+font-weight:700;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.preview-button:hover{
+transform:translateY(-2px);
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button.action{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button.action:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#1e293b;
-    color:white;
+background:#020617;
+border:1px solid #334155;
+color:white;
 }
 
 textarea{
-    width:100%;
-    height:220px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:240px;
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content,
+.grid{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview-area{
+min-height:280px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button.action{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -165,109 +319,184 @@ textarea{
 
 <div class="container">
 
-    <div class="title">CSS Button Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate beautiful CSS buttons instantly with live preview and copyable CSS code.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Button Text</label>
-                    <input type="text" id="text" value="Toolivo Button">
-                </div>
+<h1>CSS Button <span class="gradient">Generator</span></h1>
 
-                <div class="control">
-                    <label>Background Color</label>
-                    <input type="color" id="bg" value="#06b6d4">
-                </div>
+<p>
+Generate modern CSS buttons instantly with live preview and copyable code for websites, apps and UI components.
+</p>
 
-                <div class="control">
-                    <label>Text Color</label>
-                    <input type="color" id="color" value="#ffffff">
-                </div>
+</section>
 
-                <div class="control">
-                    <label>Border Radius</label>
-                    <input type="range" id="radius" min="0" max="60" value="14">
-                </div>
+<section class="tool-grid">
 
-                <div class="control">
-                    <label>Padding Y</label>
-                    <input type="range" id="paddingY" min="5" max="40" value="14">
-                </div>
+<div class="panel">
 
-                <div class="control">
-                    <label>Padding X</label>
-                    <input type="range" id="paddingX" min="10" max="60" value="24">
-                </div>
+<div class="grid">
 
-                <div class="control">
-                    <label>Font Size</label>
-                    <input type="range" id="fontSize" min="10" max="40" value="16">
-                </div>
+<div>
 
-            </div>
+<div class="control">
+<label>Button Text</label>
+<input type="text" id="text" value="Toolivo Button">
+</div>
 
-            <div class="preview-area">
+<div class="control">
+<label>Background Color</label>
+<input type="color" id="bg" value="#06b6d4">
+</div>
 
-                <button class="preview-button" id="previewBtn">
-                    Toolivo Button
-                </button>
+<div class="control">
+<label>Text Color</label>
+<input type="color" id="color" value="#ffffff">
+</div>
 
-            </div>
+<div class="control">
+<label>Border Radius</label>
+<input type="range" id="radius" min="0" max="60" value="14">
+</div>
 
-        </div>
+</div>
 
-        <div class="buttons">
+<div>
 
-            <button class="action generate" onclick="generateButton()">
-                Generate
-            </button>
+<div class="control">
+<label>Padding Y</label>
+<input type="range" id="paddingY" min="5" max="40" value="14">
+</div>
 
-            <button class="action copy" onclick="copyCSS()">
-                Copy CSS
-            </button>
+<div class="control">
+<label>Padding X</label>
+<input type="range" id="paddingX" min="10" max="60" value="24">
+</div>
 
-        </div>
+<div class="control">
+<label>Font Size</label>
+<input type="range" id="fontSize" min="10" max="40" value="16">
+</div>
 
-        <textarea id="output"></textarea>
+</div>
 
-    </div>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="buttons">
+
+<button class="action generate" onclick="generateButton()">
+Generate Button
+</button>
+
+<button class="action copy" onclick="copyCSS()">
+Copy CSS
+</button>
+
+</div>
+
+<textarea id="output"></textarea>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Customize colors, padding, border radius and typography to generate modern CSS buttons instantly.
+</div>
+
+<div class="preview-area">
+
+<button class="preview-button" id="previewBtn">
+Toolivo Button
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why custom buttons matter</h2>
+
+<p>
+Well-designed buttons improve user experience, visual hierarchy and conversion rates on websites and applications.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Customize colors and typography.</li>
+<li>Preview your button live.</li>
+<li>Copy the generated CSS instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateButton(){
 
-    const text = document.getElementById("text").value;
-    const bg = document.getElementById("bg").value;
-    const color = document.getElementById("color").value;
-    const radius = document.getElementById("radius").value;
-    const paddingY = document.getElementById("paddingY").value;
-    const paddingX = document.getElementById("paddingX").value;
-    const fontSize = document.getElementById("fontSize").value;
+const text=document.getElementById("text").value;
+const bg=document.getElementById("bg").value;
+const color=document.getElementById("color").value;
+const radius=document.getElementById("radius").value;
+const paddingY=document.getElementById("paddingY").value;
+const paddingX=document.getElementById("paddingX").value;
+const fontSize=document.getElementById("fontSize").value;
 
-    const btn = document.getElementById("previewBtn");
+const btn=document.getElementById("previewBtn");
 
-    btn.innerText = text;
+btn.innerText=text;
 
-    btn.style.background = bg;
-    btn.style.color = color;
-    btn.style.borderRadius = radius + "px";
-    btn.style.padding = paddingY + "px " + paddingX + "px";
-    btn.style.fontSize = fontSize + "px";
+btn.style.background=bg;
+btn.style.color=color;
+btn.style.borderRadius=radius+"px";
+btn.style.padding=paddingY+"px "+paddingX+"px";
+btn.style.fontSize=fontSize+"px";
 
-    const css =
+const css=
 `.custom-button{
     background:${bg};
     color:${color};
@@ -278,21 +507,24 @@ function generateButton(){
     cursor:pointer;
 }`;
 
-    document.getElementById("output").value = css;
+document.getElementById("output").value=css;
 }
 
 function copyCSS(){
 
-    const output = document.getElementById("output");
+navigator.clipboard.writeText(
+document.getElementById("output").value
+);
 
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", generateButton);
+document.querySelectorAll("input").forEach(input=>{
+input.addEventListener("input",generateButton);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateButton();
 </script>
