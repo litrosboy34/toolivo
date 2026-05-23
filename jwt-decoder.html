@@ -3,182 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>JWT Decoder — Toolivo</title>
 <meta name="description" content="Decode JWT tokens instantly with Toolivo. View JWT header and payload online.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#05070d;
-color:white;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-.wrap{
-width:min(1100px,calc(100% - 28px));
-margin:auto;
-padding:40px 0;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-h1{
-font-size:56px;
-margin:20px 0 10px;
-}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-left:auto}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
-}
+.lang-btn{padding:8px 13px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold;font-size:14px;transition:.2s}
+.lang-btn:hover{color:white;border-color:#38bdf8}
 
-.panel{
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
-padding:18px;
-margin-top:18px;
-}
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:720px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-textarea{
-width:100%;
-min-height:180px;
-border-radius:18px;
-border:1px solid #263244;
-background:#05070d;
-color:white;
-padding:18px;
-font-size:15px;
-line-height:1.6;
-box-sizing:border-box;
-resize:vertical;
-font-family:monospace;
-}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-top:18px}
+.label{font-size:14px;font-weight:bold;color:#9ca8bb;margin-bottom:10px}
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:18px;
-}
+textarea{width:100%;min-height:180px;border-radius:18px;border:1px solid #334155;background:#020617;color:white;padding:18px;font-size:15px;line-height:1.6;resize:vertical;font-family:monospace;outline:none}
+textarea:focus{border-color:#38bdf8}
 
-.output{
-background:#05070d;
-border:1px solid #263244;
-border-radius:18px;
-padding:18px;
-min-height:260px;
-white-space:pre-wrap;
-overflow:auto;
-font-family:monospace;
-line-height:1.7;
-}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 
-.label{
-font-size:14px;
-font-weight:bold;
-color:#9ca8bb;
-margin-bottom:10px;
-}
+.output{background:#020617;border:1px solid #334155;border-radius:18px;padding:18px;min-height:260px;white-space:pre-wrap;overflow:auto;font-family:monospace;line-height:1.7;color:#cbd5e1}
 
-button{
-padding:15px 20px;
-border:0;
-border-radius:16px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
-font-weight:800;
-cursor:pointer;
-margin-top:12px;
-}
+.main-btn{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;font-weight:800;cursor:pointer;margin-top:12px;font-size:15px}
 
-.status{
-margin-top:14px;
-color:#9ca8bb;
-}
+.status{margin-top:14px;color:#94a3b8;line-height:1.6}
+.error{color:#ff8b8b}
+.success{color:#7fffc5}
 
-.error{
-color:#ff7b7b;
-}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
 
-.success{
-color:#7fffc5;
-}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
 
 @media(max-width:900px){
-
-.grid{
-grid-template-columns:1fr;
-}
-
-h1{
-font-size:42px;
-}
-
+.grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.nav{margin-left:0;justify-content:center}
+.logo img{width:95px;height:95px}
+.tool-hero h1{font-size:42px}
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>JWT Decoder</h1>
+<header class="header">
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-<p>
-Decode JWT tokens instantly and inspect header and payload data.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1 id="heroTitle">JWT <span class="gradient">Decoder</span></h1>
+<p id="heroText">Decode JWT tokens instantly and inspect header and payload data.</p>
+</section>
 
 <div class="panel">
-
-<div class="label">JWT Token</div>
-
+<div class="label" id="tokenLabel">JWT Token</div>
 <textarea id="token" placeholder="Paste JWT token here..."></textarea>
-
-<button onclick="decodeJWT()">Decode JWT</button>
-
+<button class="main-btn" onclick="decodeJWT()" id="decodeBtn">Decode JWT</button>
 <div class="status" id="status"></div>
-
 </div>
 
 <div class="grid">
-
 <div class="panel">
-
-<div class="label">Header</div>
-
-<div class="output" id="headerOutput">
-Header data will appear here...
-</div>
-
+<div class="label" id="headerLabel">Header</div>
+<div class="output" id="headerOutput">Header data will appear here...</div>
 </div>
 
 <div class="panel">
-
-<div class="label">Payload</div>
-
-<div class="output" id="payloadOutput">
-Payload data will appear here...
+<div class="label" id="payloadLabel">Payload</div>
+<div class="output" id="payloadOutput">Payload data will appear here...</div>
+</div>
 </div>
 
-</div>
+<section class="content">
+<article class="card">
+<h2 id="whyTitle">Why decode JWT?</h2>
+<p id="whyText">JWT tokens often contain useful header and payload data. Decoding helps developers inspect token structure during debugging and testing.</p>
+</article>
 
+<article class="card">
+<h2 id="howTitle">How it works</h2>
+<ul>
+<li id="step1">Paste a JWT token.</li>
+<li id="step2">Toolivo decodes the header and payload.</li>
+<li id="step3">Inspect the formatted JSON result instantly.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. <span id="rightsText">All rights reserved.</span></div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
 </div>
+</footer>
 
 </div>
 
 <script>
 const token=document.getElementById('token');
-
 const headerOutput=document.getElementById('headerOutput');
 const payloadOutput=document.getElementById('payloadOutput');
-
 const status=document.getElementById('status');
+const langBtn=document.getElementById('langBtn');
+
+let lang=localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
+
+const ui={
+en:{
+title:"JWT Decoder — Toolivo",
+heroTitle:'JWT <span class="gradient">Decoder</span>',
+heroText:"Decode JWT tokens instantly and inspect header and payload data.",
+tokenLabel:"JWT Token",
+placeholder:"Paste JWT token here...",
+decode:"Decode JWT",
+header:"Header",
+payload:"Payload",
+headerIdle:"Header data will appear here...",
+payloadIdle:"Payload data will appear here...",
+success:"JWT decoded successfully ✔",
+error:"Could not decode JWT ❌",
+invalid:"Invalid token",
+whyTitle:"Why decode JWT?",
+whyText:"JWT tokens often contain useful header and payload data. Decoding helps developers inspect token structure during debugging and testing.",
+howTitle:"How it works",
+step1:"Paste a JWT token.",
+step2:"Toolivo decodes the header and payload.",
+step3:"Inspect the formatted JSON result instantly.",
+rights:"All rights reserved."
+},
+tr:{
+title:"JWT Decoder — Toolivo",
+heroTitle:'JWT <span class="gradient">Decoder</span>',
+heroText:"JWT tokenlarını anında çöz ve header ile payload verilerini incele.",
+tokenLabel:"JWT Token",
+placeholder:"JWT tokenını buraya yapıştır...",
+decode:"JWT Çöz",
+header:"Header",
+payload:"Payload",
+headerIdle:"Header verisi burada görünecek...",
+payloadIdle:"Payload verisi burada görünecek...",
+success:"JWT başarıyla çözüldü ✔",
+error:"JWT çözülemedi ❌",
+invalid:"Geçersiz token",
+whyTitle:"JWT neden çözülür?",
+whyText:"JWT tokenları çoğu zaman header ve payload içinde önemli veriler taşır. Decode işlemi, geliştiricilerin token yapısını test ve hata ayıklama sırasında incelemesini sağlar.",
+howTitle:"Nasıl çalışır?",
+step1:"JWT tokenını yapıştır.",
+step2:"Toolivo header ve payload kısmını çözer.",
+step3:"Formatlanmış JSON sonucunu anında incele.",
+rights:"Tüm hakları saklıdır."
+}
+};
+
+function applyLang(){
+const t=ui[lang];
+
+document.documentElement.lang=lang;
+document.title=t.title;
+
+document.getElementById("heroTitle").innerHTML=t.heroTitle;
+document.getElementById("heroText").innerText=t.heroText;
+document.getElementById("tokenLabel").innerText=t.tokenLabel;
+token.placeholder=t.placeholder;
+document.getElementById("decodeBtn").innerText=t.decode;
+document.getElementById("headerLabel").innerText=t.header;
+document.getElementById("payloadLabel").innerText=t.payload;
+document.getElementById("whyTitle").innerText=t.whyTitle;
+document.getElementById("whyText").innerText=t.whyText;
+document.getElementById("howTitle").innerText=t.howTitle;
+document.getElementById("step1").innerText=t.step1;
+document.getElementById("step2").innerText=t.step2;
+document.getElementById("step3").innerText=t.step3;
+document.getElementById("rightsText").innerText=t.rights;
+
+if(!token.value.trim()){
+headerOutput.textContent=t.headerIdle;
+payloadOutput.textContent=t.payloadIdle;
+status.textContent="";
+status.className="status";
+}
+
+langBtn.innerText=lang==="tr" ? "EN" : "TR";
+}
 
 function base64UrlDecode(str){
-
 str=str.replace(/-/g,'+').replace(/_/g,'/');
-
-while(str.length%4){
-str+='=';
-}
+while(str.length%4){str+='=';}
 
 return decodeURIComponent(
 atob(str)
@@ -188,13 +239,10 @@ return '%' + ('00'+c.charCodeAt(0).toString(16)).slice(-2);
 })
 .join('')
 );
-
 }
 
 function decodeJWT(){
-
 try{
-
 const parts=token.value.trim().split('.');
 
 if(parts.length!==3){
@@ -205,23 +253,28 @@ const header=JSON.parse(base64UrlDecode(parts[0]));
 const payload=JSON.parse(base64UrlDecode(parts[1]));
 
 headerOutput.textContent=JSON.stringify(header,null,2);
-
 payloadOutput.textContent=JSON.stringify(payload,null,2);
 
-status.textContent='JWT decoded successfully ✔';
+status.textContent=ui[lang].success;
 status.className='status success';
 
 }catch(err){
+headerOutput.textContent=ui[lang].invalid;
+payloadOutput.textContent=ui[lang].invalid;
 
-headerOutput.textContent='Invalid token';
-payloadOutput.textContent='Invalid token';
-
-status.textContent='Could not decode JWT ❌';
+status.textContent=ui[lang].error;
 status.className='status error';
-
+}
 }
 
-}
+langBtn.onclick=()=>{
+lang=lang==="tr" ? "en" : "tr";
+localStorage.setItem("toolivo_lang",lang);
+applyLang();
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
+applyLang();
 </script>
 
 </body>
