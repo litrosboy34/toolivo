@@ -1,136 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Toolivo</title>
-  <meta name="description" content="Learn about Toolivo, a free online tools platform for developers, creators, students and everyday users. Use fast browser-based tools for text, images, SEO, CSS, converters and developer utilities." />
-  <meta name="keywords" content="about Toolivo, free online tools, developer tools, text tools, image tools, SEO tools, CSS tools, converters" />
-  <meta name="author" content="Toolivo" />
-  <meta name="theme-color" content="#05070d" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta property="og:title" content="About — Toolivo" />
-  <meta property="og:description" content="Toolivo offers free, fast and easy online tools for developers, creators, students and everyday users." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://toolivo.site/about.html" />
-  <meta property="og:image" content="https://i.imgur.com/7qzyyTa.png" />
+<title>About — Toolivo</title>
 
-  <link rel="canonical" href="https://toolivo.site/about.html" />
-  <link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="apple-touch-icon" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<meta name="description" content="Learn about Toolivo, a free online tools platform for developers, creators, students and everyday users.">
+<meta name="keywords" content="about Toolivo, free online tools, developer tools, text tools, image tools">
+<meta name="author" content="Toolivo">
 
-  <style>
-    :root{--bg:#05070d;--card:rgba(255,255,255,.075);--card2:rgba(255,255,255,.12);--stroke:rgba(255,255,255,.14);--text:#f7fbff;--muted:#a8b3c7;--muted2:#748098;--cyan:#39e6d2;--blue:#6ea8ff;--purple:#a78bfa;--shadow:0 24px 80px rgba(0,0,0,.45);--radius:28px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 18% 8%,rgba(57,230,210,.18),transparent 34%),radial-gradient(circle at 78% 0%,rgba(157,123,255,.18),transparent 31%),linear-gradient(180deg,var(--bg),#03050a 52%,#05070d);color:var(--text);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 72%)}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 34px));margin:0 auto}
-    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(24px);background:linear-gradient(180deg,rgba(5,7,13,.84),rgba(5,7,13,.58));border-bottom:1px solid rgba(255,255,255,.08)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:4px;font-weight:900;letter-spacing:-.055em;font-size:28px}.brand span:last-child{background:linear-gradient(100deg,#fff,#d9fffb 42%,#b9cfff);-webkit-background-clip:text;color:transparent}.logo{width:92px;height:92px;display:grid;place-items:center;overflow:visible;background:transparent;box-shadow:none;flex-shrink:0;margin-right:-8px}.logo img{width:92px;height:92px;object-fit:contain;display:block;filter:drop-shadow(0 0 26px rgba(57,230,210,.42)) drop-shadow(0 20px 42px rgba(0,0,0,.58));transform:translateY(2px) scale(1.08)}.navlinks{display:flex;align-items:center;gap:8px}.navlinks a,.lang-btn{border:1px solid transparent;color:var(--muted);padding:10px 13px;border-radius:999px;font-weight:650;font-size:14px;background:transparent;cursor:pointer}.navlinks a:hover,.lang-btn:hover{color:var(--text);border-color:var(--stroke);background:rgba(255,255,255,.06)}
-    .hero{padding:86px 0 38px;text-align:center}.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border-radius:999px;border:1px solid rgba(57,230,210,.28);background:rgba(57,230,210,.08);color:#d8fffb;font-weight:700;font-size:14px}.pulse{width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 0 7px rgba(57,230,210,.14)}h1{margin:22px auto 16px;max-width:940px;font-size:clamp(42px,7vw,82px);line-height:.96;letter-spacing:-.078em;font-weight:950}.gradient{background:linear-gradient(100deg,#fff,#c8fff8 36%,#9bbfff 65%,#decfff);-webkit-background-clip:text;color:transparent}.lead{max-width:800px;margin:0 auto;color:var(--muted);font-size:clamp(17px,2vw,21px);line-height:1.65}.hero-actions{margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:999px;font-weight:800;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:white}.btn.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);border-color:transparent}.btn:hover{transform:translateY(-2px)}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px auto 24px}.stat{border:1px solid var(--stroke);background:rgba(255,255,255,.055);border-radius:24px;padding:18px;text-align:center}.stat b{display:block;font-size:28px;letter-spacing:-.04em}.stat span{color:var(--muted);font-size:14px}.content{padding:28px 0 66px;display:grid;gap:18px}.card{border:1px solid var(--stroke);background:linear-gradient(180deg,var(--card2),rgba(255,255,255,.052));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(20px);padding:28px}.card h2{margin:0 0 12px;font-size:30px;letter-spacing:-.04em}.card p,.card li{color:var(--muted);line-height:1.75;font-size:16px}.card ul{margin:14px 0 0;padding-left:20px}.split{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cat{padding:18px;border-radius:22px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);transition:.22s ease;min-height:138px}.cat:hover{transform:translateY(-3px);border-color:rgba(57,230,210,.35)}.cat i{font-style:normal;font-size:28px;display:block;margin-bottom:12px}.cat b{display:block;margin-bottom:7px}.cat span{color:var(--muted);font-size:14px;line-height:1.5}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.value{border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.05);border-radius:22px;padding:18px}.value b{display:block;margin-bottom:8px}.value p{font-size:14px;margin:0}.seo-text{font-size:15px;color:var(--muted);line-height:1.85}footer{padding:36px 0;color:var(--muted2);border-top:1px solid rgba(255,255,255,.08)}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:14px;flex-wrap:wrap}.footer-links a:hover{color:var(--text)}
-    @media(max-width:900px){.navlinks a.hide-mobile{display:none}.hero{padding-top:54px}.split,.categories,.values,.stats{grid-template-columns:1fr}.brand{font-size:25px}.logo{width:74px;height:74px}.logo img{width:74px;height:74px}h1{letter-spacing:-.062em}.card{padding:22px}}
-  </style>
+<meta property="og:title" content="About — Toolivo">
+<meta property="og:description" content="Toolivo offers free, fast and easy online tools for developers, creators and everyday users.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site/about.html">
+<meta property="og:image" content="https://i.imgur.com/7qzyyTa.png">
+
+<meta name="theme-color" content="#0f172a">
+
+<link rel="canonical" href="https://toolivo.site/about.html">
+<link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png">
+<link rel="apple-touch-icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
+}
+
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:
+drop-shadow(0 0 34px rgba(57,230,210,.55))
+drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
+}
+
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+margin-left:auto;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.lang-btn{
+padding:8px 13px;
+border-radius:999px;
+border:1px solid #334155;
+background:#111827;
+color:#cbd5e1;
+cursor:pointer;
+font-weight:bold;
+font-size:14px;
+transition:.2s;
+}
+
+.lang-btn:hover{
+color:white;
+border-color:#38bdf8;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+text-align:left;
+}
+
+.badge{
+display:inline-block;
+padding:8px 14px;
+border:1px solid #1e293b;
+border-radius:999px;
+color:#38bdf8;
+background:#111827;
+margin-bottom:18px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stats{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-top:24px;
+}
+
+.stat{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:18px;
+min-width:180px;
+text-align:center;
+}
+
+.stat b{
+display:block;
+font-size:28px;
+margin-bottom:4px;
+}
+
+.stat span{
+color:#94a3b8;
+font-size:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:22px;
+transition:.25s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+border-color:#38bdf8;
+box-shadow:0 0 25px rgba(56,189,248,.10);
+}
+
+.card.full{
+grid-column:1/-1;
+}
+
+.card h2{
+font-size:28px;
+margin-bottom:12px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.8;
+}
+
+.card ul{
+padding-left:20px;
+margin-top:12px;
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin-top:18px;
+}
+
+.category{
+padding:18px;
+border-radius:16px;
+background:#020617;
+border:1px solid #334155;
+transition:.2s;
+}
+
+.category:hover{
+border-color:#38bdf8;
+transform:translateY(-2px);
+}
+
+.category h3{
+margin-bottom:8px;
+font-size:18px;
+}
+
+.category p{
+font-size:14px;
+line-height:1.6;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.content,
+.categories{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.nav{
+margin-left:0;
+justify-content:center;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.tool-hero h1{
+font-size:42px;
+}
+
+.stats{
+flex-direction:column;
+}
+
+.stat{
+width:100%;
+}
+
+}
+</style>
 </head>
+
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="/" aria-label="Toolivo Home"><span class="logo"><img src="https://i.imgur.com/7qzyyTa.png" alt=""></span><span>Toolivo</span></a>
-    <nav class="navlinks">
-      <a href="/" data-i18n="home">Home</a>
-      <a href="/#tools" data-i18n="tools">Tools</a>
-      <a class="hide-mobile" href="/privacy.html" data-i18n="privacy">Privacy</a>
-      <a class="hide-mobile" href="/contact.html" data-i18n="contact">Contact</a>
-      <button class="lang-btn" id="langBtn">TR</button>
-    </nav>
-  </div>
+
+<div class="container">
+
+<header class="header">
+
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/" id="navHome">Home</a>
+<a href="/#tools" id="navTools">Tools</a>
+<a href="/privacy.html" id="navPrivacy">Privacy</a>
+<a href="/contact.html" id="navContact">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
+</nav>
+
 </header>
-<main>
-  <section class="hero wrap">
-    <div class="badge"><span class="pulse"></span><span data-i18n="badge">About Toolivo</span></div>
-    <h1><span data-i18n="heroA">Fast online tools for</span><br><span class="gradient" data-i18n="heroB">everyday digital work.</span></h1>
-    <p class="lead" data-i18n="lead">Toolivo is a free online toolkit built for developers, creators, students, sellers and anyone who needs quick browser-based utilities without complicated software.</p>
-    <div class="hero-actions">
-      <a class="btn primary" href="/#tools" data-i18n="explore">Explore tools</a>
-      <a class="btn" href="/contact.html" data-i18n="suggest">Suggest a tool</a>
-    </div>
-  </section>
 
-  <section class="wrap stats">
-    <div class="stat"><b>70+</b><span data-i18n="stat1">online utilities</span></div>
-    <div class="stat"><b>0</b><span data-i18n="stat2">signup required</span></div>
-    <div class="stat"><b>24/7</b><span data-i18n="stat3">browser access</span></div>
-  </section>
+<section class="tool-hero">
 
-  <section class="content wrap">
-    <div class="split">
-      <article class="card">
-        <h2 data-i18n="missionTitle">Our mission</h2>
-        <p data-i18n="missionText">Toolivo aims to make small but important digital tasks faster. Instead of opening heavy apps or searching for separate utilities, you can use focused tools that do one job clearly and quickly.</p>
-      </article>
-      <article class="card">
-        <h2 data-i18n="whyTitle">Why Toolivo exists</h2>
-        <p data-i18n="whyText">Many online tools are slow, cluttered or confusing. Toolivo is designed to feel clean, modern and simple: open a tool, complete the task, copy or download the result, and move on.</p>
-      </article>
-    </div>
+<div class="badge" id="badge">
+About Toolivo
+</div>
 
-    <article class="card">
-      <h2 data-i18n="categoriesTitle">What you can do with Toolivo</h2>
-      <div class="categories">
-        <a class="cat" href="/#tools"><i>🧑‍💻</i><b data-i18n="c1b">Developer tools</b><span data-i18n="c1">Format JSON, decode JWT, generate UUIDs, test regex, create hashes and more.</span></a>
-        <a class="cat" href="/#tools"><i>🔤</i><b data-i18n="c2b">Text tools</b><span data-i18n="c2">Count words, convert text case, compare text, preview Markdown and create slugs.</span></a>
-        <a class="cat" href="/#tools"><i>🖼️</i><b data-i18n="c3b">Image tools</b><span data-i18n="c3">Compress, resize, crop, rotate, convert and prepare images for web or social media.</span></a>
-        <a class="cat" href="/#tools"><i>📈</i><b data-i18n="c4b">SEO tools</b><span data-i18n="c4">Generate meta tags, canonical URLs, Open Graph data, robots.txt and sitemap files.</span></a>
-        <a class="cat" href="/#tools"><i>🎨</i><b data-i18n="c5b">CSS tools</b><span data-i18n="c5">Create gradients, shadows, buttons, loaders, animations, grids and responsive CSS values.</span></a>
-        <a class="cat" href="/#tools"><i>🔁</i><b data-i18n="c6b">Converters</b><span data-i18n="c6">Convert image formats, CSV, JSON, colors, units and other everyday data formats.</span></a>
-      </div>
-    </article>
+<h1 id="heroTitle">
+Fast online tools for <span class="gradient">everyday digital work.</span>
+</h1>
 
-    <article class="card">
-      <h2 data-i18n="valuesTitle">Built around speed, simplicity and privacy</h2>
-      <div class="values">
-        <div class="value"><b data-i18n="v1b">No signup</b><p data-i18n="v1">You can use Toolivo tools directly without creating an account.</p></div>
-        <div class="value"><b data-i18n="v2b">Mobile friendly</b><p data-i18n="v2">The tools are designed to work smoothly on both desktop and mobile screens.</p></div>
-        <div class="value"><b data-i18n="v3b">Focused utilities</b><p data-i18n="v3">Each page is made for one clear task, so the experience stays simple.</p></div>
-      </div>
-    </article>
+<p id="heroText">
+Toolivo is a free online toolkit built for developers, creators, students, sellers and anyone who needs quick browser-based utilities.
+</p>
 
-    <article class="card">
-      <h2 data-i18n="whoTitle">Who can use Toolivo?</h2>
-      <ul>
-        <li data-i18n="w1">Developers who need quick formatting, encoding, decoding and generator utilities.</li>
-        <li data-i18n="w2">Content creators preparing images, text, links and social previews.</li>
-        <li data-i18n="w3">Online sellers optimizing product visuals, descriptions and campaign links.</li>
-        <li data-i18n="w4">Students, designers and everyday users who want clean browser-based tools.</li>
-      </ul>
-    </article>
+<div class="stats">
 
-    <article class="card">
-      <h2 data-i18n="privacyTitle">Privacy note</h2>
-      <p data-i18n="privacyText">Toolivo is built as a lightweight static website. Many tools run directly in your browser, especially text, CSS, developer and several image utilities. For sensitive files or data, always review the specific tool page before using it.</p>
-    </article>
+<div class="stat">
+<b>80+</b>
+<span id="stat1">online tools</span>
+</div>
 
-    <article class="card">
-      <h2 data-i18n="seoTitle">Free online tools in one place</h2>
-      <p class="seo-text" data-i18n="seoText">Toolivo provides free online utilities including developer tools, text tools, SEO generators, image converters, CSS generators and productivity tools. The goal is to keep useful everyday tools accessible, fast and easy to use for everyone.</p>
-    </article>
-  </section>
-</main>
-<footer>
-  <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Toolivo. <span data-i18n="rights">All rights reserved.</span></div>
-    <div class="footer-links">
-      <a href="/about.html" data-i18n="about">About</a>
-      <a href="/privacy.html" data-i18n="privacy">Privacy</a>
-      <a href="/terms.html" data-i18n="terms">Terms</a>
-      <a href="/contact.html" data-i18n="contact">Contact</a>
-      <a href="/sitemap.xml">Sitemap</a>
-    </div>
-  </div>
+<div class="stat">
+<b>0</b>
+<span id="stat2">signup required</span>
+</div>
+
+<div class="stat">
+<b>24/7</b>
+<span id="stat3">browser access</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+<h2 id="missionTitle">Our mission</h2>
+<p id="missionText">
+Toolivo aims to make small but important digital tasks faster and easier.
+Instead of opening heavy apps or searching for separate utilities,
+you can use focused tools that do one job clearly and quickly.
+</p>
+</article>
+
+<article class="card">
+<h2 id="whyTitle">Why Toolivo exists</h2>
+<p id="whyText">
+Many online tools are slow, cluttered or confusing.
+Toolivo is designed to feel clean, modern and simple.
+Open a tool, complete the task and move on.
+</p>
+</article>
+
+<article class="card full">
+
+<h2 id="categoriesTitle">
+What you can do with Toolivo
+</h2>
+
+<div class="categories">
+
+<div class="category">
+<h3 id="cat1Title">Developer Tools</h3>
+<p id="cat1Text">Format JSON, decode JWT, generate UUIDs, test regex and more.</p>
+</div>
+
+<div class="category">
+<h3 id="cat2Title">Text Tools</h3>
+<p id="cat2Text">Count words, convert text case, compare text and preview Markdown.</p>
+</div>
+
+<div class="category">
+<h3 id="cat3Title">Image Tools</h3>
+<p id="cat3Text">Compress, resize, crop, rotate and convert images instantly.</p>
+</div>
+
+<div class="category">
+<h3 id="cat4Title">SEO Tools</h3>
+<p id="cat4Text">Generate meta tags, robots.txt, sitemap and Open Graph data.</p>
+</div>
+
+<div class="category">
+<h3 id="cat5Title">CSS Tools</h3>
+<p id="cat5Text">Create gradients, shadows, loaders and responsive CSS snippets.</p>
+</div>
+
+<div class="category">
+<h3 id="cat6Title">Converters</h3>
+<p id="cat6Text">Convert JSON, CSV, images, colors and other data formats.</p>
+</div>
+
+</div>
+
+</article>
+
+<article class="card">
+
+<h2 id="whoTitle">
+Who can use Toolivo?
+</h2>
+
+<ul>
+<li id="who1">Developers who need quick utilities.</li>
+<li id="who2">Content creators preparing images and text.</li>
+<li id="who3">Students and everyday users looking for browser tools.</li>
+</ul>
+
+</article>
+
+<article class="card">
+
+<h2 id="privacyTitle">
+Privacy note
+</h2>
+
+<p id="privacyText">
+Many Toolivo tools work directly in your browser.
+For sensitive files or data, always review the related tool page before use.
+</p>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo.
+<span id="rightsText">All rights reserved.</span>
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
 </footer>
+
+</div>
+
 <script>
-const en={home:'Home',tools:'Tools',privacy:'Privacy',contact:'Contact',badge:'About Toolivo',heroA:'Fast online tools for',heroB:'everyday digital work.',lead:'Toolivo is a free online toolkit built for developers, creators, students, sellers and anyone who needs quick browser-based utilities without complicated software.',explore:'Explore tools',suggest:'Suggest a tool',stat1:'online utilities',stat2:'signup required',stat3:'browser access',missionTitle:'Our mission',missionText:'Toolivo aims to make small but important digital tasks faster. Instead of opening heavy apps or searching for separate utilities, you can use focused tools that do one job clearly and quickly.',whyTitle:'Why Toolivo exists',whyText:'Many online tools are slow, cluttered or confusing. Toolivo is designed to feel clean, modern and simple: open a tool, complete the task, copy or download the result, and move on.',categoriesTitle:'What you can do with Toolivo',c1b:'Developer tools',c1:'Format JSON, decode JWT, generate UUIDs, test regex, create hashes and more.',c2b:'Text tools',c2:'Count words, convert text case, compare text, preview Markdown and create slugs.',c3b:'Image tools',c3:'Compress, resize, crop, rotate, convert and prepare images for web or social media.',c4b:'SEO tools',c4:'Generate meta tags, canonical URLs, Open Graph data, robots.txt and sitemap files.',c5b:'CSS tools',c5:'Create gradients, shadows, buttons, loaders, animations, grids and responsive CSS values.',c6b:'Converters',c6:'Convert image formats, CSV, JSON, colors, units and other everyday data formats.',valuesTitle:'Built around speed, simplicity and privacy',v1b:'No signup',v1:'You can use Toolivo tools directly without creating an account.',v2b:'Mobile friendly',v2:'The tools are designed to work smoothly on both desktop and mobile screens.',v3b:'Focused utilities',v3:'Each page is made for one clear task, so the experience stays simple.',whoTitle:'Who can use Toolivo?',w1:'Developers who need quick formatting, encoding, decoding and generator utilities.',w2:'Content creators preparing images, text, links and social previews.',w3:'Online sellers optimizing product visuals, descriptions and campaign links.',w4:'Students, designers and everyday users who want clean browser-based tools.',privacyTitle:'Privacy note',privacyText:'Toolivo is built as a lightweight static website. Many tools run directly in your browser, especially text, CSS, developer and several image utilities. For sensitive files or data, always review the specific tool page before using it.',seoTitle:'Free online tools in one place',seoText:'Toolivo provides free online utilities including developer tools, text tools, SEO generators, image converters, CSS generators and productivity tools. The goal is to keep useful everyday tools accessible, fast and easy to use for everyone.',rights:'All rights reserved.',about:'About',terms:'Terms'};
-const tr={home:'Ana sayfa',tools:'Araçlar',privacy:'Gizlilik',contact:'İletişim',badge:'Toolivo Hakkında',heroA:'Günlük dijital işler için',heroB:'hızlı online araçlar.',lead:'Toolivo; geliştiriciler, içerik üreticileri, öğrenciler, satıcılar ve pratik tarayıcı araçlarına ihtiyaç duyan herkes için hazırlanmış ücretsiz bir online araç setidir.',explore:'Araçları keşfet',suggest:'Araç öner',stat1:'online araç',stat2:'üyelik gerekmez',stat3:'tarayıcı erişimi',missionTitle:'Misyonumuz',missionText:'Toolivo’nun amacı küçük ama önemli dijital işleri hızlandırmaktır. Ağır programlar açmak veya ayrı ayrı araç aramak yerine, tek işi net yapan odaklı araçları kullanabilirsin.',whyTitle:'Toolivo neden var?',whyText:'Birçok online araç yavaş, karışık veya gereksiz kalabalık hissettiriyor. Toolivo; temiz, modern ve sade bir deneyim için tasarlandı: aracı aç, işlemi yap, sonucu kopyala veya indir ve devam et.',categoriesTitle:'Toolivo ile neler yapabilirsin?',c1b:'Geliştirici araçları',c1:'JSON formatla, JWT çöz, UUID üret, regex test et, hash oluştur ve daha fazlası.',c2b:'Metin araçları',c2:'Kelime say, büyük/küçük harf dönüştür, metin karşılaştır, Markdown önizle ve slug oluştur.',c3b:'Görsel araçları',c3:'Görselleri sıkıştır, boyutlandır, kırp, döndür, dönüştür ve web ya da sosyal medya için hazırla.',c4b:'SEO araçları',c4:'Meta tag, canonical URL, Open Graph, robots.txt ve sitemap dosyaları oluştur.',c5b:'CSS araçları',c5:'Gradient, gölge, buton, loader, animasyon, grid ve responsive CSS değerleri oluştur.',c6b:'Dönüştürücüler',c6:'Görsel formatları, CSV, JSON, renkler, birimler ve günlük veri formatlarını dönüştür.',valuesTitle:'Hız, sadelik ve gizlilik odağında',v1b:'Üyelik yok',v1:'Toolivo araçlarını hesap oluşturmadan doğrudan kullanabilirsin.',v2b:'Mobil uyumlu',v2:'Araçlar hem masaüstü hem mobil ekranlarda rahat çalışacak şekilde tasarlanır.',v3b:'Odaklı araçlar',v3:'Her sayfa tek ve net bir iş için hazırlanır, bu yüzden kullanım sade kalır.',whoTitle:'Toolivo kimler için?',w1:'Hızlı formatlama, encode/decode ve üretici araçlarına ihtiyaç duyan geliştiriciler.',w2:'Görsel, metin, link ve sosyal önizleme hazırlayan içerik üreticileri.',w3:'Ürün görsellerini, açıklamaları ve kampanya linklerini optimize eden online satıcılar.',w4:'Temiz tarayıcı araçları isteyen öğrenciler, tasarımcılar ve günlük kullanıcılar.',privacyTitle:'Gizlilik notu',privacyText:'Toolivo hafif bir statik web sitesi olarak hazırlanır. Birçok araç doğrudan tarayıcıda çalışır; özellikle metin, CSS, geliştirici ve bazı görsel araçları. Hassas dosya veya veri kullanırken ilgili araç sayfasını kontrol etmeni öneririz.',seoTitle:'Ücretsiz online araçlar tek yerde',seoText:'Toolivo; geliştirici araçları, metin araçları, SEO oluşturucular, görsel dönüştürücüler, CSS generator araçları ve üretkenlik araçları sunar. Amaç, günlük kullanılan faydalı araçları herkes için hızlı, sade ve erişilebilir tutmaktır.',rights:'Tüm hakları saklıdır.',about:'Hakkında',terms:'Şartlar'};
-let lang=localStorage.getItem('toolivo_lang')||((navigator.language||'').toLowerCase().startsWith('tr')?'tr':'en');const q=s=>document.querySelector(s),qa=s=>document.querySelectorAll(s);function applyLang(){const d=lang==='tr'?tr:en;document.documentElement.lang=lang;qa('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.textContent=d[k]});q('#langBtn').textContent=lang==='tr'?'EN':'TR';document.title=lang==='tr'?'Hakkında — Toolivo':'About — Toolivo'}q('#langBtn').onclick=()=>{lang=lang==='tr'?'en':'tr';localStorage.setItem('toolivo_lang',lang);applyLang()};applyLang();q('#year').textContent=new Date().getFullYear();
+const langBtn=document.getElementById("langBtn");
+
+let lang=localStorage.getItem("toolivo_lang") ||
+((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
+
+const ui={
+en:{
+title:"About — Toolivo",
+navHome:"Home",
+navTools:"Tools",
+navPrivacy:"Privacy",
+navContact:"Contact",
+badge:"About Toolivo",
+heroTitle:'Fast online tools for <span class="gradient">everyday digital work.</span>',
+heroText:"Toolivo is a free online toolkit built for developers, creators, students, sellers and anyone who needs quick browser-based utilities.",
+stat1:"online tools",
+stat2:"signup required",
+stat3:"browser access",
+missionTitle:"Our mission",
+missionText:"Toolivo aims to make small but important digital tasks faster and easier. Instead of opening heavy apps or searching for separate utilities, you can use focused tools that do one job clearly and quickly.",
+whyTitle:"Why Toolivo exists",
+whyText:"Many online tools are slow, cluttered or confusing. Toolivo is designed to feel clean, modern and simple. Open a tool, complete the task and move on.",
+categoriesTitle:"What you can do with Toolivo",
+cat1Title:"Developer Tools",
+cat1Text:"Format JSON, decode JWT, generate UUIDs, test regex and more.",
+cat2Title:"Text Tools",
+cat2Text:"Count words, convert text case, compare text and preview Markdown.",
+cat3Title:"Image Tools",
+cat3Text:"Compress, resize, crop, rotate and convert images instantly.",
+cat4Title:"SEO Tools",
+cat4Text:"Generate meta tags, robots.txt, sitemap and Open Graph data.",
+cat5Title:"CSS Tools",
+cat5Text:"Create gradients, shadows, loaders and responsive CSS snippets.",
+cat6Title:"Converters",
+cat6Text:"Convert JSON, CSV, images, colors and other data formats.",
+whoTitle:"Who can use Toolivo?",
+who1:"Developers who need quick utilities.",
+who2:"Content creators preparing images and text.",
+who3:"Students and everyday users looking for browser tools.",
+privacyTitle:"Privacy note",
+privacyText:"Many Toolivo tools work directly in your browser. For sensitive files or data, always review the related tool page before use.",
+rights:"All rights reserved."
+},
+tr:{
+title:"Hakkında — Toolivo",
+navHome:"Ana sayfa",
+navTools:"Araçlar",
+navPrivacy:"Gizlilik",
+navContact:"İletişim",
+badge:"Toolivo Hakkında",
+heroTitle:'Günlük dijital işler için <span class="gradient">hızlı online araçlar.</span>',
+heroText:"Toolivo; geliştiriciler, içerik üreticileri, öğrenciler, satıcılar ve hızlı tarayıcı araçlarına ihtiyaç duyan herkes için hazırlanmış ücretsiz bir araç platformudur.",
+stat1:"online araç",
+stat2:"üyelik gerekmez",
+stat3:"tarayıcı erişimi",
+missionTitle:"Misyonumuz",
+missionText:"Toolivo’nun amacı küçük ama önemli dijital işleri daha hızlı ve kolay hale getirmektir. Ağır programlar açmak yerine tek işi net yapan araçlar kullanabilirsin.",
+whyTitle:"Toolivo neden var?",
+whyText:"Birçok online araç yavaş veya karmaşık hissettiriyor. Toolivo sade, modern ve hızlı bir deneyim için oluşturuldu.",
+categoriesTitle:"Toolivo ile neler yapabilirsin?",
+cat1Title:"Geliştirici Araçları",
+cat1Text:"JSON formatla, JWT çöz, UUID üret, regex test et ve daha fazlası.",
+cat2Title:"Metin Araçları",
+cat2Text:"Kelime say, metin dönüştür, karşılaştır ve Markdown önizle.",
+cat3Title:"Görsel Araçları",
+cat3Text:"Görselleri sıkıştır, boyutlandır, kırp, döndür ve dönüştür.",
+cat4Title:"SEO Araçları",
+cat4Text:"Meta tag, robots.txt, sitemap ve Open Graph verileri oluştur.",
+cat5Title:"CSS Araçları",
+cat5Text:"Gradient, gölge, loader ve responsive CSS kodları üret.",
+cat6Title:"Dönüştürücüler",
+cat6Text:"JSON, CSV, görsel ve veri formatlarını dönüştür.",
+whoTitle:"Toolivo kimler için?",
+who1:"Hızlı araçlara ihtiyaç duyan geliştiriciler.",
+who2:"Görsel ve metin hazırlayan içerik üreticileri.",
+who3:"Tarayıcı araçları isteyen öğrenciler ve günlük kullanıcılar.",
+privacyTitle:"Gizlilik notu",
+privacyText:"Birçok Toolivo aracı doğrudan tarayıcında çalışır. Hassas veri kullanırken ilgili araç sayfasını kontrol etmeni öneririz.",
+rights:"Tüm hakları saklıdır."
+}
+};
+
+function applyLang(){
+const t=ui[lang];
+
+document.documentElement.lang=lang;
+document.title=t.title;
+
+document.getElementById("navHome").innerText=t.navHome;
+document.getElementById("navTools").innerText=t.navTools;
+document.getElementById("navPrivacy").innerText=t.navPrivacy;
+document.getElementById("navContact").innerText=t.navContact;
+
+document.getElementById("badge").innerText=t.badge;
+document.getElementById("heroTitle").innerHTML=t.heroTitle;
+document.getElementById("heroText").innerText=t.heroText;
+
+document.getElementById("stat1").innerText=t.stat1;
+document.getElementById("stat2").innerText=t.stat2;
+document.getElementById("stat3").innerText=t.stat3;
+
+document.getElementById("missionTitle").innerText=t.missionTitle;
+document.getElementById("missionText").innerText=t.missionText;
+
+document.getElementById("whyTitle").innerText=t.whyTitle;
+document.getElementById("whyText").innerText=t.whyText;
+
+document.getElementById("categoriesTitle").innerText=t.categoriesTitle;
+
+document.getElementById("cat1Title").innerText=t.cat1Title;
+document.getElementById("cat1Text").innerText=t.cat1Text;
+
+document.getElementById("cat2Title").innerText=t.cat2Title;
+document.getElementById("cat2Text").innerText=t.cat2Text;
+
+document.getElementById("cat3Title").innerText=t.cat3Title;
+document.getElementById("cat3Text").innerText=t.cat3Text;
+
+document.getElementById("cat4Title").innerText=t.cat4Title;
+document.getElementById("cat4Text").innerText=t.cat4Text;
+
+document.getElementById("cat5Title").innerText=t.cat5Title;
+document.getElementById("cat5Text").innerText=t.cat5Text;
+
+document.getElementById("cat6Title").innerText=t.cat6Title;
+document.getElementById("cat6Text").innerText=t.cat6Text;
+
+document.getElementById("whoTitle").innerText=t.whoTitle;
+document.getElementById("who1").innerText=t.who1;
+document.getElementById("who2").innerText=t.who2;
+document.getElementById("who3").innerText=t.who3;
+
+document.getElementById("privacyTitle").innerText=t.privacyTitle;
+document.getElementById("privacyText").innerText=t.privacyText;
+
+document.getElementById("rightsText").innerText=t.rights;
+
+langBtn.innerText=lang==="tr" ? "EN" : "TR";
+}
+
+langBtn.onclick=()=>{
+lang=lang==="tr" ? "en" : "tr";
+localStorage.setItem("toolivo_lang",lang);
+applyLang();
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
+
+applyLang();
 </script>
+
 </body>
 </html>
