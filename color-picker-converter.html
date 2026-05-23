@@ -3,133 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Color Picker Converter — Toolivo</title>
 <meta name="description" content="Convert HEX, RGB and HSL colors instantly with Toolivo. Free online color picker and converter.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#05070d;
-color:white;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-.wrap{
-width:min(1000px,calc(100% - 28px));
-margin:auto;
-padding:40px 0;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-h1{
-font-size:56px;
-margin:20px 0 10px;
-}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
-}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.panel{
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
-padding:18px;
-margin-top:18px;
-}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
 
 .colorBox{
 width:100%;
-height:180px;
+height:230px;
 border-radius:18px;
-border:1px solid #263244;
+border:1px solid #334155;
 margin-bottom:18px;
 background:#39e6d2;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 input[type=color]{
 width:100%;
-height:70px;
+height:72px;
 border:none;
 border-radius:18px;
-background:none;
+background:#020617;
 cursor:pointer;
 margin-bottom:18px;
+padding:5px;
 }
 
-.field{
-margin-bottom:16px;
-}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-label{
-display:block;
-margin-bottom:8px;
-font-size:14px;
-font-weight:bold;
-color:#9ca8bb;
-}
+.field{margin-bottom:16px}
+
+label{display:block;margin-bottom:8px;font-size:14px;font-weight:bold;color:#cbd5e1}
 
 .text{
 width:100%;
-height:52px;
-border-radius:14px;
-border:1px solid #263244;
-background:#05070d;
+height:54px;
+border-radius:16px;
+border:1px solid #334155;
+background:#020617;
 color:white;
 padding:0 14px;
-font-size:16px;
-box-sizing:border-box;
+font-size:15px;
+outline:none;
 }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
+.text:focus{border-color:#38bdf8}
+
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
 
 button{
 padding:15px 20px;
-border:0;
+border:none;
 border-radius:16px;
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
 font-weight:800;
 cursor:pointer;
-margin-top:10px;
+font-size:15px;
+transition:.2s;
 }
 
-.copy{
-background:#121935;
-color:white;
-border:1px solid #263244;
+button:hover{transform:translateY(-2px)}
+
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;border:1px solid #334155;color:#cbd5e1}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
 }
 
-@media(max-width:800px){
-.grid{
-grid-template-columns:1fr;
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+.colorBox{height:190px}
 }
 
-h1{
-font-size:42px;
-}
+@media(max-width:600px){
+.grid{grid-template-columns:1fr}
+.buttons{flex-direction:column}
+button{width:100%}
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>Color Picker / Converter</h1>
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-<p>
-Convert HEX, RGB and HSL colors instantly with Toolivo.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1>Color Picker <span class="gradient">Converter</span></h1>
+<p>Convert HEX, RGB and HSL colors instantly. Pick a color, copy values and use them in CSS, UI design or branding projects.</p>
+</section>
+
+<section class="tool-grid">
 
 <div class="panel">
-
 <div class="colorBox" id="preview"></div>
 
 <input type="color" id="picker" value="#39e6d2">
+
+<div class="buttons">
+<button class="primary" onclick="copyField('hex')">Copy HEX</button>
+<button class="secondary" onclick="copyField('rgb')">Copy RGB</button>
+<button class="secondary" onclick="copyField('hsl')">Copy HSL</button>
+</div>
+</div>
+
+<div class="panel">
+<div class="info">Pick a color or enter a HEX value manually. RGB, HSL and CSS values update automatically.</div>
 
 <div class="grid">
 
@@ -154,27 +188,55 @@ Convert HEX, RGB and HSL colors instantly with Toolivo.
 </div>
 
 </div>
-
-<button onclick="copyField('hex')">Copy HEX</button>
-<button class="copy" onclick="copyField('rgb')">Copy RGB</button>
-<button class="copy" onclick="copyField('hsl')">Copy HSL</button>
-
 </div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+<h2>Why convert colors?</h2>
+<p>Color conversion helps you use the same color across CSS, design tools, UI systems and brand assets.</p>
+</article>
+
+<article class="card">
+<h2>How it works</h2>
+<ul>
+<li>Pick a color using the color picker.</li>
+<li>View HEX, RGB, HSL and CSS values instantly.</li>
+<li>Copy the format you need with one click.</li>
+</ul>
+</article>
+
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
 const picker=document.getElementById('picker');
 const preview=document.getElementById('preview');
-
 const hex=document.getElementById('hex');
 const rgb=document.getElementById('rgb');
 const hsl=document.getElementById('hsl');
 const css=document.getElementById('css');
 
 function hexToRgb(hexVal){
-
 hexVal=hexVal.replace('#','');
+
+if(hexVal.length===3){
+hexVal=hexVal.split('').map(c=>c+c).join('');
+}
 
 const bigint=parseInt(hexVal,16);
 
@@ -186,7 +248,6 @@ return {r,g,b};
 }
 
 function rgbToHsl(r,g,b){
-
 r/=255;
 g/=255;
 b/=255;
@@ -199,31 +260,19 @@ let h,s,l=(max+min)/2;
 if(max===min){
 h=s=0;
 }else{
-
 const d=max-min;
-
 s=l>0.5?d/(2-max-min):d/(max+min);
 
 switch(max){
-
-case r:
-h=(g-b)/d+(g<b?6:0);
-break;
-
-case g:
-h=(b-r)/d+2;
-break;
-
-case b:
-h=(r-g)/d+4;
-break;
-
+case r:h=(g-b)/d+(g<b?6:0);break;
+case g:h=(b-r)/d+2;break;
+case b:h=(r-g)/d+4;break;
 }
 
 h/=6;
 }
 
-return {
+return{
 h:Math.round(h*360),
 s:Math.round(s*100),
 l:Math.round(l*100)
@@ -231,19 +280,15 @@ l:Math.round(l*100)
 }
 
 function update(){
-
 const value=picker.value;
 
 preview.style.background=value;
-
 hex.value=value;
 
 const rgbVal=hexToRgb(value);
-
 rgb.value=`rgb(${rgbVal.r}, ${rgbVal.g}, ${rgbVal.b})`;
 
 const hslVal=rgbToHsl(rgbVal.r,rgbVal.g,rgbVal.b);
-
 hsl.value=`hsl(${hslVal.h}, ${hslVal.s}%, ${hslVal.l}%)`;
 
 css.value=`color: ${value};`;
@@ -252,18 +297,25 @@ css.value=`color: ${value};`;
 picker.addEventListener('input',update);
 
 hex.addEventListener('input',()=>{
-
 if(/^#([0-9A-F]{3}){1,2}$/i.test(hex.value)){
 picker.value=hex.value;
 update();
 }
-
 });
 
 function copyField(id){
-navigator.clipboard.writeText(document.getElementById(id).value);
+const value=document.getElementById(id).value;
+
+if(!value){
+alert("Nothing to copy.");
+return;
 }
 
+navigator.clipboard.writeText(value);
+alert("Copied!");
+}
+
+document.getElementById("year").innerText=new Date().getFullYear();
 update();
 </script>
 
