@@ -3,61 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Case Converter — Toolivo</title>
 <meta name="description" content="Convert text to uppercase, lowercase, title case, camelCase and more instantly with Toolivo.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#05070d;
-color:white;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-.wrap{
-width:min(1100px,calc(100% - 28px));
-margin:auto;
-padding:40px 0;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-h1{
-font-size:58px;
-margin:20px 0 10px;
-}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-p{
-color:#9ca8bb;
-margin-bottom:25px;
-}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+
+.label{font-size:14px;font-weight:bold;color:#cbd5e1;margin-bottom:10px}
 
 textarea{
 width:100%;
-min-height:260px;
-border-radius:20px;
-border:1px solid #263244;
-background:#0b1020;
+min-height:330px;
+border-radius:18px;
+border:1px solid #334155;
+background:#020617;
 color:white;
 padding:18px;
-font-size:17px;
-line-height:1.6;
-box-sizing:border-box;
+font-size:16px;
+line-height:1.7;
 resize:vertical;
+outline:none;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-top:18px;
-}
+textarea:focus{border-color:#38bdf8}
+
+.button-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
 
 button{
 padding:15px;
-border:0;
+border:1px solid #334155;
 border-radius:16px;
-background:#0b1020;
-border:1px solid #263244;
+background:#020617;
 color:white;
 font-weight:800;
 cursor:pointer;
@@ -65,93 +63,161 @@ transition:.2s;
 font-size:15px;
 }
 
-button:hover{
-transform:translateY(-2px);
-background:#121935;
-}
+button:hover{transform:translateY(-2px);border-color:#38bdf8}
 
 .primary{
-background:linear-gradient(90deg,#39e6d2,#6ea8ff);
-color:#031017;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 border:0;
 }
 
 .output{
-margin-top:20px;
-background:#0b1020;
-border:1px solid #263244;
-border-radius:20px;
+min-height:330px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
 padding:18px;
 white-space:pre-wrap;
 line-height:1.7;
-font-size:17px;
-min-height:180px;
+font-size:16px;
+overflow:auto;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
 }
 
 .topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:10px;
-margin-bottom:14px;
+gap:12px;
+margin-top:16px;
+color:#94a3b8;
+font-size:14px;
+flex-wrap:wrap;
 }
 
-.copyBtn{
-width:auto;
-padding:12px 16px;
+.copyBtn{width:auto;padding:14px 18px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+textarea,.output{min-height:240px}
 }
 
-@media(max-width:800px){
-.grid{
-grid-template-columns:1fr 1fr;
-}
-h1{
-font-size:42px;
-}
+@media(max-width:650px){
+.button-grid{grid-template-columns:1fr 1fr}
 }
 
-@media(max-width:500px){
-.grid{
-grid-template-columns:1fr;
-}
+@media(max-width:480px){
+.button-grid{grid-template-columns:1fr}
+.copyBtn{width:100%}
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
-<h1>Case Converter</h1>
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-<p>
-Convert text instantly to uppercase, lowercase, title case, camelCase, snake_case and more.
-</p>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1>Case <span class="gradient">Converter</span></h1>
+<p>Convert text instantly to uppercase, lowercase, title case, sentence case, camelCase, snake_case, kebab-case and alternating case.</p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
+<div class="label">Input Text</div>
 
 <textarea id="input" placeholder="Paste or type your text here..."></textarea>
 
-<div class="grid">
+<div class="button-grid">
 <button onclick="convert('upper')">UPPERCASE</button>
 <button onclick="convert('lower')">lowercase</button>
 <button onclick="convert('title')">Title Case</button>
-
 <button onclick="convert('sentence')">Sentence case</button>
 <button onclick="convert('camel')">camelCase</button>
 <button onclick="convert('snake')">snake_case</button>
-
 <button onclick="convert('kebab')">kebab-case</button>
 <button onclick="convert('alternating')">aLtErNaTiNg</button>
 <button class="primary" onclick="clearAll()">Clear</button>
 </div>
+</div>
 
+<div class="panel">
+<div class="info">Converted text will appear below. You can copy the result instantly.</div>
+
+<div class="label">Output Text</div>
 <div class="output" id="output"></div>
 
 <div class="topbar">
-<div style="color:#9ca8bb;font-size:14px">
-Characters: <span id="count">0</span>
-</div>
-
+<div>Characters: <span id="count">0</span></div>
 <button class="copyBtn" onclick="copyText()">Copy Text</button>
 </div>
+</div>
+
+</section>
+
+<section class="content">
+<article class="card">
+<h2>What can you convert?</h2>
+<p>Use this tool to quickly format titles, descriptions, code-like names, slugs, labels and social media text.</p>
+</article>
+
+<article class="card">
+<h2>How it works</h2>
+<ul>
+<li>Paste or type your text.</li>
+<li>Choose the case format you need.</li>
+<li>Copy the converted result instantly.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
@@ -181,7 +247,7 @@ return str.charAt(0).toUpperCase()+str.slice(1).toLowerCase();
 
 function camelCase(str){
 return str.toLowerCase().split(/[\s_-]+/).map((word,i)=>{
-if(i===0) return word;
+if(i===0)return word;
 return word.charAt(0).toUpperCase()+word.slice(1);
 }).join('');
 }
@@ -204,43 +270,17 @@ return result;
 
 function convert(type){
 const text=input.value;
-
 let result=text;
 
 switch(type){
-
-case 'upper':
-result=text.toUpperCase();
-break;
-
-case 'lower':
-result=text.toLowerCase();
-break;
-
-case 'title':
-result=titleCase(text);
-break;
-
-case 'sentence':
-result=sentenceCase(text);
-break;
-
-case 'camel':
-result=camelCase(text);
-break;
-
-case 'snake':
-result=snakeCase(text);
-break;
-
-case 'kebab':
-result=kebabCase(text);
-break;
-
-case 'alternating':
-result=alternatingCase(text);
-break;
-
+case 'upper':result=text.toUpperCase();break;
+case 'lower':result=text.toLowerCase();break;
+case 'title':result=titleCase(text);break;
+case 'sentence':result=sentenceCase(text);break;
+case 'camel':result=camelCase(text);break;
+case 'snake':result=snakeCase(text);break;
+case 'kebab':result=kebabCase(text);break;
+case 'alternating':result=alternatingCase(text);break;
 }
 
 output.textContent=result;
@@ -248,7 +288,12 @@ updateCount();
 }
 
 function copyText(){
+if(!output.textContent){
+alert("Nothing to copy.");
+return;
+}
 navigator.clipboard.writeText(output.textContent);
+alert("Copied!");
 }
 
 function clearAll(){
@@ -256,6 +301,8 @@ input.value='';
 output.textContent='';
 updateCount();
 }
+
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
