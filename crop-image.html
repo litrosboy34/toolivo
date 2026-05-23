@@ -1,43 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Crop Image Online — Toolivo</title>
-<meta name="description" content="Crop images online with Toolivo. Free, fast and private image cropper that works directly in your browser." />
-<meta name="keywords" content="crop image, image cropper, crop photo online, Toolivo" />
-<meta name="google-adsense-account" content="ca-pub-4422292009724522">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
+<meta name="description" content="Crop images online with Toolivo. Free, fast and private image cropper that works directly in your browser.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:radial-gradient(circle at top left,#0d3f35 0%,transparent 30%),radial-gradient(circle at top right,#1b2557 0%,transparent 30%),#05070d;color:white;min-height:100vh;overflow-x:hidden}.container{width:min(1150px,calc(100% - 32px));margin:auto}header{padding:28px 0;display:flex;justify-content:space-between;align-items:center}.logo{font-size:34px;font-weight:900;letter-spacing:-2px}.logo span{background:linear-gradient(90deg,#39e6d2,#7aa2ff);-webkit-background-clip:text;color:transparent}.hero{text-align:center;padding:60px 0 24px}.hero h1{font-size:74px;line-height:.95;letter-spacing:-4px;margin:0 0 18px}.hero h1 span{background:linear-gradient(90deg,#fff,#89dfff);-webkit-background-clip:text;color:transparent}.hero p{max-width:760px;margin:auto;line-height:1.7;font-size:18px;color:#9ca8bb}.tool{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:22px;backdrop-filter:blur(14px)}.drop{border:2px dashed rgba(255,255,255,.14);min-height:300px;border-radius:22px;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;text-align:center;transition:.2s}.drop:hover{border-color:#39e6d2;background:rgba(57,230,210,.05)}.drop h2{margin:14px 0 10px;font-size:28px}.drop p{max-width:320px;line-height:1.6;color:#9ca8bb}input[type=file]{display:none}.preview{display:none;margin-top:18px;border-radius:22px;overflow:auto;background:#111827;max-height:520px}.crop-stage{position:relative;display:inline-block;min-width:100%;text-align:center;padding:12px}.crop-stage img{max-width:100%;display:block;margin:auto;border-radius:14px}.crop-box{position:absolute;border:2px solid #39e6d2;background:rgba(57,230,210,.12);box-shadow:0 0 0 9999px rgba(0,0,0,.45);cursor:move;border-radius:8px}.handle{position:absolute;width:16px;height:16px;background:#39e6d2;border:2px solid #051018;border-radius:50%;right:-8px;bottom:-8px;cursor:nwse-resize}.controls{display:flex;flex-direction:column;gap:14px}.info{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:18px;color:#9ca8bb;line-height:1.6}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{height:56px;border:none;border-radius:18px;font-weight:800;font-size:15px;cursor:pointer;transition:.2s;background:rgba(255,255,255,.08);color:white;border:1px solid rgba(255,255,255,.08)}.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}.primary{background:linear-gradient(90deg,#39e6d2,#6ea8ff);color:#051018;border:none}.input{width:100%;height:54px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.24);color:white;padding:0 14px;font:inherit}footer{margin-top:70px;padding:26px 0;border-top:1px solid rgba(255,255,255,.08);text-align:center;color:#7c8799}@media(max-width:860px){.tool{grid-template-columns:1fr}.hero h1{font-size:52px}.grid{grid-template-columns:1fr}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+
+.drop{min-height:300px;border:2px dashed #334155;border-radius:18px;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;text-align:center;transition:.2s;background:#020617;padding:24px}
+.drop:hover,.drop.drag{border-color:#38bdf8;background:#061326}
+.drop h2{margin:14px 0 10px;font-size:26px}
+.drop p{max-width:320px;line-height:1.6;color:#94a3b8}
+input[type=file]{display:none}
+
+.preview{display:none;margin-top:18px;border-radius:18px;overflow:auto;background:#020617;border:1px solid #334155;max-height:520px}
+.crop-stage{position:relative;display:inline-block;min-width:100%;text-align:center;padding:12px;touch-action:none}
+.crop-stage img{max-width:100%;display:block;margin:auto;border-radius:14px;user-select:none;pointer-events:none}
+.crop-box{position:absolute;border:2px solid #38bdf8;background:rgba(56,189,248,.14);box-shadow:0 0 0 9999px rgba(0,0,0,.45);cursor:move;border-radius:8px;touch-action:none}
+.handle{position:absolute;width:22px;height:22px;background:#38bdf8;border:3px solid #061018;border-radius:50%;right:-11px;bottom:-11px;cursor:nwse-resize;touch-action:none}
+
+.controls{display:flex;flex-direction:column;gap:14px}
+.info{background:#020617;border:1px solid #334155;padding:16px;border-radius:16px;color:#94a3b8;line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{height:56px;border:none;border-radius:16px;font-weight:800;font-size:15px;cursor:pointer;transition:.2s;background:#020617;color:white;border:1px solid #334155}
+.btn:hover{transform:translateY(-2px);border-color:#38bdf8}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;border:none}
+.input{width:100%;height:54px;border-radius:16px;border:1px solid #334155;background:#020617;color:white;padding:0 14px;font-size:15px;outline:none}
+.input:focus{border-color:#38bdf8}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+.grid{grid-template-columns:1fr}
+.drop{min-height:250px}
+}
 </style>
 </head>
+
 <body>
+
 <div class="container">
-<header><a class="logo" href="/"><span>Toolivo</span></a></header>
-<section class="hero"><h1><span>Crop Image</span><br>online.</h1><p>Crop photos, product images, screenshots and graphics directly in your browser. Fast, private and free.</p></section>
-<section class="tool">
+
+<header class="header">
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1>Crop Image <span class="gradient">Online</span></h1>
+<p>Crop photos, product images, screenshots and graphics directly in your browser. Fast, private and free.</p>
+</section>
+
+<section class="tool-grid">
+
 <div class="panel">
-<label class="drop" for="fileInput"><div style="font-size:58px">✂️</div><h2>Drop your image</h2><p>or click to browse from your device.</p></label>
+<label class="drop" id="dropZone" for="fileInput">
+<div style="font-size:58px">✂️</div>
+<h2>Drop your image</h2>
+<p>or click to browse from your device.</p>
+</label>
+
 <input type="file" id="fileInput" accept="image/*">
-<div class="preview" id="preview"><div class="crop-stage" id="stage"><img id="img"><div class="crop-box" id="cropBox"><div class="handle" id="handle"></div></div></div></div>
+
+<div class="preview" id="preview">
+<div class="crop-stage" id="stage">
+<img id="img" alt="Crop preview">
+<div class="crop-box" id="cropBox">
+<div class="handle" id="handle"></div>
 </div>
+</div>
+</div>
+</div>
+
 <div class="panel controls">
 <div class="info" id="info">Choose an image to begin cropping.</div>
-<div class="grid"><input class="input" id="cropW" type="number" placeholder="Crop width"><input class="input" id="cropH" type="number" placeholder="Crop height"></div>
-<div class="grid"><button class="btn" id="squareBtn">1:1 Square</button><button class="btn" id="wideBtn">16:9 Wide</button></div>
+
+<div class="grid">
+<input class="input" id="cropW" type="number" placeholder="Crop width">
+<input class="input" id="cropH" type="number" placeholder="Crop height">
+</div>
+
+<div class="grid">
+<button class="btn" id="squareBtn">1:1 Square</button>
+<button class="btn" id="wideBtn">16:9 Wide</button>
+</div>
+
 <button class="btn primary" id="downloadBtn">Crop & Download PNG</button>
+
 <div class="info">Drag the crop area to move it. Drag the bottom-right dot to resize. Your image never leaves your device.</div>
 </div>
+
 </section>
-<footer>© 2026 Toolivo — Crop Image Tool</footer>
+
+<section class="content">
+<article class="card">
+<h2>Why crop images?</h2>
+<p>Cropping helps you focus on the important part of a photo, prepare product images, thumbnails and social media visuals.</p>
+</article>
+
+<article class="card">
+<h2>How it works</h2>
+<ul>
+<li>Upload or drop an image.</li>
+<li>Move and resize the crop area.</li>
+<li>Download the cropped result as PNG.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
 </div>
+</footer>
+
+</div>
+
 <script>
-const fileInput=document.getElementById('fileInput'),preview=document.getElementById('preview'),img=document.getElementById('img'),stage=document.getElementById('stage'),box=document.getElementById('cropBox'),handle=document.getElementById('handle'),info=document.getElementById('info'),cropW=document.getElementById('cropW'),cropH=document.getElementById('cropH');let fileName='toolivo-image',naturalW=0,naturalH=0,drag=false,resize=false,startX=0,startY=0,start={x:0,y:0,w:0,h:0};function clamp(v,min,max){return Math.max(min,Math.min(max,v))}function rect(){return {x:parseFloat(box.style.left)||0,y:parseFloat(box.style.top)||0,w:parseFloat(box.style.width)||160,h:parseFloat(box.style.height)||160}}function setBox(x,y,w,h){const imgRect=img.getBoundingClientRect(),stRect=stage.getBoundingClientRect();const ox=imgRect.left-stRect.left,oy=imgRect.top-stRect.top;x=clamp(x,ox,ox+imgRect.width-w);y=clamp(y,oy,oy+imgRect.height-h);w=clamp(w,40,imgRect.width);h=clamp(h,40,imgRect.height);box.style.left=x+'px';box.style.top=y+'px';box.style.width=w+'px';box.style.height=h+'px';cropW.value=Math.round(w*(naturalW/imgRect.width));cropH.value=Math.round(h*(naturalH/imgRect.height))}function initBox(){const imgRect=img.getBoundingClientRect(),stRect=stage.getBoundingClientRect();const size=Math.min(imgRect.width,imgRect.height)*.7;setBox(imgRect.left-stRect.left+(imgRect.width-size)/2,imgRect.top-stRect.top+(imgRect.height-size)/2,size,size)}fileInput.onchange=e=>{const file=e.target.files[0];if(!file)return;fileName=file.name.replace(/\.[^/.]+$/,'')||'toolivo-image';img.onload=()=>{naturalW=img.naturalWidth;naturalH=img.naturalHeight;preview.style.display='block';info.innerHTML=`${file.name}<br>${naturalW} × ${naturalH}<br>${(file.size/1024).toFixed(1)} KB`;setTimeout(initBox,80)};img.src=URL.createObjectURL(file)};box.addEventListener('mousedown',e=>{if(e.target===handle)return;drag=true;startX=e.clientX;startY=e.clientY;start=rect();e.preventDefault()});handle.addEventListener('mousedown',e=>{resize=true;startX=e.clientX;startY=e.clientY;start=rect();e.preventDefault();e.stopPropagation()});window.addEventListener('mousemove',e=>{if(!drag&&!resize)return;if(drag)setBox(start.x+e.clientX-startX,start.y+e.clientY-startY,start.w,start.h);if(resize)setBox(start.x,start.y,start.w+e.clientX-startX,start.h+e.clientY-startY)});window.addEventListener('mouseup',()=>{drag=false;resize=false});document.getElementById('squareBtn').onclick=()=>{const r=rect();const s=Math.min(r.w,r.h);setBox(r.x,r.y,s,s)};document.getElementById('wideBtn').onclick=()=>{const r=rect();setBox(r.x,r.y,r.w,r.w*9/16)};document.getElementById('downloadBtn').onclick=()=>{if(!img.src)return;const imgRect=img.getBoundingClientRect(),stRect=stage.getBoundingClientRect(),r=rect();const ox=imgRect.left-stRect.left,oy=imgRect.top-stRect.top;const sx=(r.x-ox)*(naturalW/imgRect.width),sy=(r.y-oy)*(naturalH/imgRect.height),sw=r.w*(naturalW/imgRect.width),sh=r.h*(naturalH/imgRect.height);const canvas=document.createElement('canvas');canvas.width=Math.round(sw);canvas.height=Math.round(sh);const ctx=canvas.getContext('2d');ctx.imageSmoothingQuality='high';ctx.drawImage(img,sx,sy,sw,sh,0,0,canvas.width,canvas.height);canvas.toBlob(blob=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=fileName+'-cropped-toolivo.png';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)},'image/png')};
+const fileInput=document.getElementById('fileInput');
+const dropZone=document.getElementById('dropZone');
+const preview=document.getElementById('preview');
+const img=document.getElementById('img');
+const stage=document.getElementById('stage');
+const box=document.getElementById('cropBox');
+const handle=document.getElementById('handle');
+const info=document.getElementById('info');
+const cropW=document.getElementById('cropW');
+const cropH=document.getElementById('cropH');
+
+let fileName='toolivo-image';
+let naturalW=0,naturalH=0;
+let drag=false,resize=false,startX=0,startY=0,start={x:0,y:0,w:0,h:0};
+
+function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+
+function rect(){
+return{
+x:parseFloat(box.style.left)||0,
+y:parseFloat(box.style.top)||0,
+w:parseFloat(box.style.width)||160,
+h:parseFloat(box.style.height)||160
+};
+}
+
+function setBox(x,y,w,h){
+const imgRect=img.getBoundingClientRect();
+const stRect=stage.getBoundingClientRect();
+
+const ox=imgRect.left-stRect.left;
+const oy=imgRect.top-stRect.top;
+
+w=clamp(w,40,imgRect.width);
+h=clamp(h,40,imgRect.height);
+x=clamp(x,ox,ox+imgRect.width-w);
+y=clamp(y,oy,oy+imgRect.height-h);
+
+box.style.left=x+'px';
+box.style.top=y+'px';
+box.style.width=w+'px';
+box.style.height=h+'px';
+
+cropW.value=Math.round(w*(naturalW/imgRect.width));
+cropH.value=Math.round(h*(naturalH/imgRect.height));
+}
+
+function initBox(){
+const imgRect=img.getBoundingClientRect();
+const stRect=stage.getBoundingClientRect();
+const size=Math.min(imgRect.width,imgRect.height)*.7;
+
+setBox(
+imgRect.left-stRect.left+(imgRect.width-size)/2,
+imgRect.top-stRect.top+(imgRect.height-size)/2,
+size,
+size
+);
+}
+
+function loadFile(file){
+if(!file || !file.type.startsWith('image/'))return;
+
+fileName=file.name.replace(/\.[^/.]+$/,'')||'toolivo-image';
+
+img.onload=()=>{
+naturalW=img.naturalWidth;
+naturalH=img.naturalHeight;
+
+preview.style.display='block';
+
+info.innerHTML=`${file.name}<br>${naturalW} × ${naturalH}<br>${(file.size/1024).toFixed(1)} KB`;
+
+setTimeout(initBox,80);
+};
+
+img.src=URL.createObjectURL(file);
+}
+
+fileInput.onchange=e=>loadFile(e.target.files[0]);
+
+['dragenter','dragover'].forEach(ev=>{
+dropZone.addEventListener(ev,e=>{
+e.preventDefault();
+dropZone.classList.add('drag');
+});
+});
+
+['dragleave','drop'].forEach(ev=>{
+dropZone.addEventListener(ev,e=>{
+e.preventDefault();
+dropZone.classList.remove('drag');
+});
+});
+
+dropZone.addEventListener('drop',e=>{
+loadFile(e.dataTransfer.files[0]);
+});
+
+function pointerStart(e,type){
+const p=e.touches?e.touches[0]:e;
+
+if(type==='drag')drag=true;
+if(type==='resize')resize=true;
+
+startX=p.clientX;
+startY=p.clientY;
+start=rect();
+
+e.preventDefault();
+}
+
+function pointerMove(e){
+if(!drag&&!resize)return;
+
+const p=e.touches?e.touches[0]:e;
+const dx=p.clientX-startX;
+const dy=p.clientY-startY;
+
+if(drag){
+setBox(start.x+dx,start.y+dy,start.w,start.h);
+}
+
+if(resize){
+setBox(start.x,start.y,start.w+dx,start.h+dy);
+}
+}
+
+function pointerEnd(){
+drag=false;
+resize=false;
+}
+
+box.addEventListener('mousedown',e=>{
+if(e.target===handle)return;
+pointerStart(e,'drag');
+});
+
+handle.addEventListener('mousedown',e=>{
+pointerStart(e,'resize');
+e.stopPropagation();
+});
+
+box.addEventListener('touchstart',e=>{
+if(e.target===handle)return;
+pointerStart(e,'drag');
+},{passive:false});
+
+handle.addEventListener('touchstart',e=>{
+pointerStart(e,'resize');
+e.stopPropagation();
+},{passive:false});
+
+window.addEventListener('mousemove',pointerMove);
+window.addEventListener('mouseup',pointerEnd);
+window.addEventListener('touchmove',pointerMove,{passive:false});
+window.addEventListener('touchend',pointerEnd);
+
+document.getElementById('squareBtn').onclick=()=>{
+const r=rect();
+const s=Math.min(r.w,r.h);
+setBox(r.x,r.y,s,s);
+};
+
+document.getElementById('wideBtn').onclick=()=>{
+const r=rect();
+setBox(r.x,r.y,r.w,r.w*9/16);
+};
+
+document.getElementById('downloadBtn').onclick=()=>{
+if(!img.src)return;
+
+const imgRect=img.getBoundingClientRect();
+const stRect=stage.getBoundingClientRect();
+const r=rect();
+
+const ox=imgRect.left-stRect.left;
+const oy=imgRect.top-stRect.top;
+
+const sx=(r.x-ox)*(naturalW/imgRect.width);
+const sy=(r.y-oy)*(naturalH/imgRect.height);
+const sw=r.w*(naturalW/imgRect.width);
+const sh=r.h*(naturalH/imgRect.height);
+
+const canvas=document.createElement('canvas');
+canvas.width=Math.round(sw);
+canvas.height=Math.round(sh);
+
+const ctx=canvas.getContext('2d');
+ctx.imageSmoothingQuality='high';
+ctx.drawImage(img,sx,sy,sw,sh,0,0,canvas.width,canvas.height);
+
+canvas.toBlob(blob=>{
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+
+a.href=url;
+a.download=fileName+'-cropped-toolivo.png';
+
+document.body.appendChild(a);
+a.click();
+a.remove();
+
+URL.revokeObjectURL(url);
+},'image/png');
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
+
 </body>
 </html>
