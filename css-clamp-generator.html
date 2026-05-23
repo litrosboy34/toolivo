@@ -4,157 +4,290 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CSS Clamp Generator - Toolivo</title>
-
+<title>CSS Clamp Generator — Toolivo</title>
 <meta name="description" content="Generate responsive CSS clamp() values instantly with live preview and copyable code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.container{
-    max-width:950px;
-    margin:auto;
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-@media(max-width:800px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
 }
 
 .control{
-    margin-bottom:18px;
+margin-bottom:18px;
 }
 
 label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
-}
-
-input[type="number"],
-input[type="range"]{
-    width:100%;
-    background:#020617;
-    border:1px solid #334155;
-    color:white;
-    border-radius:12px;
-    padding:14px;
-    outline:none;
+display:block;
+margin-bottom:8px;
+color:#cbd5e1;
+font-size:14px;
+font-weight:bold;
 }
 
 input[type="range"]{
-    accent-color:#0ea5e9;
-    padding:0;
+width:100%;
+accent-color:#38bdf8;
 }
 
 .value{
-    margin-top:6px;
-    color:#38bdf8;
-    font-size:14px;
+margin-top:6px;
+color:#67e8f9;
+font-size:14px;
+font-weight:bold;
 }
 
 .preview{
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    min-height:320px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+min-height:380px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
+overflow:hidden;
 }
 
 .preview-text{
-    font-weight:bold;
-    line-height:1.4;
+font-weight:800;
+line-height:1.3;
+max-width:100%;
+word-break:break-word;
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#1e293b;
-    color:white;
+background:#020617;
+border:1px solid #334155;
+color:white;
 }
 
 textarea{
-    width:100%;
-    height:180px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:220px;
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+min-height:280px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -163,129 +296,194 @@ textarea{
 
 <div class="container">
 
-    <div class="title">CSS Clamp Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate responsive CSS clamp() values instantly with live preview and copyable code.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Minimum Size (px)</label>
+<h1>CSS Clamp <span class="gradient">Generator</span></h1>
 
-                    <input type="range" id="min" min="8" max="80" value="16">
+<p>
+Generate responsive CSS clamp() values instantly with live preview and copyable CSS code for typography and layouts.
+</p>
 
-                    <div class="value" id="minValue">
-                        16px
-                    </div>
-                </div>
+</section>
 
-                <div class="control">
-                    <label>Preferred Viewport Width (vw)</label>
+<section class="tool-grid">
 
-                    <input type="range" id="preferred" min="1" max="20" value="4">
+<div class="panel">
 
-                    <div class="value" id="preferredValue">
-                        4vw
-                    </div>
-                </div>
+<div class="grid">
 
-                <div class="control">
-                    <label>Maximum Size (px)</label>
+<div class="control">
+<label>Minimum Size (px)</label>
 
-                    <input type="range" id="max" min="20" max="120" value="42">
+<input type="range" id="min" min="8" max="80" value="16">
 
-                    <div class="value" id="maxValue">
-                        42px
-                    </div>
-                </div>
+<div class="value" id="minValue">
+16px
+</div>
+</div>
 
-            </div>
+<div class="control">
+<label>Preferred Viewport Width (vw)</label>
 
-            <div>
+<input type="range" id="preferred" min="1" max="20" value="4">
 
-                <div class="preview">
+<div class="value" id="preferredValue">
+4vw
+</div>
+</div>
 
-                    <div class="preview-text" id="previewText">
-                        Responsive Clamp Text
-                    </div>
+<div class="control">
+<label>Maximum Size (px)</label>
 
-                </div>
+<input type="range" id="max" min="20" max="120" value="42">
 
-            </div>
+<div class="value" id="maxValue">
+42px
+</div>
+</div>
 
-        </div>
+<div class="buttons">
 
-        <div class="buttons">
+<button class="generate" onclick="generateClamp()">
+Generate Clamp
+</button>
 
-            <button class="generate" onclick="generateClamp()">
-                Generate
-            </button>
+<button class="copy" onclick="copyCSS()">
+Copy CSS
+</button>
 
-            <button class="copy" onclick="copyCSS()">
-                Copy CSS
-            </button>
+</div>
 
-        </div>
+<textarea id="output"></textarea>
 
-        <textarea id="output"></textarea>
+</div>
 
-    </div>
+<div class="panel">
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="info">
+Responsive typography automatically scales between minimum and maximum sizes based on viewport width.
+</div>
+
+<div class="preview">
+
+<div class="preview-text" id="previewText">
+Responsive Clamp Text
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>What is CSS clamp()?</h2>
+
+<p>
+The CSS clamp() function creates fluid responsive values by defining minimum, preferred and maximum sizes in one line.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Set minimum size.</li>
+<li>Adjust viewport scaling.</li>
+<li>Choose maximum size.</li>
+<li>Copy the generated clamp() value instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateClamp(){
 
-    const min =
-    document.getElementById("min").value;
+const min=
+document.getElementById("min").value;
 
-    const preferred =
-    document.getElementById("preferred").value;
+const preferred=
+document.getElementById("preferred").value;
 
-    const max =
-    document.getElementById("max").value;
+const max=
+document.getElementById("max").value;
 
-    document.getElementById("minValue").innerText =
-    min + "px";
+document.getElementById("minValue").innerText=
+min+"px";
 
-    document.getElementById("preferredValue").innerText =
-    preferred + "vw";
+document.getElementById("preferredValue").innerText=
+preferred+"vw";
 
-    document.getElementById("maxValue").innerText =
-    max + "px";
+document.getElementById("maxValue").innerText=
+max+"px";
 
-    const clampValue =
-    `clamp(${min}px, ${preferred}vw, ${max}px)`;
+const clampValue=
+`clamp(${min}px, ${preferred}vw, ${max}px)`;
 
-    document.getElementById("previewText").style.fontSize =
-    clampValue;
+document.getElementById("previewText").style.fontSize=
+clampValue;
 
-    document.getElementById("output").value =
+document.getElementById("output").value=
 `font-size: ${clampValue};`;
 }
 
 function copyCSS(){
 
-    navigator.clipboard.writeText(
-        document.getElementById("output").value
-    );
+navigator.clipboard.writeText(
+document.getElementById("output").value
+);
 
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("input").forEach(el => {
-    el.addEventListener("input", generateClamp);
+document.querySelectorAll("input").forEach(el=>{
+el.addEventListener("input",generateClamp);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateClamp();
 </script>
