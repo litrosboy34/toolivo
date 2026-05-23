@@ -1,40 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JPG to WEBP Converter — Toolivo</title>
-  <meta name="description" content="Convert JPG images to WEBP instantly with Toolivo. Free, fast and private online JPG to WEBP converter that runs directly in your browser." />
-  <meta name="keywords" content="jpg to webp, jpeg to webp, convert jpg to webp, online image converter, Toolivo" />
-  <meta name="author" content="Toolivo" />
-  <meta property="og:title" content="JPG to WEBP Converter — Toolivo" />
-  <meta property="og:description" content="Free online JPG to WEBP converter. Fast, private and easy to use." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#05070d" />
-  <meta name="google-adsense-account" content="ca-pub-4422292009724522">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-442292009724522" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="apple-touch-icon" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root{--bg:#05070d;--card2:rgba(255,255,255,.12);--stroke:rgba(255,255,255,.14);--text:#f7fbff;--muted:#a8b3c7;--muted2:#748098;--cyan:#39e6d2;--blue:#6ea8ff;--radius:28px;--shadow:0 24px 80px rgba(0,0,0,.45)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 18% 8%,rgba(57,230,210,.18),transparent 34%),radial-gradient(circle at 78% 0%,rgba(157,123,255,.18),transparent 31%),linear-gradient(180deg,var(--bg),#03050a 52%,#05070d);color:var(--text);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 72%)}a{color:inherit;text-decoration:none}.wrap{width:min(1080px,calc(100% - 34px));margin:0 auto}header{position:sticky;top:0;z-index:50;backdrop-filter:blur(24px);background:linear-gradient(180deg,rgba(5,7,13,.82),rgba(5,7,13,.56));border-bottom:1px solid rgba(255,255,255,.08)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:4px;font-weight:900;letter-spacing:-.055em;font-size:28px}.brand span:last-child{background:linear-gradient(100deg,#fff,#d9fffb 42%,#b9cfff);-webkit-background-clip:text;color:transparent}.logo{width:92px;height:92px;display:grid;place-items:center;overflow:visible;flex-shrink:0;margin-right:-8px}.logo img{width:92px;height:92px;object-fit:contain;display:block;filter:drop-shadow(0 0 26px rgba(57,230,210,.42)) drop-shadow(0 20px 42px rgba(0,0,0,.58));transform:translateY(2px) scale(1.08)}.navlinks{display:flex;align-items:center;gap:8px}.navlinks a,.lang-btn{border:1px solid transparent;color:var(--muted);padding:10px 13px;border-radius:999px;font-weight:650;font-size:14px;background:transparent;cursor:pointer}.navlinks a:hover,.lang-btn:hover{color:var(--text);border-color:var(--stroke);background:rgba(255,255,255,.06)}.hero{padding:86px 0 38px;text-align:center}.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border-radius:999px;border:1px solid rgba(57,230,210,.28);background:rgba(57,230,210,.08);color:#d8fffb;font-weight:700;font-size:14px}.pulse{width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 0 7px rgba(57,230,210,.14)}h1{margin:22px auto 16px;max-width:930px;font-size:clamp(42px,7vw,82px);line-height:.96;letter-spacing:-.078em;font-weight:950}.gradient{background:linear-gradient(100deg,#fff,#c8fff8 36%,#9bbfff 65%,#decfff);-webkit-background-clip:text;color:transparent}.lead{max-width:720px;margin:0 auto;color:var(--muted);font-size:clamp(17px,2vw,21px);line-height:1.65}.section{padding:36px 0}.panel,.card{border:1px solid var(--stroke);background:linear-gradient(180deg,var(--card2),rgba(255,255,255,.052));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(20px)}.tool{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;align-items:stretch}.panel{padding:24px}.drop{min-height:360px;border:1px dashed rgba(255,255,255,.26);border-radius:24px;display:grid;place-items:center;text-align:center;padding:24px;background:rgba(255,255,255,.045);transition:.2s ease;cursor:pointer}.drop.drag{border-color:var(--cyan);background:rgba(57,230,210,.08)}.icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);font-size:25px;margin:0 auto 16px}.drop strong{display:block;font-size:24px;letter-spacing:-.04em;margin:10px 0 8px}.drop span{color:var(--muted);line-height:1.5}input[type=file]{display:none}.preview{display:none;margin-top:16px;border:1px solid rgba(255,255,255,.12);border-radius:22px;overflow:hidden;background:rgba(0,0,0,.20)}.preview img{width:100%;display:block;max-height:360px;object-fit:contain;background:#111722}.controls{display:grid;gap:14px}.control,.info{padding:16px;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:rgba(255,255,255,.045);color:var(--muted);line-height:1.55}.control label{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-weight:750;font-size:14px;margin-bottom:10px}input[type=range]{width:100%;padding:0;accent-color:var(--cyan)}.btn{border:1px solid var(--stroke);background:rgba(255,255,255,.08);color:var(--text);min-height:54px;padding:0 20px;border-radius:16px;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:.22s ease;width:100%}.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.13)}.btn.primary{border:0;color:#031017;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 20px 58px rgba(57,230,210,.18),inset 0 1px 0 rgba(255,255,255,.45)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.result{color:var(--muted);line-height:1.55;font-size:14px;min-height:22px}.content{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:22px;box-shadow:none}.card h2{margin:0 0 10px;font-size:26px;letter-spacing:-.04em}.card p,.card li{color:var(--muted);line-height:1.7}.card ul{margin:12px 0 0;padding-left:18px}footer{padding:44px 0 38px;color:var(--muted2);border-top:1px solid rgba(255,255,255,.08);margin-top:36px}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:14px;flex-wrap:wrap}.footer-links a:hover{color:var(--text)}@media(max-width:860px){.navlinks a{display:none}.tool,.content{grid-template-columns:1fr}.hero{padding-top:54px}.brand{font-size:25px}.logo{width:74px;height:74px}.logo img{width:74px;height:74px}h1{letter-spacing:-.062em}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JPG to WEBP Converter — Toolivo</title>
+<meta name="description" content="Convert JPG images to WEBP instantly with Toolivo. Free, fast and private online JPG to WEBP converter.">
+<meta name="google-adsense-account" content="ca-pub-4422292009724522">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4422292009724522" crossorigin="anonymous"></script>
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-left:auto}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.lang-btn{padding:8px 13px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold;font-size:14px;transition:.2s;width:auto;margin:0}
+.lang-btn:hover{color:white;border-color:#38bdf8}
+
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:720px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.drop{min-height:330px;border:2px dashed #334155;border-radius:18px;background:#020617;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;padding:24px;transition:.2s}
+.drop:hover,.drop.drag{border-color:#38bdf8;background:#061326}
+.drop strong{display:block;font-size:24px;margin-bottom:10px}
+.drop span{color:#94a3b8;line-height:1.6}
+input[type=file]{display:none}
+
+.preview{display:none;margin-top:16px;border:1px solid #334155;border-radius:18px;background:#020617;overflow:hidden}
+.preview img{width:100%;display:block;max-height:340px;object-fit:contain;background:#020617}
+
+.info,.control{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
+.control label{display:flex;justify-content:space-between;gap:10px;margin-bottom:10px;color:#cbd5e1;font-weight:bold;font-size:14px}
+input[type=range]{width:100%;accent-color:#38bdf8}
+
+.main-btn{width:100%;padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;font-weight:800;cursor:pointer;margin-top:12px;font-size:15px}
+.main-btn:disabled{opacity:.45;cursor:not-allowed}
+
+.result{margin-top:14px;color:#94a3b8;line-height:1.6}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.nav{margin-left:0;justify-content:center}
+.logo img{width:95px;height:95px}
+.drop{min-height:250px}
+}
+</style>
 </head>
+
 <body>
-<header><div class="wrap nav"><a class="brand" href="/" aria-label="Toolivo Home"><span class="logo"><img src="https://i.imgur.com/7qzyyTa.png" alt=""></span><span>Toolivo</span></a><nav class="navlinks"><a href="/" data-i18n="home">Home</a><a href="#converter" data-i18n="converter">Converter</a><a href="#faq">FAQ</a><button class="lang-btn" id="langBtn">TR</button></nav></div></header>
-<main>
-  <section class="hero wrap"><div class="badge"><span class="pulse"></span><span data-i18n="badge">Private browser-based converter</span></div><h1><span data-i18n="heroA">JPG to WEBP</span><br><span class="gradient" data-i18n="heroB">converter.</span></h1><p class="lead" data-i18n="lead">Convert JPG or JPEG images to WEBP instantly. Choose quality, reduce file size and download a modern WEBP file directly from your browser.</p></section>
-  <section class="section wrap" id="converter"><div class="tool"><div class="panel"><label class="drop" id="dropZone" for="fileInput"><div><div class="icon">🖼️</div><strong data-i18n="dropTitle">Drop your JPG image here</strong><span data-i18n="dropText">or tap to browse from your device.</span></div></label><input id="fileInput" type="file" accept="image/jpeg,image/jpg,image/png,image/webp"><div class="preview" id="preview"><img id="previewImg" alt="Preview"></div></div><div class="panel controls"><div class="info" id="fileInfo" data-i18n="idle">Choose a JPG image to begin.</div><div class="control"><label><span data-i18n="quality">WEBP quality</span><span id="qualityValue">86%</span></label><input id="qualityRange" type="range" min="10" max="100" value="86"></div><button class="btn primary" id="downloadBtn" disabled data-i18n="download">Convert and download WEBP</button><div class="result" id="result"></div><div class="info" data-i18n="privacy">Toolivo converts images locally in your browser. The selected file is not uploaded by this page.</div></div></div></section>
-  <section class="section wrap" id="faq"><div class="content"><article class="card"><h2 data-i18n="whyTitle">Why convert JPG to WEBP?</h2><p data-i18n="whyText">WEBP can create smaller image files while keeping good visual quality. It is great for websites, blogs, product images and faster loading pages.</p></article><article class="card"><h2 data-i18n="howTitle">How it works</h2><ul><li data-i18n="s1">Select or drop a JPG image.</li><li data-i18n="s2">Choose the WEBP quality.</li><li data-i18n="s3">Download the new WEBP file instantly.</li></ul></article></div></section>
-</main>
-<footer><div class="wrap footer-inner"><div>© <span id="year"></span> Toolivo. <span data-i18n="rights">All rights reserved.</span></div><div class="footer-links"><a href="/about.html" data-i18n="aboutF">About</a><a href="/privacy.html" data-i18n="privacyF">Privacy</a><a href="/terms.html" data-i18n="termsF">Terms</a><a href="/contact.html" data-i18n="contactF">Contact</a></div></div></footer>
+
+<div class="container">
+
+<header class="header">
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1 id="heroTitle">JPG to <span class="gradient">WEBP</span></h1>
+<p id="heroText">Convert JPG or JPEG images to WEBP instantly. Choose quality, reduce file size and download a modern WEBP file directly from your browser.</p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
+<label class="drop" id="dropZone" for="fileInput">
+<div>
+<strong id="dropTitle">Drop your JPG image here</strong>
+<span id="dropText">or tap to browse from your device.</span>
+</div>
+</label>
+
+<input id="fileInput" type="file" accept="image/jpeg,image/jpg">
+
+<div class="preview" id="preview">
+<img id="previewImg" alt="Preview">
+</div>
+</div>
+
+<div class="panel">
+<div class="info" id="fileInfo">Choose a JPG image to begin.</div>
+
+<div class="control">
+<label>
+<span id="qualityText">WEBP quality</span>
+<span id="qualityValue">86%</span>
+</label>
+<input id="qualityRange" type="range" min="10" max="100" value="86">
+</div>
+
+<button class="main-btn" id="downloadBtn" disabled>
+Convert and Download WEBP
+</button>
+
+<div class="result" id="result"></div>
+
+<div class="info" id="privacyText" style="margin-top:18px">
+Toolivo converts images locally in your browser. The selected file is not uploaded by this page.
+</div>
+</div>
+
+</section>
+
+<section class="content">
+<article class="card">
+<h2 id="whyTitle">Why convert JPG to WEBP?</h2>
+<p id="whyText">WEBP can create smaller image files while keeping good visual quality. It is great for websites, blogs, product images and faster loading pages.</p>
+</article>
+
+<article class="card">
+<h2 id="howTitle">How it works</h2>
+<ul>
+<li id="step1">Select or drop a JPG image.</li>
+<li id="step2">Choose the WEBP quality.</li>
+<li id="step3">Download the new WEBP file instantly.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. <span id="rightsText">All rights reserved.</span></div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
+
+</div>
+
 <script>
-const tr={home:'Ana sayfa',converter:'Dönüştürücü',badge:'Tarayıcı içinde gizli dönüştürücü',heroA:'JPG → WEBP',heroB:'dönüştürücü.',lead:'JPG veya JPEG görselleri anında WEBP’ye dönüştür. Kalite seç, dosya boyutunu düşür ve modern WEBP dosyasını doğrudan tarayıcından indir.',dropTitle:'JPG görselini buraya bırak',dropText:'veya cihazından seçmek için dokun.',idle:'Başlamak için bir JPG görsel seç.',quality:'WEBP kalitesi',download:'WEBP’ye dönüştür ve indir',privacy:'Toolivo görselleri tarayıcında yerel olarak dönüştürür. Seçilen dosya bu sayfa tarafından sunucuya yüklenmez.',whyTitle:'JPG neden WEBP’ye çevrilir?',whyText:'WEBP, iyi görsel kaliteyi korurken daha küçük dosyalar oluşturabilir. Web siteleri, bloglar, ürün görselleri ve hızlı yüklenen sayfalar için çok kullanışlıdır.',howTitle:'Nasıl çalışır?',s1:'Bir JPG görsel seç veya sürükle bırak.',s2:'WEBP kalitesini seç.',s3:'Yeni WEBP dosyasını anında indir.',rights:'Tüm hakları saklıdır.',aboutF:'Hakkında',privacyF:'Gizlilik',termsF:'Şartlar',contactF:'İletişim'};
-const en={home:'Home',converter:'Converter',badge:'Private browser-based converter',heroA:'JPG to WEBP',heroB:'converter.',lead:'Convert JPG or JPEG images to WEBP instantly. Choose quality, reduce file size and download a modern WEBP file directly from your browser.',dropTitle:'Drop your JPG image here',dropText:'or tap to browse from your device.',idle:'Choose a JPG image to begin.',quality:'WEBP quality',download:'Convert and download WEBP',privacy:'Toolivo converts images locally in your browser. The selected file is not uploaded by this page.',whyTitle:'Why convert JPG to WEBP?',whyText:'WEBP can create smaller image files while keeping good visual quality. It is great for websites, blogs, product images and faster loading pages.',howTitle:'How it works',s1:'Select or drop a JPG image.',s2:'Choose the WEBP quality.',s3:'Download the new WEBP file instantly.',rights:'All rights reserved.',aboutF:'About',privacyF:'Privacy',termsF:'Terms',contactF:'Contact'};
-let lang=localStorage.getItem('toolivo_lang')||((navigator.language||'').toLowerCase().startsWith('tr')?'tr':'en');const q=s=>document.querySelector(s),qa=s=>document.querySelectorAll(s);function applyLang(){const d=lang==='tr'?tr:en;document.documentElement.lang=lang;qa('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.textContent=d[k]});q('#langBtn').textContent=lang==='tr'?'EN':'TR';document.title=lang==='tr'?'JPG WEBP Dönüştürücü — Toolivo':'JPG to WEBP Converter — Toolivo'}q('#langBtn').onclick=()=>{lang=lang==='tr'?'en':'tr';localStorage.setItem('toolivo_lang',lang);applyLang()};applyLang();q('#year').textContent=new Date().getFullYear();
-let bitmap=null,fileName='toolivo-image';const fileInput=q('#fileInput'),drop=q('#dropZone'),preview=q('#preview'),previewImg=q('#previewImg'),fileInfo=q('#fileInfo'),download=q('#downloadBtn'),result=q('#result'),quality=q('#qualityRange'),qualityValue=q('#qualityValue');quality.oninput=()=>qualityValue.textContent=quality.value+'%';async function loadFile(file){if(!file||!file.type.startsWith('image/'))return;fileName=file.name.replace(/\.[^.]+$/,'')||'toolivo-image';const url=URL.createObjectURL(file);previewImg.src=url;preview.style.display='block';bitmap=await createImageBitmap(file);fileInfo.textContent=`${file.name} • ${bitmap.width}×${bitmap.height} • ${(file.size/1024).toFixed(1)} KB`;download.disabled=false;result.textContent=''}fileInput.onchange=e=>loadFile(e.target.files[0]);['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag')}));drop.addEventListener('drop',e=>loadFile(e.dataTransfer.files[0]));download.onclick=()=>{if(!bitmap)return;const canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(bitmap,0,0);canvas.toBlob(blob=>{if(!blob){result.textContent='Export failed.';return}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`${fileName}-toolivo.webp`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);result.textContent=`Done • ${(blob.size/1024).toFixed(1)} KB`},'image/webp',Number(quality.value)/100)};
+const fileInput=document.getElementById('fileInput');
+const drop=document.getElementById('dropZone');
+const preview=document.getElementById('preview');
+const previewImg=document.getElementById('previewImg');
+const fileInfo=document.getElementById('fileInfo');
+const downloadBtn=document.getElementById('downloadBtn');
+const result=document.getElementById('result');
+const langBtn=document.getElementById('langBtn');
+const qualityRange=document.getElementById('qualityRange');
+const qualityValue=document.getElementById('qualityValue');
+
+let bitmap=null;
+let fileName='toolivo-image';
+
+let lang=localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
+
+const ui={
+en:{
+title:"JPG to WEBP Converter — Toolivo",
+heroTitle:'JPG to <span class="gradient">WEBP</span>',
+heroText:"Convert JPG or JPEG images to WEBP instantly. Choose quality, reduce file size and download a modern WEBP file directly from your browser.",
+dropTitle:"Drop your JPG image here",
+dropText:"or tap to browse from your device.",
+idle:"Choose a JPG image to begin.",
+quality:"WEBP quality",
+download:"Convert and Download WEBP",
+privacy:"Toolivo converts images locally in your browser. The selected file is not uploaded by this page.",
+whyTitle:"Why convert JPG to WEBP?",
+whyText:"WEBP can create smaller image files while keeping good visual quality. It is great for websites, blogs, product images and faster loading pages.",
+howTitle:"How it works",
+step1:"Select or drop a JPG image.",
+step2:"Choose the WEBP quality.",
+step3:"Download the new WEBP file instantly.",
+rights:"All rights reserved.",
+done:"Done",
+failed:"Export failed."
+},
+tr:{
+title:"JPG WEBP Dönüştürücü — Toolivo",
+heroTitle:'JPG → <span class="gradient">WEBP</span>',
+heroText:"JPG veya JPEG görselleri anında WEBP’ye dönüştür. Kalite seç, dosya boyutunu düşür ve modern WEBP dosyasını doğrudan tarayıcından indir.",
+dropTitle:"JPG görselini buraya bırak",
+dropText:"veya cihazından seçmek için dokun.",
+idle:"Başlamak için bir JPG görsel seç.",
+quality:"WEBP kalitesi",
+download:"WEBP’ye Dönüştür ve İndir",
+privacy:"Toolivo görselleri tarayıcında yerel olarak dönüştürür. Seçilen dosya bu sayfa tarafından sunucuya yüklenmez.",
+whyTitle:"JPG neden WEBP’ye çevrilir?",
+whyText:"WEBP, iyi görsel kaliteyi korurken daha küçük dosyalar oluşturabilir. Web siteleri, bloglar, ürün görselleri ve hızlı yüklenen sayfalar için çok kullanışlıdır.",
+howTitle:"Nasıl çalışır?",
+step1:"Bir JPG görsel seç veya sürükle bırak.",
+step2:"WEBP kalitesini seç.",
+step3:"Yeni WEBP dosyasını anında indir.",
+rights:"Tüm hakları saklıdır.",
+done:"Tamamlandı",
+failed:"Dışa aktarma başarısız."
+}
+};
+
+function applyLang(){
+const t=ui[lang];
+document.documentElement.lang=lang;
+document.title=t.title;
+
+document.getElementById("heroTitle").innerHTML=t.heroTitle;
+document.getElementById("heroText").innerText=t.heroText;
+document.getElementById("dropTitle").innerText=t.dropTitle;
+document.getElementById("dropText").innerText=t.dropText;
+document.getElementById("qualityText").innerText=t.quality;
+document.getElementById("downloadBtn").innerText=t.download;
+document.getElementById("privacyText").innerText=t.privacy;
+document.getElementById("whyTitle").innerText=t.whyTitle;
+document.getElementById("whyText").innerText=t.whyText;
+document.getElementById("howTitle").innerText=t.howTitle;
+document.getElementById("step1").innerText=t.step1;
+document.getElementById("step2").innerText=t.step2;
+document.getElementById("step3").innerText=t.step3;
+document.getElementById("rightsText").innerText=t.rights;
+
+if(!bitmap){fileInfo.innerText=t.idle;}
+langBtn.innerText=lang==="tr" ? "EN" : "TR";
+}
+
+qualityRange.oninput=()=>{
+qualityValue.textContent=qualityRange.value+"%";
+};
+
+async function loadFile(file){
+if(!file || !file.type.startsWith('image/')) return;
+
+fileName=file.name.replace(/\.[^.]+$/,'') || 'toolivo-image';
+
+const url=URL.createObjectURL(file);
+previewImg.src=url;
+preview.style.display='block';
+
+bitmap=await createImageBitmap(file);
+
+fileInfo.textContent=
+`${file.name} • ${bitmap.width}×${bitmap.height} • ${(file.size/1024).toFixed(1)} KB`;
+
+downloadBtn.disabled=false;
+result.textContent='';
+}
+
+fileInput.onchange=e=>loadFile(e.target.files[0]);
+
+['dragenter','dragover'].forEach(ev=>{
+drop.addEventListener(ev,e=>{
+e.preventDefault();
+drop.classList.add('drag');
+});
+});
+
+['dragleave','drop'].forEach(ev=>{
+drop.addEventListener(ev,e=>{
+e.preventDefault();
+drop.classList.remove('drag');
+});
+});
+
+drop.addEventListener('drop',e=>{
+loadFile(e.dataTransfer.files[0]);
+});
+
+downloadBtn.onclick=()=>{
+if(!bitmap) return;
+
+const canvas=document.createElement('canvas');
+canvas.width=bitmap.width;
+canvas.height=bitmap.height;
+
+const ctx=canvas.getContext('2d');
+ctx.imageSmoothingEnabled=true;
+ctx.imageSmoothingQuality='high';
+ctx.drawImage(bitmap,0,0);
+
+canvas.toBlob(blob=>{
+if(!blob){
+result.textContent=ui[lang].failed;
+return;
+}
+
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+
+a.href=url;
+a.download=`${fileName}-toolivo.webp`;
+
+document.body.appendChild(a);
+a.click();
+a.remove();
+
+URL.revokeObjectURL(url);
+
+result.textContent=`${ui[lang].done} • ${(blob.size/1024).toFixed(1)} KB`;
+},'image/webp',Number(qualityRange.value)/100);
+};
+
+langBtn.onclick=()=>{
+lang=lang==="tr" ? "en" : "tr";
+localStorage.setItem("toolivo_lang",lang);
+applyLang();
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
+applyLang();
 </script>
+
 </body>
 </html>
