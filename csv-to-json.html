@@ -4,27 +4,88 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CSV to JSON Converter - Toolivo</title>
+<title>CSV to JSON Converter — Toolivo</title>
 <meta name="description" content="Convert CSV to JSON instantly with copyable output.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;padding:20px}
-.container{max-width:1050px;margin:auto}
-.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
-.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:850px){.grid{grid-template-columns:1fr}}
-label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
-textarea{width:100%;height:360px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.label{display:block;margin-bottom:10px;color:#cbd5e1;font-size:14px;font-weight:bold}
+
+textarea{
+width:100%;
+height:380px;
+background:#020617;
+border:1px solid #334155;
+color:white;
+border-radius:18px;
+padding:18px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+textarea:focus{border-color:#38bdf8}
+
 .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+button{padding:15px 20px;border:none;border-radius:16px;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
 .generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
-.copy{background:#1e293b;color:white}
-.clear{background:#020617;color:white;border:1px solid #334155}
-.message{margin-top:15px;color:#94a3b8;font-size:14px}
-.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+.copy,.clear{background:#020617;border:1px solid #334155;color:white}
+
+.message,.info{
+margin-top:15px;
+padding:16px;
+border-radius:16px;
+background:#020617;
+border:1px solid #334155;
+color:#94a3b8;
+font-size:14px;
+line-height:1.7;
+}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+textarea{height:300px}
+}
+
+@media(max-width:520px){
+.buttons{flex-direction:column}
+button{width:100%}
+}
 </style>
 </head>
 
@@ -32,182 +93,168 @@ button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:
 
 <div class="container">
 
-<div class="title">CSV to JSON Converter</div>
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-<div class="desc">
-Convert CSV data to JSON instantly. Paste CSV, generate JSON, and copy the result.
-</div>
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
 
-<div class="card">
+<section class="tool-hero">
+<h1>CSV to JSON <span class="gradient">Converter</span></h1>
+<p>Convert CSV data to JSON instantly. Paste CSV, generate clean JSON output and copy the result.</p>
+</section>
 
-<div class="grid">
+<section class="tool-grid">
 
-<div>
-<label>CSV Input</label>
+<div class="panel">
+<label class="label">CSV Input</label>
 
 <textarea id="csvInput" placeholder="name,age,city
 John,30,London
 Jane,25,Paris"></textarea>
+
+<div class="buttons">
+<button class="generate" onclick="convertCSVtoJSON()">Convert</button>
+<button class="copy" onclick="copyJSON()">Copy JSON</button>
+<button class="clear" onclick="clearAll()">Clear</button>
 </div>
 
-<div>
-<label>JSON Output</label>
+<div class="message" id="message"></div>
+</div>
+
+<div class="panel">
+<div class="info">JSON output will appear below after conversion.</div>
+
+<label class="label">JSON Output</label>
 
 <textarea id="jsonOutput" placeholder="JSON output will appear here..."></textarea>
 </div>
 
+</section>
+
+<section class="content">
+<article class="card">
+<h2>Why convert CSV to JSON?</h2>
+<p>JSON is widely used in APIs, web apps, configuration files and developer workflows, while CSV is common for spreadsheet data.</p>
+</article>
+
+<article class="card">
+<h2>How it works</h2>
+<ul>
+<li>Paste CSV data with headers.</li>
+<li>Convert rows into JSON objects.</li>
+<li>Copy the formatted JSON output instantly.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
 </div>
-
-<div class="buttons">
-
-<button class="generate" onclick="convertCSVtoJSON()">
-Convert
-</button>
-
-<button class="copy" onclick="copyJSON()">
-Copy JSON
-</button>
-
-<button class="clear" onclick="clearAll()">
-Clear
-</button>
-
-</div>
-
-<div class="message" id="message"></div>
-
-</div>
-
-<div class="footer">
-Toolivo © 2026
-</div>
+</footer>
 
 </div>
 
 <script>
 function parseCSVLine(line){
+const result=[];
+let current="";
+let insideQuotes=false;
 
-    const result = [];
-    let current = "";
-    let insideQuotes = false;
+for(let i=0;i<line.length;i++){
+const char=line[i];
 
-    for(let i = 0; i < line.length; i++){
+if(char==='"'){
+insideQuotes=!insideQuotes;
+}else if(char===","&&!insideQuotes){
+result.push(current.trim());
+current="";
+}else{
+current+=char;
+}
+}
 
-        const char = line[i];
+result.push(current.trim());
 
-        if(char === '"'){
-
-            insideQuotes = !insideQuotes;
-
-        }else if(char === "," && !insideQuotes){
-
-            result.push(current.trim());
-
-            current = "";
-
-        }else{
-
-            current += char;
-        }
-    }
-
-    result.push(current.trim());
-
-    return result.map(item =>
-        item.replace(/^"(.*)"$/, "$1")
-    );
+return result.map(item=>item.replace(/^"(.*)"$/,"$1"));
 }
 
 function convertCSVtoJSON(){
+const input=document.getElementById("csvInput").value.trim();
+const message=document.getElementById("message");
 
-    const input =
-    document.getElementById("csvInput").value.trim();
+if(!input){
+message.innerText="Please paste CSV first.";
+return;
+}
 
-    const message =
-    document.getElementById("message");
+try{
+const lines=input.split(/\r?\n/);
 
-    if(!input){
+if(lines.length<2){
+message.innerText="CSV must contain headers and rows.";
+return;
+}
 
-        message.innerText =
-        "Please paste CSV first.";
+const headers=parseCSVLine(lines[0]);
+const result=[];
 
-        return;
-    }
+for(let i=1;i<lines.length;i++){
+if(!lines[i].trim())continue;
 
-    try{
+const values=parseCSVLine(lines[i]);
+let obj={};
 
-        const lines =
-        input.split(/\r?\n/);
+headers.forEach((header,index)=>{
+obj[header]=values[index]||"";
+});
 
-        if(lines.length < 2){
+result.push(obj);
+}
 
-            message.innerText =
-            "CSV must contain headers and rows.";
+document.getElementById("jsonOutput").value=
+JSON.stringify(result,null,2);
 
-            return;
-        }
-
-        const headers =
-        parseCSVLine(lines[0]);
-
-        const result = [];
-
-        for(let i = 1; i < lines.length; i++){
-
-            if(!lines[i].trim()) continue;
-
-            const values =
-            parseCSVLine(lines[i]);
-
-            let obj = {};
-
-            headers.forEach((header,index) => {
-
-                obj[header] =
-                values[index] || "";
-            });
-
-            result.push(obj);
-        }
-
-        document.getElementById("jsonOutput").value =
-        JSON.stringify(result,null,2);
-
-        message.innerText =
-        "Converted successfully.";
-
-    }catch(error){
-
-        message.innerText =
-        "Invalid CSV format.";
-    }
+message.innerText="Converted successfully.";
+}catch(error){
+message.innerText="Invalid CSV format.";
+}
 }
 
 function copyJSON(){
+const output=document.getElementById("jsonOutput");
 
-    const output =
-    document.getElementById("jsonOutput");
+if(!output.value){
+alert("Convert CSV first.");
+return;
+}
 
-    if(!output.value){
-
-        alert("Convert CSV first.");
-
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-
-    alert("Copied!");
+navigator.clipboard.writeText(output.value);
+alert("Copied!");
 }
 
 function clearAll(){
-
-    document.getElementById("csvInput").value = "";
-
-    document.getElementById("jsonOutput").value = "";
-
-    document.getElementById("message").innerText = "";
+document.getElementById("csvInput").value="";
+document.getElementById("jsonOutput").value="";
+document.getElementById("message").innerText="";
 }
+
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
