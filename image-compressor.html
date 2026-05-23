@@ -1,38 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Compressor — Toolivo</title>
-  <meta name="description" content="Compress JPG, PNG and WEBP images online with Toolivo. Free, fast and private image compressor that runs directly in your browser." />
-  <meta name="keywords" content="image compressor, compress image, reduce image size, jpg compressor, png compressor, webp compressor, Toolivo" />
-  <meta name="author" content="Toolivo" />
-  <meta property="og:title" content="Image Compressor — Toolivo" />
-  <meta property="og:description" content="Free online image compressor. Reduce image size instantly in your browser." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#05070d" />
-  <link rel="icon" type="image/png" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="apple-touch-icon" href="https://i.imgur.com/7qzyyTa.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root{--bg:#05070d;--card:rgba(255,255,255,.08);--card2:rgba(255,255,255,.12);--stroke:rgba(255,255,255,.14);--text:#f7fbff;--muted:#a8b3c7;--muted2:#748098;--cyan:#39e6d2;--blue:#6ea8ff;--purple:#9d7bff;--shadow:0 24px 80px rgba(0,0,0,.45);--radius:28px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 18% 8%,rgba(57,230,210,.18),transparent 34%),radial-gradient(circle at 78% 0%,rgba(157,123,255,.18),transparent 31%),linear-gradient(180deg,var(--bg),#03050a 52%,#05070d);color:var(--text);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 72%)}a{color:inherit;text-decoration:none}.wrap{width:min(1080px,calc(100% - 34px));margin:0 auto}header{position:sticky;top:0;z-index:50;backdrop-filter:blur(24px);background:linear-gradient(180deg,rgba(5,7,13,.82),rgba(5,7,13,.56));border-bottom:1px solid rgba(255,255,255,.08)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:4px;font-weight:900;letter-spacing:-.055em;font-size:28px}.brand span:last-child{background:linear-gradient(100deg,#fff,#d9fffb 42%,#b9cfff);-webkit-background-clip:text;color:transparent}.logo{width:92px;height:92px;border-radius:24px;display:grid;place-items:center;position:relative;overflow:visible;background:transparent;box-shadow:none;flex-shrink:0;margin-right:-8px}.logo img{width:92px;height:92px;object-fit:contain;display:block;filter:drop-shadow(0 0 26px rgba(57,230,210,.42)) drop-shadow(0 20px 42px rgba(0,0,0,.58));transform:translateY(2px) scale(1.08)}.navlinks{display:flex;align-items:center;gap:8px}.navlinks a,.lang-btn{border:1px solid transparent;color:var(--muted);padding:10px 13px;border-radius:999px;font-weight:650;font-size:14px;background:transparent;cursor:pointer}.navlinks a:hover,.lang-btn:hover{color:var(--text);border-color:var(--stroke);background:rgba(255,255,255,.06)}.hero{padding:86px 0 38px;text-align:center;position:relative}.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border-radius:999px;border:1px solid rgba(57,230,210,.28);background:rgba(57,230,210,.08);color:#d8fffb;font-weight:700;font-size:14px;box-shadow:0 0 34px rgba(57,230,210,.10)}.pulse{width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 0 7px rgba(57,230,210,.14)}h1{margin:22px auto 16px;max-width:930px;font-size:clamp(42px,7vw,82px);line-height:.96;letter-spacing:-.078em;font-weight:950}.gradient{background:linear-gradient(100deg,#fff,#c8fff8 36%,#9bbfff 65%,#decfff);-webkit-background-clip:text;color:transparent}.lead{max-width:720px;margin:0 auto;color:var(--muted);font-size:clamp(17px,2vw,21px);line-height:1.65}.section{padding:36px 0}.panel,.card{border:1px solid var(--stroke);background:linear-gradient(180deg,var(--card2),rgba(255,255,255,.052));box-shadow:var(--shadow);border-radius:var(--radius);backdrop-filter:blur(20px)}.tool{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;align-items:stretch}.panel{padding:24px}.drop{min-height:360px;border:1px dashed rgba(255,255,255,.26);border-radius:24px;display:grid;place-items:center;text-align:center;padding:24px;background:rgba(255,255,255,.045);transition:.2s ease;cursor:pointer}.drop.drag{border-color:var(--cyan);background:rgba(57,230,210,.08)}.icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);font-size:25px;margin:0 auto 16px}.drop strong{display:block;font-size:24px;letter-spacing:-.04em;margin:10px 0 8px}.drop span{color:var(--muted);line-height:1.5}input[type=file]{display:none}.preview{display:none;margin-top:16px;border:1px solid rgba(255,255,255,.12);border-radius:22px;overflow:hidden;background:rgba(0,0,0,.20)}.preview img{width:100%;display:block;max-height:360px;object-fit:contain;background:#111722}.controls{display:grid;gap:14px}.control,.info{padding:16px;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:rgba(255,255,255,.045);color:var(--muted);line-height:1.55}.control label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:800;color:var(--muted);font-size:14px;margin-bottom:12px}select,input[type=range]{width:100%;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.24);color:var(--text);border-radius:14px;padding:12px 13px;outline:none;font:inherit}input[type=range]{padding:0;accent-color:var(--cyan)}.btn{border:1px solid var(--stroke);background:rgba(255,255,255,.08);color:var(--text);min-height:54px;padding:0 20px;border-radius:16px;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:.22s ease;width:100%}.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.13)}.btn.primary{border:0;color:#031017;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 20px 58px rgba(57,230,210,.18),inset 0 1px 0 rgba(255,255,255,.45)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.result{color:var(--muted);line-height:1.55;font-size:14px;min-height:22px}.saving{display:grid;grid-template-columns:1fr 1fr;gap:12px}.saving div{padding:14px;border-radius:18px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.1)}.saving b{display:block;color:var(--text);font-size:20px;margin-bottom:4px}.saving span{font-size:13px;color:var(--muted)}.content{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:22px;box-shadow:none}.card h2{margin:0 0 10px;font-size:26px;letter-spacing:-.04em}.card p,.card li{color:var(--muted);line-height:1.7}.card ul{margin:12px 0 0;padding-left:18px}footer{padding:44px 0 38px;color:var(--muted2);border-top:1px solid rgba(255,255,255,.08);margin-top:36px}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}@media(max-width:860px){.navlinks a{display:none}.tool,.content{grid-template-columns:1fr}.saving{grid-template-columns:1fr}.hero{padding-top:54px}.brand{font-size:25px}.logo{width:74px;height:74px}.logo img{width:74px;height:74px}h1{letter-spacing:-.062em}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image Compressor — Toolivo</title>
+
+<meta name="description" content="Compress images instantly with Toolivo. Reduce image size while keeping quality.">
+
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+:root{
+--bg:#0f172a;
+--panel:#111827;
+--soft:#020617;
+--border:#1e293b;
+--text:#ffffff;
+--muted:#94a3b8;
+--cyan:#06b6d4;
+--blue:#3b82f6;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
+}
+
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
+}
+
+.logo span{
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:var(--muted);
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.hero{
+padding:50px 0 30px;
+text-align:center;
+}
+
+.hero h1{
+font-size:clamp(42px,7vw,72px);
+line-height:1;
+margin-bottom:14px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+max-width:760px;
+margin:auto;
+color:var(--muted);
+font-size:18px;
+line-height:1.7;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+margin-top:24px;
+}
+
+.panel{
+background:rgba(17,24,39,.95);
+border:1px solid var(--border);
+border-radius:24px;
+padding:22px;
+backdrop-filter:blur(12px);
+}
+
+.drop{
+border:2px dashed #334155;
+border-radius:24px;
+padding:45px 20px;
+text-align:center;
+background:rgba(255,255,255,.02);
+cursor:pointer;
+transition:.25s;
+}
+
+.drop:hover,
+.drop.drag{
+border-color:var(--cyan);
+background:rgba(57,230,210,.08);
+box-shadow:0 0 34px rgba(57,230,210,.18);
+transform:translateY(-2px);
+}
+
+.drop h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.drop p{
+color:var(--muted);
+line-height:1.6;
+}
+
+.preview{
+margin-top:20px;
+border-radius:22px;
+overflow:hidden;
+border:1px solid var(--border);
+background:var(--soft);
+min-height:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.preview img{
+max-width:100%;
+display:block;
+}
+
+.controls{
+margin-top:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+font-weight:bold;
+color:#cbd5e1;
+}
+
+input[type=range]{
+width:100%;
+accent-color:#38bdf8;
+}
+
+.value{
+margin-top:8px;
+color:#67e8f9;
+font-size:14px;
+font-weight:bold;
+}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:22px;
+}
+
+.btn{
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.primary{
+background:linear-gradient(90deg,var(--cyan),var(--blue));
+color:white;
+}
+
+.secondary{
+background:#020617;
+border:1px solid #334155;
+color:white;
+}
+
+.result{
+color:var(--muted);
+line-height:1.55;
+font-size:14px;
+min-height:22px;
+margin-top:16px;
+}
+
+.result.success{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:10px 14px;
+border-radius:999px;
+background:rgba(34,197,94,.14);
+border:1px solid rgba(34,197,94,.28);
+color:#bbf7d0;
+font-weight:800;
+animation:pop .25s ease;
+}
+
+@keyframes pop{
+0%{
+transform:scale(.95);
+opacity:0;
+}
+100%{
+transform:scale(1);
+opacity:1;
+}
+}
+
+#downloadBtn{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+margin-top:30px;
+}
+
+.card{
+background:rgba(17,24,39,.95);
+border:1px solid var(--border);
+border-radius:22px;
+padding:22px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:var(--muted);
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
+}
+
+.footer{
+margin-top:60px;
+padding:30px 0;
+border-top:1px solid var(--border);
+text-align:center;
+color:#64748b;
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+gap:16px;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+.btn{
+width:100%;
+}
+
+}
+</style>
 </head>
+
 <body>
-<header><div class="wrap nav"><a class="brand" href="/" aria-label="Toolivo Home"><span class="logo"><img src="https://i.imgur.com/7qzyyTa.png" alt=""></span><span>Toolivo</span></a><nav class="navlinks"><a href="/" data-i18n="home">Home</a><a href="#compressor" data-i18n="compressor">Compressor</a><a href="#faq">FAQ</a><button class="lang-btn" id="langBtn">TR</button></nav></div></header>
-<main>
-  <section class="hero wrap"><div class="badge"><span class="pulse"></span><span data-i18n="badge">Fast browser-based compression</span></div><h1><span data-i18n="heroA">Image</span><br><span class="gradient" data-i18n="heroB">compressor.</span></h1><p class="lead" data-i18n="lead">Reduce image file size instantly. Compress JPG, PNG and WEBP images directly in your browser with adjustable quality.</p></section>
-  <section class="section wrap" id="compressor"><div class="tool"><div class="panel"><label class="drop" id="dropZone" for="fileInput"><div><div class="icon">⚡</div><strong data-i18n="dropTitle">Drop your image here</strong><span data-i18n="dropText">or tap to browse. Supports JPG, PNG and WEBP.</span></div></label><input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp"><div class="preview" id="preview"><img id="previewImg" alt="Preview"></div></div><div class="panel controls"><div class="info" id="fileInfo" data-i18n="idle">Choose an image to begin.</div><div class="control"><label><span data-i18n="quality">Compression quality</span><span id="qualityValue">78%</span></label><input id="qualityRange" type="range" min="10" max="100" value="78"></div><div class="control"><label><span data-i18n="format">Output format</span></label><select id="formatSelect"><option value="image/jpeg">JPG - smallest</option><option value="image/webp">WEBP - modern</option><option value="image/png">PNG - lossless</option></select></div><button class="btn primary" id="downloadBtn" disabled data-i18n="download">Compress and download</button><div class="saving" id="saving" style="display:none"><div><b id="beforeSize">—</b><span data-i18n="before">Before</span></div><div><b id="afterSize">—</b><span data-i18n="after">After</span></div></div><div class="result" id="result"></div><div class="info" data-i18n="privacy">Toolivo compresses images locally in your browser. Your file is not uploaded by this page.</div></div></div></section>
-  <section class="section wrap" id="faq"><div class="content"><article class="card"><h2 data-i18n="whyTitle">Why compress images?</h2><p data-i18n="whyText">Smaller images load faster, upload easier and improve website performance. Compression is useful for blogs, stores, social posts and product images.</p></article><article class="card"><h2 data-i18n="howTitle">How it works</h2><ul><li data-i18n="s1">Select or drop an image.</li><li data-i18n="s2">Choose quality and output format.</li><li data-i18n="s3">Download the compressed image instantly.</li></ul></article></div></section>
-</main>
-<footer><div class="wrap footer-inner"><div>© <span id="year"></span> Toolivo. <span data-i18n="rights">All rights reserved.</span></div><div>toolivo.site</div></div></footer>
+
+<div class="container">
+
+<header class="header">
+
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1><span class="gradient">Image Compressor</span></h1>
+
+<p>
+Compress JPG, PNG and WEBP images instantly while keeping quality. Fast, responsive and free online image compression tool.
+</p>
+
+</section>
+
+<section class="grid">
+
+<div class="panel">
+
+<div class="drop" id="drop">
+
+<h3>Upload Image</h3>
+
+<p>
+Drag & drop your image here or click to browse.
+</p>
+
+<input type="file" id="fileInput" hidden accept="image/*">
+
+</div>
+
+<div class="controls">
+
+<label>Compression Quality</label>
+
+<input type="range" id="quality" min="10" max="100" value="80">
+
+<div class="value">
+Quality: <span id="qualityValue">80</span>%
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="btn primary" id="compressBtn">
+Compress Image
+</button>
+
+<button class="btn primary" id="downloadBtn" disabled>
+⬇ Compress and Download
+</button>
+
+</div>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<div class="panel">
+
+<div class="preview" id="preview">
+
+<p style="color:#64748b">
+Preview will appear here
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<div class="card">
+
+<h2>Why compress images?</h2>
+
+<p>
+Compressed images load faster, improve SEO performance and reduce bandwidth usage on websites and apps.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Upload your image.</li>
+<li>Adjust compression quality.</li>
+<li>Compress instantly.</li>
+<li>Download optimized image.</li>
+</ul>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
+
+</div>
+
 <script>
-const tr={home:'Ana sayfa',compressor:'Sıkıştırıcı',badge:'Tarayıcı içinde hızlı sıkıştırma',heroA:'Görsel',heroB:'sıkıştırıcı.',lead:'Görsel dosya boyutunu anında küçült. JPG, PNG ve WEBP görselleri kalite ayarıyla doğrudan tarayıcında sıkıştır.',dropTitle:'Görselini buraya bırak',dropText:'veya seçmek için dokun. JPG, PNG ve WEBP destekler.',idle:'Başlamak için bir görsel seç.',quality:'Sıkıştırma kalitesi',format:'Çıktı formatı',download:'Sıkıştır ve indir',before:'Önce',after:'Sonra',privacy:'Toolivo görselleri tarayıcında yerel olarak sıkıştırır. Dosyan bu sayfa tarafından sunucuya yüklenmez.',whyTitle:'Görsel neden sıkıştırılır?',whyText:'Küçük görseller daha hızlı yüklenir, daha kolay paylaşılır ve web sitesi performansını artırır. Blog, mağaza, sosyal medya ve ürün görselleri için kullanışlıdır.',howTitle:'Nasıl çalışır?',s1:'Bir görsel seç veya sürükle bırak.',s2:'Kalite ve çıktı formatını belirle.',s3:'Sıkıştırılmış görseli anında indir.',rights:'Tüm hakları saklıdır.'};
-const en={home:'Home',compressor:'Compressor',badge:'Fast browser-based compression',heroA:'Image',heroB:'compressor.',lead:'Reduce image file size instantly. Compress JPG, PNG and WEBP images directly in your browser with adjustable quality.',dropTitle:'Drop your image here',dropText:'or tap to browse. Supports JPG, PNG and WEBP.',idle:'Choose an image to begin.',quality:'Compression quality',format:'Output format',download:'Compress and download',before:'Before',after:'After',privacy:'Toolivo compresses images locally in your browser. Your file is not uploaded by this page.',whyTitle:'Why compress images?',whyText:'Smaller images load faster, upload easier and improve website performance. Compression is useful for blogs, stores, social posts and product images.',howTitle:'How it works',s1:'Select or drop an image.',s2:'Choose quality and output format.',s3:'Download the compressed image instantly.',rights:'All rights reserved.'};
-let lang=localStorage.getItem('toolivo_lang')||((navigator.language||'').toLowerCase().startsWith('tr')?'tr':'en');const q=s=>document.querySelector(s),qa=s=>document.querySelectorAll(s);function applyLang(){const d=lang==='tr'?tr:en;document.documentElement.lang=lang;qa('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.textContent=d[k]});q('#langBtn').textContent=lang==='tr'?'EN':'TR';document.title=lang==='tr'?'Görsel Sıkıştırıcı — Toolivo':'Image Compressor — Toolivo'}q('#langBtn').onclick=()=>{lang=lang==='tr'?'en':'tr';localStorage.setItem('toolivo_lang',lang);applyLang()};applyLang();q('#year').textContent=new Date().getFullYear();
-let bitmap=null,fileName='toolivo-image',originalSize=0;const fileInput=q('#fileInput'),drop=q('#dropZone'),preview=q('#preview'),previewImg=q('#previewImg'),fileInfo=q('#fileInfo'),download=q('#downloadBtn'),result=q('#result'),quality=q('#qualityRange'),qualityValue=q('#qualityValue'),format=q('#formatSelect'),saving=q('#saving'),beforeSize=q('#beforeSize'),afterSize=q('#afterSize');const size=n=>n>1024*1024?(n/1024/1024).toFixed(2)+' MB':(n/1024).toFixed(1)+' KB';quality.oninput=()=>qualityValue.textContent=quality.value+'%';async function loadFile(file){if(!file||!file.type.startsWith('image/'))return;fileName=file.name.replace(/\.[^.]+$/,'')||'toolivo-image';originalSize=file.size;const url=URL.createObjectURL(file);previewImg.src=url;preview.style.display='block';bitmap=await createImageBitmap(file);fileInfo.textContent=`${file.name} • ${bitmap.width}×${bitmap.height} • ${size(file.size)}`;download.disabled=false;saving.style.display='none';result.textContent=''}fileInput.onchange=e=>loadFile(e.target.files[0]);['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag')}));drop.addEventListener('drop',e=>loadFile(e.dataTransfer.files[0]));download.onclick=()=>{if(!bitmap)return;const canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext('2d');ctx.imageSmoothingQuality='high';if(format.value==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height)}ctx.drawImage(bitmap,0,0);const mime=format.value,qv=Number(quality.value)/100;canvas.toBlob(blob=>{if(!blob){result.textContent='Export failed.';return}const ext=mime.includes('png')?'png':mime.includes('webp')?'webp':'jpg';const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`${fileName}-compressed-toolivo.${ext}`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);beforeSize.textContent=size(originalSize);afterSize.textContent=size(blob.size);saving.style.display='grid';const saved=Math.max(0,100-(blob.size/originalSize*100));result.textContent=`Done • ${saved.toFixed(1)}% smaller`},mime,qv)};
+const drop=document.getElementById('drop');
+const fileInput=document.getElementById('fileInput');
+const preview=document.getElementById('preview');
+const quality=document.getElementById('quality');
+const qualityValue=document.getElementById('qualityValue');
+const compressBtn=document.getElementById('compressBtn');
+const downloadBtn=document.getElementById('downloadBtn');
+const result=document.getElementById('result');
+
+let currentFile=null;
+let compressedBlob=null;
+
+drop.onclick=()=>fileInput.click();
+
+drop.addEventListener('dragover',e=>{
+e.preventDefault();
+drop.classList.add('drag');
+});
+
+drop.addEventListener('dragleave',()=>{
+drop.classList.remove('drag');
+});
+
+drop.addEventListener('drop',e=>{
+e.preventDefault();
+drop.classList.remove('drag');
+
+const file=e.dataTransfer.files[0];
+
+if(file){
+loadFile(file);
+}
+});
+
+fileInput.addEventListener('change',e=>{
+const file=e.target.files[0];
+
+if(file){
+loadFile(file);
+}
+});
+
+quality.addEventListener('input',()=>{
+qualityValue.textContent=quality.value;
+});
+
+function loadFile(file){
+
+currentFile=file;
+
+result.className='result';
+result.textContent='';
+
+downloadBtn.disabled=true;
+
+const reader=new FileReader();
+
+reader.onload=e=>{
+
+preview.innerHTML=
+`<img src="${e.target.result}" alt="Preview">`;
+
+};
+
+reader.readAsDataURL(file);
+}
+
+compressBtn.addEventListener('click',()=>{
+
+if(!currentFile){
+
+alert('Please upload an image first.');
+
+return;
+}
+
+const img=new Image();
+
+img.onload=()=>{
+
+const canvas=document.createElement('canvas');
+const ctx=canvas.getContext('2d');
+
+canvas.width=img.width;
+canvas.height=img.height;
+
+ctx.drawImage(img,0,0);
+
+canvas.toBlob(blob=>{
+
+compressedBlob=blob;
+
+const original=currentFile.size;
+const compressed=blob.size;
+
+const saved=
+((original-compressed)/original)*100;
+
+result.className='result success';
+
+result.innerHTML=
+`✓ Done • ${saved.toFixed(1)}% smaller`;
+
+downloadBtn.disabled=false;
+
+const url=URL.createObjectURL(blob);
+
+preview.innerHTML=
+`<img src="${url}" alt="Compressed">`;
+
+},'image/jpeg',quality.value/100);
+
+};
+
+img.src=URL.createObjectURL(currentFile);
+
+});
+
+downloadBtn.addEventListener('click',()=>{
+
+if(!compressedBlob) return;
+
+const a=document.createElement('a');
+
+a.href=URL.createObjectURL(compressedBlob);
+
+a.download='compressed-image.jpg';
+
+a.click();
+
+});
+
+document.getElementById('year').textContent=
+new Date().getFullYear();
 </script>
+
 </body>
 </html>
