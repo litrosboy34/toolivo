@@ -4,160 +4,325 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HTML Table Generator - Toolivo</title>
+<title>HTML Table Generator — Toolivo</title>
 
 <meta name="description" content="Generate HTML tables instantly with live preview and copyable code.">
 
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:#0f172a;
-    color:white;
-    padding:20px;
+background:#0f172a;
+color:white;
+min-height:100vh;
+}
+
+a{
+text-decoration:none;
+color:inherit;
 }
 
 .container{
-    max-width:1000px;
-    margin:auto;
+max-width:1200px;
+margin:auto;
+padding:20px;
 }
 
-.title{
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:10px;
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
 }
 
-.desc{
-    color:#94a3b8;
-    margin-bottom:25px;
-    line-height:1.6;
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-@media(max-width:850px){
-    .grid{
-        grid-template-columns:1fr;
-    }
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:20px;
+padding:20px;
 }
 
 .control{
-    margin-bottom:18px;
+margin-bottom:18px;
 }
 
 label{
-    display:block;
-    margin-bottom:8px;
-    color:#cbd5e1;
-    font-size:14px;
+display:block;
+margin-bottom:8px;
+color:#cbd5e1;
+font-size:14px;
+font-weight:bold;
 }
 
-input{
-    width:100%;
-    accent-color:#0ea5e9;
+input[type="range"]{
+width:100%;
+accent-color:#38bdf8;
 }
 
 .checkbox{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:10px;
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:10px;
+padding:14px;
+border-radius:16px;
+background:#020617;
+border:1px solid #334155;
+}
+
+.checkbox label{
+margin:0;
+cursor:pointer;
 }
 
 .preview{
-    min-height:340px;
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:20px;
-    overflow:auto;
+min-height:360px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:20px;
+overflow:auto;
 }
 
 .preview table{
-    width:100%;
-    border-collapse:collapse;
+width:100%;
+border-collapse:collapse;
 }
 
 .preview th,
 .preview td{
-    border:1px solid #334155;
-    padding:12px;
-    text-align:center;
+border:1px solid #334155;
+padding:14px;
+text-align:center;
 }
 
 .preview th{
-    background:#06b6d4;
-    color:white;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .preview td{
-    background:#111827;
+background:#111827;
+color:#cbd5e1;
 }
 
 .buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 button{
-    padding:13px 20px;
-    border:none;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .generate{
-    background:linear-gradient(90deg,#06b6d4,#3b82f6);
-    color:white;
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
 }
 
 .copy{
-    background:#1e293b;
-    color:white;
+background:#020617;
+border:1px solid #334155;
+color:white;
 }
 
 textarea{
-    width:100%;
-    height:260px;
-    margin-top:18px;
-    background:#020617;
-    border:1px solid #1e293b;
-    color:#38bdf8;
-    border-radius:12px;
-    padding:15px;
-    resize:vertical;
-    line-height:1.5;
+width:100%;
+height:260px;
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border-radius:16px;
+background:#020617;
+border:1px solid #334155;
+color:#94a3b8;
+line-height:1.7;
+margin-bottom:16px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
 }
 
 .footer{
-    text-align:center;
-    color:#64748b;
-    margin-top:25px;
-    font-size:14px;
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+min-height:280px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -166,127 +331,194 @@ textarea{
 
 <div class="container">
 
-    <div class="title">HTML Table Generator</div>
+<header class="header">
 
-    <div class="desc">
-        Generate HTML tables instantly with live preview and copyable code.
-    </div>
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-        <div class="grid">
+</header>
 
-            <div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Rows</label>
-                    <input type="range" id="rows" min="1" max="15" value="4">
-                </div>
+<h1>HTML Table <span class="gradient">Generator</span></h1>
 
-                <div class="control">
-                    <label>Columns</label>
-                    <input type="range" id="columns" min="1" max="10" value="4">
-                </div>
+<p>
+Generate HTML tables instantly with live preview and copyable code for websites, dashboards and responsive layouts.
+</p>
 
-                <div class="checkbox">
-                    <input type="checkbox" id="header" checked>
-                    <label for="header">Include Header Row</label>
-                </div>
+</section>
 
-            </div>
+<section class="tool-grid">
 
-            <div>
+<div class="panel">
 
-                <div class="preview" id="preview"></div>
+<div class="control">
+<label>Rows</label>
+<input type="range" id="rows" min="1" max="15" value="4">
+</div>
 
-            </div>
+<div class="control">
+<label>Columns</label>
+<input type="range" id="columns" min="1" max="10" value="4">
+</div>
 
-        </div>
+<div class="checkbox">
+<input type="checkbox" id="header" checked>
+<label for="header">Include Header Row</label>
+</div>
 
-        <div class="buttons">
+<div class="buttons">
 
-            <button class="generate" onclick="generateTable()">
-                Generate
-            </button>
+<button class="generate" onclick="generateTable()">
+Generate
+</button>
 
-            <button class="copy" onclick="copyHTML()">
-                Copy HTML
-            </button>
+<button class="copy" onclick="copyHTML()">
+Copy HTML
+</button>
 
-        </div>
+</div>
 
-        <textarea id="output"></textarea>
+<textarea id="output"></textarea>
 
-    </div>
+</div>
 
-    <div class="footer">
-        Toolivo © 2026
-    </div>
+<div class="panel">
+
+<div class="info">
+Adjust rows and columns to generate responsive HTML tables instantly with live preview.
+</div>
+
+<div class="preview" id="preview"></div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use HTML tables?</h2>
+
+<p>
+HTML tables help organize structured data for pricing tables, dashboards, reports, schedules and comparison layouts.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Select rows and columns.</li>
+<li>Enable or disable table headers.</li>
+<li>Preview the table live.</li>
+<li>Copy the generated HTML instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateTable(){
 
-    const rows =
-    parseInt(document.getElementById("rows").value);
+const rows=
+parseInt(document.getElementById("rows").value);
 
-    const columns =
-    parseInt(document.getElementById("columns").value);
+const columns=
+parseInt(document.getElementById("columns").value);
 
-    const header =
-    document.getElementById("header").checked;
+const header=
+document.getElementById("header").checked;
 
-    let html = "<table>\\n";
+let html="<table>\\n";
 
-    if(header){
+if(header){
 
-        html += "  <thead>\\n";
-        html += "    <tr>\\n";
+html+="  <thead>\\n";
+html+="    <tr>\\n";
 
-        for(let i=1;i<=columns;i++){
+for(let i=1;i<=columns;i++){
 
-            html += `      <th>Header ${i}</th>\\n`;
-        }
+html+=`      <th>Header ${i}</th>\\n`;
 
-        html += "    </tr>\\n";
-        html += "  </thead>\\n";
-    }
+}
 
-    html += "  <tbody>\\n";
+html+="    </tr>\\n";
+html+="  </thead>\\n";
 
-    for(let r=1;r<=rows;r++){
+}
 
-        html += "    <tr>\\n";
+html+="  <tbody>\\n";
 
-        for(let c=1;c<=columns;c++){
+for(let r=1;r<=rows;r++){
 
-            html += `      <td>Row ${r} Col ${c}</td>\\n`;
-        }
+html+="    <tr>\\n";
 
-        html += "    </tr>\\n";
-    }
+for(let c=1;c<=columns;c++){
 
-    html += "  </tbody>\\n";
-    html += "</table>";
+html+=`      <td>Row ${r} Col ${c}</td>\\n`;
 
-    document.getElementById("output").value = html;
+}
 
-    document.getElementById("preview").innerHTML = html;
+html+="    </tr>\\n";
+
+}
+
+html+="  </tbody>\\n";
+html+="</table>";
+
+document.getElementById("output").value=html;
+
+document.getElementById("preview").innerHTML=html;
 }
 
 function copyHTML(){
 
-    navigator.clipboard.writeText(
-        document.getElementById("output").value
-    );
+navigator.clipboard.writeText(
+document.getElementById("output").value
+);
 
-    alert("Copied!");
+alert("Copied!");
 }
 
-document.querySelectorAll("input").forEach(el => {
-    el.addEventListener("input", generateTable);
+document.querySelectorAll("input").forEach(el=>{
+el.addEventListener("input",generateTable);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateTable();
 </script>
