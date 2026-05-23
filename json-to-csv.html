@@ -4,27 +4,63 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>JSON to CSV Converter - Toolivo</title>
-<meta name="description" content="Convert JSON to CSV instantly with copyable output.">
+<title>JSON to CSV Converter — Toolivo</title>
+<meta name="description" content="Convert JSON to CSV instantly with Toolivo. Paste JSON, generate CSV, and copy the result.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;padding:20px}
-.container{max-width:1050px;margin:auto}
-.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
-.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:850px){.grid{grid-template-columns:1fr}}
-label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
-textarea{width:100%;height:360px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-left:auto}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.lang-btn{padding:8px 13px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold;font-size:14px;transition:.2s}
+.lang-btn:hover{color:white;border-color:#38bdf8}
+
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:720px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.label{font-size:14px;font-weight:bold;color:#9ca8bb;margin-bottom:10px}
+
+textarea{width:100%;min-height:360px;border-radius:18px;border:1px solid #334155;background:#020617;color:white;padding:18px;font-size:15px;line-height:1.6;resize:vertical;font-family:monospace;outline:none}
+textarea:focus{border-color:#38bdf8}
+
 .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
-.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
-.copy{background:#1e293b;color:white}
-.clear{background:#020617;color:white;border:1px solid #334155}
-.message{margin-top:15px;color:#94a3b8;font-size:14px}
-.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+.main-btn{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;font-weight:800;cursor:pointer;font-size:15px}
+.secondary-btn{padding:15px 20px;border-radius:16px;background:#020617;color:white;border:1px solid #334155;font-weight:800;cursor:pointer;font-size:15px}
+
+.message{margin-top:15px;color:#94a3b8;font-size:14px;line-height:1.6}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.nav{margin-left:0;justify-content:center}
+.logo img{width:95px;height:95px}
+.tool-hero h1{font-size:42px}
+}
 </style>
 </head>
 
@@ -32,129 +68,233 @@ button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:
 
 <div class="container">
 
-    <div class="title">JSON to CSV Converter</div>
-    <div class="desc">Convert JSON arrays to CSV instantly. Paste JSON, generate CSV, and copy the result.</div>
+<header class="header">
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-    <div class="card">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
+</nav>
+</header>
 
-        <div class="grid">
+<section class="tool-hero">
+<h1 id="heroTitle">JSON to <span class="gradient">CSV</span></h1>
+<p id="heroText">Convert JSON arrays to CSV instantly. Paste JSON, generate CSV, and copy the result.</p>
+</section>
 
-            <div>
-                <label>JSON Input</label>
-                <textarea id="jsonInput" placeholder='[{"name":"John","age":30},{"name":"Jane","age":25}]'></textarea>
-            </div>
+<section class="grid">
 
-            <div>
-                <label>CSV Output</label>
-                <textarea id="csvOutput" placeholder="CSV output will appear here..."></textarea>
-            </div>
+<div class="panel">
+<div class="label" id="inputLabel">JSON Input</div>
+<textarea id="jsonInput" placeholder='[{"name":"John","age":30},{"name":"Jane","age":25}]'></textarea>
+</div>
 
-        </div>
+<div class="panel">
+<div class="label" id="outputLabel">CSV Output</div>
+<textarea id="csvOutput" placeholder="CSV output will appear here..." readonly></textarea>
+</div>
 
-        <div class="buttons">
-            <button class="generate" onclick="convertJSONtoCSV()">Convert</button>
-            <button class="copy" onclick="copyCSV()">Copy CSV</button>
-            <button class="clear" onclick="clearAll()">Clear</button>
-        </div>
+</section>
 
-        <div class="message" id="message"></div>
+<div class="buttons">
+<button class="main-btn" onclick="convertJSONtoCSV()" id="convertBtn">Convert</button>
+<button class="secondary-btn" onclick="copyCSV()" id="copyBtn">Copy CSV</button>
+<button class="secondary-btn" onclick="clearAll()" id="clearBtn">Clear</button>
+</div>
 
-    </div>
+<div class="message" id="message"></div>
 
-    <div class="footer">Toolivo © 2026</div>
+<section class="content">
+<article class="card">
+<h2 id="whyTitle">Why convert JSON to CSV?</h2>
+<p id="whyText">CSV is easier to use in spreadsheets, reports and data tools. This converter turns JSON objects into clean CSV rows.</p>
+</article>
+
+<article class="card">
+<h2 id="howTitle">How it works</h2>
+<ul>
+<li id="step1">Paste a JSON object or array.</li>
+<li id="step2">Toolivo flattens nested objects.</li>
+<li id="step3">Copy the generated CSV instantly.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. <span id="rightsText">All rights reserved.</span></div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
 
 </div>
 
 <script>
-function escapeCSV(value){
-    if(value === null || value === undefined){
-        return "";
-    }
+const langBtn=document.getElementById("langBtn");
+const message=document.getElementById("message");
+let lang=localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
 
-    value = String(value);
+const ui={
+en:{
+title:"JSON to CSV Converter — Toolivo",
+heroTitle:'JSON to <span class="gradient">CSV</span>',
+heroText:"Convert JSON arrays to CSV instantly. Paste JSON, generate CSV, and copy the result.",
+inputLabel:"JSON Input",
+outputLabel:"CSV Output",
+convert:"Convert",
+copy:"Copy CSV",
+clear:"Clear",
+jsonPlaceholder:'[{"name":"John","age":30},{"name":"Jane","age":25}]',
+csvPlaceholder:"CSV output will appear here...",
+empty:"Please paste JSON first.",
+success:"Converted successfully.",
+invalid:"Invalid JSON. Please check your input.",
+copyFirst:"Convert JSON first.",
+copied:"Copied!",
+whyTitle:"Why convert JSON to CSV?",
+whyText:"CSV is easier to use in spreadsheets, reports and data tools. This converter turns JSON objects into clean CSV rows.",
+howTitle:"How it works",
+step1:"Paste a JSON object or array.",
+step2:"Toolivo flattens nested objects.",
+step3:"Copy the generated CSV instantly.",
+rights:"All rights reserved."
+},
+tr:{
+title:"JSON CSV Dönüştürücü — Toolivo",
+heroTitle:'JSON → <span class="gradient">CSV</span>',
+heroText:"JSON verilerini anında CSV’ye dönüştür. JSON yapıştır, CSV oluştur ve sonucu kopyala.",
+inputLabel:"JSON Girişi",
+outputLabel:"CSV Çıktısı",
+convert:"Dönüştür",
+copy:"CSV Kopyala",
+clear:"Temizle",
+jsonPlaceholder:'[{"name":"Ali","age":30},{"name":"Ayşe","age":25}]',
+csvPlaceholder:"CSV çıktısı burada görünecek...",
+empty:"Önce JSON verisi yapıştır.",
+success:"Başarıyla dönüştürüldü.",
+invalid:"Geçersiz JSON. Lütfen girdiyi kontrol et.",
+copyFirst:"Önce JSON’u dönüştür.",
+copied:"Kopyalandı!",
+whyTitle:"JSON neden CSV’ye çevrilir?",
+whyText:"CSV; Excel, Google Sheets, raporlama ve veri araçlarında daha kolay kullanılır. Bu araç JSON nesnelerini temiz CSV satırlarına dönüştürür.",
+howTitle:"Nasıl çalışır?",
+step1:"JSON nesnesi veya array yapıştır.",
+step2:"Toolivo iç içe nesneleri düzleştirir.",
+step3:"Oluşan CSV’yi anında kopyala.",
+rights:"Tüm hakları saklıdır."
+}
+};
 
-    if(value.includes('"')){
-        value = value.replace(/"/g, '""');
-    }
-
-    if(value.includes(",") || value.includes("\\n") || value.includes('"')){
-        value = '"' + value + '"';
-    }
-
-    return value;
+function applyLang(){
+const t=ui[lang];
+document.documentElement.lang=lang;
+document.title=t.title;
+document.getElementById("heroTitle").innerHTML=t.heroTitle;
+document.getElementById("heroText").innerText=t.heroText;
+document.getElementById("inputLabel").innerText=t.inputLabel;
+document.getElementById("outputLabel").innerText=t.outputLabel;
+document.getElementById("convertBtn").innerText=t.convert;
+document.getElementById("copyBtn").innerText=t.copy;
+document.getElementById("clearBtn").innerText=t.clear;
+document.getElementById("jsonInput").placeholder=t.jsonPlaceholder;
+document.getElementById("csvOutput").placeholder=t.csvPlaceholder;
+document.getElementById("whyTitle").innerText=t.whyTitle;
+document.getElementById("whyText").innerText=t.whyText;
+document.getElementById("howTitle").innerText=t.howTitle;
+document.getElementById("step1").innerText=t.step1;
+document.getElementById("step2").innerText=t.step2;
+document.getElementById("step3").innerText=t.step3;
+document.getElementById("rightsText").innerText=t.rights;
+langBtn.innerText=lang==="tr" ? "EN" : "TR";
 }
 
-function flattenObject(obj, prefix = ""){
-    let result = {};
+function escapeCSV(value){
+if(value===null || value===undefined) return "";
+value=String(value);
+if(value.includes('"')) value=value.replace(/"/g,'""');
+if(value.includes(",") || value.includes("\n") || value.includes('"')) value='"'+value+'"';
+return value;
+}
 
-    for(const key in obj){
-        const value = obj[key];
-        const newKey = prefix ? prefix + "." + key : key;
-
-        if(value && typeof value === "object" && !Array.isArray(value)){
-            Object.assign(result, flattenObject(value, newKey));
-        }else{
-            result[newKey] = Array.isArray(value) ? JSON.stringify(value) : value;
-        }
-    }
-
-    return result;
+function flattenObject(obj,prefix=""){
+let result={};
+for(const key in obj){
+const value=obj[key];
+const newKey=prefix ? prefix+"."+key : key;
+if(value && typeof value==="object" && !Array.isArray(value)){
+Object.assign(result,flattenObject(value,newKey));
+}else{
+result[newKey]=Array.isArray(value) ? JSON.stringify(value) : value;
+}
+}
+return result;
 }
 
 function convertJSONtoCSV(){
-    const input = document.getElementById("jsonInput").value.trim();
-    const message = document.getElementById("message");
+const input=document.getElementById("jsonInput").value.trim();
 
-    if(!input){
-        message.innerText = "Please paste JSON first.";
-        return;
-    }
+if(!input){
+message.innerText=ui[lang].empty;
+return;
+}
 
-    try{
-        let data = JSON.parse(input);
+try{
+let data=JSON.parse(input);
+if(!Array.isArray(data)) data=[data];
 
-        if(!Array.isArray(data)){
-            data = [data];
-        }
+const flatData=data.map(item=>flattenObject(item));
+const headers=[...new Set(flatData.flatMap(item=>Object.keys(item)))];
 
-        const flatData = data.map(item => flattenObject(item));
+const csvRows=[];
+csvRows.push(headers.map(escapeCSV).join(","));
 
-        const headers = [...new Set(flatData.flatMap(item => Object.keys(item)))];
+flatData.forEach(item=>{
+const row=headers.map(header=>escapeCSV(item[header]));
+csvRows.push(row.join(","));
+});
 
-        const csvRows = [];
-
-        csvRows.push(headers.map(escapeCSV).join(","));
-
-        flatData.forEach(item => {
-            const row = headers.map(header => escapeCSV(item[header]));
-            csvRows.push(row.join(","));
-        });
-
-        document.getElementById("csvOutput").value = csvRows.join("\\n");
-
-        message.innerText = "Converted successfully.";
-    }catch(error){
-        message.innerText = "Invalid JSON. Please check your input.";
-    }
+document.getElementById("csvOutput").value=csvRows.join("\n");
+message.innerText=ui[lang].success;
+}catch(error){
+message.innerText=ui[lang].invalid;
+}
 }
 
 function copyCSV(){
-    const output = document.getElementById("csvOutput");
-
-    if(!output.value){
-        alert("Convert JSON first.");
-        return;
-    }
-
-    navigator.clipboard.writeText(output.value);
-    alert("Copied!");
+const output=document.getElementById("csvOutput");
+if(!output.value){
+message.innerText=ui[lang].copyFirst;
+return;
+}
+navigator.clipboard.writeText(output.value);
+message.innerText=ui[lang].copied;
 }
 
 function clearAll(){
-    document.getElementById("jsonInput").value = "";
-    document.getElementById("csvOutput").value = "";
-    document.getElementById("message").innerText = "";
+document.getElementById("jsonInput").value="";
+document.getElementById("csvOutput").value="";
+message.innerText="";
 }
+
+langBtn.onclick=()=>{
+lang=lang==="tr" ? "en" : "tr";
+localStorage.setItem("toolivo_lang",lang);
+applyLang();
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
+applyLang();
 </script>
 
 </body>
