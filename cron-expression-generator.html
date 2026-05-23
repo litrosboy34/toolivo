@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MIME Type Lookup — Toolivo</title>
-<meta name="description" content="Find MIME types and file extensions instantly with Toolivo.">
+<title>Cron Expression Generator — Toolivo</title>
+<meta name="description" content="Generate cron expressions instantly with Toolivo. Create schedules for minutes, hours, days, weeks and months.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
@@ -22,57 +22,27 @@ a{text-decoration:none;color:inherit}
 .nav a{color:#94a3b8;font-size:14px;transition:.2s}
 .nav a:hover{color:white}
 
-.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero{padding:45px 0 28px}
 .tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
-.tool-hero p{max-width:720px;color:#94a3b8;line-height:1.7;font-size:18px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
 .gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
 .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
 .panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-.input-group{display:flex;flex-direction:column;gap:8px}
-.input-group label{font-size:14px;font-weight:bold;color:#cbd5e1}
-input{
-width:100%;
-height:58px;
-border-radius:16px;
-border:1px solid #334155;
-background:#020617;
-color:white;
-padding:0 18px;
-font-size:17px;
-outline:none;
-}
-input:focus{border-color:#38bdf8}
+label{display:block;color:#cbd5e1;font-weight:bold;margin-bottom:8px;font-size:14px}
+select,input{width:100%;height:54px;border-radius:16px;border:1px solid #334155;background:#020617;color:white;padding:0 14px;font-size:15px;outline:none}
+select:focus,input:focus{border-color:#38bdf8}
 
-.result{
-margin-top:16px;
-padding:20px;
-border-radius:16px;
-background:#020617;
-border:1px solid #334155;
-line-height:1.8;
-min-height:165px;
-}
-.big{font-size:32px;font-weight:900;margin-bottom:8px;word-break:break-all;color:#67e8f9}
-.desc{color:#94a3b8;font-size:15px}
+.output{background:#020617;border:1px solid #334155;border-radius:18px;padding:22px;font-size:30px;font-family:monospace;word-break:break-all;color:#67e8f9;margin-bottom:14px}
+.desc{color:#94a3b8;line-height:1.7}
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-.item{
-background:#020617;
-border:1px solid #334155;
-padding:14px;
-border-radius:16px;
-cursor:pointer;
-transition:.2s;
-}
-.item:hover{transform:translateY(-2px);border-color:#38bdf8}
-.item b{display:block;margin-bottom:5px;color:white}
-.item span{color:#94a3b8;font-size:14px;word-break:break-all}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+button{padding:15px 20px;border:0;border-radius:16px;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;color:#cbd5e1;border:1px solid #334155}
 
 .info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
 
@@ -87,10 +57,15 @@ transition:.2s;
 .footer-links a:hover{color:white}
 
 @media(max-width:900px){
-.tool-grid,.content{grid-template-columns:1fr}
+.tool-grid,.content,.grid{grid-template-columns:1fr}
 .header{flex-direction:column}
 .logo img{width:95px;height:95px}
-.grid{grid-template-columns:1fr}
+.output{font-size:24px}
+}
+
+@media(max-width:520px){
+.buttons{flex-direction:column}
+button{width:100%}
 }
 </style>
 </head>
@@ -100,14 +75,14 @@ transition:.2s;
 <div class="container">
 
 <header class="header">
-<a class="logo" href="/">
+<a href="/" class="logo">
 <img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
 <span>Toolivo</span>
 </a>
 
 <nav class="nav">
 <a href="/">Home</a>
-<a href="/#tools">Tools</a>
+<a href="/tools.html">Tools</a>
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
 <a href="/contact.html">Contact</a>
@@ -115,48 +90,91 @@ transition:.2s;
 </header>
 
 <section class="tool-hero">
-<h1>MIME Type <span class="gradient">Lookup</span></h1>
-<p>Search file extensions and MIME types instantly. Find common MIME values for images, documents, code files, audio, video and archives.</p>
+<h1>Cron Expression <span class="gradient">Generator</span></h1>
+<p>Create cron expressions for scheduled jobs instantly. Generate schedules for minutes, hours, days, weeks and months.</p>
 </section>
 
 <section class="tool-grid">
 
 <div class="panel">
-<div class="input-group">
-<label>Search extension</label>
-<input id="search" placeholder="Search extension like png, pdf, mp4, json...">
+<div class="grid">
+
+<div>
+<label>Schedule Type</label>
+<select id="type">
+<option value="everyMinute">Every minute</option>
+<option value="hourly">Hourly</option>
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+<option value="monthly">Monthly</option>
+<option value="custom">Custom</option>
+</select>
 </div>
 
-<div class="result" id="result">
-<div class="big">image/png</div>
-<div><b>.png</b></div>
-<div class="desc">Portable Network Graphics image format.</div>
+<div>
+<label>Minute</label>
+<input id="minute" type="number" min="0" max="59" value="0">
+</div>
+
+<div>
+<label>Hour</label>
+<input id="hour" type="number" min="0" max="23" value="9">
+</div>
+
+<div>
+<label>Day of Month</label>
+<input id="day" type="number" min="1" max="31" value="1">
+</div>
+
+<div>
+<label>Month</label>
+<input id="month" type="text" value="*">
+</div>
+
+<div>
+<label>Day of Week</label>
+<select id="week">
+<option value="*">Every day</option>
+<option value="1">Monday</option>
+<option value="2">Tuesday</option>
+<option value="3">Wednesday</option>
+<option value="4">Thursday</option>
+<option value="5">Friday</option>
+<option value="6">Saturday</option>
+<option value="0">Sunday</option>
+</select>
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="primary" onclick="generate()">Generate Cron</button>
+<button class="secondary" onclick="copyCron()">Copy</button>
 </div>
 </div>
 
 <div class="panel">
-<div class="info">Popular MIME types. Click any extension to show its MIME type instantly.</div>
-<div class="grid" id="grid"></div>
+<div class="info">Generated cron expression and plain-English description will appear below.</div>
+<div class="output" id="output">* * * * *</div>
+<div class="desc" id="desc">Runs every minute.</div>
 </div>
 
 </section>
 
 <section class="content">
-
 <article class="card">
-<h2>What is a MIME type?</h2>
-<p>A MIME type tells browsers, servers and apps what kind of file is being handled, such as image/png, application/json or text/css.</p>
+<h2>What is a cron expression?</h2>
+<p>A cron expression is a schedule format used by servers and apps to run jobs automatically at specific times.</p>
 </article>
 
 <article class="card">
 <h2>How it works</h2>
 <ul>
-<li>Type a file extension like png, pdf or mp4.</li>
-<li>View the matching MIME type instantly.</li>
-<li>Use the result in headers, uploads or web projects.</li>
+<li>Select a schedule type.</li>
+<li>Adjust minute, hour, day or month values.</li>
+<li>Copy the generated cron expression.</li>
 </ul>
 </article>
-
 </section>
 
 <footer class="footer">
@@ -173,67 +191,60 @@ transition:.2s;
 </div>
 
 <script>
-const types={
-png:{mime:'image/png',ext:'.png',desc:'Portable Network Graphics image format.'},
-jpg:{mime:'image/jpeg',ext:'.jpg',desc:'JPEG image format.'},
-jpeg:{mime:'image/jpeg',ext:'.jpeg',desc:'JPEG image format.'},
-gif:{mime:'image/gif',ext:'.gif',desc:'GIF image format.'},
-webp:{mime:'image/webp',ext:'.webp',desc:'Modern image format.'},
-svg:{mime:'image/svg+xml',ext:'.svg',desc:'Scalable vector graphic.'},
-json:{mime:'application/json',ext:'.json',desc:'JavaScript Object Notation.'},
-pdf:{mime:'application/pdf',ext:'.pdf',desc:'Portable Document Format.'},
-zip:{mime:'application/zip',ext:'.zip',desc:'Compressed ZIP archive.'},
-mp4:{mime:'video/mp4',ext:'.mp4',desc:'MP4 video file.'},
-mp3:{mime:'audio/mpeg',ext:'.mp3',desc:'MP3 audio file.'},
-html:{mime:'text/html',ext:'.html',desc:'HTML document.'},
-css:{mime:'text/css',ext:'.css',desc:'CSS stylesheet.'},
-js:{mime:'application/javascript',ext:'.js',desc:'JavaScript file.'},
-xml:{mime:'application/xml',ext:'.xml',desc:'XML document.'}
-};
+const type=document.getElementById('type');
+const output=document.getElementById('output');
+const desc=document.getElementById('desc');
 
-const search=document.getElementById('search');
-const result=document.getElementById('result');
-const grid=document.getElementById('grid');
-
-function render(key){
-const data=types[key];
-
-if(!data){
-result.innerHTML=`
-<div class="big">Not found</div>
-<div class="desc">No MIME type found.</div>
-`;
-return;
+function v(id){
+return document.getElementById(id).value || '*';
 }
 
-result.innerHTML=`
-<div class="big">${data.mime}</div>
-<div><b>${data.ext}</b></div>
-<div class="desc">${data.desc}</div>
-`;
+function generate(){
+let cron='* * * * *';
+let text='Runs every minute.';
+
+if(type.value==='everyMinute'){
+cron='* * * * *';
+text='Runs every minute.';
 }
 
-Object.keys(types).forEach(key=>{
-const div=document.createElement('div');
-div.className='item';
-div.innerHTML=`
-<b>${types[key].ext}</b>
-<span>${types[key].mime}</span>
-`;
-div.onclick=()=>{
-search.value=key;
-render(key);
-};
-grid.appendChild(div);
-});
+if(type.value==='hourly'){
+cron=`${v('minute')} * * * *`;
+text=`Runs every hour at minute ${v('minute')}.`;
+}
 
-search.addEventListener('input',()=>{
-const val=search.value.toLowerCase().replace('.','').trim();
-render(val);
-});
+if(type.value==='daily'){
+cron=`${v('minute')} ${v('hour')} * * *`;
+text=`Runs every day at ${v('hour')}:${String(v('minute')).padStart(2,'0')}.`;
+}
 
-render('png');
+if(type.value==='weekly'){
+cron=`${v('minute')} ${v('hour')} * * ${v('week')}`;
+text='Runs weekly on the selected day and time.';
+}
+
+if(type.value==='monthly'){
+cron=`${v('minute')} ${v('hour')} ${v('day')} * *`;
+text=`Runs monthly on day ${v('day')} at ${v('hour')}:${String(v('minute')).padStart(2,'0')}.`;
+}
+
+if(type.value==='custom'){
+cron=`${v('minute')} ${v('hour')} ${v('day')} ${v('month')} ${v('week')}`;
+text='Custom cron expression.';
+}
+
+output.textContent=cron;
+desc.textContent=text;
+}
+
+function copyCron(){
+navigator.clipboard.writeText(output.textContent);
+alert("Copied!");
+}
+
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',generate));
 document.getElementById("year").innerText=new Date().getFullYear();
+generate();
 </script>
 
 </body>
