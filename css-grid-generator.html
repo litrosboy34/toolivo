@@ -4,45 +4,309 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CSS Grid Generator - Toolivo</title>
+<title>CSS Grid Generator — Toolivo</title>
 <meta name="description" content="Generate CSS Grid layouts instantly with live preview and copyable CSS code.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:white;padding:20px}
-.container{max-width:1100px;margin:auto}
-.title{font-size:32px;font-weight:bold;margin-bottom:10px;background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.desc{color:#94a3b8;margin-bottom:25px;line-height:1.6}
-.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:850px){.grid{grid-template-columns:1fr}}
-.control{margin-bottom:18px}
-label{display:block;margin-bottom:8px;color:#cbd5e1;font-size:14px}
-input,select{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:12px;padding:14px;outline:none}
-input[type="range"]{accent-color:#0ea5e9;padding:0}
-.value{margin-top:6px;color:#38bdf8;font-size:14px}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:6px 0;
+flex-wrap:wrap;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:0;
+font-size:34px;
+font-weight:bold;
+}
+
+.logo img{
+width:115px;
+height:115px;
+object-fit:contain;
+filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
+transform:translateY(4px);
+}
+
+.logo span{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#94a3b8;
+font-size:14px;
+transition:.2s;
+}
+
+.nav a:hover{
+color:white;
+}
+
+.tool-hero{
+padding:45px 0 28px;
+}
+
+.tool-hero h1{
+font-size:clamp(42px,7vw,64px);
+line-height:1.05;
+margin-bottom:14px;
+}
+
+.tool-hero p{
+max-width:760px;
+color:#94a3b8;
+line-height:1.7;
+font-size:18px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:20px;
+}
+
+.panel{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
+}
+
+.control{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+color:#cbd5e1;
+font-size:14px;
+font-weight:bold;
+}
+
+input,
+select{
+width:100%;
+background:#020617;
+border:1px solid #334155;
+color:white;
+border-radius:16px;
+padding:14px;
+outline:none;
+font-size:15px;
+}
+
+input:focus,
+select:focus{
+border-color:#38bdf8;
+}
+
+input[type="range"]{
+accent-color:#38bdf8;
+padding:0;
+}
+
+.value{
+margin-top:6px;
+color:#67e8f9;
+font-size:14px;
+font-weight:bold;
+}
+
 .preview{
-    min-height:360px;
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:18px;
-    padding:18px;
-    display:grid;
+min-height:380px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:18px;
+display:grid;
+transition:.2s;
 }
+
 .item{
-    background:linear-gradient(135deg,#06b6d4,#3b82f6);
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
+background:linear-gradient(135deg,#06b6d4,#3b82f6);
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:800;
+font-size:18px;
+box-shadow:0 12px 30px rgba(0,0,0,.28);
 }
-.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-button{padding:13px 20px;border:none;border-radius:12px;font-weight:bold;cursor:pointer}
-.generate{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
-.copy{background:#1e293b;color:white}
-textarea{width:100%;height:220px;margin-top:18px;background:#020617;border:1px solid #1e293b;color:#38bdf8;border-radius:12px;padding:15px;resize:vertical;line-height:1.5}
-.footer{text-align:center;color:#64748b;margin-top:25px;font-size:14px}
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+button{
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+font-size:15px;
+transition:.2s;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+.generate{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+
+.copy{
+background:#020617;
+border:1px solid #334155;
+color:white;
+}
+
+textarea{
+width:100%;
+height:220px;
+margin-top:18px;
+background:#020617;
+border:1px solid #334155;
+color:#67e8f9;
+border-radius:18px;
+padding:16px;
+resize:vertical;
+line-height:1.6;
+font-family:monospace;
+font-size:14px;
+outline:none;
+}
+
+.info{
+padding:16px;
+border:1px solid #334155;
+border-radius:16px;
+background:#020617;
+color:#94a3b8;
+line-height:1.6;
+margin-bottom:14px;
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card p,
+.card li{
+color:#94a3b8;
+line-height:1.7;
+}
+
+.card ul{
+padding-left:18px;
+}
+
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+color:#64748b;
+text-align:center;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+
+.footer-links a:hover{
+color:white;
+}
+
+@media(max-width:900px){
+
+.tool-grid,
+.content{
+grid-template-columns:1fr;
+}
+
+.header{
+flex-direction:column;
+}
+
+.logo img{
+width:95px;
+height:95px;
+}
+
+.preview{
+min-height:280px;
+}
+
+}
+
+@media(max-width:520px){
+
+.buttons{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
 </style>
 </head>
 
@@ -50,105 +314,212 @@ textarea{width:100%;height:220px;margin-top:18px;background:#020617;border:1px s
 
 <div class="container">
 
-    <div class="title">CSS Grid Generator</div>
-    <div class="desc">Generate CSS Grid layouts instantly with live preview and copyable CSS code.</div>
+<header class="header">
 
-    <div class="card">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 
-        <div class="grid">
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
 
-            <div>
-                <div class="control">
-                    <label>Columns</label>
-                    <input type="range" id="columns" min="1" max="8" value="3">
-                    <div class="value" id="columnsValue">3 columns</div>
-                </div>
+</header>
 
-                <div class="control">
-                    <label>Rows</label>
-                    <input type="range" id="rows" min="1" max="6" value="3">
-                    <div class="value" id="rowsValue">3 rows</div>
-                </div>
+<section class="tool-hero">
 
-                <div class="control">
-                    <label>Gap</label>
-                    <input type="range" id="gap" min="0" max="50" value="12">
-                    <div class="value" id="gapValue">12px</div>
-                </div>
+<h1>CSS Grid <span class="gradient">Generator</span></h1>
 
-                <div class="control">
-                    <label>Column Size</label>
-                    <select id="columnSize">
-                        <option value="1fr">1fr</option>
-                        <option value="auto">auto</option>
-                        <option value="minmax(0, 1fr)">minmax(0, 1fr)</option>
-                        <option value="100px">100px</option>
-                        <option value="200px">200px</option>
-                    </select>
-                </div>
+<p>
+Generate responsive CSS Grid layouts instantly with live preview and copyable CSS code for websites and applications.
+</p>
 
-                <div class="control">
-                    <label>Row Size</label>
-                    <select id="rowSize">
-                        <option value="100px">100px</option>
-                        <option value="auto">auto</option>
-                        <option value="1fr">1fr</option>
-                        <option value="150px">150px</option>
-                        <option value="200px">200px</option>
-                    </select>
-                </div>
-            </div>
+</section>
 
-            <div>
-                <div class="preview" id="preview"></div>
-            </div>
+<section class="tool-grid">
 
-        </div>
+<div class="panel">
 
-        <div class="buttons">
-            <button class="generate" onclick="generateGrid()">Generate</button>
-            <button class="copy" onclick="copyCSS()">Copy CSS</button>
-        </div>
+<div class="grid">
 
-        <textarea id="output"></textarea>
+<div class="control">
+<label>Columns</label>
 
-    </div>
+<input type="range" id="columns" min="1" max="8" value="3">
 
-    <div class="footer">Toolivo © 2026</div>
+<div class="value" id="columnsValue">
+3 columns
+</div>
+</div>
+
+<div class="control">
+<label>Rows</label>
+
+<input type="range" id="rows" min="1" max="6" value="3">
+
+<div class="value" id="rowsValue">
+3 rows
+</div>
+</div>
+
+<div class="control">
+<label>Gap</label>
+
+<input type="range" id="gap" min="0" max="50" value="12">
+
+<div class="value" id="gapValue">
+12px
+</div>
+</div>
+
+<div class="control">
+<label>Column Size</label>
+
+<select id="columnSize">
+<option value="1fr">1fr</option>
+<option value="auto">auto</option>
+<option value="minmax(0, 1fr)">minmax(0, 1fr)</option>
+<option value="100px">100px</option>
+<option value="200px">200px</option>
+</select>
+</div>
+
+<div class="control">
+<label>Row Size</label>
+
+<select id="rowSize">
+<option value="100px">100px</option>
+<option value="auto">auto</option>
+<option value="1fr">1fr</option>
+<option value="150px">150px</option>
+<option value="200px">200px</option>
+</select>
+</div>
+
+<div class="buttons">
+
+<button class="generate" onclick="generateGrid()">
+Generate Grid
+</button>
+
+<button class="copy" onclick="copyCSS()">
+Copy CSS
+</button>
+
+</div>
+
+<textarea id="output"></textarea>
+
+</div>
+
+<div class="panel">
+
+<div class="info">
+Customize rows, columns and gaps to generate responsive CSS Grid layouts instantly.
+</div>
+
+<div class="preview" id="preview"></div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+
+<h2>Why use CSS Grid?</h2>
+
+<p>
+CSS Grid makes it easy to build responsive layouts with rows and columns for websites, dashboards and modern UI designs.
+</p>
+
+</article>
+
+<article class="card">
+
+<h2>How it works</h2>
+
+<ul>
+<li>Choose rows and columns.</li>
+<li>Adjust gap and sizing.</li>
+<li>Preview the layout live.</li>
+<li>Copy the generated CSS instantly.</li>
+</ul>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+
+</footer>
 
 </div>
 
 <script>
 function generateGrid(){
 
-    const columns = document.getElementById("columns").value;
-    const rows = document.getElementById("rows").value;
-    const gap = document.getElementById("gap").value;
-    const columnSize = document.getElementById("columnSize").value;
-    const rowSize = document.getElementById("rowSize").value;
+const columns=document.getElementById("columns").value;
+const rows=document.getElementById("rows").value;
+const gap=document.getElementById("gap").value;
+const columnSize=document.getElementById("columnSize").value;
+const rowSize=document.getElementById("rowSize").value;
 
-    document.getElementById("columnsValue").innerText = columns + " columns";
-    document.getElementById("rowsValue").innerText = rows + " rows";
-    document.getElementById("gapValue").innerText = gap + "px";
+document.getElementById("columnsValue").innerText=
+columns+" columns";
 
-    const preview = document.getElementById("preview");
+document.getElementById("rowsValue").innerText=
+rows+" rows";
 
-    preview.style.gridTemplateColumns = `repeat(${columns}, ${columnSize})`;
-    preview.style.gridTemplateRows = `repeat(${rows}, ${rowSize})`;
-    preview.style.gap = gap + "px";
+document.getElementById("gapValue").innerText=
+gap+"px";
 
-    preview.innerHTML = "";
+const preview=document.getElementById("preview");
 
-    const total = columns * rows;
+preview.style.gridTemplateColumns=
+`repeat(${columns}, ${columnSize})`;
 
-    for(let i = 1; i <= total; i++){
-        const div = document.createElement("div");
-        div.className = "item";
-        div.innerText = i;
-        preview.appendChild(div);
-    }
+preview.style.gridTemplateRows=
+`repeat(${rows}, ${rowSize})`;
 
-    const css =
+preview.style.gap=
+gap+"px";
+
+preview.innerHTML="";
+
+const total=columns*rows;
+
+for(let i=1;i<=total;i++){
+
+const div=document.createElement("div");
+
+div.className="item";
+
+div.innerText=i;
+
+preview.appendChild(div);
+
+}
+
+const css=
 `.grid-container{
     display:grid;
     grid-template-columns:repeat(${columns}, ${columnSize});
@@ -156,17 +527,25 @@ function generateGrid(){
     gap:${gap}px;
 }`;
 
-    document.getElementById("output").value = css;
+document.getElementById("output").value=
+css;
 }
 
 function copyCSS(){
-    navigator.clipboard.writeText(document.getElementById("output").value);
-    alert("Copied!");
+
+navigator.clipboard.writeText(
+document.getElementById("output").value
+);
+
+alert("Copied!");
 }
 
-document.querySelectorAll("input,select").forEach(el => {
-    el.addEventListener("input", generateGrid);
+document.querySelectorAll("input,select").forEach(el=>{
+el.addEventListener("input",generateGrid);
 });
+
+document.getElementById("year").innerText=
+new Date().getFullYear();
 
 generateGrid();
 </script>
