@@ -3,70 +3,252 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Lorem Ipsum Generator — Toolivo</title>
 <meta name="description" content="Generate Lorem Ipsum placeholder text instantly with Toolivo. Create words, sentences and paragraphs for design and development.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#05070d;color:white}
-.wrap{width:min(1000px,calc(100% - 28px));margin:auto;padding:40px 0}
-h1{font-size:56px;margin:20px 0 10px}
-p{color:#9ca8bb}
-.panel{background:#0b1020;border:1px solid #263244;border-radius:20px;padding:18px;margin-top:18px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-left:auto}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+
+.lang-btn{padding:8px 13px;border-radius:999px;border:1px solid #334155;background:#111827;color:#cbd5e1;cursor:pointer;font-weight:bold;font-size:14px;transition:.2s}
+.lang-btn:hover{color:white;border-color:#38bdf8}
+
+.tool-hero{padding:45px 0 28px;text-align:left}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:720px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
 label{color:#9ca8bb;font-size:14px;font-weight:bold}
-input,select{width:100%;height:48px;border-radius:14px;border:1px solid #263244;background:#05070d;color:white;padding:0 12px;margin-top:8px;box-sizing:border-box}
-button{padding:15px;border:0;border-radius:16px;background:linear-gradient(90deg,#39e6d2,#6ea8ff);font-weight:800;cursor:pointer;margin-top:14px}
-.output{white-space:pre-wrap;line-height:1.7;font-size:17px;min-height:260px}
-.copy{background:#121935;color:white;border:1px solid #263244;margin-left:8px}
-@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:42px}}
+input,select{width:100%;height:48px;border-radius:14px;border:1px solid #334155;background:#020617;color:white;padding:0 12px;margin-top:8px;outline:none}
+input:focus,select:focus{border-color:#38bdf8}
+
+.main-btn{padding:15px 20px;border:0;border-radius:16px;background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;font-weight:800;cursor:pointer;margin-top:14px;font-size:15px}
+.secondary-btn{padding:15px 20px;border-radius:16px;background:#020617;color:white;border:1px solid #334155;font-weight:800;cursor:pointer;margin-top:14px;margin-left:8px;font-size:15px}
+
+.output{white-space:pre-wrap;line-height:1.7;font-size:17px;min-height:260px;color:#cbd5e1}
+
+.message{margin-top:12px;color:#94a3b8;font-size:14px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
+@media(max-width:900px){
+.grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.nav{margin-left:0;justify-content:center}
+.logo img{width:95px;height:95px}
+.tool-hero h1{font-size:42px}
+.secondary-btn{margin-left:0;margin-right:8px}
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
-<h1>Lorem Ipsum Generator</h1>
-<p>Generate placeholder text for websites, designs, mockups and layouts.</p>
+
+<div class="container">
+
+<header class="header">
+<a class="logo" href="/">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/#tools">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+<button class="lang-btn" id="langBtn">TR</button>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1 id="heroTitle">Lorem Ipsum <span class="gradient">Generator</span></h1>
+<p id="heroText">Generate placeholder text for websites, designs, mockups and layouts.</p>
+</section>
 
 <div class="panel">
 <div class="grid">
+
 <div>
-<label>Type</label>
+<label id="typeLabel">Type</label>
 <select id="type">
-<option value="paragraphs">Paragraphs</option>
-<option value="sentences">Sentences</option>
-<option value="words">Words</option>
+<option value="paragraphs" id="optParagraphs">Paragraphs</option>
+<option value="sentences" id="optSentences">Sentences</option>
+<option value="words" id="optWords">Words</option>
 </select>
 </div>
 
 <div>
-<label>Amount</label>
+<label id="amountLabel">Amount</label>
 <input id="amount" type="number" min="1" max="50" value="3">
 </div>
 
 <div>
-<label>Start with Lorem ipsum</label>
+<label id="startLabel">Start with Lorem ipsum</label>
 <select id="start">
-<option value="yes">Yes</option>
-<option value="no">No</option>
+<option value="yes" id="optYes">Yes</option>
+<option value="no" id="optNo">No</option>
 </select>
 </div>
+
 </div>
 
-<button onclick="generate()">Generate Text</button>
-<button class="copy" onclick="copyText()">Copy</button>
+<button class="main-btn" onclick="generate()" id="generateBtn">Generate Text</button>
+<button class="secondary-btn" onclick="copyText()" id="copyBtn">Copy</button>
+<div class="message" id="message"></div>
 </div>
 
 <div class="panel output" id="output"></div>
+
+<section class="content">
+<article class="card">
+<h2 id="whyTitle">Why use Lorem Ipsum?</h2>
+<p id="whyText">Lorem Ipsum helps designers and developers test layouts, typography and spacing before the final content is ready.</p>
+</article>
+
+<article class="card">
+<h2 id="howTitle">How it works</h2>
+<ul>
+<li id="step1">Choose words, sentences or paragraphs.</li>
+<li id="step2">Set the amount you need.</li>
+<li id="step3">Generate and copy placeholder text instantly.</li>
+</ul>
+</article>
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. <span id="rightsText">All rights reserved.</span></div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
+
 </div>
 
 <script>
 const words=`lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur`.split(' ');
 
-function randWord(){return words[Math.floor(Math.random()*words.length)]}
+const langBtn=document.getElementById("langBtn");
+const message=document.getElementById("message");
+
+let lang=localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
+
+const ui={
+en:{
+title:"Lorem Ipsum Generator — Toolivo",
+heroTitle:'Lorem Ipsum <span class="gradient">Generator</span>',
+heroText:"Generate placeholder text for websites, designs, mockups and layouts.",
+type:"Type",
+paragraphs:"Paragraphs",
+sentences:"Sentences",
+words:"Words",
+amount:"Amount",
+start:"Start with Lorem ipsum",
+yes:"Yes",
+no:"No",
+generate:"Generate Text",
+copy:"Copy",
+copied:"Copied!",
+whyTitle:"Why use Lorem Ipsum?",
+whyText:"Lorem Ipsum helps designers and developers test layouts, typography and spacing before the final content is ready.",
+howTitle:"How it works",
+step1:"Choose words, sentences or paragraphs.",
+step2:"Set the amount you need.",
+step3:"Generate and copy placeholder text instantly.",
+rights:"All rights reserved."
+},
+tr:{
+title:"Lorem Ipsum Oluşturucu — Toolivo",
+heroTitle:'Lorem Ipsum <span class="gradient">Oluşturucu</span>',
+heroText:"Web siteleri, tasarımlar, mockup ve düzenler için placeholder metin oluştur.",
+type:"Tür",
+paragraphs:"Paragraf",
+sentences:"Cümle",
+words:"Kelime",
+amount:"Miktar",
+start:"Lorem ipsum ile başlasın",
+yes:"Evet",
+no:"Hayır",
+generate:"Metin Oluştur",
+copy:"Kopyala",
+copied:"Kopyalandı!",
+whyTitle:"Lorem Ipsum neden kullanılır?",
+whyText:"Lorem Ipsum, gerçek içerik hazır olmadan önce tasarımcıların ve geliştiricilerin düzen, tipografi ve boşlukları test etmesine yardımcı olur.",
+howTitle:"Nasıl çalışır?",
+step1:"Kelime, cümle veya paragraf seç.",
+step2:"İhtiyacın olan miktarı belirle.",
+step3:"Placeholder metni oluştur ve anında kopyala.",
+rights:"Tüm hakları saklıdır."
+}
+};
+
+function applyLang(){
+const t=ui[lang];
+document.documentElement.lang=lang;
+document.title=t.title;
+
+document.getElementById("heroTitle").innerHTML=t.heroTitle;
+document.getElementById("heroText").innerText=t.heroText;
+
+document.getElementById("typeLabel").innerText=t.type;
+document.getElementById("optParagraphs").innerText=t.paragraphs;
+document.getElementById("optSentences").innerText=t.sentences;
+document.getElementById("optWords").innerText=t.words;
+document.getElementById("amountLabel").innerText=t.amount;
+document.getElementById("startLabel").innerText=t.start;
+document.getElementById("optYes").innerText=t.yes;
+document.getElementById("optNo").innerText=t.no;
+document.getElementById("generateBtn").innerText=t.generate;
+document.getElementById("copyBtn").innerText=t.copy;
+
+document.getElementById("whyTitle").innerText=t.whyTitle;
+document.getElementById("whyText").innerText=t.whyText;
+document.getElementById("howTitle").innerText=t.howTitle;
+document.getElementById("step1").innerText=t.step1;
+document.getElementById("step2").innerText=t.step2;
+document.getElementById("step3").innerText=t.step3;
+document.getElementById("rightsText").innerText=t.rights;
+
+langBtn.innerText=lang==="tr" ? "EN" : "TR";
+}
+
+function randWord(){
+return words[Math.floor(Math.random()*words.length)];
+}
 
 function makeSentence(){
 let len=Math.floor(Math.random()*8)+8;
 let arr=[];
-for(let i=0;i<len;i++)arr.push(randWord());
+for(let i=0;i<len;i++) arr.push(randWord());
 let s=arr.join(' ');
 return s.charAt(0).toUpperCase()+s.slice(1)+'.';
 }
@@ -74,7 +256,7 @@ return s.charAt(0).toUpperCase()+s.slice(1)+'.';
 function makeParagraph(){
 let count=Math.floor(Math.random()*3)+4;
 let arr=[];
-for(let i=0;i<count;i++)arr.push(makeSentence());
+for(let i=0;i<count;i++) arr.push(makeSentence());
 return arr.join(' ');
 }
 
@@ -85,18 +267,18 @@ const start=document.getElementById('start').value;
 let out=[];
 
 if(type==='words'){
-for(let i=0;i<amount;i++)out.push(randWord());
+for(let i=0;i<amount;i++) out.push(randWord());
 out=out.join(' ');
 }
 
 if(type==='sentences'){
-for(let i=0;i<amount;i++)out.push(makeSentence());
+for(let i=0;i<amount;i++) out.push(makeSentence());
 out=out.join(' ');
 }
 
 if(type==='paragraphs'){
-for(let i=0;i<amount;i++)out.push(makeParagraph());
-out=out.join('\\n\\n');
+for(let i=0;i<amount;i++) out.push(makeParagraph());
+out=out.join('\n\n');
 }
 
 if(start==='yes'){
@@ -104,13 +286,25 @@ out='Lorem ipsum dolor sit amet, consectetur adipiscing elit. '+out;
 }
 
 document.getElementById('output').textContent=out;
+message.textContent="";
 }
 
 function copyText(){
 navigator.clipboard.writeText(document.getElementById('output').textContent);
+message.textContent=ui[lang].copied;
 }
 
+langBtn.onclick=()=>{
+lang=lang==="tr" ? "en" : "tr";
+localStorage.setItem("toolivo_lang",lang);
+applyLang();
+};
+
+document.getElementById("year").innerText=new Date().getFullYear();
+
+applyLang();
 generate();
 </script>
+
 </body>
 </html>
