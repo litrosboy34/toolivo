@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
+<script>
+gtag('js', new Date());
+gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
+</script>
+
+<title>Anchor Text Extractor — Toolivo</title>
+<meta name="description" content="Extract anchor text and links from HTML instantly with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+.container{max-width:1200px;margin:auto;padding:20px}
+.header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{display:flex;align-items:center;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;text-decoration:none}
+.nav a:hover{color:white}
+.hero{padding:45px 0 28px}
+.hero h1{font-size:clamp(42px,7vw,64px);margin-bottom:14px}
+.hero p{color:#94a3b8;max-width:760px;line-height:1.7}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+textarea{
+width:100%;
+height:340px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:18px;
+color:white;
+resize:vertical;
+outline:none;
+}
+textarea:focus{border-color:#38bdf8}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+}
+.primary{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+.secondary{
+background:#020617;
+border:1px solid #334155;
+color:#cbd5e1;
+}
+.results{
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:18px;
+max-height:430px;
+overflow:auto;
+}
+.item{
+padding:14px;
+border-bottom:1px solid #1e293b;
+}
+.item:last-child{border-bottom:none}
+.anchor{
+font-weight:bold;
+color:#67e8f9;
+margin-bottom:6px;
+}
+.link{
+color:#e2e8f0;
+word-break:break-word;
+font-size:14px;
+}
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+text-align:center;
+color:#64748b;
+}
+@media(max-width:900px){
+.grid{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+
+<div class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</div>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Anchor Text <span class="gradient">Extractor</span></h1>
+
+<p>
+Extract anchor text and URLs instantly from HTML source code.
+</p>
+
+</section>
+
+<section class="grid">
+
+<div class="panel">
+
+<textarea
+id="htmlInput"
+placeholder="Paste your HTML here..."
+></textarea>
+
+<div class="buttons">
+
+<button class="primary" onclick="extractAnchors()">
+Extract Anchors
+</button>
+
+<button class="secondary" onclick="clearAll()">
+Clear
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="results" id="results">
+
+<div class="item">
+<div class="anchor">Ready</div>
+<div class="link">Paste HTML first</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+© <span id="year"></span> Toolivo. All rights reserved.
+</footer>
+
+</div>
+
+<script>
+function extractAnchors(){
+
+const html = document.getElementById("htmlInput").value;
+
+if(!html.trim()){
+alert("Please enter HTML.");
+return;
+}
+
+const parser = new DOMParser();
+
+const doc = parser.parseFromString(html,"text/html");
+
+const anchors = [...doc.querySelectorAll("a[href]")];
+
+const results = document.getElementById("results");
+
+results.innerHTML = "";
+
+if(anchors.length === 0){
+
+results.innerHTML = `
+<div class="item">
+<div class="anchor">No anchors found</div>
+<div class="link">Try different HTML</div>
+</div>
+`;
+
+return;
+}
+
+anchors.forEach(anchor=>{
+
+const text =
+anchor.innerText.trim() || "(No anchor text)";
+
+const href =
+anchor.getAttribute("href") || "";
+
+results.innerHTML += `
+<div class="item">
+
+<div class="anchor">
+${escapeHtml(text)}
+</div>
+
+<div class="link">
+${escapeHtml(href)}
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+function escapeHtml(text){
+
+const div = document.createElement("div");
+
+div.innerText = text;
+
+return div.innerHTML;
+}
+
+function clearAll(){
+
+document.getElementById("htmlInput").value = "";
+
+document.getElementById("results").innerHTML = `
+<div class="item">
+<div class="anchor">Ready</div>
+<div class="link">Paste HTML first</div>
+</div>
+`;
+}
+
+document.getElementById("year").innerText =
+new Date().getFullYear();
+</script>
+
+</body>
+</html>
