@@ -556,4 +556,70 @@ new Date().getFullYear();
 </script>
 
 </body>
+  <h2>Related Tools</h2>
+  <div class="related-tools-grid" id="relatedTools"></div>
+</section>
+
+<style>
+.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
+.related-tools-box h2{font-size:28px;margin-bottom:18px}
+.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
+.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
+.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
+.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
+@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
+</style>
+
+<script>
+(function(){
+  const tools = [
+    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
+    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
+    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
+    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
+    ["password-generator.html","Password Generator","Generate secure passwords."],
+    ["password-strength-checker.html","Password Strength Checker","Check password security."],
+    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
+    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
+    ["qr-generator.html","QR Generator","Create QR codes instantly."],
+    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
+    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
+    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
+    ["word-counter.html","Word Counter","Count words and characters."],
+    ["case-converter.html","Case Converter","Convert text case instantly."],
+    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
+    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
+    ["image-compressor.html","Image Compressor","Compress images online."],
+    ["resize-image.html","Resize Image","Resize images quickly."],
+    ["crop-image.html","Crop Image","Crop images online."],
+    ["background-remover.html","Background Remover","Remove image backgrounds."],
+    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
+    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
+    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
+    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
+    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
+    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
+    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
+    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
+    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
+  ];
+
+  const current = location.pathname.split("/").pop();
+  const box = document.getElementById("relatedTools");
+  if(!box) return;
+
+  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
+
+  box.innerHTML = filtered.map(t => `
+    <a class="related-tool-card" href="/${t[0]}">
+      <strong>${t[1]}</strong>
+      <span>${t[2]}</span>
+    </a>
+  `).join("");
+})();
+</script>
+
+</body>
 </html>
