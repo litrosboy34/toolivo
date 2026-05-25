@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
+<script>
+gtag('js', new Date());
+gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
+</script>
+
+<title>Hreflang Validator — Toolivo</title>
+<meta name="description" content="Validate hreflang tags instantly with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.logo{display:flex;align-items:center;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8}
+.nav a:hover{color:white}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+textarea{
+width:100%;
+height:340px;
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:18px;
+color:white;
+resize:vertical;
+outline:none;
+font-family:monospace;
+}
+textarea:focus{border-color:#38bdf8}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{
+padding:15px 20px;
+border:none;
+border-radius:16px;
+font-weight:800;
+cursor:pointer;
+}
+.primary{
+background:linear-gradient(90deg,#06b6d4,#3b82f6);
+color:white;
+}
+.secondary{
+background:#020617;
+border:1px solid #334155;
+color:#cbd5e1;
+}
+.results{
+background:#020617;
+border:1px solid #334155;
+border-radius:18px;
+padding:18px;
+max-height:430px;
+overflow:auto;
+}
+.item{
+padding:14px;
+border-bottom:1px solid #1e293b;
+}
+.item:last-child{border-bottom:none}
+.good{color:#22c55e;font-weight:bold}
+.bad{color:#ef4444;font-weight:bold}
+.note{color:#94a3b8;margin-top:6px;word-break:break-word}
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+margin-top:28px;
+}
+.card{
+background:#111827;
+border:1px solid #1e293b;
+border-radius:18px;
+padding:20px;
+}
+.card h2{margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+.footer{
+margin-top:55px;
+padding:30px 0;
+border-top:1px solid #1e293b;
+text-align:center;
+color:#64748b;
+}
+.footer-links{
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:12px;
+}
+.footer-links a:hover{color:white}
+@media(max-width:900px){
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1>Hreflang <span class="gradient">Validator</span></h1>
+<p>
+Validate hreflang tags instantly and detect missing language targeting tags from HTML code.
+</p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
+
+<textarea
+id="htmlInput"
+placeholder="Paste your HTML here..."
+></textarea>
+
+<div class="buttons">
+<button class="primary" onclick="validateHreflang()">
+Validate Hreflang
+</button>
+
+<button class="secondary" onclick="clearAll()">
+Clear
+</button>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="results" id="results">
+<div class="item">
+Ready to validate hreflang tags
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+<h2>Why hreflang matters</h2>
+<p>
+Hreflang tags help search engines serve the correct language or regional version of a webpage.
+</p>
+</article>
+
+<article class="card">
+<h2>What this tool checks</h2>
+<ul>
+<li>hreflang existence</li>
+<li>Language code presence</li>
+<li>Href attribute validation</li>
+</ul>
+</article>
+
+</section>
+
+<footer class="footer">
+<div>
+© <span id="year"></span> Toolivo. All rights reserved.
+</div>
+
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
+
+</div>
+
+<script>
+function validateHreflang(){
+
+const html =
+document.getElementById("htmlInput").value;
+
+if(!html.trim()){
+alert("Please enter HTML.");
+return;
+}
+
+const parser = new DOMParser();
+
+const doc =
+parser.parseFromString(html,"text/html");
+
+const tags =
+[...doc.querySelectorAll('link[rel="alternate"][hreflang]')];
+
+const results =
+document.getElementById("results");
+
+results.innerHTML = "";
+
+if(tags.length === 0){
+
+results.innerHTML = `
+<div class="item">
+<div class="bad">✘ No hreflang tags found</div>
+<div class="note">
+No alternate hreflang tags detected.
+</div>
+</div>
+`;
+
+return;
+}
+
+tags.forEach(tag=>{
+
+const lang =
+tag.getAttribute("hreflang") || "";
+
+const href =
+tag.getAttribute("href") || "";
+
+results.innerHTML += `
+<div class="item">
+
+<div class="${
+lang && href ? "good" : "bad"
+}">
+${lang && href ? "✔" : "✘"}
+${lang || "Missing hreflang"}
+</div>
+
+<div class="note">
+${href || "Missing href"}
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+function clearAll(){
+
+document.getElementById("htmlInput").value = "";
+
+document.getElementById("results").innerHTML = `
+<div class="item">
+Ready to validate hreflang tags
+</div>
+`;
+}
+
+document.getElementById("year").innerText =
+new Date().getFullYear();
+</script>
+
+</body>
+</html>
