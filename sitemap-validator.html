@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
+<script>
+gtag('js', new Date());
+gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
+</script>
+
+<title>Sitemap Validator — Toolivo</title>
+<meta name="description" content="Validate XML sitemap structure instantly. Check sitemap URLs, loc tags and basic XML sitemap format with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+label{display:block;margin-bottom:10px;font-size:14px;font-weight:bold;color:#cbd5e1}
+textarea{width:100%;height:330px;background:#020617;border:1px solid #334155;color:white;border-radius:18px;padding:18px;resize:vertical;line-height:1.6;font-family:monospace;font-size:14px;outline:none}
+textarea:focus{border-color:#38bdf8}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:15px 20px;border:none;border-radius:16px;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;border:1px solid #334155;color:#cbd5e1}
+.status{background:#020617;border:1px solid #334155;border-radius:18px;padding:22px;margin-bottom:18px}
+.status h3{font-size:26px;margin-bottom:10px;color:#67e8f9}
+.status p{color:#94a3b8;line-height:1.7}
+.valid{border-color:#22c55e}
+.valid h3{color:#22c55e}
+.invalid{border-color:#ef4444}
+.invalid h3{color:#ef4444}
+.info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
+.results{background:#020617;border:1px solid #334155;border-radius:18px;padding:18px;color:#cbd5e1;line-height:1.8;max-height:300px;overflow:auto}
+.results strong{color:#67e8f9}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+@media(max-width:900px){.tool-grid,.content{grid-template-columns:1fr}.header{flex-direction:column}.logo img{width:95px;height:95px}}
+@media(max-width:520px){.buttons{flex-direction:column}button{width:100%}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1>Sitemap <span class="gradient">Validator</span></h1>
+<p>
+Validate XML sitemap structure, count URLs and check basic sitemap formatting instantly.
+</p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
+
+<label>Paste XML Sitemap</label>
+
+<textarea id="sitemapInput" placeholder='Paste your sitemap.xml code here...'></textarea>
+
+<div class="buttons">
+<button class="primary" onclick="validateSitemap()">Validate Sitemap</button>
+<button class="secondary" onclick="pasteExample()">Example</button>
+<button class="secondary" onclick="clearAll()">Clear</button>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="status" id="statusBox">
+<h3>Waiting for Sitemap</h3>
+<p>Paste your XML sitemap and click validate.</p>
+</div>
+
+<div class="info">
+A valid sitemap helps search engines discover and crawl your website pages more efficiently.
+</div>
+
+<div class="results" id="resultsBox">
+<strong>URLs found:</strong> -<br>
+<strong>Root tag:</strong> -<br>
+<strong>Status:</strong> -
+</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+<h2>What is a sitemap?</h2>
+<p>
+A sitemap is an XML file that lists important URLs on your website so search engines can discover and index them.
+</p>
+</article>
+
+<article class="card">
+<h2>How to use this tool</h2>
+<ul>
+<li>Paste your sitemap XML code.</li>
+<li>Click validate sitemap.</li>
+<li>Review detected URLs and basic XML structure.</li>
+</ul>
+</article>
+
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
+
+</div>
+
+<script>
+function validateSitemap(){
+
+const input = document.getElementById("sitemapInput").value.trim();
+const statusBox = document.getElementById("statusBox");
+const resultsBox = document.getElementById("resultsBox");
+
+if(!input){
+statusBox.className = "status";
+statusBox.innerHTML = "<h3>Waiting for Sitemap</h3><p>Please paste sitemap XML first.</p>";
+resultsBox.innerHTML = "<strong>URLs found:</strong> -<br><strong>Root tag:</strong> -<br><strong>Status:</strong> -";
+return;
+}
+
+const parser = new DOMParser();
+const xml = parser.parseFromString(input, "application/xml");
+const parseError = xml.querySelector("parsererror");
+
+if(parseError){
+statusBox.className = "status invalid";
+statusBox.innerHTML = "<h3>Invalid XML</h3><p>Your sitemap has XML syntax errors.</p>";
+resultsBox.innerHTML = "<strong>URLs found:</strong> -<br><strong>Root tag:</strong> -<br><strong>Status:</strong> XML parse error";
+return;
+}
+
+const root = xml.documentElement ? xml.documentElement.nodeName : "-";
+const locs = Array.from(xml.getElementsByTagName("loc"));
+const urls = locs.map(loc => loc.textContent.trim()).filter(Boolean);
+
+let validUrlCount = 0;
+
+urls.forEach(url => {
+try{
+new URL(url);
+validUrlCount++;
+}catch(e){}
+});
+
+const isSitemap = root === "urlset" || root === "sitemapindex";
+
+if(isSitemap && urls.length > 0 && validUrlCount === urls.length){
+statusBox.className = "status valid";
+statusBox.innerHTML = "<h3>Valid Sitemap</h3><p>Your sitemap structure looks valid.</p>";
+} else if(isSitemap && urls.length > 0){
+statusBox.className = "status invalid";
+statusBox.innerHTML = "<h3>Needs Attention</h3><p>Some URL values may be invalid.</p>";
+} else {
+statusBox.className = "status invalid";
+statusBox.innerHTML = "<h3>Invalid Sitemap</h3><p>No valid sitemap URL entries were found.</p>";
+}
+
+resultsBox.innerHTML =
+"<strong>URLs found:</strong> " + urls.length + "<br>" +
+"<strong>Valid URLs:</strong> " + validUrlCount + "<br>" +
+"<strong>Root tag:</strong> " + escapeHtml(root) + "<br>" +
+"<strong>Status:</strong> " + (isSitemap ? "Sitemap root detected" : "Missing urlset or sitemapindex root");
+
+}
+
+function pasteExample(){
+document.getElementById("sitemapInput").value =
+`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://toolivo.site/</loc>
+  </url>
+  <url>
+    <loc>https://toolivo.site/tools.html</loc>
+  </url>
+</urlset>`;
+validateSitemap();
+}
+
+function clearAll(){
+document.getElementById("sitemapInput").value = "";
+document.getElementById("statusBox").className = "status";
+document.getElementById("statusBox").innerHTML = "<h3>Waiting for Sitemap</h3><p>Paste your XML sitemap and click validate.</p>";
+document.getElementById("resultsBox").innerHTML = "<strong>URLs found:</strong> -<br><strong>Root tag:</strong> -<br><strong>Status:</strong> -";
+}
+
+function escapeHtml(text){
+const div = document.createElement("div");
+div.innerText = text;
+return div.innerHTML;
+}
+
+document.getElementById("year").innerText = new Date().getFullYear();
+</script>
+
+</body>
+</html>
