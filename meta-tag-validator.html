@@ -16,82 +16,52 @@ gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
 </script>
 
 <title>Meta Tag Validator — Toolivo</title>
-<meta name="description" content="Validate SEO meta tags instantly with Toolivo.">
+<meta name="description" content="Validate SEO meta tags instantly. Check title, description, viewport, canonical and Open Graph tags with Toolivo.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
 .container{max-width:1200px;margin:auto;padding:20px}
-.header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.logo{display:flex;align-items:center;font-size:34px;font-weight:bold}
-.logo img{width:115px;height:115px;object-fit:contain}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
 .logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav{display:flex;gap:14px;flex-wrap:wrap}
-.nav a{color:#94a3b8;text-decoration:none}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
 .nav a:hover{color:white}
-.hero{padding:45px 0 28px}
-.hero h1{font-size:clamp(42px,7vw,64px);margin-bottom:14px}
-.hero p{color:#94a3b8;max-width:760px;line-height:1.7}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
 .gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
 .panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
-textarea{
-width:100%;
-height:340px;
-background:#020617;
-border:1px solid #334155;
-border-radius:18px;
-padding:18px;
-color:white;
-resize:vertical;
-outline:none;
-}
+label{display:block;margin-bottom:10px;font-size:14px;font-weight:bold;color:#cbd5e1}
+textarea{width:100%;height:340px;background:#020617;border:1px solid #334155;color:white;border-radius:18px;padding:18px;resize:vertical;line-height:1.6;font-family:monospace;font-size:14px;outline:none}
 textarea:focus{border-color:#38bdf8}
 .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-button{
-padding:15px 20px;
-border:none;
-border-radius:16px;
-font-weight:800;
-cursor:pointer;
-}
-.primary{
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
-color:white;
-}
-.secondary{
-background:#020617;
-border:1px solid #334155;
-color:#cbd5e1;
-}
-.results{
-background:#020617;
-border:1px solid #334155;
-border-radius:18px;
-padding:18px;
-max-height:430px;
-overflow:auto;
-}
-.item{
-padding:14px;
-border-bottom:1px solid #1e293b;
-}
+button{padding:15px 20px;border:none;border-radius:16px;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;border:1px solid #334155;color:#cbd5e1}
+.info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
+.results{background:#020617;border:1px solid #334155;border-radius:18px;padding:18px;max-height:420px;overflow:auto}
+.item{padding:14px;border-bottom:1px solid #1e293b}
 .item:last-child{border-bottom:none}
 .good{color:#22c55e;font-weight:bold}
 .bad{color:#ef4444;font-weight:bold}
-.footer{
-margin-top:55px;
-padding:30px 0;
-border-top:1px solid #1e293b;
-text-align:center;
-color:#64748b;
-}
-@media(max-width:900px){
-.grid{grid-template-columns:1fr}
-.header{flex-direction:column}
-.logo img{width:95px;height:95px}
-}
+.note{color:#94a3b8;margin-top:6px;line-height:1.5;font-size:14px}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+@media(max-width:900px){.tool-grid,.content{grid-template-columns:1fr}.header{flex-direction:column}.logo img{width:95px;height:95px}}
+@media(max-width:520px){.buttons{flex-direction:column}button{width:100%}}
 </style>
 </head>
 
@@ -100,69 +70,84 @@ color:#64748b;
 <div class="container">
 
 <header class="header">
-
-<div class="logo">
+<a href="/" class="logo">
 <img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
 <span>Toolivo</span>
-</div>
+</a>
 
 <nav class="nav">
 <a href="/">Home</a>
 <a href="/tools.html">Tools</a>
 <a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
 </nav>
-
 </header>
 
-<section class="hero">
-
+<section class="tool-hero">
 <h1>Meta Tag <span class="gradient">Validator</span></h1>
-
 <p>
-Validate important SEO meta tags instantly from HTML source code.
+Validate important SEO meta tags from HTML source code and detect missing title, description, canonical and social tags.
 </p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
+<label>Paste HTML Code</label>
+<textarea id="htmlInput" placeholder="Paste your HTML source code here..."></textarea>
+
+<div class="buttons">
+<button class="primary" onclick="validateMeta()">Validate Meta Tags</button>
+<button class="secondary" onclick="clearAll()">Clear</button>
+</div>
+</div>
+
+<div class="panel">
+
+<div class="info">
+Meta tags help search engines and social platforms understand your page title, description and preview information.
+</div>
+
+<div class="results" id="results">
+<div class="item">
+<div class="note">Paste HTML and validate meta tags.</div>
+</div>
+</div>
+
+</div>
 
 </section>
 
-<section class="grid">
+<section class="content">
 
-<div class="panel">
+<article class="card">
+<h2>Why validate meta tags?</h2>
+<p>
+Missing or weak meta tags can reduce search visibility, social preview quality and page indexing clarity.
+</p>
+</article>
 
-<textarea
-id="htmlInput"
-placeholder="Paste your HTML here..."
-></textarea>
-
-<div class="buttons">
-
-<button class="primary" onclick="validateMeta()">
-Validate Meta Tags
-</button>
-
-<button class="secondary" onclick="clearAll()">
-Clear
-</button>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<div class="results" id="results">
-
-<div class="item">
-Ready to validate meta tags
-</div>
-
-</div>
-
-</div>
+<article class="card">
+<h2>What this tool checks</h2>
+<ul>
+<li>Title and meta description</li>
+<li>Viewport and canonical tag</li>
+<li>Open Graph title, description and image</li>
+</ul>
+</article>
 
 </section>
 
 <footer class="footer">
-© <span id="year"></span> Toolivo. All rights reserved.
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
 </footer>
 
 </div>
@@ -178,78 +163,80 @@ return;
 }
 
 const parser = new DOMParser();
-
 const doc = parser.parseFromString(html,"text/html");
-
 const results = document.getElementById("results");
 
-results.innerHTML = "";
+const title = doc.querySelector("title");
+const description = doc.querySelector('meta[name="description"]');
 
 const checks = [
-
 {
 name:"Title Tag",
-exists:!!doc.querySelector("title")
+exists:!!title && title.innerText.trim().length > 0,
+note:title ? title.innerText.trim().length + " characters" : "Missing title tag"
 },
-
 {
 name:"Meta Description",
-exists:!!doc.querySelector('meta[name="description"]')
+exists:!!description && (description.getAttribute("content") || "").trim().length > 0,
+note:description ? (description.getAttribute("content") || "").trim().length + " characters" : "Missing meta description"
 },
-
 {
 name:"Viewport Tag",
-exists:!!doc.querySelector('meta[name="viewport"]')
+exists:!!doc.querySelector('meta[name="viewport"]'),
+note:"Recommended for mobile responsiveness"
 },
-
 {
 name:"Canonical Tag",
-exists:!!doc.querySelector('link[rel="canonical"]')
+exists:!!doc.querySelector('link[rel="canonical"]'),
+note:"Helps prevent duplicate URL issues"
 },
-
 {
 name:"Open Graph Title",
-exists:!!doc.querySelector('meta[property="og:title"]')
+exists:!!doc.querySelector('meta[property="og:title"]'),
+note:"Used for social media previews"
 },
-
 {
 name:"Open Graph Description",
-exists:!!doc.querySelector('meta[property="og:description"]')
+exists:!!doc.querySelector('meta[property="og:description"]'),
+note:"Used for social media previews"
+},
+{
+name:"Open Graph Image",
+exists:!!doc.querySelector('meta[property="og:image"]'),
+note:"Recommended for share cards"
 }
-
 ];
 
+let output = "";
+
 checks.forEach(check=>{
-
-results.innerHTML += `
+output += `
 <div class="item">
-
-<div class="${
-check.exists ? "good" : "bad"
-}">
-${check.exists ? "✔" : "✘"} ${check.name}
-</div>
-
+<div class="${check.exists ? "good" : "bad"}">${check.exists ? "✔" : "✘"} ${check.name}</div>
+<div class="note">${escapeHtml(check.note)}</div>
 </div>
 `;
-
 });
 
+results.innerHTML = output;
+}
+
+function escapeHtml(text){
+const div=document.createElement("div");
+div.innerText=text;
+return div.innerHTML;
 }
 
 function clearAll(){
-
-document.getElementById("htmlInput").value = "";
-
-document.getElementById("results").innerHTML = `
+document.getElementById("htmlInput").value="";
+document.getElementById("results").innerHTML=`
 <div class="item">
-Ready to validate meta tags
+<div class="note">Paste HTML and validate meta tags.</div>
 </div>
 `;
 }
 
-document.getElementById("year").innerText =
-new Date().getFullYear();
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
