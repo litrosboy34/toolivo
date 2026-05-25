@@ -16,7 +16,7 @@ gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
 </script>
 
 <title>Word Frequency Counter — Toolivo</title>
-<meta name="description" content="Count word frequency instantly. Analyze repeated words and text statistics with Toolivo.">
+<meta name="description" content="Count word frequency instantly. Find repeated words, total words and unique word counts with Toolivo.">
 <link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
 
 <style>
@@ -24,79 +24,64 @@ gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
 body{background:#0f172a;color:white;min-height:100vh}
 a{text-decoration:none;color:inherit}
 .container{max-width:1200px;margin:auto;padding:20px}
+
 .header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
 .logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
 .logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.nav a{color:#94a3b8;font-size:14px}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
 .nav a:hover{color:white}
+
 .tool-hero{padding:45px 0 28px}
-.tool-hero h1{font-size:clamp(42px,7vw,64px);margin-bottom:14px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
 .tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
 .gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
 .panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
-textarea{
-width:100%;
-height:340px;
-background:#020617;
-border:1px solid #334155;
-color:white;
-border-radius:18px;
-padding:18px;
-resize:vertical;
-outline:none;
-font-size:15px;
-line-height:1.6;
-}
+label{display:block;margin-bottom:10px;font-size:14px;font-weight:bold;color:#cbd5e1}
+textarea{width:100%;height:340px;background:#020617;border:1px solid #334155;color:white;border-radius:18px;padding:18px;resize:vertical;line-height:1.6;font-size:15px;outline:none}
 textarea:focus{border-color:#38bdf8}
+
 .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-button{
-padding:15px 20px;
-border:none;
-border-radius:16px;
-font-weight:800;
-cursor:pointer;
-font-size:15px;
-}
-.primary{
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
-color:white;
-}
-.secondary{
-background:#020617;
-border:1px solid #334155;
-color:#cbd5e1;
-}
-.results{
-background:#020617;
-border:1px solid #334155;
-border-radius:18px;
-padding:18px;
-max-height:430px;
-overflow:auto;
-}
-.word{
-display:flex;
-justify-content:space-between;
-padding:14px;
-border-bottom:1px solid #1e293b;
-}
-.word:last-child{border-bottom:none}
-.word-name{font-weight:bold;color:#e2e8f0}
-.word-count{color:#67e8f9}
-.footer{
-margin-top:55px;
-padding:30px 0;
-border-top:1px solid #1e293b;
-text-align:center;
-color:#64748b;
-}
+button{padding:15px 20px;border:none;border-radius:16px;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;border:1px solid #334155;color:#cbd5e1}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.stat{background:#020617;border:1px solid #334155;border-radius:16px;padding:16px}
+.stat strong{display:block;font-size:28px;color:#67e8f9;margin-bottom:4px}
+.stat span{color:#94a3b8;font-size:14px}
+
+.info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
+.results{background:#020617;border:1px solid #334155;border-radius:18px;padding:18px;max-height:340px;overflow:auto}
+.result-row{display:grid;grid-template-columns:1fr 80px;gap:12px;padding:12px 0;border-bottom:1px solid #1e293b}
+.result-row:last-child{border-bottom:none}
+.result-row b{color:white}
+.result-row span{color:#cbd5e1}
+.count{color:#67e8f9!important;font-weight:bold;text-align:right}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+
 @media(max-width:900px){
-.grid{grid-template-columns:1fr}
+.tool-grid,.content{grid-template-columns:1fr}
 .header{flex-direction:column}
 .logo img{width:95px;height:95px}
+}
+@media(max-width:520px){
+.buttons{flex-direction:column}
+button{width:100%}
+.stats{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -106,7 +91,6 @@ color:#64748b;
 <div class="container">
 
 <header class="header">
-
 <a href="/" class="logo">
 <img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
 <span>Toolivo</span>
@@ -116,66 +100,95 @@ color:#64748b;
 <a href="/">Home</a>
 <a href="/tools.html">Tools</a>
 <a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
 </nav>
-
 </header>
 
 <section class="tool-hero">
-
 <h1>Word Frequency <span class="gradient">Counter</span></h1>
-
 <p>
-Analyze repeated words and count word frequency instantly from any text content.
+Count repeated words instantly, analyze word frequency and find the most used words in any text.
 </p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
+<label>Paste your text</label>
+<textarea id="textInput" placeholder="Paste your article, paragraph, blog post or content here..."></textarea>
+
+<div class="buttons">
+<button class="primary" onclick="countWords()">Count Frequency</button>
+<button class="secondary" onclick="clearAll()">Clear</button>
+</div>
+</div>
+
+<div class="panel">
+
+<div class="stats">
+<div class="stat">
+<strong id="totalWords">0</strong>
+<span>Total Words</span>
+</div>
+<div class="stat">
+<strong id="uniqueWords">0</strong>
+<span>Unique Words</span>
+</div>
+</div>
+
+<div class="info">
+Word frequency helps you find repeated terms, improve content balance and review text patterns quickly.
+</div>
+
+<div class="results" id="results">
+<div class="result-row">
+<b>Word</b>
+<b class="count">Count</b>
+</div>
+</div>
+
+</div>
 
 </section>
 
-<section class="grid">
+<section class="content">
 
-<div class="panel">
+<article class="card">
+<h2>What is word frequency?</h2>
+<p>
+Word frequency shows how many times each word appears in a text. It is useful for SEO writing, editing and content analysis.
+</p>
+</article>
 
-<textarea
-id="textInput"
-placeholder="Paste your text here..."
-></textarea>
-
-<div class="buttons">
-<button class="primary" onclick="analyzeWords()">
-Analyze Words
-</button>
-
-<button class="secondary" onclick="clearAll()">
-Clear
-</button>
-</div>
-
-</div>
-
-<div class="panel">
-
-<div class="results" id="results">
-
-<div class="word">
-<div class="word-name">Ready</div>
-<div class="word-count">0</div>
-</div>
-
-</div>
-
-</div>
+<article class="card">
+<h2>How to use this tool</h2>
+<ul>
+<li>Paste your text into the input box.</li>
+<li>Click count frequency.</li>
+<li>Review the most repeated words instantly.</li>
+</ul>
+</article>
 
 </section>
 
 <footer class="footer">
-© <span id="year"></span> Toolivo. All rights reserved.
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
 </footer>
 
 </div>
 
 <script>
-function analyzeWords(){
+function countWords(){
 
-const text = document.getElementById("textInput").value;
+const text = document.getElementById("textInput").value.toLowerCase();
 
 if(!text.trim()){
 alert("Please enter text.");
@@ -183,56 +196,59 @@ return;
 }
 
 const words = text
-.toLowerCase()
 .replace(/[^\w\s']/g," ")
 .split(/\s+/)
-.filter(word => word.length > 2);
+.filter(word => word.length > 1);
 
 const counts = {};
 
 words.forEach(word=>{
-counts[word] = (counts[word] || 0) + 1;
+counts[word]=(counts[word]||0)+1;
 });
 
-const sorted = Object.entries(counts)
-.sort((a,b)=>b[1]-a[1]);
+const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
 
-const results = document.getElementById("results");
+document.getElementById("totalWords").innerText = words.length;
+document.getElementById("uniqueWords").innerText = sorted.length;
 
-results.innerHTML = "";
-
-sorted.forEach(([word,count])=>{
-
-results.innerHTML += `
-<div class="word">
-<div class="word-name">${escapeHtml(word)}</div>
-<div class="word-count">${count}</div>
+let html = `
+<div class="result-row">
+<b>Word</b>
+<b class="count">Count</b>
 </div>
 `;
 
+sorted.forEach(([word,count])=>{
+html += `
+<div class="result-row">
+<span>${escapeHtml(word)}</span>
+<span class="count">${count}</span>
+</div>
+`;
 });
 
+document.getElementById("results").innerHTML = html;
 }
 
 function escapeHtml(text){
-const div = document.createElement("div");
-div.innerText = text;
+const div=document.createElement("div");
+div.innerText=text;
 return div.innerHTML;
 }
 
 function clearAll(){
-document.getElementById("textInput").value = "";
-
-document.getElementById("results").innerHTML = `
-<div class="word">
-<div class="word-name">Ready</div>
-<div class="word-count">0</div>
+document.getElementById("textInput").value="";
+document.getElementById("totalWords").innerText="0";
+document.getElementById("uniqueWords").innerText="0";
+document.getElementById("results").innerHTML=`
+<div class="result-row">
+<b>Word</b>
+<b class="count">Count</b>
 </div>
 `;
 }
 
-document.getElementById("year").innerText =
-new Date().getFullYear();
+document.getElementById("year").innerText=new Date().getFullYear();
 </script>
 
 </body>
