@@ -146,6 +146,10 @@ a{text-decoration:none;color:inherit}
 <button class="cat-btn" data-category="css" id="catCss">CSS</button>
 <button class="cat-btn" data-category="seo" id="catSeo">SEO</button>
 <button class="cat-btn" data-category="converter" id="catConverter">Converter</button>
+<button class="cat-btn" data-category="ai" id="catAi">AI</button>
+<button class="cat-btn" data-category="network" id="catNetwork">Network</button>
+<button class="cat-btn" data-category="validator" id="catValidator">Validator</button>
+<button class="cat-btn" data-category="youtube" id="catYoutube">YouTube</button>
 </div>
 <h2 class="section-title" id="tools">All Tools</h2>
 <div class="tools-grid" id="toolsGrid"></div>
@@ -208,629 +212,1657 @@ a{text-decoration:none;color:inherit}
 </div>
 <script>
 const tools = [
-{
-title:{en:"Background Remover",tr:"Arka Plan Kaldırıcı"},
-desc:{en:"Remove image backgrounds online.",tr:"Görsellerin arka planını kaldırın."},
-url:"/background-remover.html",
-cat:"image",
-icon:"🖼️"
-},
-
-{
-title:{en:"Image Compressor",tr:"Görsel Sıkıştırıcı"},
-desc:{en:"Compress images quickly.",tr:"Görselleri hızlıca sıkıştırın."},
-url:"/image-compressor.html",
-cat:"image",
-icon:"⚡"
-},
-
-{
-title:{en:"Resize Image",tr:"Görsel Yeniden Boyutlandır"},
-desc:{en:"Resize images for web and social media.",tr:"Görselleri yeniden boyutlandırın."},
-url:"/resize-image.html",
-cat:"image",
-icon:"📐"
-},
-
-{
-title:{en:"Crop Image",tr:"Görsel Kırp"},
-desc:{en:"Crop images online.",tr:"Görselleri online kırpın."},
-url:"/crop-image.html",
-cat:"image",
-icon:"✂️"
-},
-
-{
-title:{en:"Rotate Image",tr:"Görsel Döndür"},
-desc:{en:"Rotate and flip images.",tr:"Görselleri döndürün ve çevirin."},
-url:"/rotate-image.html",
-cat:"image",
-icon:"🔄"
-},
-
-{
-title:{en:"Blur Image",tr:"Görsel Blur"},
-desc:{en:"Add blur effects to images.",tr:"Görsellere blur efekti ekleyin."},
-url:"/blur-image.html",
-cat:"image",
-icon:"🌫️"
-},
-
-{
-title:{en:"Watermark Image",tr:"Filigran Ekle"},
-desc:{en:"Add watermark to images.",tr:"Görsellere filigran ekleyin."},
-url:"/watermark-image.html",
-cat:"image",
-icon:"💧"
-},
-
-{
-title:{en:"Image Upscaler",tr:"Görsel Kalite Artırıcı"},
-desc:{en:"Upscale images online.",tr:"Görsellerin kalitesini artırın."},
-url:"/image-upscaler.html",
-cat:"image",
-icon:"🔍"
-},
-
-{
-title:{en:"Meme Maker",tr:"Meme Oluşturucu"},
-desc:{en:"Create simple memes online.",tr:"Online meme oluşturun."},
-url:"/meme-maker.html",
-cat:"image",
-icon:"😂"
-},
-
-{
-title:{en:"QR Generator",tr:"QR Oluşturucu"},
-desc:{en:"Generate QR codes instantly.",tr:"Anında QR kod oluşturun."},
-url:"/qr-generator.html",
-cat:"image",
-icon:"▦"
-},
-
-{
-title:{en:"PNG to JPG",tr:"PNG → JPG"},
-desc:{en:"Convert PNG images to JPG.",tr:"PNG görselleri JPG'ye dönüştürün."},
-url:"/png-to-jpg.html",
-cat:"converter",
-icon:"🔁"
-},
-
-{
-title:{en:"PNG to WEBP",tr:"PNG → WEBP"},
-desc:{en:"Convert PNG images to WEBP.",tr:"PNG görselleri WEBP'ye dönüştürün."},
-url:"/png-to-webp.html",
-cat:"converter",
-icon:"🔁"
-},
-
-{
-title:{en:"JPG to PNG",tr:"JPG → PNG"},
-desc:{en:"Convert JPG images to PNG.",tr:"JPG görselleri PNG'ye dönüştürün."},
-url:"/jpg-to-png.html",
-cat:"converter",
-icon:"🔁"
-},
-
-{
-title:{en:"JPG to WEBP",tr:"JPG → WEBP"},
-desc:{en:"Convert JPG images to WEBP.",tr:"JPG görselleri WEBP'ye dönüştürün."},
-url:"/jpg-to-webp.html",
-cat:"converter",
-icon:"🔁"
-},
-
-{
-title:{en:"WEBP to PNG",tr:"WEBP → PNG"},
-desc:{en:"Convert WEBP images to PNG.",tr:"WEBP görselleri PNG'ye dönüştürün."},
-url:"/webp-to-png.html",
-cat:"converter",
-icon:"🔁"
-},
-
-{
-title:{en:"WEBP to JPG",tr:"WEBP → JPG"},
-desc:{en:"Convert WEBP images to JPG.",tr:"WEBP görselleri JPG'ye dönüştürün."},
-url:"/webp-to-jpg.html",
-cat:"converter",
-icon:"🔁"
-},
-
-{
-title:{en:"Color Picker Converter",tr:"Renk Dönüştürücü"},
-desc:{en:"Convert color formats.",tr:"Renk formatlarını dönüştürün."},
-url:"/color-picker-converter.html",
-cat:"converter",
-icon:"🎨"
-},
-
-{
-title:{en:"CSV to JSON",tr:"CSV → JSON"},
-desc:{en:"Convert CSV data to JSON.",tr:"CSV verisini JSON'a dönüştürün."},
-url:"/csv-to-json.html",
-cat:"converter",
-icon:"📊"
-},
-
-{
-title:{en:"JSON to CSV",tr:"JSON → CSV"},
-desc:{en:"Convert JSON data to CSV.",tr:"JSON verisini CSV'ye dönüştürün."},
-url:"/json-to-csv.html",
-cat:"converter",
-icon:"📊"
-},
-
-{
-title:{en:"Unit Converter",tr:"Birim Dönüştürücü"},
-desc:{en:"Convert common units.",tr:"Birim dönüştürün."},
-url:"/unit-converter.html",
-cat:"converter",
-icon:"📏"
-},
-
-{
-title:{en:"Word Counter",tr:"Kelime Sayacı"},
-desc:{en:"Count words and characters.",tr:"Kelime ve karakter sayın."},
-url:"/word-counter.html",
-cat:"text",
-icon:"🔤"
-},
-
-{
-title:{en:"Case Converter",tr:"Büyük Küçük Harf Dönüştürücü"},
-desc:{en:"Convert text case instantly.",tr:"Metin harflerini dönüştürün."},
-url:"/case-converter.html",
-cat:"text",
-icon:"Aa"
-},
-
-{
-title:{en:"Lorem Ipsum Generator",tr:"Lorem Ipsum Oluşturucu"},
-desc:{en:"Generate placeholder text.",tr:"Lorem Ipsum metni oluşturun."},
-url:"/lorem-ipsum-generator.html",
-cat:"text",
-icon:"📝"
-},
-
-{
-title:{en:"Text Diff Checker",tr:"Metin Karşılaştırıcı"},
-desc:{en:"Compare two texts.",tr:"İki metni karşılaştırın."},
-url:"/text-diff-checker.html",
-cat:"text",
-icon:"🔎"
-},
-
-{
-title:{en:"Text to Slug",tr:"Slug Oluşturucu"},
-desc:{en:"Create SEO friendly slugs.",tr:"SEO uyumlu slug oluşturun."},
-url:"/text-to-slug.html",
-cat:"text",
-icon:"🔗"
-},
-
-{
-title:{en:"Markdown Previewer",tr:"Markdown Önizleme"},
-desc:{en:"Preview Markdown live.",tr:"Markdown önizleme yapın."},
-url:"/markdown-previewer.html",
-cat:"text",
-icon:"⬇️"
-},
-
-{
-title:{en:"Markdown Table Generator",tr:"Markdown Tablo Oluşturucu"},
-desc:{en:"Generate Markdown tables.",tr:"Markdown tablolar oluşturun."},
-url:"/markdown-table-generator.html",
-cat:"text",
-icon:"📋"
-},
-
-{
-title:{en:"Password Generator",tr:"Şifre Oluşturucu"},
-desc:{en:"Generate secure passwords.",tr:"Güvenli şifreler oluşturun."},
-url:"/password-generator.html",
-cat:"developer",
-icon:"🔐"
-},
-
-{
-title:{en:"UUID Generator",tr:"UUID Oluşturucu"},
-desc:{en:"Generate UUIDs instantly.",tr:"UUID oluşturun."},
-url:"/uuid-generator.html",
-cat:"developer",
-icon:"🆔"
-},
-
-{
-title:{en:"Base64 Encoder Decoder",tr:"Base64 Encode Decode"},
-desc:{en:"Encode and decode Base64.",tr:"Base64 encode decode yapın."},
-url:"/base64-encoder-decoder.html",
-cat:"developer",
-icon:"🧬"
-},
-
-{
-title:{en:"URL Encoder Decoder",tr:"URL Encode Decode"},
-desc:{en:"Encode and decode URLs.",tr:"URL encode decode yapın."},
-url:"/url-encoder-decoder.html",
-cat:"developer",
-icon:"🌐"
-},
-
-{
-title:{en:"JSON Formatter",tr:"JSON Düzenleyici"},
-desc:{en:"Format and beautify JSON.",tr:"JSON formatlayın."},
-url:"/json-formatter.html",
-cat:"developer",
-icon:"{}"
-},
-
-{
-title:{en:"JWT Decoder",tr:"JWT Çözücü"},
-desc:{en:"Decode JWT tokens.",tr:"JWT token çözün."},
-url:"/jwt-decoder.html",
-cat:"developer",
-icon:"🪪"
-},
-
-{
-title:{en:"SHA256 Generator",tr:"SHA256 Oluşturucu"},
-desc:{en:"Generate SHA256 hashes.",tr:"SHA256 hash oluşturun."},
-url:"/sha256-generator.html",
-cat:"developer",
-icon:"#"
-},
-
-{
-title:{en:"Regex Tester",tr:"Regex Test Aracı"},
-desc:{en:"Test regular expressions.",tr:"Regex ifadelerini test edin."},
-url:"/regex-tester.html",
-cat:"developer",
-icon:".*"
-},
-
-{
-title:{en:"Cron Expression Generator",tr:"Cron Oluşturucu"},
-desc:{en:"Generate cron expressions.",tr:"Cron ifadeleri oluşturun."},
-url:"/cron-expression-generator.html",
-cat:"developer",
-icon:"🕒"
-},
-
-{
-title:{en:"HTAccess Generator",tr:"HTAccess Oluşturucu"},
-desc:{en:"Generate .htaccess rules.",tr:"HTAccess kuralları oluşturun."},
-url:"/htaccess-generator.html",
-cat:"developer",
-icon:"⚙️"
-},
-
-{
-title:{en:"HTML Minifier",tr:"HTML Minify"},
-desc:{en:"Minify HTML code.",tr:"HTML kodunu küçültün."},
-url:"/html-minifier.html",
-cat:"developer",
-icon:"HTML"
-},
-
-{
-title:{en:"CSS Minifier",tr:"CSS Minify"},
-desc:{en:"Minify CSS code.",tr:"CSS kodunu küçültün."},
-url:"/css-minifier.html",
-cat:"developer",
-icon:"CSS"
-},
-
-{
-title:{en:"JavaScript Minifier",tr:"JavaScript Minify"},
-desc:{en:"Minify JavaScript code.",tr:"JavaScript kodunu küçültün."},
-url:"/javascript-minifier.html",
-cat:"developer",
-icon:"JS"
-},
-
-{
-title:{en:"SQL Formatter",tr:"SQL Düzenleyici"},
-desc:{en:"Format SQL queries.",tr:"SQL sorgularını düzenleyin."},
-url:"/sql-formatter.html",
-cat:"developer",
-icon:"SQL"
-},
-
-{
-title:{en:"XML Formatter",tr:"XML Düzenleyici"},
-desc:{en:"Format XML code.",tr:"XML kodunu düzenleyin."},
-url:"/xml-formatter.html",
-cat:"developer",
-icon:"XML"
-},
-
-{
-title:{en:"YAML Formatter",tr:"YAML Düzenleyici"},
-desc:{en:"Format YAML code.",tr:"YAML kodunu düzenleyin."},
-url:"/yaml-formatter.html",
-cat:"developer",
-icon:"YAML"
-},
-
-{
-title:{en:"HTML Table Generator",tr:"HTML Tablo Oluşturucu"},
-desc:{en:"Generate HTML tables.",tr:"HTML tablolar oluşturun."},
-url:"/html-table-generator.html",
-cat:"developer",
-icon:"📋"
-},
-
-{
-title:{en:"HTTP Status Codes",tr:"HTTP Status Kodları"},
-desc:{en:"Search HTTP status codes.",tr:"HTTP durum kodlarını inceleyin."},
-url:"/http-status-codes.html",
-cat:"developer",
-icon:"📡"
-},
-
-{
-title:{en:"User Agent Parser",tr:"User Agent Parser"},
-desc:{en:"Parse user agent strings.",tr:"User agent verisini çözümleyin."},
-url:"/user-agent-parser.html",
-cat:"developer",
-icon:"🧭"
-},
-
-{
-title:{en:"MIME Type Lookup",tr:"MIME Type Bulucu"},
-desc:{en:"Find MIME types quickly.",tr:"MIME type bulun."},
-url:"/mime-type-lookup.html",
-cat:"developer",
-icon:"📦"
-},
-
-{
-title:{en:"Timestamp Converter",tr:"Timestamp Dönüştürücü"},
-desc:{en:"Convert Unix timestamps.",tr:"Unix timestamp dönüştürün."},
-url:"/timestamp-converter.html",
-cat:"developer",
-icon:"⏱️"
-},
-
-{
-title:{en:"CSS Gradient Generator",tr:"CSS Gradient Oluşturucu"},
-desc:{en:"Generate CSS gradients.",tr:"CSS gradient oluşturun."},
-url:"/css-gradient-generator.html",
-cat:"css",
-icon:"🌈"
-},
-
-{
-title:{en:"CSS Box Shadow Generator",tr:"CSS Box Shadow Oluşturucu"},
-desc:{en:"Generate CSS box shadows.",tr:"CSS gölge oluşturun."},
-url:"/css-box-shadow-generator.html",
-cat:"css",
-icon:"⬛"
-},
-
-{
-title:{en:"Box Shadow Generator",tr:"Box Shadow Oluşturucu"},
-desc:{en:"Create box shadow CSS.",tr:"Box shadow oluşturun."},
-url:"/box-shadow-generator.html",
-cat:"css",
-icon:"⬛"
-},
-
-{
-title:{en:"Border Radius Generator",tr:"Border Radius Oluşturucu"},
-desc:{en:"Generate border radius CSS.",tr:"Border radius oluşturun."},
-url:"/border-radius-generator.html",
-cat:"css",
-icon:"◼️"
-},
-
-{
-title:{en:"Color Contrast Checker",tr:"Renk Kontrast Kontrolü"},
-desc:{en:"Check WCAG color contrast.",tr:"Renk kontrastını kontrol edin."},
-url:"/color-contrast-checker.html",
-cat:"css",
-icon:"🎨"
-},
-
-{
-title:{en:"Color Palette Generator",tr:"Renk Paleti Oluşturucu"},
-desc:{en:"Generate color palettes.",tr:"Renk paletleri oluşturun."},
-url:"/color-palette-generator.html",
-cat:"css",
-icon:"🎨"
-},
-
-{
-title:{en:"CSS Button Generator",tr:"CSS Buton Oluşturucu"},
-desc:{en:"Create CSS buttons.",tr:"CSS butonları oluşturun."},
-url:"/css-button-generator.html",
-cat:"css",
-icon:"🔘"
-},
-
-{
-title:{en:"Glassmorphism Generator",tr:"Glassmorphism Oluşturucu"},
-desc:{en:"Generate glass CSS effects.",tr:"Glassmorphism efektleri oluşturun."},
-url:"/glassmorphism-generator.html",
-cat:"css",
-icon:"🧊"
-},
-
-{
-title:{en:"Flexbox Generator",tr:"Flexbox Oluşturucu"},
-desc:{en:"Generate flexbox layouts.",tr:"Flexbox düzenleri oluşturun."},
-url:"/flexbox-generator.html",
-cat:"css",
-icon:"↔️"
-},
-
-{
-title:{en:"CSS Grid Generator",tr:"CSS Grid Oluşturucu"},
-desc:{en:"Generate CSS grid layouts.",tr:"CSS grid düzenleri oluşturun."},
-url:"/css-grid-generator.html",
-cat:"css",
-icon:"▦"
-},
-
-{
-title:{en:"CSS Clamp Generator",tr:"CSS Clamp Oluşturucu"},
-desc:{en:"Generate responsive clamp values.",tr:"Clamp değerleri oluşturun."},
-url:"/css-clamp-generator.html",
-cat:"css",
-icon:"📏"
-},
-
-{
-title:{en:"CSS Animation Generator",tr:"CSS Animasyon Oluşturucu"},
-desc:{en:"Generate CSS animations.",tr:"CSS animasyonları oluşturun."},
-url:"/css-animation-generator.html",
-cat:"css",
-icon:"✨"
-},
-
-{
-title:{en:"CSS Loader Generator",tr:"CSS Loader Oluşturucu"},
-desc:{en:"Generate CSS loaders.",tr:"CSS loader oluşturun."},
-url:"/css-loader-generator.html",
-cat:"css",
-icon:"⭕"
-},
-
-{
-title:{en:"Gradient Text Generator",tr:"Gradient Yazı Oluşturucu"},
-desc:{en:"Create gradient text CSS.",tr:"Gradient yazılar oluşturun."},
-url:"/gradient-text-generator.html",
-cat:"css",
-icon:"🌈"
-},
-
-{
-title:{en:"Neon Text Generator",tr:"Neon Yazı Oluşturucu"},
-desc:{en:"Create neon text CSS.",tr:"Neon yazılar oluşturun."},
-url:"/neon-text-generator.html",
-cat:"css",
-icon:"💡"
-},
-
-{
-title:{en:"CSS Transform Generator",tr:"CSS Transform Oluşturucu"},
-desc:{en:"Generate transform CSS.",tr:"CSS transform oluşturun."},
-url:"/css-transform-generator.html",
-cat:"css",
-icon:"🔄"
-},
-
-{
-title:{en:"CSS Filter Generator",tr:"CSS Filter Oluşturucu"},
-desc:{en:"Generate CSS filters.",tr:"CSS filtreleri oluşturun."},
-url:"/css-filter-generator.html",
-cat:"css",
-icon:"🎛️"
-},
-
-{
-title:{en:"SVG Blob Generator",tr:"SVG Blob Oluşturucu"},
-desc:{en:"Generate SVG blobs.",tr:"SVG blob oluşturun."},
-url:"/svg-blob-generator.html",
-cat:"css",
-icon:"🫧"
-},
-
-{
-title:{en:"CSS Wave Generator",tr:"CSS Wave Oluşturucu"},
-desc:{en:"Generate SVG waves.",tr:"SVG dalgaları oluşturun."},
-url:"/css-wave-generator.html",
-cat:"css",
-icon:"🌊"
-},
-
-{
-title:{en:"Meta Tag Generator",tr:"Meta Etiket Oluşturucu"},
-desc:{en:"Generate SEO meta tags.",tr:"SEO meta etiketleri oluşturun."},
-url:"/meta-tag-generator.html",
-cat:"seo",
-icon:"🏷️"
-},
-
-{
-title:{en:"Canonical URL Generator",tr:"Canonical URL Oluşturucu"},
-desc:{en:"Generate canonical tags.",tr:"Canonical etiket oluşturun."},
-url:"/canonical-url-generator.html",
-cat:"seo",
-icon:"🔗"
-},
-
-{
-title:{en:"Schema Markup Generator",tr:"Schema Markup Oluşturucu"},
-desc:{en:"Generate JSON-LD schema.",tr:"Schema markup oluşturun."},
-url:"/schema-markup-generator.html",
-cat:"seo",
-icon:"⭐"
-},
-
-{
-title:{en:"Open Graph Generator",tr:"Open Graph Oluşturucu"},
-desc:{en:"Generate OG meta tags.",tr:"Open Graph meta etiketleri oluşturun."},
-url:"/open-graph-generator.html",
-cat:"seo",
-icon:"📣"
-},
-
-{
-title:{en:"Open Graph Previewer",tr:"Open Graph Önizleme"},
-desc:{en:"Preview social cards.",tr:"Sosyal kart önizleme yapın."},
-url:"/open-graph-previewer.html",
-cat:"seo",
-icon:"👁️"
-},
-
-{
-title:{en:"Meta Pixel Helper",tr:"Meta Pixel Yardımcısı"},
-desc:{en:"Generate Meta Pixel code.",tr:"Meta Pixel kodu oluşturun."},
-url:"/meta-pixel-helper.html",
-cat:"seo",
-icon:"📊"
-},
-
-{
-title:{en:"Favicon Generator",tr:"Favicon Oluşturucu"},
-desc:{en:"Generate favicon tags.",tr:"Favicon oluşturun."},
-url:"/favicon-generator.html",
-cat:"seo",
-icon:"🔖"
-},
-
-{
-title:{en:"Sitemap Generator",tr:"Sitemap Oluşturucu"},
-desc:{en:"Generate sitemap XML.",tr:"Sitemap XML oluşturun."},
-url:"/sitemap-generator.html",
-cat:"seo",
-icon:"🗺️"
-},
-
-{
-title:{en:"Robots.txt Generator",tr:"Robots.txt Oluşturucu"},
-desc:{en:"Generate robots.txt files.",tr:"Robots.txt oluşturun."},
-url:"/robots-txt-generator.html",
-cat:"seo",
-icon:"🤖"
-},
-
-{
-title:{en:"UTM Link Builder",tr:"UTM Link Oluşturucu"},
-desc:{en:"Build UTM campaign links.",tr:"UTM linkleri oluşturun."},
-url:"/utm-link-builder.html",
-cat:"seo",
-icon:"📈"
-},
-
-{
-title:{en:"Aspect Ratio Calculator",tr:"Aspect Ratio Hesaplayıcı"},
-desc:{en:"Calculate aspect ratios.",tr:"Aspect ratio hesaplayın."},
-url:"/aspect-ratio-calculator.html",
-cat:"seo",
-icon:"📐"
-}
+  {
+    "title": {
+      "en": "AI Prompt Generator",
+      "tr": "AI Prompt Oluşturucu"
+    },
+    "desc": {
+      "en": "Create useful AI prompts fast.",
+      "tr": "Hızlıca yapay zeka promptları oluşturun."
+    },
+    "url": "/ai-prompt-generator.html",
+    "cat": "ai",
+    "icon": "🤖"
+  },
+  {
+    "title": {
+      "en": "Anchor Text Extractor",
+      "tr": "Anchor Metin Çıkarıcı"
+    },
+    "desc": {
+      "en": "Use Anchor Text Extractor for SEO tasks.",
+      "tr": "Anchor Metin Çıkarıcı ile SEO işlemleri yapın."
+    },
+    "url": "/anchor-text-extractor.html",
+    "cat": "seo",
+    "icon": "⚓"
+  },
+  {
+    "title": {
+      "en": "Aspect Ratio Calculator",
+      "tr": "Aspect Ratio Calculator"
+    },
+    "desc": {
+      "en": "Use Aspect Ratio Calculator for developer workflows.",
+      "tr": "Aspect Ratio Calculator ile geliştirici işlemleri yapın."
+    },
+    "url": "/aspect-ratio-calculator.html",
+    "cat": "developer",
+    "icon": "⚙️"
+  },
+  {
+    "title": {
+      "en": "Background Remover",
+      "tr": "Arka Plan Kaldırıcı"
+    },
+    "desc": {
+      "en": "Use Background Remover online.",
+      "tr": "Arka Plan Kaldırıcı aracını online kullanın."
+    },
+    "url": "/background-remover.html",
+    "cat": "image",
+    "icon": "🖼️"
+  },
+  {
+    "title": {
+      "en": "Base64 Encoder Decoder",
+      "tr": "Base64 Encoder Decoder"
+    },
+    "desc": {
+      "en": "Use Base64 Encoder Decoder for developer workflows.",
+      "tr": "Base64 Encoder Decoder ile geliştirici işlemleri yapın."
+    },
+    "url": "/base64-encoder-decoder.html",
+    "cat": "developer",
+    "icon": "🧬"
+  },
+  {
+    "title": {
+      "en": "Base64 To Image",
+      "tr": "Base64 To Görsel"
+    },
+    "desc": {
+      "en": "Convert with Base64 To Image online.",
+      "tr": "Base64 To Görsel ile online dönüştürme yapın."
+    },
+    "url": "/base64-to-image.html",
+    "cat": "converter",
+    "icon": "🖼️"
+  },
+  {
+    "title": {
+      "en": "Binary Converter",
+      "tr": "Binary Dönüştürücü"
+    },
+    "desc": {
+      "en": "Convert with Binary Converter online.",
+      "tr": "Binary Dönüştürücü ile online dönüştürme yapın."
+    },
+    "url": "/binary-converter.html",
+    "cat": "converter",
+    "icon": "🔢"
+  },
+  {
+    "title": {
+      "en": "Blur Image",
+      "tr": "Görsel Blur Görsel"
+    },
+    "desc": {
+      "en": "Use Blur Image online.",
+      "tr": "Görsel Blur Görsel aracını online kullanın."
+    },
+    "url": "/blur-image.html",
+    "cat": "image",
+    "icon": "🌫️"
+  },
+  {
+    "title": {
+      "en": "Border Radius Generator",
+      "tr": "Border Radius Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Border Radius Generator CSS.",
+      "tr": "Border Radius Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/border-radius-generator.html",
+    "cat": "css",
+    "icon": "◼️"
+  },
+  {
+    "title": {
+      "en": "Box Shadow Generator",
+      "tr": "Box Shadow Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Box Shadow Generator CSS.",
+      "tr": "Box Shadow Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/box-shadow-generator.html",
+    "cat": "css",
+    "icon": "⬛"
+  },
+  {
+    "title": {
+      "en": "Broken Link Checker",
+      "tr": "Kırık Link Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use Broken Link Checker for SEO tasks.",
+      "tr": "Kırık Link Kontrol Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/broken-link-checker.html",
+    "cat": "seo",
+    "icon": "🧯"
+  },
+  {
+    "title": {
+      "en": "Canonical URL Checker",
+      "tr": "Canonical URL Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use Canonical URL Checker for SEO tasks.",
+      "tr": "Canonical URL Kontrol Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/canonical-url-checker.html",
+    "cat": "seo",
+    "icon": "🔗"
+  },
+  {
+    "title": {
+      "en": "Canonical URL Generator",
+      "tr": "Canonical URL Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Canonical URL Generator for SEO tasks.",
+      "tr": "Canonical URL Oluşturucu ile SEO işlemleri yapın."
+    },
+    "url": "/canonical-url-generator.html",
+    "cat": "seo",
+    "icon": "🔗"
+  },
+  {
+    "title": {
+      "en": "Case Converter",
+      "tr": "Harf Dönüştürücü"
+    },
+    "desc": {
+      "en": "Use Case Converter instantly.",
+      "tr": "Harf Dönüştürücü aracını anında kullanın."
+    },
+    "url": "/case-converter.html",
+    "cat": "text",
+    "icon": "Aa"
+  },
+  {
+    "title": {
+      "en": "Color Contrast Checker",
+      "tr": "Color Contrast Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Generate and preview Color Contrast Checker CSS.",
+      "tr": "Color Contrast Kontrol Aracı CSS aracını kullanın."
+    },
+    "url": "/color-contrast-checker.html",
+    "cat": "css",
+    "icon": "🎨"
+  },
+  {
+    "title": {
+      "en": "Color Palette Generator",
+      "tr": "Color Palette Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Color Palette Generator CSS.",
+      "tr": "Color Palette Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/color-palette-generator.html",
+    "cat": "css",
+    "icon": "🎨"
+  },
+  {
+    "title": {
+      "en": "Color Picker Converter",
+      "tr": "Color Picker Dönüştürücü"
+    },
+    "desc": {
+      "en": "Convert with Color Picker Converter online.",
+      "tr": "Color Picker Dönüştürücü ile online dönüştürme yapın."
+    },
+    "url": "/color-picker-converter.html",
+    "cat": "converter",
+    "icon": "🎨"
+  },
+  {
+    "title": {
+      "en": "Cron Expression Generator",
+      "tr": "Cron Expression Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Cron Expression Generator for developer workflows.",
+      "tr": "Cron Expression Oluşturucu ile geliştirici işlemleri yapın."
+    },
+    "url": "/cron-expression-generator.html",
+    "cat": "developer",
+    "icon": "🕒"
+  },
+  {
+    "title": {
+      "en": "Crop Image",
+      "tr": "Crop Görsel"
+    },
+    "desc": {
+      "en": "Use Crop Image online.",
+      "tr": "Crop Görsel aracını online kullanın."
+    },
+    "url": "/crop-image.html",
+    "cat": "image",
+    "icon": "✂️"
+  },
+  {
+    "title": {
+      "en": "CSS Animation Generator",
+      "tr": "CSS Animation Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Animation Generator CSS.",
+      "tr": "CSS Animation Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-animation-generator.html",
+    "cat": "css",
+    "icon": "✨"
+  },
+  {
+    "title": {
+      "en": "CSS Box Shadow Generator",
+      "tr": "CSS Box Shadow Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Box Shadow Generator CSS.",
+      "tr": "CSS Box Shadow Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-box-shadow-generator.html",
+    "cat": "css",
+    "icon": "⬛"
+  },
+  {
+    "title": {
+      "en": "CSS Button Generator",
+      "tr": "CSS Button Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Button Generator CSS.",
+      "tr": "CSS Button Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-button-generator.html",
+    "cat": "css",
+    "icon": "🔘"
+  },
+  {
+    "title": {
+      "en": "CSS Clamp Generator",
+      "tr": "CSS Clamp Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Clamp Generator CSS.",
+      "tr": "CSS Clamp Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-clamp-generator.html",
+    "cat": "css",
+    "icon": "📏"
+  },
+  {
+    "title": {
+      "en": "CSS Filter Generator",
+      "tr": "CSS Filter Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Filter Generator CSS.",
+      "tr": "CSS Filter Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-filter-generator.html",
+    "cat": "css",
+    "icon": "🎛️"
+  },
+  {
+    "title": {
+      "en": "CSS Gradient Generator",
+      "tr": "CSS Gradient Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Gradient Generator CSS.",
+      "tr": "CSS Gradient Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-gradient-generator.html",
+    "cat": "css",
+    "icon": "🌈"
+  },
+  {
+    "title": {
+      "en": "CSS Grid Generator",
+      "tr": "CSS Grid Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Grid Generator CSS.",
+      "tr": "CSS Grid Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-grid-generator.html",
+    "cat": "css",
+    "icon": "▦"
+  },
+  {
+    "title": {
+      "en": "CSS Loader Generator",
+      "tr": "CSS Loader Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Loader Generator CSS.",
+      "tr": "CSS Loader Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-loader-generator.html",
+    "cat": "css",
+    "icon": "⭕"
+  },
+  {
+    "title": {
+      "en": "CSS Minifier",
+      "tr": "CSS Minify"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Minifier CSS.",
+      "tr": "CSS Minify CSS aracını kullanın."
+    },
+    "url": "/css-minifier.html",
+    "cat": "css",
+    "icon": "🎛️"
+  },
+  {
+    "title": {
+      "en": "CSS Transform Generator",
+      "tr": "CSS Transform Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Transform Generator CSS.",
+      "tr": "CSS Transform Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-transform-generator.html",
+    "cat": "css",
+    "icon": "🔄"
+  },
+  {
+    "title": {
+      "en": "CSS Wave Generator",
+      "tr": "CSS Wave Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview CSS Wave Generator CSS.",
+      "tr": "CSS Wave Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/css-wave-generator.html",
+    "cat": "css",
+    "icon": "🌊"
+  },
+  {
+    "title": {
+      "en": "CSV To JSON",
+      "tr": "CSV To JSON"
+    },
+    "desc": {
+      "en": "Convert with CSV To JSON online.",
+      "tr": "CSV To JSON ile online dönüştürme yapın."
+    },
+    "url": "/csv-to-json.html",
+    "cat": "converter",
+    "icon": "📊"
+  },
+  {
+    "title": {
+      "en": "CSV Viewer",
+      "tr": "CSV Görüntüleyici"
+    },
+    "desc": {
+      "en": "Use CSV Viewer for developer workflows.",
+      "tr": "CSV Görüntüleyici ile geliştirici işlemleri yapın."
+    },
+    "url": "/csv-viewer.html",
+    "cat": "developer",
+    "icon": "📊"
+  },
+  {
+    "title": {
+      "en": "DNS Lookup",
+      "tr": "DNS Sorgulama"
+    },
+    "desc": {
+      "en": "Check DNS records quickly.",
+      "tr": "DNS kayıtlarını hızlıca sorgulayın."
+    },
+    "url": "/dns-lookup.html",
+    "cat": "network",
+    "icon": "🌐"
+  },
+  {
+    "title": {
+      "en": "Duplicate Line Remover",
+      "tr": "Tekrarlanan Satır Kaldırıcı"
+    },
+    "desc": {
+      "en": "Use Duplicate Line Remover instantly.",
+      "tr": "Tekrarlanan Satır Kaldırıcı aracını anında kullanın."
+    },
+    "url": "/duplicate-line-remover.html",
+    "cat": "text",
+    "icon": "🧹"
+  },
+  {
+    "title": {
+      "en": "Emoji Remover",
+      "tr": "Emoji Kaldırıcı"
+    },
+    "desc": {
+      "en": "Use Emoji Remover instantly.",
+      "tr": "Emoji Kaldırıcı aracını anında kullanın."
+    },
+    "url": "/emoji-remover.html",
+    "cat": "text",
+    "icon": "😀"
+  },
+  {
+    "title": {
+      "en": "Fake Data Generator",
+      "tr": "Sahte Veri Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Fake Data Generator for developer workflows.",
+      "tr": "Sahte Veri Oluşturucu ile geliştirici işlemleri yapın."
+    },
+    "url": "/fake-data-generator.html",
+    "cat": "developer",
+    "icon": "🎲"
+  },
+  {
+    "title": {
+      "en": "Favicon Checker",
+      "tr": "Favicon Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use Favicon Checker for SEO tasks.",
+      "tr": "Favicon Kontrol Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/favicon-checker.html",
+    "cat": "seo",
+    "icon": "🔖"
+  },
+  {
+    "title": {
+      "en": "Favicon Generator",
+      "tr": "Favicon Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Favicon Generator for SEO tasks.",
+      "tr": "Favicon Oluşturucu ile SEO işlemleri yapın."
+    },
+    "url": "/favicon-generator.html",
+    "cat": "seo",
+    "icon": "🔖"
+  },
+  {
+    "title": {
+      "en": "Flexbox Generator",
+      "tr": "Flexbox Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Flexbox Generator CSS.",
+      "tr": "Flexbox Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/flexbox-generator.html",
+    "cat": "css",
+    "icon": "↔️"
+  },
+  {
+    "title": {
+      "en": "Glassmorphism Generator",
+      "tr": "Glassmorphism Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Glassmorphism Generator CSS.",
+      "tr": "Glassmorphism Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/glassmorphism-generator.html",
+    "cat": "css",
+    "icon": "🧊"
+  },
+  {
+    "title": {
+      "en": "Gradient Text Generator",
+      "tr": "Gradient Metin Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Gradient Text Generator CSS.",
+      "tr": "Gradient Metin Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/gradient-text-generator.html",
+    "cat": "css",
+    "icon": "🌈"
+  },
+  {
+    "title": {
+      "en": "Hashtag Generator",
+      "tr": "Hashtag Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Hashtag Generator instantly.",
+      "tr": "Hashtag Oluşturucu aracını anında kullanın."
+    },
+    "url": "/hashtag-generator.html",
+    "cat": "text",
+    "icon": "🏷️"
+  },
+  {
+    "title": {
+      "en": "Heading Checker",
+      "tr": "Başlık Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use Heading Checker for SEO tasks.",
+      "tr": "Başlık Kontrol Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/heading-checker.html",
+    "cat": "seo",
+    "icon": "🧭"
+  },
+  {
+    "title": {
+      "en": "HEX To RGB",
+      "tr": "HEX To RGB"
+    },
+    "desc": {
+      "en": "Convert with HEX To RGB online.",
+      "tr": "HEX To RGB ile online dönüştürme yapın."
+    },
+    "url": "/hex-to-rgb.html",
+    "cat": "converter",
+    "icon": "🎨"
+  },
+  {
+    "title": {
+      "en": "Hreflang Validator",
+      "tr": "Hreflang Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Use Hreflang Validator for SEO tasks.",
+      "tr": "Hreflang Doğrulayıcı ile SEO işlemleri yapın."
+    },
+    "url": "/hreflang-validator.html",
+    "cat": "seo",
+    "icon": "🌍"
+  },
+  {
+    "title": {
+      "en": "Htaccess Generator",
+      "tr": "Htaccess Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Htaccess Generator for developer workflows.",
+      "tr": "Htaccess Oluşturucu ile geliştirici işlemleri yapın."
+    },
+    "url": "/htaccess-generator.html",
+    "cat": "developer",
+    "icon": "⚙️"
+  },
+  {
+    "title": {
+      "en": "HTML Entity Encoder Decoder",
+      "tr": "HTML Entity Encoder Decoder"
+    },
+    "desc": {
+      "en": "Use HTML Entity Encoder Decoder for developer workflows.",
+      "tr": "HTML Entity Encoder Decoder ile geliştirici işlemleri yapın."
+    },
+    "url": "/html-entity-encoder-decoder.html",
+    "cat": "developer",
+    "icon": "⚙️"
+  },
+  {
+    "title": {
+      "en": "HTML Minifier",
+      "tr": "HTML Minify"
+    },
+    "desc": {
+      "en": "Use HTML Minifier for developer workflows.",
+      "tr": "HTML Minify ile geliştirici işlemleri yapın."
+    },
+    "url": "/html-minifier.html",
+    "cat": "developer",
+    "icon": "🧱"
+  },
+  {
+    "title": {
+      "en": "HTML Table Generator",
+      "tr": "HTML Table Oluşturucu"
+    },
+    "desc": {
+      "en": "Use HTML Table Generator for developer workflows.",
+      "tr": "HTML Table Oluşturucu ile geliştirici işlemleri yapın."
+    },
+    "url": "/html-table-generator.html",
+    "cat": "developer",
+    "icon": "⚙️"
+  },
+  {
+    "title": {
+      "en": "HTML Tag Remover",
+      "tr": "HTML Tag Kaldırıcı"
+    },
+    "desc": {
+      "en": "Use HTML Tag Remover for developer workflows.",
+      "tr": "HTML Tag Kaldırıcı ile geliştirici işlemleri yapın."
+    },
+    "url": "/html-tag-remover.html",
+    "cat": "developer",
+    "icon": "🧽"
+  },
+  {
+    "title": {
+      "en": "HTML To Markdown",
+      "tr": "HTML To Markdown"
+    },
+    "desc": {
+      "en": "Convert with HTML To Markdown online.",
+      "tr": "HTML To Markdown ile online dönüştürme yapın."
+    },
+    "url": "/html-to-markdown.html",
+    "cat": "converter",
+    "icon": "⬇️"
+  },
+  {
+    "title": {
+      "en": "HTML To Text Ratio Checker",
+      "tr": "HTML To Metin Ratio Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use HTML To Text Ratio Checker for SEO tasks.",
+      "tr": "HTML To Metin Ratio Kontrol Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/html-to-text-ratio-checker.html",
+    "cat": "seo",
+    "icon": "⚖️"
+  },
+  {
+    "title": {
+      "en": "Http Status Codes",
+      "tr": "Http Status Codes"
+    },
+    "desc": {
+      "en": "Use Http Status Codes for developer workflows.",
+      "tr": "Http Status Codes ile geliştirici işlemleri yapın."
+    },
+    "url": "/http-status-codes.html",
+    "cat": "developer",
+    "icon": "📡"
+  },
+  {
+    "title": {
+      "en": "Image Compressor",
+      "tr": "Görsel Compressor"
+    },
+    "desc": {
+      "en": "Use Image Compressor online.",
+      "tr": "Görsel Compressor aracını online kullanın."
+    },
+    "url": "/image-compressor.html",
+    "cat": "image",
+    "icon": "⚡"
+  },
+  {
+    "title": {
+      "en": "Image to Text OCR",
+      "tr": "Görselden Metin OCR"
+    },
+    "desc": {
+      "en": "Extract text from images.",
+      "tr": "Görsellerden metin çıkarın."
+    },
+    "url": "/image-to-text-ocr.html",
+    "cat": "image",
+    "icon": "🔤"
+  },
+  {
+    "title": {
+      "en": "Image Upscaler",
+      "tr": "Görsel Upscaler"
+    },
+    "desc": {
+      "en": "Use Image Upscaler online.",
+      "tr": "Görsel Upscaler aracını online kullanın."
+    },
+    "url": "/image-upscaler.html",
+    "cat": "image",
+    "icon": "🔍"
+  },
+  {
+    "title": {
+      "en": "Internal Link Analyzer",
+      "tr": "İç Link Analiz Aracı"
+    },
+    "desc": {
+      "en": "Use Internal Link Analyzer for SEO tasks.",
+      "tr": "İç Link Analiz Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/internal-link-analyzer.html",
+    "cat": "seo",
+    "icon": "🔗"
+  },
+  {
+    "title": {
+      "en": "IP Address Lookup",
+      "tr": "IP Adresi Sorgulama"
+    },
+    "desc": {
+      "en": "Look up IP address information.",
+      "tr": "IP adresi bilgilerini sorgulayın."
+    },
+    "url": "/ip-address-lookup.html",
+    "cat": "network",
+    "icon": "📍"
+  },
+  {
+    "title": {
+      "en": "Javascript Minifier",
+      "tr": "Javascript Minify"
+    },
+    "desc": {
+      "en": "Use Javascript Minifier for developer workflows.",
+      "tr": "Javascript Minify ile geliştirici işlemleri yapın."
+    },
+    "url": "/javascript-minifier.html",
+    "cat": "developer",
+    "icon": "⚙️"
+  },
+  {
+    "title": {
+      "en": "JPG To PNG",
+      "tr": "JPG To PNG"
+    },
+    "desc": {
+      "en": "Convert with JPG To PNG online.",
+      "tr": "JPG To PNG ile online dönüştürme yapın."
+    },
+    "url": "/jpg-to-png.html",
+    "cat": "converter",
+    "icon": "🔁"
+  },
+  {
+    "title": {
+      "en": "JPG To WEBP",
+      "tr": "JPG To WEBP"
+    },
+    "desc": {
+      "en": "Convert with JPG To WEBP online.",
+      "tr": "JPG To WEBP ile online dönüştürme yapın."
+    },
+    "url": "/jpg-to-webp.html",
+    "cat": "converter",
+    "icon": "🔁"
+  },
+  {
+    "title": {
+      "en": "JSON Escape Unescape",
+      "tr": "JSON Escape Unescape"
+    },
+    "desc": {
+      "en": "Use JSON Escape Unescape for developer workflows.",
+      "tr": "JSON Escape Unescape ile geliştirici işlemleri yapın."
+    },
+    "url": "/json-escape-unescape.html",
+    "cat": "developer",
+    "icon": "🧩"
+  },
+  {
+    "title": {
+      "en": "JSON Formatter",
+      "tr": "JSON Düzenleyici"
+    },
+    "desc": {
+      "en": "Use JSON Formatter for developer workflows.",
+      "tr": "JSON Düzenleyici ile geliştirici işlemleri yapın."
+    },
+    "url": "/json-formatter.html",
+    "cat": "developer",
+    "icon": "{}"
+  },
+  {
+    "title": {
+      "en": "JSON To CSV",
+      "tr": "JSON To CSV"
+    },
+    "desc": {
+      "en": "Convert with JSON To CSV online.",
+      "tr": "JSON To CSV ile online dönüştürme yapın."
+    },
+    "url": "/json-to-csv.html",
+    "cat": "converter",
+    "icon": "📊"
+  },
+  {
+    "title": {
+      "en": "JSON Validator",
+      "tr": "JSON Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Validate and check with JSON Validator.",
+      "tr": "JSON Doğrulayıcı ile kontrol ve doğrulama yapın."
+    },
+    "url": "/json-validator.html",
+    "cat": "validator",
+    "icon": "✅"
+  },
+  {
+    "title": {
+      "en": "JSON Viewer",
+      "tr": "JSON Görüntüleyici"
+    },
+    "desc": {
+      "en": "Use JSON Viewer for developer workflows.",
+      "tr": "JSON Görüntüleyici ile geliştirici işlemleri yapın."
+    },
+    "url": "/json-viewer.html",
+    "cat": "developer",
+    "icon": "👁️"
+  },
+  {
+    "title": {
+      "en": "JWT Decoder",
+      "tr": "JWT Decoder"
+    },
+    "desc": {
+      "en": "Use JWT Decoder for developer workflows.",
+      "tr": "JWT Decoder ile geliştirici işlemleri yapın."
+    },
+    "url": "/jwt-decoder.html",
+    "cat": "developer",
+    "icon": "🪪"
+  },
+  {
+    "title": {
+      "en": "Keyword Density Checker",
+      "tr": "Keyword Yoğunluğu Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use Keyword Density Checker for SEO tasks.",
+      "tr": "Keyword Yoğunluğu Kontrol Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/keyword-density-checker.html",
+    "cat": "seo",
+    "icon": "🔑"
+  },
+  {
+    "title": {
+      "en": "Line Counter",
+      "tr": "Line Sayacı"
+    },
+    "desc": {
+      "en": "Use Line Counter instantly.",
+      "tr": "Line Sayacı aracını anında kullanın."
+    },
+    "url": "/line-counter.html",
+    "cat": "text",
+    "icon": "📏"
+  },
+  {
+    "title": {
+      "en": "Link Extractor",
+      "tr": "Link Çıkarıcı"
+    },
+    "desc": {
+      "en": "Use Link Extractor for developer workflows.",
+      "tr": "Link Çıkarıcı ile geliştirici işlemleri yapın."
+    },
+    "url": "/link-extractor.html",
+    "cat": "developer",
+    "icon": "🔗"
+  },
+  {
+    "title": {
+      "en": "Lorem Ipsum Generator",
+      "tr": "Lorem Ipsum Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Lorem Ipsum Generator instantly.",
+      "tr": "Lorem Ipsum Oluşturucu aracını anında kullanın."
+    },
+    "url": "/lorem-ipsum-generator.html",
+    "cat": "text",
+    "icon": "📝"
+  },
+  {
+    "title": {
+      "en": "Markdown Previewer",
+      "tr": "Markdown Önizleyici"
+    },
+    "desc": {
+      "en": "Use Markdown Previewer instantly.",
+      "tr": "Markdown Önizleyici aracını anında kullanın."
+    },
+    "url": "/markdown-previewer.html",
+    "cat": "text",
+    "icon": "⬇️"
+  },
+  {
+    "title": {
+      "en": "Markdown Table Generator",
+      "tr": "Markdown Table Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Markdown Table Generator instantly.",
+      "tr": "Markdown Table Oluşturucu aracını anında kullanın."
+    },
+    "url": "/markdown-table-generator.html",
+    "cat": "text",
+    "icon": "⬇️"
+  },
+  {
+    "title": {
+      "en": "Markdown To HTML",
+      "tr": "Markdown To HTML"
+    },
+    "desc": {
+      "en": "Convert with Markdown To HTML online.",
+      "tr": "Markdown To HTML ile online dönüştürme yapın."
+    },
+    "url": "/markdown-to-html.html",
+    "cat": "converter",
+    "icon": "⬇️"
+  },
+  {
+    "title": {
+      "en": "Meme Maker",
+      "tr": "Meme Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Meme Maker online.",
+      "tr": "Meme Oluşturucu aracını online kullanın."
+    },
+    "url": "/meme-maker.html",
+    "cat": "image",
+    "icon": "😂"
+  },
+  {
+    "title": {
+      "en": "Meta Pixel Helper",
+      "tr": "Meta Pixel Helper"
+    },
+    "desc": {
+      "en": "Use Meta Pixel Helper for SEO tasks.",
+      "tr": "Meta Pixel Helper ile SEO işlemleri yapın."
+    },
+    "url": "/meta-pixel-helper.html",
+    "cat": "seo",
+    "icon": "📊"
+  },
+  {
+    "title": {
+      "en": "Meta Tag Analyzer",
+      "tr": "Meta Tag Analiz Aracı"
+    },
+    "desc": {
+      "en": "Use Meta Tag Analyzer for SEO tasks.",
+      "tr": "Meta Tag Analiz Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/meta-tag-analyzer.html",
+    "cat": "seo",
+    "icon": "🔎"
+  },
+  {
+    "title": {
+      "en": "Meta Tag Extractor",
+      "tr": "Meta Tag Çıkarıcı"
+    },
+    "desc": {
+      "en": "Use Meta Tag Extractor for SEO tasks.",
+      "tr": "Meta Tag Çıkarıcı ile SEO işlemleri yapın."
+    },
+    "url": "/meta-tag-extractor.html",
+    "cat": "seo",
+    "icon": "📤"
+  },
+  {
+    "title": {
+      "en": "Meta Tag Generator",
+      "tr": "Meta Tag Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Meta Tag Generator for SEO tasks.",
+      "tr": "Meta Tag Oluşturucu ile SEO işlemleri yapın."
+    },
+    "url": "/meta-tag-generator.html",
+    "cat": "seo",
+    "icon": "🏷️"
+  },
+  {
+    "title": {
+      "en": "Meta Tag Validator",
+      "tr": "Meta Tag Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Use Meta Tag Validator for SEO tasks.",
+      "tr": "Meta Tag Doğrulayıcı ile SEO işlemleri yapın."
+    },
+    "url": "/meta-tag-validator.html",
+    "cat": "seo",
+    "icon": "✅"
+  },
+  {
+    "title": {
+      "en": "MIME Type Lookup",
+      "tr": "MIME Type Sorgulama"
+    },
+    "desc": {
+      "en": "Use MIME Type Lookup for developer workflows.",
+      "tr": "MIME Type Sorgulama ile geliştirici işlemleri yapın."
+    },
+    "url": "/mime-type-lookup.html",
+    "cat": "developer",
+    "icon": "📦"
+  },
+  {
+    "title": {
+      "en": "Neon Text Generator",
+      "tr": "Neon Metin Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Neon Text Generator CSS.",
+      "tr": "Neon Metin Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/neon-text-generator.html",
+    "cat": "css",
+    "icon": "💡"
+  },
+  {
+    "title": {
+      "en": "Open Graph Generator",
+      "tr": "Open Graph Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Open Graph Generator for SEO tasks.",
+      "tr": "Open Graph Oluşturucu ile SEO işlemleri yapın."
+    },
+    "url": "/open-graph-generator.html",
+    "cat": "seo",
+    "icon": "📣"
+  },
+  {
+    "title": {
+      "en": "Open Graph Previewer",
+      "tr": "Open Graph Önizleyici"
+    },
+    "desc": {
+      "en": "Use Open Graph Previewer for SEO tasks.",
+      "tr": "Open Graph Önizleyici ile SEO işlemleri yapın."
+    },
+    "url": "/open-graph-previewer.html",
+    "cat": "seo",
+    "icon": "👁️"
+  },
+  {
+    "title": {
+      "en": "Open Graph Validator",
+      "tr": "Open Graph Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Use Open Graph Validator for SEO tasks.",
+      "tr": "Open Graph Doğrulayıcı ile SEO işlemleri yapın."
+    },
+    "url": "/open-graph-validator.html",
+    "cat": "seo",
+    "icon": "✅"
+  },
+  {
+    "title": {
+      "en": "Password Generator",
+      "tr": "Şifre Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Password Generator instantly.",
+      "tr": "Şifre Oluşturucu aracını anında kullanın."
+    },
+    "url": "/password-generator.html",
+    "cat": "text",
+    "icon": "🔐"
+  },
+  {
+    "title": {
+      "en": "Password Strength Checker",
+      "tr": "Şifre Gücü Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use Password Strength Checker instantly.",
+      "tr": "Şifre Gücü Kontrol Aracı aracını anında kullanın."
+    },
+    "url": "/password-strength-checker.html",
+    "cat": "text",
+    "icon": "🛡️"
+  },
+  {
+    "title": {
+      "en": "PNG To JPG",
+      "tr": "PNG To JPG"
+    },
+    "desc": {
+      "en": "Convert with PNG To JPG online.",
+      "tr": "PNG To JPG ile online dönüştürme yapın."
+    },
+    "url": "/png-to-jpg.html",
+    "cat": "converter",
+    "icon": "🔁"
+  },
+  {
+    "title": {
+      "en": "PNG To WEBP",
+      "tr": "PNG To WEBP"
+    },
+    "desc": {
+      "en": "Convert with PNG To WEBP online.",
+      "tr": "PNG To WEBP ile online dönüştürme yapın."
+    },
+    "url": "/png-to-webp.html",
+    "cat": "converter",
+    "icon": "🔁"
+  },
+  {
+    "title": {
+      "en": "QR Generator",
+      "tr": "QR Oluşturucu"
+    },
+    "desc": {
+      "en": "Use QR Generator online.",
+      "tr": "QR Oluşturucu aracını online kullanın."
+    },
+    "url": "/qr-generator.html",
+    "cat": "image",
+    "icon": "▦"
+  },
+  {
+    "title": {
+      "en": "Readability Checker",
+      "tr": "Okunabilirlik Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Validate and check with Readability Checker.",
+      "tr": "Okunabilirlik Kontrol Aracı ile kontrol ve doğrulama yapın."
+    },
+    "url": "/readability-checker.html",
+    "cat": "validator",
+    "icon": "📖"
+  },
+  {
+    "title": {
+      "en": "Regex Tester",
+      "tr": "Regex Tester"
+    },
+    "desc": {
+      "en": "Use Regex Tester for developer workflows.",
+      "tr": "Regex Tester ile geliştirici işlemleri yapın."
+    },
+    "url": "/regex-tester.html",
+    "cat": "developer",
+    "icon": ".*"
+  },
+  {
+    "title": {
+      "en": "Resize Image",
+      "tr": "Görsel Boyutlandırma Görsel"
+    },
+    "desc": {
+      "en": "Use Resize Image online.",
+      "tr": "Görsel Boyutlandırma Görsel aracını online kullanın."
+    },
+    "url": "/resize-image.html",
+    "cat": "image",
+    "icon": "📐"
+  },
+  {
+    "title": {
+      "en": "RGB To HEX",
+      "tr": "RGB To HEX"
+    },
+    "desc": {
+      "en": "Convert with RGB To HEX online.",
+      "tr": "RGB To HEX ile online dönüştürme yapın."
+    },
+    "url": "/rgb-to-hex.html",
+    "cat": "converter",
+    "icon": "🎨"
+  },
+  {
+    "title": {
+      "en": "Robots Txt Generator",
+      "tr": "Robots Txt Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Robots Txt Generator for SEO tasks.",
+      "tr": "Robots Txt Oluşturucu ile SEO işlemleri yapın."
+    },
+    "url": "/robots-txt-generator.html",
+    "cat": "seo",
+    "icon": "🤖"
+  },
+  {
+    "title": {
+      "en": "Robots Txt Validator",
+      "tr": "Robots Txt Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Use Robots Txt Validator for SEO tasks.",
+      "tr": "Robots Txt Doğrulayıcı ile SEO işlemleri yapın."
+    },
+    "url": "/robots-txt-validator.html",
+    "cat": "seo",
+    "icon": "✅"
+  },
+  {
+    "title": {
+      "en": "Rotate Image",
+      "tr": "Görsel Döndürme Görsel"
+    },
+    "desc": {
+      "en": "Use Rotate Image online.",
+      "tr": "Görsel Döndürme Görsel aracını online kullanın."
+    },
+    "url": "/rotate-image.html",
+    "cat": "image",
+    "icon": "🔄"
+  },
+  {
+    "title": {
+      "en": "Schema Markup Generator",
+      "tr": "Schema Markup Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Schema Markup Generator for SEO tasks.",
+      "tr": "Schema Markup Oluşturucu ile SEO işlemleri yapın."
+    },
+    "url": "/schema-markup-generator.html",
+    "cat": "seo",
+    "icon": "⭐"
+  },
+  {
+    "title": {
+      "en": "SEO Score Checker",
+      "tr": "SEO Score Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Use SEO Score Checker for SEO tasks.",
+      "tr": "SEO Score Kontrol Aracı ile SEO işlemleri yapın."
+    },
+    "url": "/seo-score-checker.html",
+    "cat": "seo",
+    "icon": "📊"
+  },
+  {
+    "title": {
+      "en": "SHA256 Generator",
+      "tr": "SHA256 Oluşturucu"
+    },
+    "desc": {
+      "en": "Use SHA256 Generator for developer workflows.",
+      "tr": "SHA256 Oluşturucu ile geliştirici işlemleri yapın."
+    },
+    "url": "/sha256-generator.html",
+    "cat": "developer",
+    "icon": "#"
+  },
+  {
+    "title": {
+      "en": "Sitemap Generator",
+      "tr": "Sitemap Oluşturucu"
+    },
+    "desc": {
+      "en": "Use Sitemap Generator for SEO tasks.",
+      "tr": "Sitemap Oluşturucu ile SEO işlemleri yapın."
+    },
+    "url": "/sitemap-generator.html",
+    "cat": "seo",
+    "icon": "🗺️"
+  },
+  {
+    "title": {
+      "en": "Sitemap Validator",
+      "tr": "Sitemap Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Use Sitemap Validator for SEO tasks.",
+      "tr": "Sitemap Doğrulayıcı ile SEO işlemleri yapın."
+    },
+    "url": "/sitemap-validator.html",
+    "cat": "seo",
+    "icon": "✅"
+  },
+  {
+    "title": {
+      "en": "Slug Validator",
+      "tr": "Slug Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Validate and check with Slug Validator.",
+      "tr": "Slug Doğrulayıcı ile kontrol ve doğrulama yapın."
+    },
+    "url": "/slug-validator.html",
+    "cat": "validator",
+    "icon": "🔗"
+  },
+  {
+    "title": {
+      "en": "SQL Formatter",
+      "tr": "SQL Düzenleyici"
+    },
+    "desc": {
+      "en": "Use SQL Formatter for developer workflows.",
+      "tr": "SQL Düzenleyici ile geliştirici işlemleri yapın."
+    },
+    "url": "/sql-formatter.html",
+    "cat": "developer",
+    "icon": "🗄️"
+  },
+  {
+    "title": {
+      "en": "SQL Minifier",
+      "tr": "SQL Minify"
+    },
+    "desc": {
+      "en": "Use SQL Minifier for developer workflows.",
+      "tr": "SQL Minify ile geliştirici işlemleri yapın."
+    },
+    "url": "/sql-minifier.html",
+    "cat": "developer",
+    "icon": "🗜️"
+  },
+  {
+    "title": {
+      "en": "Svg Blob Generator",
+      "tr": "Svg Blob Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate and preview Svg Blob Generator CSS.",
+      "tr": "Svg Blob Oluşturucu CSS aracını kullanın."
+    },
+    "url": "/svg-blob-generator.html",
+    "cat": "css",
+    "icon": "🫧"
+  },
+  {
+    "title": {
+      "en": "Text Case Detection",
+      "tr": "Metin Harf Algılama"
+    },
+    "desc": {
+      "en": "Use Text Case Detection instantly.",
+      "tr": "Metin Harf Algılama aracını anında kullanın."
+    },
+    "url": "/text-case-detection.html",
+    "cat": "text",
+    "icon": "Aa"
+  },
+  {
+    "title": {
+      "en": "Text Diff Checker",
+      "tr": "Metin Diff Kontrol Aracı"
+    },
+    "desc": {
+      "en": "Validate and check with Text Diff Checker.",
+      "tr": "Metin Diff Kontrol Aracı ile kontrol ve doğrulama yapın."
+    },
+    "url": "/text-diff-checker.html",
+    "cat": "validator",
+    "icon": "🔎"
+  },
+  {
+    "title": {
+      "en": "Text Sorter",
+      "tr": "Metin Sıralayıcı"
+    },
+    "desc": {
+      "en": "Use Text Sorter instantly.",
+      "tr": "Metin Sıralayıcı aracını anında kullanın."
+    },
+    "url": "/text-sorter.html",
+    "cat": "text",
+    "icon": "↕️"
+  },
+  {
+    "title": {
+      "en": "Text To Slug",
+      "tr": "Metin To Slug"
+    },
+    "desc": {
+      "en": "Use Text To Slug instantly.",
+      "tr": "Metin To Slug aracını anında kullanın."
+    },
+    "url": "/text-to-slug.html",
+    "cat": "text",
+    "icon": "🔗"
+  },
+  {
+    "title": {
+      "en": "Timestamp Converter",
+      "tr": "Timestamp Dönüştürücü"
+    },
+    "desc": {
+      "en": "Use Timestamp Converter for developer workflows.",
+      "tr": "Timestamp Dönüştürücü ile geliştirici işlemleri yapın."
+    },
+    "url": "/timestamp-converter.html",
+    "cat": "developer",
+    "icon": "⏱️"
+  },
+  {
+    "title": {
+      "en": "Unit Converter",
+      "tr": "Unit Dönüştürücü"
+    },
+    "desc": {
+      "en": "Convert with Unit Converter online.",
+      "tr": "Unit Dönüştürücü ile online dönüştürme yapın."
+    },
+    "url": "/unit-converter.html",
+    "cat": "converter",
+    "icon": "📏"
+  },
+  {
+    "title": {
+      "en": "URL Encoder Decoder",
+      "tr": "URL Encoder Decoder"
+    },
+    "desc": {
+      "en": "Use URL Encoder Decoder for developer workflows.",
+      "tr": "URL Encoder Decoder ile geliştirici işlemleri yapın."
+    },
+    "url": "/url-encoder-decoder.html",
+    "cat": "developer",
+    "icon": "🌐"
+  },
+  {
+    "title": {
+      "en": "User Agent Parser",
+      "tr": "User Agent Parser"
+    },
+    "desc": {
+      "en": "Use User Agent Parser for developer workflows.",
+      "tr": "User Agent Parser ile geliştirici işlemleri yapın."
+    },
+    "url": "/user-agent-parser.html",
+    "cat": "developer",
+    "icon": "🧭"
+  },
+  {
+    "title": {
+      "en": "UTM Link Builder",
+      "tr": "UTM Link Builder"
+    },
+    "desc": {
+      "en": "Use UTM Link Builder for SEO tasks.",
+      "tr": "UTM Link Builder ile SEO işlemleri yapın."
+    },
+    "url": "/utm-link-builder.html",
+    "cat": "seo",
+    "icon": "📈"
+  },
+  {
+    "title": {
+      "en": "UUID Generator",
+      "tr": "UUID Oluşturucu"
+    },
+    "desc": {
+      "en": "Use UUID Generator for developer workflows.",
+      "tr": "UUID Oluşturucu ile geliştirici işlemleri yapın."
+    },
+    "url": "/uuid-generator.html",
+    "cat": "developer",
+    "icon": "🆔"
+  },
+  {
+    "title": {
+      "en": "UUID Validator",
+      "tr": "UUID Doğrulayıcı"
+    },
+    "desc": {
+      "en": "Validate and check with UUID Validator.",
+      "tr": "UUID Doğrulayıcı ile kontrol ve doğrulama yapın."
+    },
+    "url": "/uuid-validator.html",
+    "cat": "validator",
+    "icon": "✅"
+  },
+  {
+    "title": {
+      "en": "Watermark Image",
+      "tr": "Filigran Görsel"
+    },
+    "desc": {
+      "en": "Use Watermark Image online.",
+      "tr": "Filigran Görsel aracını online kullanın."
+    },
+    "url": "/watermark-image.html",
+    "cat": "image",
+    "icon": "💧"
+  },
+  {
+    "title": {
+      "en": "WEBP To JPG",
+      "tr": "WEBP To JPG"
+    },
+    "desc": {
+      "en": "Convert with WEBP To JPG online.",
+      "tr": "WEBP To JPG ile online dönüştürme yapın."
+    },
+    "url": "/webp-to-jpg.html",
+    "cat": "converter",
+    "icon": "🔁"
+  },
+  {
+    "title": {
+      "en": "WEBP To PNG",
+      "tr": "WEBP To PNG"
+    },
+    "desc": {
+      "en": "Convert with WEBP To PNG online.",
+      "tr": "WEBP To PNG ile online dönüştürme yapın."
+    },
+    "url": "/webp-to-png.html",
+    "cat": "converter",
+    "icon": "🔁"
+  },
+  {
+    "title": {
+      "en": "Whitespace Remover",
+      "tr": "Boşluk Kaldırıcı"
+    },
+    "desc": {
+      "en": "Use Whitespace Remover instantly.",
+      "tr": "Boşluk Kaldırıcı aracını anında kullanın."
+    },
+    "url": "/whitespace-remover.html",
+    "cat": "text",
+    "icon": "⬚"
+  },
+  {
+    "title": {
+      "en": "Word Counter",
+      "tr": "Word Sayacı"
+    },
+    "desc": {
+      "en": "Use Word Counter instantly.",
+      "tr": "Word Sayacı aracını anında kullanın."
+    },
+    "url": "/word-counter.html",
+    "cat": "text",
+    "icon": "🔤"
+  },
+  {
+    "title": {
+      "en": "Word Frequency Counter",
+      "tr": "Word Frekansı Sayacı"
+    },
+    "desc": {
+      "en": "Use Word Frequency Counter instantly.",
+      "tr": "Word Frekansı Sayacı aracını anında kullanın."
+    },
+    "url": "/word-frequency-counter.html",
+    "cat": "text",
+    "icon": "📊"
+  },
+  {
+    "title": {
+      "en": "XML Formatter",
+      "tr": "XML Düzenleyici"
+    },
+    "desc": {
+      "en": "Use XML Formatter for developer workflows.",
+      "tr": "XML Düzenleyici ile geliştirici işlemleri yapın."
+    },
+    "url": "/xml-formatter.html",
+    "cat": "developer",
+    "icon": "🧾"
+  },
+  {
+    "title": {
+      "en": "YAML Formatter",
+      "tr": "YAML Düzenleyici"
+    },
+    "desc": {
+      "en": "Use YAML Formatter for developer workflows.",
+      "tr": "YAML Düzenleyici ile geliştirici işlemleri yapın."
+    },
+    "url": "/yaml-formatter.html",
+    "cat": "developer",
+    "icon": "📄"
+  },
+  {
+    "title": {
+      "en": "YouTube Tag Generator",
+      "tr": "YouTube Etiket Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate YouTube video tags.",
+      "tr": "YouTube video etiketleri oluşturun."
+    },
+    "url": "/youtube-tag-generator.html",
+    "cat": "youtube",
+    "icon": "▶️"
+  },
+  {
+    "title": {
+      "en": "YouTube Title Generator",
+      "tr": "YouTube Başlık Oluşturucu"
+    },
+    "desc": {
+      "en": "Generate YouTube title ideas.",
+      "tr": "YouTube başlık fikirleri oluşturun."
+    },
+    "url": "/youtube-title-generator.html",
+    "cat": "youtube",
+    "icon": "▶️"
+  }
 ];
 
 const grid = document.getElementById("toolsGrid");
@@ -838,12 +1870,12 @@ const searchInput = document.getElementById("searchInput");
 const buttons = document.querySelectorAll(".cat-btn");
 const langBtn = document.getElementById("langBtn");
 let activeCategory = "all";
-const popularUrls = ["/json-formatter.html","/qr-generator.html","/password-generator.html","/jwt-decoder.html"];
+const popularUrls = ["/json-formatter.html","/qr-generator.html","/ai-prompt-generator.html","/password-generator.html"];
 let lang = localStorage.getItem("toolivo_lang") || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
 
 const ui = {
-  en: {badge:"Fast • Free • Mobile Friendly", hero:'Free Online <span class="gradient">Tools</span>', heroText:"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.", search:"Search tools...", allTools:"All Tools", navTools:"Tools", navAbout:"About", navPrivacy:"Privacy", navContact:"Contact", all:"All", image:"Image", text:"Text", developer:"Developer", css:"CSS", seo:"SEO", converter:"Converter", rights:"All rights reserved.", notFound:"No tools found.", statTools:"80+ Tools", statFree:"Free Forever", statMobile:"Mobile Friendly", popularTitle:"Popular Tools", popularText:"Start with the tools people use most for development, images, SEO and everyday tasks.", popularBadge:"Open Tool →", whyTitle:"Why Toolivo?", whyText:"Toolivo is built for quick, simple and practical online work without unnecessary steps.", whyFastTitle:"Fast", whyFastText:"Lightweight tools that open quickly and work instantly.", whyPrivateTitle:"Private", whyPrivateText:"Many tools run directly in your browser without uploading files.", whyFreeTitle:"Free", whyFreeText:"No signup, no complicated dashboard, no unnecessary steps.", seoTitle:"Free online tools for creators, developers and everyday users", seoText:"Toolivo provides browser-based utilities for image conversion, text editing, code formatting, SEO generation, CSS design and developer workflows. Use fast tools like JSON Formatter, QR Generator, Password Generator, JWT Decoder, image converters, CSS generators and more from one clean platform.", footerText:"Fast, simple and mobile friendly online tools for everyday work.", footerToolsTitle:"Tools", footerCategoriesTitle:"Categories", footerCompanyTitle:"Company"},
-  tr: {badge:"Hızlı • Ücretsiz • Mobil Uyumlu", hero:'Ücretsiz Online <span class="gradient">Araçlar</span>', heroText:"Toolivo; görsel, metin, SEO, CSS, geliştirici ve dönüştürücü araçları için hızlı online araçlar sunar.", search:"Araç ara...", allTools:"Tüm Araçlar", navTools:"Araçlar", navAbout:"Hakkında", navPrivacy:"Gizlilik", navContact:"İletişim", all:"Tümü", image:"Görsel", text:"Metin", developer:"Geliştirici", css:"CSS", seo:"SEO", converter:"Dönüştürücü", rights:"Tüm hakları saklıdır.", notFound:"Araç bulunamadı.", statTools:"80+ Araç", statFree:"Daima Ücretsiz", statMobile:"Mobil Uyumlu", popularTitle:"Popüler Araçlar", popularText:"Geliştirme, görsel, SEO ve günlük işler için en çok kullanılan araçlarla başlayın.", popularBadge:"Aracı Aç →", whyTitle:"Neden Toolivo?", whyText:"Toolivo gereksiz adımlar olmadan hızlı, sade ve pratik online işler için hazırlandı.", whyFastTitle:"Hızlı", whyFastText:"Hızlı açılan ve anında çalışan hafif araçlar.", whyPrivateTitle:"Gizlilik Odaklı", whyPrivateText:"Birçok araç dosyaları yüklemeden doğrudan tarayıcıda çalışır.", whyFreeTitle:"Ücretsiz", whyFreeText:"Üyelik yok, karmaşık panel yok, gereksiz adım yok.", seoTitle:"İçerik üreticileri, geliştiriciler ve günlük kullanıcılar için ücretsiz online araçlar", seoText:"Toolivo; görsel dönüştürme, metin düzenleme, kod formatlama, SEO üreticileri, CSS tasarım araçları ve geliştirici iş akışları için tarayıcı tabanlı araçlar sunar. JSON Formatter, QR Generator, Password Generator, JWT Decoder, görsel dönüştürücüler, CSS araçları ve daha fazlasını tek temiz platformdan kullanın.", footerText:"Günlük işler için hızlı, sade ve mobil uyumlu online araçlar.", footerToolsTitle:"Araçlar", footerCategoriesTitle:"Kategoriler", footerCompanyTitle:"Kurumsal"}
+  en: {badge:"Fast • Free • Mobile Friendly", hero:'Free Online <span class="gradient">Tools</span>', heroText:"Toolivo offers simple and fast tools for images, text, SEO, CSS, developers and converters.", search:"Search tools...", allTools:"All Tools", navTools:"Tools", navAbout:"About", navPrivacy:"Privacy", navContact:"Contact", all:"All", image:"Image", text:"Text", developer:"Developer", css:"CSS", seo:"SEO", converter:"Converter", ai:"AI", network:"Network", validator:"Validator", youtube:"YouTube", rights:"All rights reserved.", notFound:"No tools found.", statTools:"127 Tools", statFree:"Free Forever", statMobile:"Mobile Friendly", popularTitle:"Popular Tools", popularText:"Start with the tools people use most for development, images, SEO and everyday tasks.", popularBadge:"Open Tool →", whyTitle:"Why Toolivo?", whyText:"Toolivo is built for quick, simple and practical online work without unnecessary steps.", whyFastTitle:"Fast", whyFastText:"Lightweight tools that open quickly and work instantly.", whyPrivateTitle:"Private", whyPrivateText:"Many tools run directly in your browser without uploading files.", whyFreeTitle:"Free", whyFreeText:"No signup, no complicated dashboard, no unnecessary steps.", seoTitle:"Free online tools for creators, developers and everyday users", seoText:"Toolivo provides browser-based utilities for image conversion, text editing, code formatting, SEO generation, CSS design and developer workflows. Use fast tools like JSON Formatter, QR Generator, Password Generator, JWT Decoder, image converters, CSS generators and more from one clean platform.", footerText:"Fast, simple and mobile friendly online tools for everyday work.", footerToolsTitle:"Tools", footerCategoriesTitle:"Categories", footerCompanyTitle:"Company"},
+  tr: {badge:"Hızlı • Ücretsiz • Mobil Uyumlu", hero:'Ücretsiz Online <span class="gradient">Araçlar</span>', heroText:"Toolivo; görsel, metin, SEO, CSS, geliştirici ve dönüştürücü araçları için hızlı online araçlar sunar.", search:"Araç ara...", allTools:"Tüm Araçlar", navTools:"Araçlar", navAbout:"Hakkında", navPrivacy:"Gizlilik", navContact:"İletişim", all:"Tümü", image:"Görsel", text:"Metin", developer:"Geliştirici", css:"CSS", seo:"SEO", converter:"Dönüştürücü", ai:"AI", network:"Ağ", validator:"Doğrulayıcı", youtube:"YouTube", rights:"Tüm hakları saklıdır.", notFound:"Araç bulunamadı.", statTools:"127 Araç", statFree:"Daima Ücretsiz", statMobile:"Mobil Uyumlu", popularTitle:"Popüler Araçlar", popularText:"Geliştirme, görsel, SEO ve günlük işler için en çok kullanılan araçlarla başlayın.", popularBadge:"Aracı Aç →", whyTitle:"Neden Toolivo?", whyText:"Toolivo gereksiz adımlar olmadan hızlı, sade ve pratik online işler için hazırlandı.", whyFastTitle:"Hızlı", whyFastText:"Hızlı açılan ve anında çalışan hafif araçlar.", whyPrivateTitle:"Gizlilik Odaklı", whyPrivateText:"Birçok araç dosyaları yüklemeden doğrudan tarayıcıda çalışır.", whyFreeTitle:"Ücretsiz", whyFreeText:"Üyelik yok, karmaşık panel yok, gereksiz adım yok.", seoTitle:"İçerik üreticileri, geliştiriciler ve günlük kullanıcılar için ücretsiz online araçlar", seoText:"Toolivo; görsel dönüştürme, metin düzenleme, kod formatlama, SEO üreticileri, CSS tasarım araçları ve geliştirici iş akışları için tarayıcı tabanlı araçlar sunar. JSON Formatter, QR Generator, Password Generator, JWT Decoder, görsel dönüştürücüler, CSS araçları ve daha fazlasını tek temiz platformdan kullanın.", footerText:"Günlük işler için hızlı, sade ve mobil uyumlu online araçlar.", footerToolsTitle:"Araçlar", footerCategoriesTitle:"Kategoriler", footerCompanyTitle:"Kurumsal"}
 };
 
 function getTitle(tool){ return typeof tool.title === "object" ? tool.title[lang] : tool.title; }
@@ -867,6 +1899,10 @@ function applyLanguage(){
   document.getElementById("catCss").innerText = t.css;
   document.getElementById("catSeo").innerText = t.seo;
   document.getElementById("catConverter").innerText = t.converter;
+  document.getElementById("catAi").innerText = t.ai;
+  document.getElementById("catNetwork").innerText = t.network;
+  document.getElementById("catValidator").innerText = t.validator;
+  document.getElementById("catYoutube").innerText = t.youtube;
   document.getElementById("rightsText").innerText = t.rights;
   document.getElementById("statTools").innerText = t.statTools;
   document.getElementById("statFree").innerText = t.statFree;
