@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
+<script>
+gtag('js', new Date());
+gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
+</script>
+
+<title>JSON Validator — Toolivo</title>
+<meta name="description" content="Validate JSON instantly, find syntax errors and check if your JSON data is valid with Toolivo.">
+<link rel="icon" href="https://i.imgur.com/7qzyyTa.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:white;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+label{display:block;margin-bottom:10px;font-size:14px;font-weight:bold;color:#cbd5e1}
+textarea{width:100%;height:320px;background:#020617;border:1px solid #334155;color:white;border-radius:18px;padding:18px;resize:vertical;line-height:1.6;font-family:monospace;font-size:14px;outline:none}
+textarea:focus{border-color:#38bdf8}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:15px 20px;border:none;border-radius:16px;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;border:1px solid #334155;color:#cbd5e1}
+.status{background:#020617;border:1px solid #334155;border-radius:18px;padding:22px;margin-bottom:18px}
+.status h3{font-size:26px;margin-bottom:10px;color:#67e8f9}
+.status p{color:#94a3b8;line-height:1.7}
+.valid{border-color:#22c55e}
+.valid h3{color:#22c55e}
+.invalid{border-color:#ef4444}
+.invalid h3{color:#ef4444}
+.info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
+.output{background:#020617;border:1px solid #334155;border-radius:18px;padding:18px;color:#cbd5e1;line-height:1.7;min-height:140px;white-space:pre-wrap;font-family:monospace;font-size:14px}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
+@media(max-width:900px){.tool-grid,.content{grid-template-columns:1fr}.header{flex-direction:column}.logo img{width:95px;height:95px}}
+@media(max-width:520px){.buttons{flex-direction:column}button{width:100%}}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+<a href="/" class="logo">
+<img src="https://i.imgur.com/7qzyyTa.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
+
+<nav class="nav">
+<a href="/">Home</a>
+<a href="/tools.html">Tools</a>
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="tool-hero">
+<h1>JSON <span class="gradient">Validator</span></h1>
+<p>
+Validate JSON instantly, find syntax errors and check whether your JSON data is properly formatted.
+</p>
+</section>
+
+<section class="tool-grid">
+
+<div class="panel">
+<label>Paste JSON</label>
+
+<textarea id="jsonInput" placeholder='Paste JSON here, example: {"name":"Toolivo","type":"tool"}'></textarea>
+
+<div class="buttons">
+<button class="primary" onclick="validateJSON()">Validate JSON</button>
+<button class="secondary" onclick="formatJSON()">Format</button>
+<button class="secondary" onclick="clearJSON()">Clear</button>
+</div>
+</div>
+
+<div class="panel">
+
+<div class="status" id="statusBox">
+<h3>Waiting for JSON</h3>
+<p>Paste your JSON and click validate to check for syntax errors.</p>
+</div>
+
+<div class="info">
+A JSON validator helps you detect missing commas, broken quotes, invalid brackets and other JSON syntax problems.
+</div>
+
+<div class="output" id="output">Validation result will appear here...</div>
+
+</div>
+
+</section>
+
+<section class="content">
+
+<article class="card">
+<h2>What is JSON validation?</h2>
+<p>
+JSON validation checks whether your data follows correct JSON syntax so it can be safely used in APIs, apps and configuration files.
+</p>
+</article>
+
+<article class="card">
+<h2>How to use this tool</h2>
+<ul>
+<li>Paste your JSON data into the editor.</li>
+<li>Click Validate JSON.</li>
+<li>If valid, you can also format it for better readability.</li>
+</ul>
+</article>
+
+</section>
+
+<footer class="footer">
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
+<div class="footer-links">
+<a href="/about.html">About</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/terms.html">Terms</a>
+<a href="/contact.html">Contact</a>
+<a href="/sitemap.xml">Sitemap</a>
+</div>
+</footer>
+
+</div>
+
+<script>
+function setStatus(type, title, message){
+const box = document.getElementById("statusBox");
+box.className = "status " + type;
+box.innerHTML = `<h3>${title}</h3><p>${message}</p>`;
+}
+
+function validateJSON(){
+const input = document.getElementById("jsonInput").value.trim();
+const output = document.getElementById("output");
+
+if(!input){
+setStatus("", "Waiting for JSON", "Please paste JSON before validating.");
+output.innerText = "No JSON provided.";
+return;
+}
+
+try{
+const parsed = JSON.parse(input);
+setStatus("valid", "Valid JSON", "Your JSON is valid and ready to use.");
+output.innerText = JSON.stringify(parsed, null, 2);
+}catch(error){
+setStatus("invalid", "Invalid JSON", "Your JSON contains a syntax error.");
+output.innerText = error.message;
+}
+}
+
+function formatJSON(){
+const input = document.getElementById("jsonInput").value.trim();
+
+if(!input){
+alert("Please paste JSON first.");
+return;
+}
+
+try{
+const parsed = JSON.parse(input);
+document.getElementById("jsonInput").value = JSON.stringify(parsed, null, 2);
+setStatus("valid", "Formatted JSON", "Your JSON was formatted successfully.");
+document.getElementById("output").innerText = JSON.stringify(parsed, null, 2);
+}catch(error){
+setStatus("invalid", "Cannot Format", "Fix the JSON error before formatting.");
+document.getElementById("output").innerText = error.message;
+}
+}
+
+function clearJSON(){
+document.getElementById("jsonInput").value = "";
+setStatus("", "Waiting for JSON", "Paste your JSON and click validate to check for syntax errors.");
+document.getElementById("output").innerText = "Validation result will appear here...";
+}
+
+document.getElementById("year").innerText = new Date().getFullYear();
+</script>
+
+</body>
+</html>
