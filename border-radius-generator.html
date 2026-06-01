@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,8 +17,6 @@ gtag('config', 'G-3QBF2V9J5T', {
   send_page_view: true
 });
 </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Border Radius Generator — Toolivo</title>
 <meta name="description" content="Generate CSS border radius instantly with live preview and copyable CSS code.">
@@ -37,270 +32,74 @@ a{text-decoration:none;color:inherit}
 .header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
 .logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
-.logo span{
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.nav{
-display:flex;
-align-items:center;
-gap:14px;
-flex-wrap:wrap;
-}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-.nav a{
-color:#94a3b8;
-font-size:14px;
-transition:.2s;
-}
+.tool-hero{padding:45px 0 28px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.nav a:hover{
-color:white;
-}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.control{margin-bottom:20px}
+label{display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px;font-weight:bold;color:#cbd5e1}
+.range-wrap{display:flex;align-items:center;gap:14px}
+.range-wrap input{width:100%;accent-color:#38bdf8}
+.range-wrap span{min-width:55px;color:#67e8f9;font-size:14px;font-weight:bold}
 
-.tool-hero{
-padding:45px 0 28px;
-}
+.preview-area{display:flex;justify-content:center;align-items:center;min-height:360px;background:#020617;border:1px solid #334155;border-radius:18px;padding:20px}
+.preview-box{width:240px;height:240px;background:linear-gradient(135deg,#06b6d4,#3b82f6);transition:.15s;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{padding:15px 20px;border:none;border-radius:16px;font-weight:800;cursor:pointer;font-size:15px;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+.secondary{background:#020617;border:1px solid #334155;color:#cbd5e1}
+textarea{width:100%;height:170px;margin-top:18px;background:#020617;border:1px solid #334155;color:#67e8f9;border-radius:18px;padding:18px;resize:vertical;line-height:1.6;font-family:monospace;font-size:14px;outline:none}
+.info{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617;color:#94a3b8;line-height:1.6;margin-bottom:14px}
 
-.tool-hero h1{
-font-size:clamp(42px,7vw,64px);
-line-height:1.05;
-margin-bottom:14px;
-}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
 
-.tool-hero p{
-max-width:760px;
-color:#94a3b8;
-line-height:1.7;
-font-size:18px;
-}
+.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
+.related-tools-box h2{font-size:28px;margin-bottom:18px}
+.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
+.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
+.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
+.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
 
-.gradient{
-background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.tool-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:20px;
-}
-
-.panel{
-background:#111827;
-border:1px solid #1e293b;
-border-radius:18px;
-padding:20px;
-}
-
-.control{
-margin-bottom:20px;
-}
-
-label{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-font-size:14px;
-font-weight:bold;
-color:#cbd5e1;
-}
-
-.range-wrap{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.range-wrap input{
-width:100%;
-accent-color:#38bdf8;
-}
-
-.range-wrap span{
-min-width:55px;
-color:#67e8f9;
-font-size:14px;
-font-weight:bold;
-}
-
-.preview-area{
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:360px;
-background:#020617;
-border:1px solid #334155;
-border-radius:18px;
-padding:20px;
-}
-
-.preview-box{
-width:240px;
-height:240px;
-background:linear-gradient(135deg,#06b6d4,#3b82f6);
-transition:.15s;
-box-shadow:0 20px 50px rgba(0,0,0,.35);
-}
-
-.buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:20px;
-}
-
-button{
-padding:15px 20px;
-border:none;
-border-radius:16px;
-font-weight:800;
-cursor:pointer;
-font-size:15px;
-transition:.2s;
-}
-
-button:hover{
-transform:translateY(-2px);
-}
-
-.primary{
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
-color:white;
-}
-
-.secondary{
-background:#020617;
-border:1px solid #334155;
-color:#cbd5e1;
-}
-
-textarea{
-width:100%;
-height:170px;
-margin-top:18px;
-background:#020617;
-border:1px solid #334155;
-color:#67e8f9;
-border-radius:18px;
-padding:18px;
-resize:vertical;
-line-height:1.6;
-font-family:monospace;
-font-size:14px;
-outline:none;
-}
-
-.info{
-padding:16px;
-border:1px solid #334155;
-border-radius:16px;
-background:#020617;
-color:#94a3b8;
-line-height:1.6;
-margin-bottom:14px;
-}
-
-.content{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:28px;
-}
-
-.card{
-background:#111827;
-border:1px solid #1e293b;
-border-radius:18px;
-padding:20px;
-}
-
-.card h2{
-font-size:24px;
-margin-bottom:10px;
-}
-
-.card p,
-.card li{
-color:#94a3b8;
-line-height:1.7;
-}
-
-.card ul{
-padding-left:18px;
-}
-
-.footer{
-margin-top:55px;
-padding:30px 0;
-border-top:1px solid #1e293b;
-color:#64748b;
-text-align:center;
-}
-
-.footer-links{
-display:flex;
-gap:16px;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:12px;
-}
-
-.footer-links a:hover{
-color:white;
-}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
 
 @media(max-width:900px){
-
-.tool-grid,
-.content{
-grid-template-columns:1fr;
-}
-
-.header{
-flex-direction:column;
-}
-
-.logo img{
-width:95px;
-height:95px;
-}
-
-.preview-area{
-min-height:280px;
-}
-
-.preview-box{
-width:200px;
-height:200px;
-}
-
+.tool-grid,.content{grid-template-columns:1fr}
+.header{flex-direction:column}
+.logo img{width:95px;height:95px}
+.preview-area{min-height:280px}
+.preview-box{width:200px;height:200px}
+.related-tools-grid{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:520px){
-
-.buttons{
-flex-direction:column;
-}
-
-button{
-width:100%;
-}
-
+.buttons{flex-direction:column}
+button{width:100%}
+.related-tools-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <header class="header">
-
 <a href="/" class="logo">
 <img src="/logo.png" alt="Toolivo">
 <span>Toolivo</span>
@@ -313,127 +112,72 @@ width:100%;
 <a href="/privacy.html">Privacy</a>
 <a href="/contact.html">Contact</a>
 </nav>
-
 </header>
 
 <section class="tool-hero">
-
 <h1>Border Radius <span class="gradient">Generator</span></h1>
-
-<p>
-Generate CSS border radius instantly with live preview and copyable CSS code for modern UI and web design projects.
-</p>
-
+<p>Generate CSS border radius instantly with live preview and copyable CSS code for modern UI and web design projects.</p>
 </section>
 
 <section class="tool-grid">
-
 <div class="panel">
-
 <div class="control">
-<label>
-<span>Top Left</span>
-<span id="tlVal">20px</span>
-</label>
-
-<div class="range-wrap">
-<input type="range" id="tl" min="0" max="150" value="20">
-</div>
+<label><span>Top Left</span><span id="tlVal">20px</span></label>
+<div class="range-wrap"><input type="range" id="tl" min="0" max="150" value="20"></div>
 </div>
 
 <div class="control">
-<label>
-<span>Top Right</span>
-<span id="trVal">20px</span>
-</label>
-
-<div class="range-wrap">
-<input type="range" id="tr" min="0" max="150" value="20">
-</div>
+<label><span>Top Right</span><span id="trVal">20px</span></label>
+<div class="range-wrap"><input type="range" id="tr" min="0" max="150" value="20"></div>
 </div>
 
 <div class="control">
-<label>
-<span>Bottom Right</span>
-<span id="brVal">20px</span>
-</label>
-
-<div class="range-wrap">
-<input type="range" id="br" min="0" max="150" value="20">
-</div>
+<label><span>Bottom Right</span><span id="brVal">20px</span></label>
+<div class="range-wrap"><input type="range" id="br" min="0" max="150" value="20"></div>
 </div>
 
 <div class="control">
-<label>
-<span>Bottom Left</span>
-<span id="blVal">20px</span>
-</label>
-
-<div class="range-wrap">
-<input type="range" id="bl" min="0" max="150" value="20">
-</div>
+<label><span>Bottom Left</span><span id="blVal">20px</span></label>
+<div class="range-wrap"><input type="range" id="bl" min="0" max="150" value="20"></div>
 </div>
 
 <div class="buttons">
-<button class="primary" onclick="generateRadius()">
-Generate CSS
-</button>
-
-<button class="secondary" onclick="copyCSS()">
-Copy CSS
-</button>
+<button class="primary" onclick="generateRadius()">Generate CSS</button>
+<button class="secondary" onclick="copyCSS()">Copy CSS</button>
 </div>
 
 <textarea id="output"></textarea>
-
 </div>
 
 <div class="panel">
-
-<div class="info">
-Adjust each corner radius using the sliders and copy the generated CSS instantly.
+<div class="info">Adjust each corner radius using the sliders and copy the generated CSS instantly.</div>
+<div class="preview-area"><div class="preview-box" id="previewBox"></div></div>
 </div>
-
-<div class="preview-area">
-<div class="preview-box" id="previewBox"></div>
-</div>
-
-</div>
-
 </section>
 
 <section class="content">
-
 <article class="card">
-
 <h2>What is border-radius?</h2>
-
-<p>
-The CSS border-radius property rounds the corners of elements and is widely used in modern UI and web design.
-</p>
-
+<p>The CSS border-radius property rounds the corners of elements and is widely used in modern UI and web design.</p>
 </article>
 
 <article class="card">
-
 <h2>How it works</h2>
-
 <ul>
 <li>Move the sliders to adjust each corner.</li>
 <li>Preview the shape live instantly.</li>
 <li>Copy the generated CSS code.</li>
 </ul>
-
 </article>
+</section>
 
+<section class="related-tools-box">
+<h2>Related Tools</h2>
+<div class="related-tools-grid" id="relatedTools"></div>
 </section>
 
 <footer class="footer">
-
-<div>
-© <span id="year"></span> Toolivo. All rights reserved.
-</div>
-
+<div>© <span id="year"></span> Toolivo. All rights reserved.</div>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -441,14 +185,12 @@ The CSS border-radius property rounds the corners of elements and is widely used
 <a href="/contact.html">Contact</a>
 <a href="/sitemap.xml">Sitemap</a>
 </div>
-
 </footer>
 
 </div>
 
 <script>
 function generateRadius(){
-
 const tl=document.getElementById("tl").value;
 const tr=document.getElementById("tr").value;
 const br=document.getElementById("br").value;
@@ -460,19 +202,13 @@ document.getElementById("brVal").innerText=br+"px";
 document.getElementById("blVal").innerText=bl+"px";
 
 const radius=`${tl}px ${tr}px ${br}px ${bl}px`;
-
 document.getElementById("previewBox").style.borderRadius=radius;
-
-document.getElementById("output").value=
-`border-radius: ${radius};`;
+document.getElementById("output").value=`border-radius: ${radius};`;
 }
 
 function copyCSS(){
-
 const output=document.getElementById("output");
-
 navigator.clipboard.writeText(output.value);
-
 alert("Copied!");
 }
 
@@ -480,141 +216,53 @@ document.querySelectorAll("input").forEach(input=>{
 input.addEventListener("input",generateRadius);
 });
 
-document.getElementById("year").innerText=
-new Date().getFullYear();
-
+document.getElementById("year").innerText=new Date().getFullYear();
 generateRadius();
-</script>
 
-<section class="related-tools-box">
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
 (function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
+const tools = [
+["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
+["json-validator.html","JSON Validator","Validate JSON and find errors."],
+["json-viewer.html","JSON Viewer","View JSON in a readable format."],
+["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
+["password-generator.html","Password Generator","Generate secure passwords."],
+["password-strength-checker.html","Password Strength Checker","Check password security."],
+["uuid-generator.html","UUID Generator","Generate random UUIDs."],
+["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
+["qr-generator.html","QR Generator","Create QR codes instantly."],
+["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
+["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
+["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
+["word-counter.html","Word Counter","Count words and characters."],
+["case-converter.html","Case Converter","Convert text case instantly."],
+["text-diff-checker.html","Text Diff Checker","Compare two texts."],
+["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
+["image-compressor.html","Image Compressor","Compress images online."],
+["resize-image.html","Resize Image","Resize images quickly."],
+["crop-image.html","Crop Image","Crop images online."],
+["background-remover.html","Background Remover","Remove image backgrounds."],
+["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
+["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
+["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
+["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
+["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
+["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
+["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
+["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
+["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
+];
 
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
+const current = location.pathname.split("/").pop();
+const box = document.getElementById("relatedTools");
+if(!box) return;
 
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
-})();
-</script>
-
-</body>
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
-(function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
+const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
+box.innerHTML = filtered.map(t => `
+<a class="related-tool-card" href="/${t[0]}">
+<strong>${t[1]}</strong>
+<span>${t[2]}</span>
+</a>
+`).join("");
 })();
 </script>
 
