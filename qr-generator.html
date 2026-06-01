@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,354 +19,52 @@ gtag('config', 'G-3QBF2V9J5T', {
 </script>
 
 <title>QR Code Generator — Toolivo</title>
-
-<meta name="description" content="Generate QR codes instantly with Toolivo. Free online QR generator for links, text, WiFi and more.">
+<meta name="description" content="Generate QR codes instantly with Toolivo. Free online QR code generator for links, text, WiFi, email and social profiles.">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:title" content="QR Code Generator — Toolivo">
+<meta property="og:description" content="Create and download QR codes online for URLs, text, WiFi and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site/qr-generator.html">
+<meta property="og:image" content="https://toolivo.site/logo.png">
+<link rel="canonical" href="https://toolivo.site/qr-generator.html">
 
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-
 <style>
-
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-font-family:Inter,Arial,sans-serif;
-background:
-radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
-radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
-#0f172a;
-color:white;
-min-height:100vh;
-overflow-x:hidden;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-.container{
-width:min(1150px,calc(100% - 32px));
-margin:auto;
-}
-
-.header{
-padding:22px 0;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-}
-
-.logo{
-font-size:30px;
-font-weight:900;
-letter-spacing:-1.5px;
-background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
--webkit-background-clip:text;
-color:transparent;
-filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
-}
-
-.nav{
-display:flex;
-align-items:center;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.nav a{
-font-size:14px;
-font-weight:700;
-color:#cbd5e1;
-transition:.2s;
-}
-
-.nav a:hover{
-color:#22d3ee;
-}
-
-.tool-hero{
-padding:58px 0 24px;
-text-align:center;
-}
-
-.gradient{
-background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.tool-hero h1{
-font-size:clamp(42px,7vw,74px);
-line-height:.95;
-letter-spacing:-4px;
-margin:0 0 18px;
-}
-
-.tool-hero p{
-max-width:760px;
-margin:auto;
-line-height:1.7;
-font-size:18px;
-color:#94a3b8;
-}
-
-.tool{
-margin-top:40px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.panel{
-background:rgba(15,23,42,.78);
-border:1px solid rgba(148,163,184,.16);
-border-radius:28px;
-padding:24px;
-backdrop-filter:blur(14px);
-box-shadow:0 24px 70px rgba(0,0,0,.22);
-}
-
-.label{
-font-size:13px;
-font-weight:700;
-letter-spacing:.5px;
-text-transform:uppercase;
-color:#94a3b8;
-margin-bottom:12px;
-}
-
-.input{
-width:100%;
-height:58px;
-border-radius:18px;
-border:1px solid rgba(148,163,184,.18);
-background:#020617;
-padding:0 18px;
-color:white;
-font:inherit;
-outline:none;
-transition:.2s;
-}
-
-.input:focus{
-border-color:#22d3ee;
-box-shadow:0 0 0 4px rgba(34,211,238,.08);
-}
-
-.actions{
-display:flex;
-flex-direction:column;
-gap:12px;
-margin-top:18px;
-}
-
-.btn{
-height:58px;
-border:none;
-border-radius:18px;
-font-weight:800;
-font-size:15px;
-cursor:pointer;
-transition:.2s;
-width:100%;
-}
-
-.primary{
-background:linear-gradient(90deg,#22d3ee,#60a5fa);
-color:#020617;
-}
-
-.secondary{
-background:rgba(255,255,255,.06);
-color:white;
-border:1px solid rgba(148,163,184,.16);
-}
-
-.btn:hover{
-transform:translateY(-2px);
-}
-
-.qr-wrap{
-display:flex;
-align-items:center;
-justify-content:center;
-min-height:420px;
-}
-
-#qrcode{
-padding:20px;
-border-radius:24px;
-background:white;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-width:320px;
-min-height:320px;
-}
-
-.info{
-margin-top:18px;
-background:rgba(2,6,23,.34);
-border:1px solid rgba(148,163,184,.14);
-padding:18px;
-border-radius:20px;
-line-height:1.7;
-color:#94a3b8;
-}
-
-.info-grid{
-margin-top:18px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.info-card{
-background:rgba(2,6,23,.34);
-border:1px solid rgba(148,163,184,.14);
-border-radius:22px;
-padding:18px;
-}
-
-.info-card h2{
-margin:0 0 10px;
-font-size:20px;
-}
-
-.info-card p{
-margin:0;
-line-height:1.7;
-color:#94a3b8;
-}
-
-
-.related-tools-box{
-max-width:1100px;
-margin:45px auto 20px;
-padding:0 20px;
-}
-
-.related-tools-box h2{
-font-size:28px;
-margin-bottom:18px;
-}
-
-.related-tools-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:14px;
-}
-
-.related-tool-card{
-background:#111827;
-border:1px solid #1e293b;
-border-radius:16px;
-padding:16px;
-display:block;
-transition:.2s;
-}
-
-.related-tool-card:hover{
-transform:translateY(-3px);
-border-color:#38bdf8;
-box-shadow:0 0 25px rgba(56,189,248,.10);
-}
-
-.related-tool-card strong{
-display:block;
-font-size:16px;
-margin-bottom:6px;
-color:white;
-}
-
-.related-tool-card span{
-color:#94a3b8;
-font-size:13px;
-line-height:1.4;
-}
-
-.footer{
-margin-top:70px;
-padding:26px 0;
-border-top:1px solid rgba(148,163,184,.14);
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px;
-flex-wrap:wrap;
-color:#94a3b8;
-font-size:14px;
-}
-
-.footer-links{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
-}
-
-.footer-links a:hover{
-color:#22d3ee;
-}
-
-@media(max-width:860px){
-
-.tool,
-.info-grid{
-grid-template-columns:1fr;
-}
-
-.header{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.tool-hero h1{
-font-size:52px;
-letter-spacing:-2px;
-}
-
-#qrcode{
-min-width:100%;
-}
-
-.related-tools-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:520px){
-
-.related-tools-grid{
-grid-template-columns:1fr;
-}
-
-}
-
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),#0f172a;color:white;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}.container{width:min(1150px,calc(100% - 32px));margin:auto}.header{padding:14px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:900;letter-spacing:-1.5px}.logo img{width:105px;height:105px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.45)) drop-shadow(0 20px 46px rgba(0,0,0,.55));transform:translateY(4px)}.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.nav a{font-size:14px;font-weight:700;color:#cbd5e1;transition:.2s}.nav a:hover{color:#22d3ee}.tool-hero{padding:48px 0 24px;text-align:center}.badge{display:inline-block;margin-bottom:18px;padding:8px 14px;border:1px solid rgba(34,211,238,.2);border-radius:999px;background:rgba(2,6,23,.36);color:#67e8f9;font-size:13px;font-weight:800}.gradient{background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);-webkit-background-clip:text;color:transparent}.tool-hero h1{font-size:clamp(42px,7vw,74px);line-height:.95;letter-spacing:-4px;margin:0 0 18px}.tool-hero p{max-width:780px;margin:auto;line-height:1.7;font-size:18px;color:#94a3b8}.tool{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:rgba(15,23,42,.78);border:1px solid rgba(148,163,184,.16);border-radius:28px;padding:24px;backdrop-filter:blur(14px);box-shadow:0 24px 70px rgba(0,0,0,.22)}.label{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#94a3b8;margin-bottom:12px}.input{width:100%;height:58px;border-radius:18px;border:1px solid rgba(148,163,184,.18);background:#020617;padding:0 18px;color:white;font:inherit;outline:none;transition:.2s}.input:focus{border-color:#22d3ee;box-shadow:0 0 0 4px rgba(34,211,238,.08)}.quick-types{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}.chip{border:1px solid rgba(148,163,184,.18);background:rgba(255,255,255,.05);color:#cbd5e1;border-radius:999px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s}.chip:hover{border-color:#38bdf8;color:white;transform:translateY(-1px)}.actions{display:flex;flex-direction:column;gap:12px;margin-top:18px}.btn{height:58px;border:none;border-radius:18px;font-weight:900;font-size:15px;cursor:pointer;transition:.2s;width:100%}.primary{background:linear-gradient(90deg,#22d3ee,#60a5fa);color:#020617}.secondary{background:rgba(255,255,255,.06);color:white;border:1px solid rgba(148,163,184,.16)}.btn:hover{transform:translateY(-2px)}.qr-wrap{display:flex;align-items:center;justify-content:center;min-height:420px}.qr-box{text-align:center;width:100%}#qrcode{padding:20px;border-radius:24px;background:white;display:inline-flex;align-items:center;justify-content:center;min-width:320px;min-height:320px;box-shadow:0 22px 55px rgba(0,0,0,.28)}#qrcode canvas,#qrcode img{width:280px!important;height:280px!important;display:block}.qr-note{margin-top:16px;color:#94a3b8;font-size:13px}.info{margin-top:18px;background:rgba(2,6,23,.34);border:1px solid rgba(148,163,184,.14);padding:18px;border-radius:20px;line-height:1.7;color:#94a3b8}.info strong{color:white}.info-grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.info-card,.seo-box,.faq-box{background:rgba(2,6,23,.34);border:1px solid rgba(148,163,184,.14);border-radius:22px;padding:20px}.info-card h2,.seo-box h2,.faq-box h2{margin:0 0 10px;font-size:22px}.info-card p,.seo-box p,.faq-box p,.seo-box li{margin:0;color:#94a3b8;line-height:1.75}.seo-box{margin-top:26px}.seo-box p{margin-bottom:14px}.seo-box ul{margin:12px 0 0;padding-left:20px}.faq-grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.faq-box h3{font-size:18px;margin:0 0 8px}.related-tools-box{max-width:1100px;margin:45px auto 20px}.related-tools-box h2{font-size:28px;margin-bottom:18px}.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}.footer{margin-top:70px;padding:26px 0;border-top:1px solid rgba(148,163,184,.14);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#94a3b8;font-size:14px}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a:hover{color:#22d3ee}@media(max-width:860px){.tool,.info-grid,.faq-grid{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}.logo img{width:92px;height:92px}.tool-hero h1{font-size:52px;letter-spacing:-2px}#qrcode{min-width:100%;min-height:300px}.related-tools-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}.footer{display:block;text-align:center}.footer-links{justify-content:center;margin-top:14px}}
 </style>
-</head>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Toolivo QR Code Generator",
+  "url": "https://toolivo.site/qr-generator.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "description": "Free online QR code generator for URLs, text, WiFi and social profiles.",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+
+</head>
 <body>
 
 <div class="container">
 
 <header class="header">
-
 <a href="/" class="logo">
-Toolivo
+<img src="/logo.png" alt="Toolivo">
+<span>Toolivo</span>
 </a>
-
 <nav class="nav">
 <a href="/">Home</a>
 <a href="/tools.html">Tools</a>
@@ -375,88 +72,81 @@ Toolivo
 <a href="/privacy.html">Privacy</a>
 <a href="/contact.html">Contact</a>
 </nav>
-
 </header>
 
 <section class="tool-hero">
-
-<h1>
-<span class="gradient">QR Code</span><br>
-Generator
-</h1>
-
-<p>
-Generate QR codes instantly for websites, text, WiFi passwords, Instagram profiles and more directly in your browser.
-</p>
-
+<div class="badge">Free • Fast • Mobile Friendly</div>
+<h1><span class="gradient">QR Code</span><br>Generator</h1>
+<p>Generate QR codes instantly for websites, text, WiFi passwords, Instagram profiles and more. Create, preview and download your QR code in seconds.</p>
 </section>
 
 <section class="tool">
-
 <div class="panel">
+<div class="label">Enter URL or Text</div>
+<input type="text" class="input" id="qrInput" placeholder="Paste link or enter text..." value="https://toolivo.site">
 
-<div class="label">
-Enter URL or Text
+<div class="quick-types">
+<button class="chip" data-value="https://toolivo.site">Website URL</button>
+<button class="chip" data-value="WIFI:T:WPA;S:MyWiFi;P:12345678;;">WiFi</button>
+<button class="chip" data-value="mailto:hello@toolivo.site">Email</button>
+<button class="chip" data-value="https://instagram.com/ventillo.com.tr">Instagram</button>
 </div>
 
-<input
-type="text"
-class="input"
-id="qrInput"
-placeholder="Paste link or enter text..."
-value="https://toolivo.site"
->
-
 <div class="actions">
-
-<button class="btn primary" id="generateBtn">
-Generate QR Code
-</button>
-
-<button class="btn secondary" id="downloadBtn">
-Download QR
-</button>
-
+<button class="btn primary" id="generateBtn">Generate QR Code</button>
+<button class="btn secondary" id="downloadBtn">Download PNG</button>
 </div>
 
 <div class="info">
-Examples:
-<br><br>
-https://toolivo.site
-<br>
-https://instagram.com/ventillo.com.tr
-<br>
+<strong>Examples:</strong><br><br>
+https://toolivo.site<br>
+https://instagram.com/ventillo.com.tr<br>
 WIFI:T:WPA;S:MyWiFi;P:12345678;;
 </div>
-
 </div>
 
 <div class="panel qr-wrap">
-
+<div class="qr-box">
 <div id="qrcode"></div>
-
+<div class="qr-note">Tip: Test your QR code with your phone camera before printing.</div>
 </div>
-
+</div>
 </section>
 
 <section class="info-grid">
-
 <div class="info-card">
 <h2>What is a QR code?</h2>
-<p>
-QR codes allow users to quickly open links, connect to WiFi, share contact info and more using a smartphone camera.
-</p>
+<p>QR codes allow users to quickly open links, connect to WiFi, share contact information and access digital content using a smartphone camera.</p>
 </div>
-
 <div class="info-card">
 <h2>Does it upload my data?</h2>
-<p>
-No. QR codes are generated locally inside your browser without uploading your content to any server.
-</p>
+<p>This QR code is generated directly in your browser. Your entered text is not saved by Toolivo.</p>
 </div>
-
 </section>
 
+<section class="seo-box">
+<h2>Free Online QR Code Generator</h2>
+<p>Toolivo QR Code Generator helps you create QR codes for websites, plain text, email addresses, WiFi networks, phone numbers and social media profiles. Enter your content, generate the QR code instantly and download it as a PNG image.</p>
+<p>QR codes are useful for business cards, restaurant menus, product packaging, posters, event tickets, marketing campaigns and quick website sharing. A visitor can scan the code with a phone camera and open the information immediately.</p>
+<p>This tool is built to be simple, fast and mobile friendly. You do not need to create an account, install software or use a complicated dashboard.</p>
+<ul>
+<li>Create QR codes for URLs, text, WiFi and email.</li>
+<li>Preview the QR code before downloading.</li>
+<li>Download your QR code as a PNG image.</li>
+<li>Works on desktop, tablet and mobile browsers.</li>
+</ul>
+</section>
+
+<section class="faq-grid">
+<div class="faq-box">
+<h3>Can I use the QR code commercially?</h3>
+<p>Yes. You can use the generated QR code for websites, business cards, menus, posters and other personal or business projects.</p>
+</div>
+<div class="faq-box">
+<h3>What can I put inside a QR code?</h3>
+<p>You can use links, plain text, WiFi credentials, email addresses, phone numbers and many other text-based formats.</p>
+</div>
+</section>
 
 <section class="related-tools-box">
 <h2>Related Tools</h2>
@@ -464,11 +154,7 @@ No. QR codes are generated locally inside your browser without uploading your co
 </section>
 
 <footer class="footer">
-
-<div>
-© 2026 Toolivo — QR Code Generator
-</div>
-
+<div>© <span id="year"></span> Toolivo — QR Code Generator</div>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -476,118 +162,93 @@ No. QR codes are generated locally inside your browser without uploading your co
 <a href="/contact.html">Contact</a>
 <a href="/sitemap.xml">Sitemap</a>
 </div>
-
 </footer>
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 const qrInput = document.getElementById('qrInput');
 const qrContainer = document.getElementById('qrcode');
 const generateBtn = document.getElementById('generateBtn');
 const downloadBtn = document.getElementById('downloadBtn');
-
-let currentQR = '';
+let qrInstance = null;
 
 function generateQR(){
-
-const value = qrInput.value.trim();
-
-if(!value){
-qrContainer.innerHTML = '';
-currentQR = '';
-return;
-}
-
-currentQR =
-'https://quickchart.io/qr?text=' +
-encodeURIComponent(value) +
-'&size=280';
-
-qrContainer.innerHTML = `
-<img
-src="${currentQR}"
-alt="QR Code"
-style="
-width:280px;
-height:280px;
-display:block;
-border-radius:18px;
-"
->
-`;
-
+  const value = qrInput.value.trim();
+  qrContainer.innerHTML = '';
+  if(!value){ return; }
+  qrInstance = new QRCode(qrContainer, {
+    text: value,
+    width: 280,
+    height: 280,
+    colorDark: '#020617',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
 }
 
 function downloadQR(){
-
-if(!currentQR){
-alert("Generate QR first.");
-return;
+  const canvas = qrContainer.querySelector('canvas');
+  const img = qrContainer.querySelector('img');
+  let dataUrl = '';
+  if(canvas){
+    dataUrl = canvas.toDataURL('image/png');
+  }else if(img){
+    dataUrl = img.src;
+  }
+  if(!dataUrl){
+    alert('Generate QR first.');
+    return;
+  }
+  const link = document.createElement('a');
+  link.href = dataUrl;
+  link.download = 'toolivo-qr-code.png';
+  link.click();
 }
 
-const link = document.createElement('a');
-
-link.href = currentQR;
-link.download = 'toolivo-qr-code.png';
-link.target = '_blank';
-
-link.click();
-
-}
-
-generateBtn.addEventListener('click', generateQR);
-
-downloadBtn.addEventListener('click', downloadQR);
-
-qrInput.addEventListener('input', generateQR);
-
-qrInput.addEventListener('keydown', function(e){
-
-if(e.key === 'Enter'){
-generateQR();
-}
-
+document.querySelectorAll('.chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    qrInput.value = btn.dataset.value;
+    generateQR();
+  });
 });
 
+generateBtn.addEventListener('click', generateQR);
+downloadBtn.addEventListener('click', downloadQR);
+qrInput.addEventListener('input', generateQR);
+qrInput.addEventListener('keydown', e => { if(e.key === 'Enter') generateQR(); });
+document.getElementById('year').innerText = new Date().getFullYear();
+
 (function(){
-
 const tools = [
-["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-["json-validator.html","JSON Validator","Validate JSON and find errors."],
-["password-generator.html","Password Generator","Generate secure passwords."],
-["password-strength-checker.html","Password Strength Checker","Check password security."],
-["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-["word-counter.html","Word Counter","Count words and characters."],
-["case-converter.html","Case Converter","Convert text case instantly."],
-["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-["background-remover.html","Background Remover","Remove image backgrounds."],
-["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
+['json-formatter.html','JSON Formatter','Format and beautify JSON code.'],
+['json-validator.html','JSON Validator','Validate JSON and find errors.'],
+['password-generator.html','Password Generator','Generate secure passwords.'],
+['password-strength-checker.html','Password Strength Checker','Check password security.'],
+['uuid-generator.html','UUID Generator','Generate random UUIDs.'],
+['sha256-generator.html','SHA256 Generator','Generate SHA256 hashes.'],
+['url-encoder-decoder.html','URL Encoder Decoder','Encode and decode URLs.'],
+['base64-encoder-decoder.html','Base64 Encoder Decoder','Encode and decode Base64.'],
+['jwt-decoder.html','JWT Decoder','Decode JWT tokens.'],
+['word-counter.html','Word Counter','Count words and characters.'],
+['case-converter.html','Case Converter','Convert text case instantly.'],
+['text-diff-checker.html','Text Diff Checker','Compare two texts.'],
+['background-remover.html','Background Remover','Remove image backgrounds.'],
+['image-compressor.html','Image Compressor','Compress images online.'],
+['png-to-webp.html','PNG to WEBP','Convert PNG images to WEBP.'],
+['color-palette-generator.html','Color Palette Generator','Generate color palettes.']
 ];
-
-const current = location.pathname.split("/").pop();
-
-const box = document.getElementById("relatedTools");
-
+const current = location.pathname.split('/').pop();
+const box = document.getElementById('relatedTools');
 if(!box) return;
-
-const filtered =
-tools
-.filter(t => t[0] !== current)
-.sort(() => 0.5 - Math.random())
-.slice(0,4);
-
+const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
 box.innerHTML = filtered.map(t => `
 <a class="related-tool-card" href="/${t[0]}">
 <strong>${t[1]}</strong>
 <span>${t[2]}</span>
 </a>
-`).join("");
-
+`).join('');
 })();
 
 generateQR();
