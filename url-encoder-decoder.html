@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,276 +17,54 @@ gtag('config', 'G-3QBF2V9J5T', {
   send_page_view: true
 });
 </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>URL Encoder Decoder — Toolivo</title>
-
-<meta name="description" content="Encode and decode URLs instantly with Toolivo. Free online URL encoder and decoder tool.">
+<meta name="description" content="Encode and decode URLs instantly with Toolivo. Free online URL encoder and decoder tool for query strings, APIs and web development.">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:title" content="URL Encoder Decoder — Toolivo">
+<meta property="og:description" content="Encode and decode URLs instantly online. Fast, free and browser-based.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site/url-encoder-decoder.html">
+<meta property="og:image" content="https://toolivo.site/logo.png">
+<link rel="canonical" href="https://toolivo.site/url-encoder-decoder.html">
 
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-font-family:Inter,Arial,sans-serif;
-background:
-radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
-radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
-#0f172a;
-color:white;
-min-height:100vh;
-overflow-x:hidden;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-.container{
-width:min(1100px,calc(100% - 32px));
-margin:auto;
-}
-
-.header{
-padding:22px 0;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-}
-
-.logo{
-font-size:30px;
-font-weight:900;
-letter-spacing:-1.5px;
-background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
--webkit-background-clip:text;
-color:transparent;
-filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
-}
-
-.nav{
-display:flex;
-align-items:center;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.nav a{
-font-size:14px;
-font-weight:700;
-color:#cbd5e1;
-transition:.2s;
-}
-
-.nav a:hover{
-color:#22d3ee;
-}
-
-.tool-hero{
-padding:58px 0 24px;
-text-align:center;
-}
-
-.gradient{
-background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.tool-hero h1{
-font-size:clamp(42px,7vw,74px);
-line-height:.95;
-letter-spacing:-4px;
-margin:0 0 18px;
-}
-
-.tool-hero p{
-max-width:760px;
-margin:auto;
-line-height:1.7;
-font-size:18px;
-color:#94a3b8;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:34px;
-}
-
-.panel{
-background:rgba(15,23,42,.78);
-border:1px solid rgba(148,163,184,.16);
-border-radius:28px;
-padding:24px;
-backdrop-filter:blur(14px);
-box-shadow:0 24px 70px rgba(0,0,0,.22);
-}
-
-.label{
-font-size:13px;
-font-weight:700;
-letter-spacing:.5px;
-text-transform:uppercase;
-color:#94a3b8;
-margin-bottom:12px;
-}
-
-textarea{
-width:100%;
-min-height:240px;
-border-radius:22px;
-border:1px solid rgba(148,163,184,.18);
-background:#020617;
-color:white;
-padding:18px;
-font-size:15px;
-line-height:1.7;
-resize:vertical;
-outline:none;
-transition:.2s;
-font-family:inherit;
-}
-
-textarea:focus{
-border-color:#22d3ee;
-box-shadow:0 0 0 4px rgba(34,211,238,.08);
-}
-
-.actions{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:18px;
-}
-
-button{
-height:56px;
-padding:0 22px;
-border-radius:18px;
-font-weight:800;
-font-size:15px;
-cursor:pointer;
-transition:.2s;
-background:rgba(255,255,255,.06);
-color:white;
-border:1px solid rgba(148,163,184,.16);
-}
-
-button:hover{
-transform:translateY(-2px);
-background:rgba(255,255,255,.1);
-border-color:rgba(34,211,238,.35);
-}
-
-.primary{
-background:linear-gradient(90deg,#22d3ee,#60a5fa);
-color:#020617;
-border:none;
-}
-
-.info-grid{
-margin-top:18px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.info-card{
-background:rgba(2,6,23,.34);
-border:1px solid rgba(148,163,184,.14);
-border-radius:22px;
-padding:18px;
-}
-
-.info-card h2{
-margin:0 0 10px;
-font-size:20px;
-}
-
-.info-card p{
-margin:0;
-line-height:1.7;
-color:#94a3b8;
-}
-
-.footer{
-margin-top:70px;
-padding:26px 0;
-border-top:1px solid rgba(148,163,184,.14);
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px;
-flex-wrap:wrap;
-color:#94a3b8;
-font-size:14px;
-}
-
-.footer-links{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
-}
-
-.footer-links a:hover{
-color:#22d3ee;
-}
-
-@media(max-width:850px){
-
-.header{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.grid,
-.info-grid{
-grid-template-columns:1fr;
-}
-
-.tool-hero h1{
-letter-spacing:-2px;
-}
-
-.actions{
-flex-direction:column;
-}
-
-button{
-width:100%;
-}
-
-}
-
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),#0f172a;color:white;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}.container{width:min(1150px,calc(100% - 32px));margin:auto}.header{padding:14px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:900;letter-spacing:-1.5px}.logo img{width:105px;height:105px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.45)) drop-shadow(0 20px 46px rgba(0,0,0,.55));transform:translateY(4px)}.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.nav a{font-size:14px;font-weight:700;color:#cbd5e1;transition:.2s}.nav a:hover{color:#22d3ee}.tool-hero{padding:48px 0 24px;text-align:center}.badge{display:inline-block;margin-bottom:18px;padding:8px 14px;border:1px solid rgba(34,211,238,.2);border-radius:999px;background:rgba(2,6,23,.36);color:#67e8f9;font-size:13px;font-weight:800}.gradient{background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);-webkit-background-clip:text;color:transparent}.tool-hero h1{font-size:clamp(42px,7vw,74px);line-height:.95;letter-spacing:-4px;margin:0 0 18px}.tool-hero p{max-width:780px;margin:auto;line-height:1.7;font-size:18px;color:#94a3b8}.tool{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:rgba(15,23,42,.78);border:1px solid rgba(148,163,184,.16);border-radius:28px;padding:24px;backdrop-filter:blur(14px);box-shadow:0 24px 70px rgba(0,0,0,.22)}.label{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#94a3b8;margin-bottom:12px}textarea{width:100%;min-height:260px;border-radius:22px;border:1px solid rgba(148,163,184,.18);background:#020617;color:white;padding:18px;font-size:15px;line-height:1.7;resize:vertical;outline:none;transition:.2s;font-family:Inter,Arial,sans-serif}textarea:focus{border-color:#22d3ee;box-shadow:0 0 0 4px rgba(34,211,238,.08)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{height:58px;border:none;border-radius:18px;font-weight:900;font-size:15px;cursor:pointer;transition:.2s;padding:0 18px}.primary{background:linear-gradient(90deg,#22d3ee,#60a5fa);color:#020617}.secondary{background:rgba(255,255,255,.06);color:white;border:1px solid rgba(148,163,184,.16)}.btn:hover{transform:translateY(-2px)}.info-grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.info-card,.seo-box,.faq-box{background:rgba(2,6,23,.34);border:1px solid rgba(148,163,184,.14);border-radius:22px;padding:20px}.info-card h2,.seo-box h2,.faq-box h2{margin:0 0 10px;font-size:22px}.info-card p,.seo-box p,.faq-box p,.seo-box li{margin:0;color:#94a3b8;line-height:1.75}.seo-box{margin-top:26px}.seo-box p{margin-bottom:14px}.seo-box ul{margin:12px 0 0;padding-left:20px}.faq-grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.faq-box h3{font-size:18px;margin:0 0 8px}.related-tools-box{max-width:1100px;margin:45px auto 20px}.related-tools-box h2{font-size:28px;margin-bottom:18px}.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}.footer{margin-top:70px;padding:26px 0;border-top:1px solid rgba(148,163,184,.14);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#94a3b8;font-size:14px}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a:hover{color:#22d3ee}@media(max-width:860px){.tool,.info-grid,.faq-grid{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}.logo img{width:92px;height:92px}.tool-hero h1{font-size:52px;letter-spacing:-2px}.related-tools-grid{grid-template-columns:repeat(2,1fr)}.actions{flex-direction:column}.btn{width:100%}}@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}.footer{display:block;text-align:center}.footer-links{justify-content:center;margin-top:14px}}
 </style>
-</head>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Toolivo URL Encoder Decoder",
+  "url": "https://toolivo.site/url-encoder-decoder.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "description": "Free online URL encoder and decoder for query strings, APIs and web development.",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+
+</head>
 <body>
 
 <div class="container">
 
 <header class="header">
-
 <a href="/" class="logo">
-Toolivo
+<img src="/logo.png" alt="Toolivo">
+<span>Toolivo</span>
 </a>
-
 <nav class="nav">
 <a href="/">Home</a>
 <a href="/tools.html">Tools</a>
@@ -297,94 +72,80 @@ Toolivo
 <a href="/privacy.html">Privacy</a>
 <a href="/contact.html">Contact</a>
 </nav>
-
 </header>
 
 <section class="tool-hero">
-
-<h1>
-<span class="gradient">URL Encoder</span><br>
-Decoder
-</h1>
-
-<p>
-Encode and decode URLs instantly with Toolivo. Perfect for developers, APIs, query strings and web applications.
-</p>
-
+<div class="badge">Free • Private • Browser Based</div>
+<h1><span class="gradient">URL Encoder</span><br>Decoder</h1>
+<p>Encode and decode URLs instantly with Toolivo. Perfect for developers, APIs, query strings and web applications.</p>
 </section>
 
-<section class="grid">
+<section class="tool">
 
 <div class="panel">
-
-<div class="label">
-Input
-</div>
-
+<div class="label">Input</div>
 <textarea id="input" placeholder="Paste your URL or encoded text here..."></textarea>
 
 <div class="actions">
-
-<button class="primary" onclick="encodeURL()">
-Encode URL
-</button>
-
-<button onclick="decodeURL()">
-Decode URL
-</button>
-
-<button onclick="clearAll()">
-Clear
-</button>
-
+<button class="btn primary" onclick="encodeURL()">Encode URL</button>
+<button class="btn secondary" onclick="decodeURL()">Decode URL</button>
+<button class="btn secondary" onclick="clearAll()">Clear</button>
 </div>
-
 </div>
 
 <div class="panel">
-
-<div class="label">
-Output
-</div>
-
+<div class="label">Output</div>
 <textarea id="output" readonly placeholder="Result will appear here..."></textarea>
 
 <div class="actions">
-
-<button class="primary" onclick="copyOutput()">
-Copy Output
-</button>
-
+<button class="btn primary" onclick="copyOutput()">Copy Output</button>
 </div>
-
 </div>
 
 </section>
 
 <section class="info-grid">
-
 <div class="info-card">
 <h2>What does URL encoding do?</h2>
-<p>
-URL encoding converts special characters into a safe format that can be transmitted through URLs and query parameters.
-</p>
+<p>URL encoding converts special characters into a safe format that can be transmitted through URLs, query parameters and web requests.</p>
 </div>
-
 <div class="info-card">
 <h2>Why decode URLs?</h2>
-<p>
-Decoding converts encoded URLs back into readable text so developers can inspect parameters and debug requests.
-</p>
+<p>Decoding converts encoded URLs back into readable text so developers can inspect parameters, debug requests and understand web data.</p>
 </div>
+</section>
 
+<section class="seo-box">
+<h2>Online URL Encoder Decoder</h2>
+<p>Toolivo URL Encoder Decoder helps you encode and decode URLs instantly in your browser. It is useful for developers, testers, students and anyone working with query strings, APIs or web applications.</p>
+<p>URL encoding converts reserved characters such as spaces, symbols and special characters into a format that can safely travel inside URLs. Decoding reverses that process and turns encoded values back into readable text.</p>
+<p>This free online URL tool runs locally in your browser. Your input is not uploaded to a server, making it fast, private and simple to use on desktop and mobile devices.</p>
+<ul>
+<li>Encode URLs and query strings.</li>
+<li>Decode percent-encoded text.</li>
+<li>Useful for APIs, forms and web development.</li>
+<li>Works directly in your browser.</li>
+</ul>
+</section>
+
+<section class="faq-grid">
+<div class="faq-box">
+<h3>What is URL encoding?</h3>
+<p>URL encoding converts unsafe or reserved characters into percent-encoded values so they can be safely used inside URLs.</p>
+</div>
+<div class="faq-box">
+<h3>Does this tool upload my URL?</h3>
+<p>No. Encoding and decoding happens locally in your browser. Toolivo does not upload or store your text.</p>
+</div>
+</section>
+
+<section class="related-tools-box">
+<h2>Related Tools</h2>
+<div class="related-tools-grid" id="relatedTools"></div>
 </section>
 
 <footer class="footer">
-
-<div>
-© 2026 Toolivo — URL Encoder Decoder
-</div>
-
+<div>© <span id="year"></span> Toolivo — URL Encoder Decoder</div>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -392,192 +153,79 @@ Decoding converts encoded URLs back into readable text so developers can inspect
 <a href="/contact.html">Contact</a>
 <a href="/sitemap.xml">Sitemap</a>
 </div>
-
 </footer>
 
 </div>
 
 <script>
-
 const input = document.getElementById('input');
 const output = document.getElementById('output');
 
 function encodeURL(){
+  try{
+    if(!input.value){
+      output.value = '';
+      return;
+    }
 
-try{
-
-output.value = encodeURIComponent(input.value);
-
-}catch{
-
-output.value = 'Encoding error';
-
-}
-
+    output.value = encodeURIComponent(input.value);
+  }catch(error){
+    output.value = 'Encoding error';
+  }
 }
 
 function decodeURL(){
+  try{
+    if(!input.value){
+      output.value = '';
+      return;
+    }
 
-try{
-
-output.value = decodeURIComponent(input.value);
-
-}catch{
-
-output.value = 'Invalid encoded URL';
-
+    output.value = decodeURIComponent(input.value);
+  }catch(error){
+    output.value = 'Invalid encoded URL';
+  }
 }
 
-}
+async function copyOutput(){
+  if(!output.value) return;
 
-function copyOutput(){
-
-if(!output.value){
-return;
-}
-
-navigator.clipboard.writeText(output.value);
-
+  try{
+    await navigator.clipboard.writeText(output.value);
+  }catch(error){
+    alert('Copy failed. Please copy manually.');
+  }
 }
 
 function clearAll(){
-
-input.value = '';
-output.value = '';
-
+  input.value = '';
+  output.value = '';
+  input.focus();
 }
 
-</script>
+document.getElementById('year').innerText = new Date().getFullYear();
 
-<section class="related-tools-box">
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
 (function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
-})();
-</script>
-
-</body>
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
-(function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
+const tools = [
+['json-formatter.html','JSON Formatter','Format and beautify JSON code.'],
+['base64-encoder-decoder.html','Base64 Encoder Decoder','Encode and decode Base64.'],
+['jwt-decoder.html','JWT Decoder','Decode JWT tokens.'],
+['sha256-generator.html','SHA256 Generator','Generate SHA256 hashes.'],
+['uuid-generator.html','UUID Generator','Generate random UUIDs.'],
+['regex-tester.html','Regex Tester','Test regular expressions.'],
+['timestamp-converter.html','Timestamp Converter','Convert Unix timestamps.'],
+['word-counter.html','Word Counter','Count words and characters.']
+];
+const current = location.pathname.split('/').pop();
+const box = document.getElementById('relatedTools');
+if(!box) return;
+const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
+box.innerHTML = filtered.map(t => `
+<a class="related-tool-card" href="/${t[0]}">
+<strong>${t[1]}</strong>
+<span>${t[2]}</span>
+</a>
+`).join('');
 })();
 </script>
 
