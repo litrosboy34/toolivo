@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google tag (gtag.js) -->
+<title>Timestamp Converter — Toolivo</title>
+<meta name="description" content="Convert Unix timestamps to readable dates instantly with Toolivo. Free online timestamp converter for seconds, milliseconds, UTC, ISO and local time.">
+<meta name="keywords" content="timestamp converter, unix timestamp converter, epoch converter, convert timestamp, unix time, Toolivo">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://toolivo.site/timestamp-converter.html">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+<meta property="og:title" content="Timestamp Converter — Toolivo">
+<meta property="og:description" content="Convert Unix timestamps to readable dates instantly. Fast, free and browser-based.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site/timestamp-converter.html">
+<meta property="og:image" content="https://toolivo.site/logo.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Timestamp Converter — Toolivo">
+<meta name="twitter:description" content="Free online Unix timestamp converter for developers.">
+<meta name="twitter:image" content="https://toolivo.site/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -16,24 +35,8 @@ function gtag(){dataLayer.push(arguments);}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
 <script>
 gtag('js', new Date());
-gtag('config', 'G-3QBF2V9J5T', {
-  send_page_view: true
-});
+gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
 </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Timestamp Converter — Toolivo</title>
-
-<meta name="description" content="Convert Unix timestamps to readable dates instantly with Toolivo. Free online timestamp converter.">
-
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
@@ -124,7 +127,10 @@ gap:18px;
 margin-top:34px;
 }
 
-.panel{
+.panel,
+.seo-section,
+.faq-section,
+.related-tools-box{
 background:rgba(15,23,42,.78);
 border:1px solid rgba(148,163,184,.16);
 border-radius:28px;
@@ -223,15 +229,69 @@ border-radius:22px;
 padding:18px;
 }
 
-.info-card h2{
+.info-card h2,
+.info-card h3{
 margin:0 0 10px;
 font-size:20px;
 }
 
-.info-card p{
+.info-card p,
+.seo-section p{
 margin:0;
 line-height:1.7;
 color:#94a3b8;
+}
+
+.seo-section,
+.faq-section,
+.related-tools-box{
+margin-top:28px;
+}
+
+.seo-section h2,
+.faq-section h2,
+.related-tools-box h2{
+margin:0 0 16px;
+font-size:28px;
+letter-spacing:-.8px;
+}
+
+.seo-section p + p{
+margin-top:14px;
+}
+
+.related-tools-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+}
+
+.related-tool-card{
+background:rgba(2,6,23,.45);
+border:1px solid rgba(148,163,184,.14);
+border-radius:18px;
+padding:16px;
+display:block;
+transition:.2s;
+}
+
+.related-tool-card:hover{
+transform:translateY(-3px);
+border-color:rgba(34,211,238,.45);
+box-shadow:0 0 25px rgba(56,189,248,.10);
+}
+
+.related-tool-card strong{
+display:block;
+font-size:16px;
+margin-bottom:6px;
+color:white;
+}
+
+.related-tool-card span{
+color:#94a3b8;
+font-size:13px;
+line-height:1.5;
 }
 
 .footer{
@@ -255,13 +315,20 @@ flex-wrap:wrap;
 
 .footer-links a:hover{color:#22d3ee}
 
+@media(max-width:900px){
+.related-tools-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
 @media(max-width:850px){
 .header{
 flex-direction:column;
 align-items:flex-start;
 }
 
-.grid,.info-grid{
+.grid,
+.info-grid{
 grid-template-columns:1fr;
 }
 
@@ -275,6 +342,12 @@ flex-direction:column;
 
 button{
 width:100%;
+}
+}
+
+@media(max-width:520px){
+.related-tools-grid{
+grid-template-columns:1fr;
 }
 }
 </style>
@@ -296,6 +369,8 @@ width:100%;
 </nav>
 </header>
 
+<main>
+
 <section class="tool-hero">
 <h1><span class="gradient">Timestamp</span><br>Converter</h1>
 <p>Convert Unix timestamps into readable local, UTC and ISO dates instantly. You can also convert dates back to Unix time.</p>
@@ -307,17 +382,16 @@ width:100%;
 
 <div class="field">
 <label for="timestampInput">Unix Timestamp</label>
-<input id="timestampInput" placeholder="Example: 1716336000">
+<input id="timestampInput" inputmode="numeric" placeholder="Example: 1716336000">
 </div>
 
 <div class="actions">
 <button class="primary" onclick="convertTimestamp()">Convert Timestamp</button>
 <button onclick="copyTimestampResult()">Copy Result</button>
+<button onclick="clearTimestamp()">Clear</button>
 </div>
 
-<div class="output" id="timestampOutput">
-Result will appear here...
-</div>
+<div class="output" id="timestampOutput">Result will appear here...</div>
 
 </div>
 
@@ -334,9 +408,7 @@ Result will appear here...
 <button onclick="copyDateResult()">Copy Result</button>
 </div>
 
-<div class="output" id="dateOutput">
-Timestamp will appear here...
-</div>
+<div class="output" id="dateOutput">Timestamp will appear here...</div>
 
 </div>
 
@@ -355,6 +427,51 @@ Timestamp will appear here...
 </div>
 
 </section>
+
+<section class="seo-section">
+<h2>Online Unix Timestamp Converter</h2>
+
+<p>A Unix timestamp represents the number of seconds or milliseconds that have passed since January 1, 1970 UTC. Developers use timestamps for databases, APIs, logging systems and software development.</p>
+
+<p>Toolivo's Timestamp Converter allows you to convert Unix timestamps into readable dates instantly. You can also convert dates back into Unix timestamps in both seconds and milliseconds.</p>
+
+<p>This free online timestamp converter works directly in your browser and supports UTC, ISO and local date formats on desktop and mobile devices.</p>
+</section>
+
+<section class="faq-section">
+<h2>Frequently Asked Questions</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h3>What is a Unix timestamp?</h3>
+<p>A Unix timestamp is a numeric time format that counts the seconds or milliseconds since January 1, 1970 UTC.</p>
+</div>
+
+<div class="info-card">
+<h3>Are timestamps stored in UTC?</h3>
+<p>Unix timestamps are based on UTC. This converter also displays your local date so you can compare both formats easily.</p>
+</div>
+
+<div class="info-card">
+<h3>What is the difference between seconds and milliseconds?</h3>
+<p>Unix timestamps commonly use 10 digits for seconds and 13 digits for milliseconds. This tool detects both formats automatically.</p>
+</div>
+
+<div class="info-card">
+<h3>Is this timestamp converter free?</h3>
+<p>Yes. Toolivo's Timestamp Converter is free to use and does not require registration.</p>
+</div>
+
+</div>
+</section>
+
+<section class="related-tools-box">
+<h2>Related Tools</h2>
+<div class="related-tools-grid" id="relatedTools"></div>
+</section>
+
+</main>
 
 <footer class="footer">
 <div>© 2026 Toolivo — Timestamp Converter</div>
@@ -376,19 +493,29 @@ const timestampOutput = document.getElementById('timestampOutput');
 const dateInput = document.getElementById('dateInput');
 const dateOutput = document.getElementById('dateOutput');
 
+const timestampDefault = 'Result will appear here...';
+const dateDefault = 'Timestamp will appear here...';
+
 function convertTimestamp(){
 let ts = timestampInput.value.trim();
 
 if(!ts){
-timestampOutput.textContent = 'Please enter a timestamp.';
+timestampOutput.textContent = timestampDefault;
 return;
 }
 
-if(ts.length === 10){
-ts = Number(ts) * 1000;
+if(!/^-?\d+$/.test(ts)){
+timestampOutput.textContent = 'Invalid timestamp.';
+return;
 }
 
-const date = new Date(Number(ts));
+let value = Number(ts);
+
+if(ts.length === 10){
+value = value * 1000;
+}
+
+const date = new Date(value);
 
 if(isNaN(date.getTime())){
 timestampOutput.textContent = 'Invalid timestamp.';
@@ -398,21 +525,30 @@ return;
 timestampOutput.innerHTML = `
 <strong>Local:</strong> ${date.toLocaleString()}<br>
 <strong>UTC:</strong> ${date.toUTCString()}<br>
-<strong>ISO:</strong> ${date.toISOString()}
+<strong>ISO:</strong> ${date.toISOString()}<br>
+<strong>Unix seconds:</strong> ${Math.floor(date.getTime() / 1000)}<br>
+<strong>Unix milliseconds:</strong> ${date.getTime()}
 `;
 }
 
 function convertDate(){
 if(!dateInput.value){
-dateOutput.textContent = 'Please select a date.';
+dateOutput.textContent = dateDefault;
 return;
 }
 
 const date = new Date(dateInput.value);
 
+if(isNaN(date.getTime())){
+dateOutput.textContent = 'Invalid date.';
+return;
+}
+
 dateOutput.innerHTML = `
 <strong>Unix seconds:</strong> ${Math.floor(date.getTime() / 1000)}<br>
-<strong>Unix milliseconds:</strong> ${date.getTime()}
+<strong>Unix milliseconds:</strong> ${date.getTime()}<br>
+<strong>UTC:</strong> ${date.toUTCString()}<br>
+<strong>ISO:</strong> ${date.toISOString()}
 `;
 }
 
@@ -428,149 +564,54 @@ dateInput.value = local;
 convertDate();
 }
 
-function copyTimestampResult(){
-navigator.clipboard.writeText(timestampOutput.innerText);
+async function copyTimestampResult(){
+if(!timestampOutput.innerText || timestampOutput.innerText === timestampDefault) return;
+
+try{
+await navigator.clipboard.writeText(timestampOutput.innerText);
+}catch(error){
+alert('Copy failed. Please copy manually.');
+}
 }
 
-function copyDateResult(){
-navigator.clipboard.writeText(dateOutput.innerText);
+async function copyDateResult(){
+if(!dateOutput.innerText || dateOutput.innerText === dateDefault) return;
+
+try{
+await navigator.clipboard.writeText(dateOutput.innerText);
+}catch(error){
+alert('Copy failed. Please copy manually.');
+}
 }
 
-timestampInput.addEventListener('input',convertTimestamp);
-dateInput.addEventListener('input',convertDate);
+function clearTimestamp(){
+timestampInput.value = '';
+timestampOutput.textContent = timestampDefault;
+timestampInput.focus();
+}
+
+timestampInput.addEventListener('input', convertTimestamp);
+dateInput.addEventListener('input', convertDate);
 
 setNow();
-</script>
 
-<section class="related-tools-box">
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
 (function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
+const tools = [
+["jwt-decoder.html","JWT Decoder","Decode JWT tokens instantly."],
+["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
+["json-formatter.html","JSON Formatter","Format JSON data."],
+["uuid-generator.html","UUID Generator","Generate random UUIDs."]
+];
 
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
+const box = document.getElementById("relatedTools");
+if(!box) return;
 
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
-})();
-</script>
-
-</body>
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
-(function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
+box.innerHTML = tools.map(tool => `
+<a class="related-tool-card" href="/${tool[0]}">
+<strong>${tool[1]}</strong>
+<span>${tool[2]}</span>
+</a>
+`).join("");
 })();
 </script>
 
