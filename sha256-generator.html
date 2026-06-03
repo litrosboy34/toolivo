@@ -1,33 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SHA256 Hash Generator — Toolivo</title>
-<meta name="description" content="Generate SHA256 hashes instantly with Toolivo. Free online SHA256 hash generator that works locally in your browser.">
-<meta name="keywords" content="SHA256 generator, SHA256 hash, hash generator, online SHA256, checksum generator, Toolivo">
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://toolivo.site/sha256-generator.html">
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-
-<meta property="og:title" content="SHA256 Hash Generator — Toolivo">
-<meta property="og:description" content="Generate SHA256 hashes instantly online. Fast, free and browser-based.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://toolivo.site/sha256-generator.html">
-<meta property="og:image" content="https://toolivo.site/logo.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SHA256 Hash Generator — Toolivo">
-<meta name="twitter:description" content="Free online SHA256 hash generator for developers and everyday users.">
-<meta name="twitter:image" content="https://toolivo.site/logo.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+<!-- Google tag (gtag.js) -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -35,321 +13,58 @@ function gtag(){dataLayer.push(arguments);}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
 <script>
 gtag('js', new Date());
-gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
+gtag('config', 'G-3QBF2V9J5T', {
+  send_page_view: true
+});
 </script>
+
+<title>SHA256 Hash Generator — Toolivo</title>
+<meta name="description" content="Generate SHA256 hashes instantly with Toolivo. Free online SHA256 hash generator that works locally in your browser.">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:title" content="SHA256 Hash Generator — Toolivo">
+<meta property="og:description" content="Generate SHA256 hashes instantly online. Fast, free and browser-based.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site/sha256-generator.html">
+<meta property="og:image" content="https://toolivo.site/logo.png">
+<link rel="canonical" href="https://toolivo.site/sha256-generator.html">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Inter,Arial,sans-serif;
-background:
-radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),
-radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),
-#0f172a;
-color:white;
-min-height:100vh;
-overflow-x:hidden;
-}
-
-a{text-decoration:none;color:inherit}
-
-.container{
-width:min(1100px,calc(100% - 32px));
-margin:auto;
-}
-
-.header{
-padding:22px 0;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-}
-
-.logo{
-font-size:30px;
-font-weight:900;
-letter-spacing:-1.5px;
-background:linear-gradient(90deg,#22d3ee,#60a5fa,#a78bfa);
--webkit-background-clip:text;
-color:transparent;
-filter:drop-shadow(0 0 16px rgba(34,211,238,.25));
-}
-
-.nav{
-display:flex;
-align-items:center;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.nav a{
-font-size:14px;
-font-weight:700;
-color:#cbd5e1;
-transition:.2s;
-}
-
-.nav a:hover{color:#22d3ee}
-
-.tool-hero{
-padding:58px 0 24px;
-text-align:center;
-}
-
-.gradient{
-background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.tool-hero h1{
-font-size:clamp(42px,7vw,74px);
-line-height:.95;
-letter-spacing:-4px;
-margin:0 0 18px;
-}
-
-.tool-hero p{
-max-width:760px;
-margin:auto;
-line-height:1.7;
-font-size:18px;
-color:#94a3b8;
-}
-
-.panel{
-margin-top:34px;
-background:rgba(15,23,42,.78);
-border:1px solid rgba(148,163,184,.16);
-border-radius:28px;
-padding:24px;
-backdrop-filter:blur(14px);
-box-shadow:0 24px 70px rgba(0,0,0,.22);
-}
-
-.label{
-font-size:13px;
-font-weight:700;
-letter-spacing:.5px;
-text-transform:uppercase;
-color:#94a3b8;
-margin-bottom:12px;
-}
-
-textarea{
-width:100%;
-min-height:230px;
-border-radius:22px;
-border:1px solid rgba(148,163,184,.18);
-background:#020617;
-color:white;
-padding:18px;
-font-size:16px;
-line-height:1.7;
-resize:vertical;
-outline:none;
-font-family:inherit;
-transition:.2s;
-}
-
-textarea:focus{
-border-color:#22d3ee;
-box-shadow:0 0 0 4px rgba(34,211,238,.08);
-}
-
-.actions{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:18px;
-}
-
-button{
-height:56px;
-padding:0 22px;
-border-radius:18px;
-font-weight:800;
-font-size:15px;
-cursor:pointer;
-transition:.2s;
-background:rgba(255,255,255,.06);
-color:white;
-border:1px solid rgba(148,163,184,.16);
-}
-
-button:hover{
-transform:translateY(-2px);
-background:rgba(255,255,255,.1);
-border-color:rgba(34,211,238,.35);
-}
-
-.primary{
-background:linear-gradient(90deg,#22d3ee,#60a5fa);
-color:#020617;
-border:none;
-}
-
-.output{
-margin-top:18px;
-padding:20px;
-border-radius:22px;
-background:#020617;
-border:1px solid rgba(148,163,184,.16);
-word-break:break-all;
-font-family:Consolas,Monaco,monospace;
-font-size:16px;
-line-height:1.8;
-color:#67e8f9;
-min-height:90px;
-}
-
-.info-grid{
-margin-top:18px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.info-card{
-background:rgba(2,6,23,.34);
-border:1px solid rgba(148,163,184,.14);
-border-radius:22px;
-padding:18px;
-}
-
-.info-card h2,
-.info-card h3{
-margin:0 0 10px;
-font-size:20px;
-}
-
-.info-card p,
-.seo-content p{
-margin:0;
-line-height:1.7;
-color:#94a3b8;
-}
-
-.seo-content h2,
-.faq-section h2,
-.related-tools-box h2{
-margin:0 0 16px;
-font-size:28px;
-letter-spacing:-.8px;
-}
-
-.seo-content p + p{
-margin-top:14px;
-}
-
-.related-tools-box{
-margin-top:34px;
-background:rgba(15,23,42,.78);
-border:1px solid rgba(148,163,184,.16);
-border-radius:28px;
-padding:24px;
-backdrop-filter:blur(14px);
-box-shadow:0 24px 70px rgba(0,0,0,.22);
-}
-
-.related-tools-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:14px;
-}
-
-.related-tool-card{
-background:rgba(2,6,23,.45);
-border:1px solid rgba(148,163,184,.14);
-border-radius:18px;
-padding:16px;
-display:block;
-transition:.2s;
-}
-
-.related-tool-card:hover{
-transform:translateY(-3px);
-border-color:rgba(34,211,238,.45);
-box-shadow:0 0 25px rgba(56,189,248,.10);
-}
-
-.related-tool-card strong{
-display:block;
-font-size:16px;
-margin-bottom:6px;
-color:white;
-}
-
-.related-tool-card span{
-color:#94a3b8;
-font-size:13px;
-line-height:1.5;
-}
-
-.footer{
-margin-top:70px;
-padding:26px 0;
-border-top:1px solid rgba(148,163,184,.14);
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px;
-flex-wrap:wrap;
-color:#94a3b8;
-font-size:14px;
-}
-
-.footer-links{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
-}
-
-.footer-links a:hover{color:#22d3ee}
-
-@media(max-width:900px){
-.related-tools-grid{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:768px){
-.header{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.tool-hero h1{
-letter-spacing:-2px;
-}
-
-.info-grid{
-grid-template-columns:1fr;
-}
-
-.actions{
-flex-direction:column;
-}
-
-button{
-width:100%;
-}
-}
-
-@media(max-width:520px){
-.related-tools-grid{grid-template-columns:1fr}
-}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top left,rgba(34,211,238,.16),transparent 34%),radial-gradient(circle at top right,rgba(59,130,246,.16),transparent 32%),#0f172a;color:white;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}.container{width:min(1150px,calc(100% - 32px));margin:auto}.header{padding:14px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:900;letter-spacing:-1.5px}.logo img{width:105px;height:105px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.45)) drop-shadow(0 20px 46px rgba(0,0,0,.55));transform:translateY(4px)}.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.nav a{font-size:14px;font-weight:700;color:#cbd5e1;transition:.2s}.nav a:hover{color:#22d3ee}.tool-hero{padding:48px 0 24px;text-align:center}.badge{display:inline-block;margin-bottom:18px;padding:8px 14px;border:1px solid rgba(34,211,238,.2);border-radius:999px;background:rgba(2,6,23,.36);color:#67e8f9;font-size:13px;font-weight:800}.gradient{background:linear-gradient(90deg,#fff,#67e8f9,#93c5fd);-webkit-background-clip:text;color:transparent}.tool-hero h1{font-size:clamp(42px,7vw,74px);line-height:.95;letter-spacing:-4px;margin:0 0 18px}.tool-hero p{max-width:780px;margin:auto;line-height:1.7;font-size:18px;color:#94a3b8}.tool{margin-top:40px}.panel{background:rgba(15,23,42,.78);border:1px solid rgba(148,163,184,.16);border-radius:28px;padding:24px;backdrop-filter:blur(14px);box-shadow:0 24px 70px rgba(0,0,0,.22)}.label{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#94a3b8;margin-bottom:12px}textarea{width:100%;min-height:230px;border-radius:22px;border:1px solid rgba(148,163,184,.18);background:#020617;color:white;padding:18px;font-size:16px;line-height:1.7;resize:vertical;outline:none;font-family:Inter,Arial,sans-serif;transition:.2s}textarea:focus{border-color:#22d3ee;box-shadow:0 0 0 4px rgba(34,211,238,.08)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{height:58px;border:none;border-radius:18px;font-weight:900;font-size:15px;cursor:pointer;transition:.2s;padding:0 18px}.primary{background:linear-gradient(90deg,#22d3ee,#60a5fa);color:#020617}.secondary{background:rgba(255,255,255,.06);color:white;border:1px solid rgba(148,163,184,.16)}.btn:hover{transform:translateY(-2px)}.output{margin-top:18px;padding:20px;border-radius:22px;background:#020617;border:1px solid rgba(148,163,184,.16);word-break:break-all;font-family:Consolas,Monaco,monospace;font-size:16px;line-height:1.8;color:#67e8f9;min-height:90px}.info-grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.info-card,.seo-box,.faq-box{background:rgba(2,6,23,.34);border:1px solid rgba(148,163,184,.14);border-radius:22px;padding:20px}.info-card h2,.seo-box h2,.faq-box h2{margin:0 0 10px;font-size:22px}.info-card p,.seo-box p,.faq-box p,.seo-box li{margin:0;color:#94a3b8;line-height:1.75}.seo-box{margin-top:26px}.seo-box p{margin-bottom:14px}.seo-box ul{margin:12px 0 0;padding-left:20px}.faq-grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.faq-box h3{font-size:18px;margin:0 0 8px}.related-tools-box{max-width:1100px;margin:45px auto 20px}.related-tools-box h2{font-size:28px;margin-bottom:18px}.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}.footer{margin-top:70px;padding:26px 0;border-top:1px solid rgba(148,163,184,.14);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#94a3b8;font-size:14px}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a:hover{color:#22d3ee}@media(max-width:860px){.info-grid,.faq-grid{grid-template-columns:1fr}.header{flex-direction:column;align-items:flex-start}.logo img{width:92px;height:92px}.tool-hero h1{font-size:52px;letter-spacing:-2px}.related-tools-grid{grid-template-columns:repeat(2,1fr)}.actions{flex-direction:column}.btn{width:100%}}@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}.footer{display:block;text-align:center}.footer-links{justify-content:center;margin-top:14px}}
 </style>
-</head>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Toolivo SHA256 Hash Generator",
+  "url": "https://toolivo.site/sha256-generator.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "description": "Free online SHA256 hash generator that creates SHA256 hashes locally in your browser.",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
+
+</head>
 <body>
 
 <div class="container">
 
 <header class="header">
-<a href="/" class="logo">Toolivo</a>
-
+<a href="/" class="logo">
+<img src="/logo.png" alt="Toolivo">
+<span>Toolivo</span>
+</a>
 <nav class="nav">
 <a href="/">Home</a>
 <a href="/tools.html">Tools</a>
@@ -360,77 +75,60 @@ width:100%;
 </header>
 
 <section class="tool-hero">
+<div class="badge">Free • Private • Browser Based</div>
 <h1><span class="gradient">SHA256 Hash</span><br>Generator</h1>
-<p>Generate secure SHA256 hashes instantly in your browser. Useful for checksums, verification and developer workflows.</p>
+<p>Generate secure SHA256 hashes instantly in your browser. Useful for checksums, verification, testing and developer workflows.</p>
 </section>
 
-<main>
-
-<section class="panel">
+<section class="tool">
+<div class="panel">
 
 <div class="label">Input Text</div>
-
 <textarea id="input" placeholder="Type or paste text here..."></textarea>
 
 <div class="actions">
-<button class="primary" onclick="generateHash()">Generate SHA256</button>
-<button onclick="copyHash()">Copy Hash</button>
-<button onclick="clearAll()">Clear</button>
+<button class="btn primary" onclick="generateHash()">Generate SHA256</button>
+<button class="btn secondary" onclick="copyHash()">Copy Hash</button>
+<button class="btn secondary" onclick="clearAll()">Clear</button>
 </div>
 
 <div class="output" id="output">Your SHA256 hash will appear here...</div>
 
-<div class="info-grid">
+</div>
+</section>
 
+<section class="info-grid">
 <div class="info-card">
 <h2>What is SHA256?</h2>
 <p>SHA256 is a cryptographic hash function that creates a fixed-length 256-bit hash from text or data.</p>
 </div>
-
 <div class="info-card">
 <h2>Is my text uploaded?</h2>
 <p>No. The hash is generated locally in your browser using the Web Crypto API.</p>
 </div>
-
-</div>
-
 </section>
 
-<section class="panel seo-content">
+<section class="seo-box">
 <h2>Online SHA256 Hash Generator</h2>
-
-<p>Toolivo's SHA256 Hash Generator helps you create SHA256 hashes from any text instantly. It is useful for developers, students, security testing, checksum verification and data integrity checks.</p>
-
+<p>Toolivo SHA256 Hash Generator helps you create SHA256 hashes from any text instantly. It is useful for developers, students, security testing, checksum verification and data integrity checks.</p>
 <p>SHA256 converts input text into a fixed-length 64-character hexadecimal hash. Even a small change in the original text creates a completely different hash, which makes it useful for comparing and verifying data.</p>
-
-<p>This tool works directly in your browser. Your input is not uploaded to a server, making it fast, private and simple to use on desktop and mobile devices.</p>
+<p>This free online SHA256 tool works directly in your browser. Your input is not uploaded to a server, making it fast, private and simple to use on desktop and mobile devices.</p>
+<ul>
+<li>Generate SHA256 hashes from plain text.</li>
+<li>Use it for checksums and data verification.</li>
+<li>Copy generated hashes instantly.</li>
+<li>Works locally in modern browsers.</li>
+</ul>
 </section>
 
-<section class="panel faq-section">
-<h2>Frequently Asked Questions</h2>
-
-<div class="info-grid">
-
-<div class="info-card">
-<h3>What does SHA256 mean?</h3>
-<p>SHA256 stands for Secure Hash Algorithm 256-bit. It creates a fixed-length hash value from text or data.</p>
-</div>
-
-<div class="info-card">
+<section class="faq-grid">
+<div class="faq-box">
 <h3>Can SHA256 be reversed?</h3>
 <p>No. SHA256 is a one-way hashing algorithm. You cannot convert a SHA256 hash back into the original text.</p>
 </div>
-
-<div class="info-card">
+<div class="faq-box">
 <h3>Is this SHA256 generator free?</h3>
-<p>Yes. Toolivo's SHA256 Generator is completely free and does not require registration.</p>
-</div>
-
-<div class="info-card">
-<h3>Is my text stored?</h3>
-<p>No. The hash is generated locally in your browser. Toolivo does not store or upload your input text.</p>
-</div>
-
+<p>Yes. Toolivo SHA256 Generator is free to use and does not require registration.</p>
 </div>
 </section>
 
@@ -439,11 +137,8 @@ width:100%;
 <div class="related-tools-grid" id="relatedTools"></div>
 </section>
 
-</main>
-
 <footer class="footer">
-<div>© 2026 Toolivo — SHA256 Hash Generator</div>
-
+<div>© <span id="year"></span> Toolivo — SHA256 Hash Generator</div>
 <div class="footer-links">
 <a href="/about.html">About</a>
 <a href="/privacy.html">Privacy</a>
@@ -488,11 +183,10 @@ async function generateHash(){
 async function copyHash(){
   const text = output.textContent.trim();
 
-  if(!text || text === defaultOutput || text === 'Please enter text.') return;
+  if(!text || text === defaultOutput) return;
 
   try{
     await navigator.clipboard.writeText(text);
-    output.textContent = text;
   }catch(error){
     alert('Copy failed. Please copy the hash manually.');
   }
@@ -505,24 +199,29 @@ function clearAll(){
 }
 
 input.addEventListener('input', generateHash);
+document.getElementById('year').innerText = new Date().getFullYear();
 
 (function(){
-  const tools = [
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64 text."],
-    ["jwt-decoder.html","JWT Decoder","Decode JSON Web Tokens instantly."]
-  ];
-
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  box.innerHTML = tools.map(tool => `
-    <a class="related-tool-card" href="/${tool[0]}">
-      <strong>${tool[1]}</strong>
-      <span>${tool[2]}</span>
-    </a>
-  `).join("");
+const tools = [
+['json-formatter.html','JSON Formatter','Format and beautify JSON code.'],
+['jwt-decoder.html','JWT Decoder','Decode JWT tokens.'],
+['base64-encoder-decoder.html','Base64 Encoder Decoder','Encode and decode Base64.'],
+['uuid-generator.html','UUID Generator','Generate random UUIDs.'],
+['password-generator.html','Password Generator','Generate secure passwords.'],
+['url-encoder-decoder.html','URL Encoder Decoder','Encode and decode URLs.'],
+['timestamp-converter.html','Timestamp Converter','Convert Unix timestamps.'],
+['word-counter.html','Word Counter','Count words and characters.']
+];
+const current = location.pathname.split('/').pop();
+const box = document.getElementById('relatedTools');
+if(!box) return;
+const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
+box.innerHTML = filtered.map(t => `
+<a class="related-tool-card" href="/${t[0]}">
+<strong>${t[1]}</strong>
+<span>${t[2]}</span>
+</a>
+`).join('');
 })();
 </script>
 
