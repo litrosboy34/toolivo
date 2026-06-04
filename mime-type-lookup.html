@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google tag (gtag.js) -->
+<title>MIME Type Lookup — Toolivo</title>
+<meta name="description" content="Find MIME types and file extensions instantly. Search common MIME types for images, documents, code files, audio, video and archives.">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="canonical" href="https://toolivo.site/mime-type-lookup.html">
+
+<meta property="og:title" content="MIME Type Lookup — Toolivo">
+<meta property="og:description" content="Find MIME types and file extensions instantly with Toolivo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site/mime-type-lookup.html">
+<meta property="og:image" content="https://toolivo.site/logo.png">
+
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -16,17 +25,8 @@ function gtag(){dataLayer.push(arguments);}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
 <script>
 gtag('js', new Date());
-gtag('config', 'G-3QBF2V9J5T', {
-  send_page_view: true
-});
+gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
 </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MIME Type Lookup — Toolivo</title>
-<meta name="description" content="Find MIME types and file extensions instantly with Toolivo.">
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
@@ -42,54 +42,32 @@ a{text-decoration:none;color:inherit}
 .nav a{color:#94a3b8;font-size:14px;transition:.2s}
 .nav a:hover{color:white}
 
+.breadcrumb{margin-top:12px;color:#64748b;font-size:14px}
+.breadcrumb a{color:#94a3b8}
+.breadcrumb a:hover{color:white}
+
 .tool-hero{padding:45px 0 28px;text-align:left}
+.badge{display:inline-block;margin-bottom:14px;padding:8px 13px;border:1px solid #1e293b;border-radius:999px;background:#111827;color:#67e8f9;font-size:13px}
 .tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
-.tool-hero p{max-width:720px;color:#94a3b8;line-height:1.7;font-size:18px}
+.tool-hero p{max-width:760px;color:#94a3b8;line-height:1.7;font-size:18px}
 .gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
 .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
 .panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
-
 .input-group{display:flex;flex-direction:column;gap:8px}
 .input-group label{font-size:14px;font-weight:bold;color:#cbd5e1}
 input{
-width:100%;
-height:58px;
-border-radius:16px;
-border:1px solid #334155;
-background:#020617;
-color:white;
-padding:0 18px;
-font-size:17px;
-outline:none;
+width:100%;height:58px;border-radius:16px;border:1px solid #334155;
+background:#020617;color:white;padding:0 18px;font-size:17px;outline:none;
 }
 input:focus{border-color:#38bdf8}
 
-.result{
-margin-top:16px;
-padding:20px;
-border-radius:16px;
-background:#020617;
-border:1px solid #334155;
-line-height:1.8;
-min-height:165px;
-}
+.result{margin-top:16px;padding:20px;border-radius:16px;background:#020617;border:1px solid #334155;line-height:1.8;min-height:165px}
 .big{font-size:32px;font-weight:900;margin-bottom:8px;word-break:break-all;color:#67e8f9}
 .desc{color:#94a3b8;font-size:15px}
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-.item{
-background:#020617;
-border:1px solid #334155;
-padding:14px;
-border-radius:16px;
-cursor:pointer;
-transition:.2s;
-}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.item{background:#020617;border:1px solid #334155;padding:14px;border-radius:16px;cursor:pointer;transition:.2s}
 .item:hover{transform:translateY(-2px);border-color:#38bdf8}
 .item b{display:block;margin-bottom:5px;color:white}
 .item span{color:#94a3b8;font-size:14px;word-break:break-all}
@@ -102,6 +80,20 @@ transition:.2s;
 .card p,.card li{color:#94a3b8;line-height:1.7}
 .card ul{padding-left:18px}
 
+.faq{margin-top:28px}
+.faq h2{font-size:30px;margin-bottom:16px}
+.faq-item{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:12px}
+.faq-item h3{font-size:18px;margin-bottom:8px}
+.faq-item p{color:#94a3b8;line-height:1.7}
+
+.related-tools-box{margin-top:35px}
+.related-tools-box h2{font-size:28px;margin-bottom:18px}
+.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
+.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
+.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
+.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
+
 .footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
 .footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
 .footer-links a:hover{color:white}
@@ -111,12 +103,27 @@ transition:.2s;
 .header{flex-direction:column}
 .logo img{width:95px;height:95px}
 .grid{grid-template-columns:1fr}
+.related-tools-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+.related-tools-grid{grid-template-columns:1fr}
 }
 </style>
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"MIME Type Lookup",
+"url":"https://toolivo.site/mime-type-lookup.html",
+"applicationCategory":"DeveloperApplication",
+"operatingSystem":"Any",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
 </head>
 
 <body>
-
 <div class="container">
 
 <header class="header">
@@ -124,7 +131,6 @@ transition:.2s;
 <img src="/logo.png" alt="Toolivo">
 <span>Toolivo</span>
 </a>
-
 <nav class="nav">
 <a href="/">Home</a>
 <a href="/#tools">Tools</a>
@@ -134,17 +140,21 @@ transition:.2s;
 </nav>
 </header>
 
+<div class="breadcrumb">
+<a href="/">Home</a> / <a href="/#tools">Tools</a> / MIME Type Lookup
+</div>
+
 <section class="tool-hero">
+<div class="badge">Developer Tool</div>
 <h1>MIME Type <span class="gradient">Lookup</span></h1>
-<p>Search file extensions and MIME types instantly. Find common MIME values for images, documents, code files, audio, video and archives.</p>
+<p>Search file extensions and MIME types instantly. Find common MIME values for images, documents, code files, audio, video, fonts and archives.</p>
 </section>
 
 <section class="tool-grid">
-
 <div class="panel">
 <div class="input-group">
-<label>Search extension</label>
-<input id="search" placeholder="Search extension like png, pdf, mp4, json...">
+<label for="search">Search extension or MIME type</label>
+<input id="search" placeholder="png, pdf, mp4, json, image/png...">
 </div>
 
 <div class="result" id="result">
@@ -155,28 +165,49 @@ transition:.2s;
 </div>
 
 <div class="panel">
-<div class="info">Popular MIME types. Click any extension to show its MIME type instantly.</div>
+<div class="info">Popular MIME types. Click any item to view its details instantly.</div>
 <div class="grid" id="grid"></div>
 </div>
-
 </section>
 
 <section class="content">
-
 <article class="card">
 <h2>What is a MIME type?</h2>
 <p>A MIME type tells browsers, servers and apps what kind of file is being handled, such as image/png, application/json or text/css.</p>
 </article>
 
 <article class="card">
-<h2>How it works</h2>
+<h2>How to use this tool</h2>
 <ul>
 <li>Type a file extension like png, pdf or mp4.</li>
-<li>View the matching MIME type instantly.</li>
+<li>Search by MIME type like application/json.</li>
 <li>Use the result in headers, uploads or web projects.</li>
 </ul>
 </article>
+</section>
 
+<section class="faq">
+<h2>FAQ</h2>
+
+<div class="faq-item">
+<h3>Why are MIME types important?</h3>
+<p>MIME types help browsers and servers understand how to process, display or download a file correctly.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I search by extension and MIME type?</h3>
+<p>Yes. You can search using extensions like png or pdf, or MIME values like image/png and application/pdf.</p>
+</div>
+
+<div class="faq-item">
+<h3>Is this MIME lookup tool free?</h3>
+<p>Yes. Toolivo MIME Type Lookup is free and works directly in your browser.</p>
+</div>
+</section>
+
+<section class="related-tools-box">
+<h2>Related Tools</h2>
+<div class="related-tools-grid" id="relatedTools"></div>
 </section>
 
 <footer class="footer">
@@ -193,40 +224,78 @@ transition:.2s;
 </div>
 
 <script>
-const types={
+const types = {
 png:{mime:'image/png',ext:'.png',desc:'Portable Network Graphics image format.'},
 jpg:{mime:'image/jpeg',ext:'.jpg',desc:'JPEG image format.'},
 jpeg:{mime:'image/jpeg',ext:'.jpeg',desc:'JPEG image format.'},
 gif:{mime:'image/gif',ext:'.gif',desc:'GIF image format.'},
-webp:{mime:'image/webp',ext:'.webp',desc:'Modern image format.'},
-svg:{mime:'image/svg+xml',ext:'.svg',desc:'Scalable vector graphic.'},
-json:{mime:'application/json',ext:'.json',desc:'JavaScript Object Notation.'},
-pdf:{mime:'application/pdf',ext:'.pdf',desc:'Portable Document Format.'},
-zip:{mime:'application/zip',ext:'.zip',desc:'Compressed ZIP archive.'},
-mp4:{mime:'video/mp4',ext:'.mp4',desc:'MP4 video file.'},
-mp3:{mime:'audio/mpeg',ext:'.mp3',desc:'MP3 audio file.'},
+webp:{mime:'image/webp',ext:'.webp',desc:'Modern WebP image format.'},
+svg:{mime:'image/svg+xml',ext:'.svg',desc:'Scalable Vector Graphics file.'},
+ico:{mime:'image/x-icon',ext:'.ico',desc:'Icon file format.'},
+bmp:{mime:'image/bmp',ext:'.bmp',desc:'Bitmap image file.'},
+avif:{mime:'image/avif',ext:'.avif',desc:'AVIF image format.'},
+
 html:{mime:'text/html',ext:'.html',desc:'HTML document.'},
 css:{mime:'text/css',ext:'.css',desc:'CSS stylesheet.'},
 js:{mime:'application/javascript',ext:'.js',desc:'JavaScript file.'},
-xml:{mime:'application/xml',ext:'.xml',desc:'XML document.'}
+mjs:{mime:'text/javascript',ext:'.mjs',desc:'JavaScript module file.'},
+txt:{mime:'text/plain',ext:'.txt',desc:'Plain text file.'},
+csv:{mime:'text/csv',ext:'.csv',desc:'Comma-separated values file.'},
+xml:{mime:'application/xml',ext:'.xml',desc:'XML document.'},
+json:{mime:'application/json',ext:'.json',desc:'JavaScript Object Notation file.'},
+yaml:{mime:'application/yaml',ext:'.yaml',desc:'YAML data file.'},
+yml:{mime:'application/yaml',ext:'.yml',desc:'YAML data file.'},
+
+pdf:{mime:'application/pdf',ext:'.pdf',desc:'Portable Document Format.'},
+zip:{mime:'application/zip',ext:'.zip',desc:'Compressed ZIP archive.'},
+rar:{mime:'application/vnd.rar',ext:'.rar',desc:'RAR archive file.'},
+'7z':{mime:'application/x-7z-compressed',ext:'.7z',desc:'7-Zip compressed archive.'},
+tar:{mime:'application/x-tar',ext:'.tar',desc:'TAR archive file.'},
+gz:{mime:'application/gzip',ext:'.gz',desc:'Gzip compressed file.'},
+
+mp3:{mime:'audio/mpeg',ext:'.mp3',desc:'MP3 audio file.'},
+wav:{mime:'audio/wav',ext:'.wav',desc:'WAV audio file.'},
+ogg:{mime:'audio/ogg',ext:'.ogg',desc:'OGG audio file.'},
+mp4:{mime:'video/mp4',ext:'.mp4',desc:'MP4 video file.'},
+webm:{mime:'video/webm',ext:'.webm',desc:'WebM video file.'},
+mov:{mime:'video/quicktime',ext:'.mov',desc:'QuickTime video file.'},
+
+woff:{mime:'font/woff',ext:'.woff',desc:'Web Open Font Format.'},
+woff2:{mime:'font/woff2',ext:'.woff2',desc:'Web Open Font Format 2.'},
+ttf:{mime:'font/ttf',ext:'.ttf',desc:'TrueType font file.'},
+otf:{mime:'font/otf',ext:'.otf',desc:'OpenType font file.'}
 };
 
-const search=document.getElementById('search');
-const result=document.getElementById('result');
-const grid=document.getElementById('grid');
+const search = document.getElementById('search');
+const result = document.getElementById('result');
+const grid = document.getElementById('grid');
 
-function render(key){
-const data=types[key];
+function normalize(value){
+return value.toLowerCase().replace(/^\./,'').trim();
+}
+
+function findType(value){
+const clean = normalize(value);
+if(types[clean]) return types[clean];
+
+return Object.values(types).find(item =>
+item.mime.toLowerCase() === clean ||
+item.mime.toLowerCase().includes(clean)
+);
+}
+
+function render(value){
+const data = findType(value);
 
 if(!data){
-result.innerHTML=`
+result.innerHTML = `
 <div class="big">Not found</div>
-<div class="desc">No MIME type found.</div>
+<div class="desc">No MIME type found for this search.</div>
 `;
 return;
 }
 
-result.innerHTML=`
+result.innerHTML = `
 <div class="big">${data.mime}</div>
 <div><b>${data.ext}</b></div>
 <div class="desc">${data.desc}</div>
@@ -234,158 +303,46 @@ result.innerHTML=`
 }
 
 Object.keys(types).forEach(key=>{
-const div=document.createElement('div');
-div.className='item';
-div.innerHTML=`
+const div = document.createElement('div');
+div.className = 'item';
+div.innerHTML = `
 <b>${types[key].ext}</b>
 <span>${types[key].mime}</span>
 `;
-div.onclick=()=>{
-search.value=key;
+div.onclick = () => {
+search.value = key;
 render(key);
 };
 grid.appendChild(div);
 });
 
 search.addEventListener('input',()=>{
-const val=search.value.toLowerCase().replace('.','').trim();
+const val = search.value.trim();
+if(!val){render('png');return;}
 render(val);
 });
 
+const relatedTools = [
+["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
+["json-validator.html","JSON Validator","Validate JSON and find errors."],
+["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
+["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
+["uuid-generator.html","UUID Generator","Generate random UUIDs."],
+["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
+["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
+["timestamp-converter.html","Timestamp Converter","Convert Unix timestamps."]
+];
+
+const relatedBox = document.getElementById("relatedTools");
+relatedBox.innerHTML = relatedTools.slice(0,4).map(t => `
+<a class="related-tool-card" href="/${t[0]}">
+<strong>${t[1]}</strong>
+<span>${t[2]}</span>
+</a>
+`).join("");
+
 render('png');
-document.getElementById("year").innerText=new Date().getFullYear();
-</script>
-
-<section class="related-tools-box">
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
-(function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
-})();
-</script>
-
-</body>
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
-(function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
-})();
+document.getElementById("year").innerText = new Date().getFullYear();
 </script>
 
 </body>
