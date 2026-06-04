@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google tag (gtag.js) -->
+<title>YAML Formatter — Toolivo</title>
+<meta name="description" content="Format, clean and beautify YAML instantly. Paste YAML config text, fix indentation, clean spacing and copy formatted YAML online with Toolivo.">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="canonical" href="https://toolivo.site/yaml-formatter.html">
+
+<meta property="og:title" content="YAML Formatter — Toolivo">
+<meta property="og:description" content="Format, clean and beautify YAML instantly with Toolivo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toolivo.site/yaml-formatter.html">
+<meta property="og:image" content="https://toolivo.site/logo.png">
+
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -16,193 +25,104 @@ function gtag(){dataLayer.push(arguments);}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QBF2V9J5T"></script>
 <script>
 gtag('js', new Date());
-gtag('config', 'G-3QBF2V9J5T', {
-  send_page_view: true
-});
+gtag('config', 'G-3QBF2V9J5T', { send_page_view: true });
 </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>YAML Formatter — Toolivo</title>
-<meta name="description" content="Format and clean YAML text instantly with Toolivo. Free online YAML formatter.">
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#0f172a;color:white;min-height:100vh}
 a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:20px}
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:6px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:0;font-size:34px;font-weight:bold}
+.logo img{width:115px;height:115px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));transform:translateY(4px)}
+.logo span{background:linear-gradient(90deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.nav a{color:#94a3b8;font-size:14px;transition:.2s}
+.nav a:hover{color:white}
 
-.header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-padding:6px 0;
-flex-wrap:wrap;
-}
+.breadcrumb{margin-top:12px;color:#64748b;font-size:14px}
+.breadcrumb a{color:#94a3b8}
+.breadcrumb a:hover{color:white}
 
-.logo{
-display:flex;
-align-items:center;
-gap:0;
-font-size:34px;
-font-weight:bold;
-}
+.tool-hero{padding:45px 0 28px}
+.badge{display:inline-block;margin-bottom:14px;padding:8px 13px;border:1px solid #1e293b;border-radius:999px;background:#111827;color:#67e8f9;font-size:13px}
+.tool-hero h1{font-size:clamp(42px,7vw,64px);line-height:1.05;margin-bottom:14px}
+.tool-hero p{max-width:780px;color:#94a3b8;line-height:1.7;font-size:18px}
+.gradient{background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-.logo img{
-width:115px;
-height:115px;
-object-fit:contain;
-filter:drop-shadow(0 0 34px rgba(57,230,210,.55)) drop-shadow(0 20px 46px rgba(0,0,0,.62));
-transform:translateY(4px);
-}
-
-.logo span{
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.nav{
-display:flex;
-align-items:center;
-gap:14px;
-flex-wrap:wrap;
-}
-
-.nav a{
-color:#94a3b8;
-font-size:14px;
-transition:.2s;
-}
-
-.nav a:hover{
-color:white;
-}
-
-.tool-hero{
-padding:45px 0 28px;
-}
-
-.tool-hero h1{
-font-size:clamp(42px,7vw,64px);
-line-height:1.05;
-margin-bottom:14px;
-}
-
-.tool-hero p{
-max-width:720px;
-color:#94a3b8;
-line-height:1.7;
-font-size:18px;
-}
-
-.gradient{
-background:linear-gradient(90deg,#06b6d4,#3b82f6,#8b5cf6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-margin-top:20px;
-}
-
-.panel{
-background:#111827;
-border:1px solid #1e293b;
-border-radius:18px;
-padding:18px;
-}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.panel{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:18px}
+.label{font-size:14px;font-weight:bold;color:#cbd5e1;margin-bottom:10px}
 
 textarea{
-width:100%;
-min-height:420px;
-border-radius:16px;
-border:1px solid #334155;
-background:#020617;
-color:white;
-padding:18px;
-font-size:15px;
-line-height:1.7;
-box-sizing:border-box;
-resize:vertical;
-font-family:monospace;
-outline:none;
+width:100%;min-height:420px;border-radius:16px;border:1px solid #334155;
+background:#020617;color:white;padding:18px;font-size:15px;line-height:1.7;
+resize:vertical;font-family:monospace;outline:none;
 }
+textarea:focus{border-color:#38bdf8}
 
-.label{
-font-size:14px;
-font-weight:bold;
-color:#94a3b8;
-margin-bottom:10px;
-}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+button{padding:14px 18px;border:0;border-radius:14px;background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;font-weight:800;cursor:pointer;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.secondary{background:#020617;color:white;border:1px solid #334155}
 
-button{
-padding:14px 18px;
-border:0;
-border-radius:14px;
-background:linear-gradient(90deg,#06b6d4,#3b82f6);
-color:white;
-font-weight:800;
-cursor:pointer;
-margin:10px 10px 0 0;
-}
+.status{margin-top:14px;padding:14px;border-radius:14px;background:#020617;border:1px solid #334155;color:#94a3b8;line-height:1.7}
+.success{color:#7fffc5}
+.error{color:#ff8b8b}
 
-.copy{
-background:#111827;
-color:white;
-border:1px solid #334155;
-}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px}
+.card h2{font-size:24px;margin-bottom:10px}
+.card p,.card li{color:#94a3b8;line-height:1.7}
+.card ul{padding-left:18px}
 
-.status{
-margin-top:14px;
-padding:14px;
-border-radius:14px;
-background:#020617;
-border:1px solid #334155;
-color:#94a3b8;
-}
+.faq{margin-top:28px}
+.faq h2{font-size:30px;margin-bottom:16px}
+.faq-item{background:#111827;border:1px solid #1e293b;border-radius:18px;padding:20px;margin-bottom:12px}
+.faq-item h3{font-size:18px;margin-bottom:8px}
+.faq-item p{color:#94a3b8;line-height:1.7}
 
-.footer{
-margin-top:55px;
-padding:30px 0;
-border-top:1px solid #1e293b;
-color:#64748b;
-text-align:center;
-}
+.related-tools-box{margin-top:35px}
+.related-tools-box h2{font-size:28px;margin-bottom:18px}
+.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
+.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
+.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
+.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
 
-.footer-links{
-display:flex;
-gap:16px;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:12px;
-}
-
-.footer-links a:hover{
-color:white;
-}
+.footer{margin-top:55px;padding:30px 0;border-top:1px solid #1e293b;color:#64748b;text-align:center}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.footer-links a:hover{color:white}
 
 @media(max-width:900px){
-.grid{grid-template-columns:1fr}
+.tool-grid,.content{grid-template-columns:1fr}
 .header{flex-direction:column}
 .logo img{width:95px;height:95px}
+.related-tools-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+.buttons{flex-direction:column}
+button{width:100%}
+.related-tools-grid{grid-template-columns:1fr}
 }
 </style>
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"YAML Formatter",
+"url":"https://toolivo.site/yaml-formatter.html",
+"applicationCategory":"DeveloperApplication",
+"operatingSystem":"Any",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+}
+</script>
 </head>
 
 <body>
-
 <div class="container">
 
 <header class="header">
@@ -220,16 +140,20 @@ color:white;
 </nav>
 </header>
 
+<div class="breadcrumb">
+<a href="/">Home</a> / <a href="/#tools">Tools</a> / YAML Formatter
+</div>
+
 <section class="tool-hero">
+<div class="badge">Developer Tool</div>
 <h1>YAML <span class="gradient">Formatter</span></h1>
-<p>Clean and format YAML-style config text instantly with Toolivo.</p>
+<p>Format and clean YAML text instantly. Paste YAML config, improve spacing, fix simple indentation and copy the formatted output for your project.</p>
 </section>
 
-<div class="grid">
+<section class="tool-grid">
 
 <div class="panel">
 <div class="label">Input YAML</div>
-
 <textarea id="input">name: Toolivo
 version: 1.0
 features:
@@ -237,8 +161,10 @@ features:
 - free
 - browser based</textarea>
 
+<div class="buttons">
 <button onclick="formatYAML()">Format YAML</button>
-<button class="copy" onclick="clearAll()">Clear</button>
+<button class="secondary" onclick="clearAll()">Clear</button>
+</div>
 
 <div class="status" id="status">Ready.</div>
 </div>
@@ -246,10 +172,58 @@ features:
 <div class="panel">
 <div class="label">Formatted Output</div>
 <textarea id="output" readonly></textarea>
+
+<div class="buttons">
 <button onclick="copyOutput()">Copy Output</button>
 </div>
-
 </div>
+
+</section>
+
+<section class="content">
+<article class="card">
+<h2>What is a YAML formatter?</h2>
+<p>A YAML formatter makes YAML configuration text easier to read by cleaning spacing, normalizing simple list indentation and removing unnecessary blank lines.</p>
+</article>
+
+<article class="card">
+<h2>How to use this YAML formatter</h2>
+<ul>
+<li>Paste your YAML text into the input box.</li>
+<li>Click Format YAML to clean the structure.</li>
+<li>Copy the formatted YAML output for your project.</li>
+</ul>
+</article>
+</section>
+
+<section class="faq">
+<h2>FAQ</h2>
+
+<div class="faq-item">
+<h3>What is YAML used for?</h3>
+<p>YAML is commonly used for configuration files, app settings, deployment files, Docker Compose, CI/CD pipelines and structured data.</p>
+</div>
+
+<div class="faq-item">
+<h3>Does this tool upload my YAML?</h3>
+<p>No. The formatting runs directly in your browser, so your YAML text stays on your device.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can this fix every YAML error?</h3>
+<p>No. This tool cleans and formats YAML-style text, but deeply broken YAML may still need manual correction.</p>
+</div>
+
+<div class="faq-item">
+<h3>Is this YAML formatter free?</h3>
+<p>Yes. Toolivo YAML Formatter is free and works online without signup.</p>
+</div>
+</section>
+
+<section class="related-tools-box">
+<h2>Related Tools</h2>
+<div class="related-tools-grid" id="relatedTools"></div>
+</section>
 
 <footer class="footer">
 <div>© <span id="year"></span> Toolivo. All rights reserved.</div>
@@ -265,171 +239,103 @@ features:
 </div>
 
 <script>
-const input=document.getElementById('input');
-const output=document.getElementById('output');
-const status=document.getElementById('status');
+const input = document.getElementById('input');
+const output = document.getElementById('output');
+const statusBox = document.getElementById('status');
 
 function formatYAML(){
-let lines=input.value.split('\n');
+const raw = input.value;
 
-let formatted=lines
-.map(line=>line.trim())
-.filter(line=>line.length>0)
-.map(line=>{
-if(line.startsWith('-')) return '  '+line;
-return line;
-})
-.join('\n');
-
-output.value=formatted;
-status.textContent='YAML cleaned ✔';
+if(!raw.trim()){
+output.value = '';
+statusBox.textContent = 'Please enter YAML text.';
+statusBox.className = 'status error';
+return;
 }
 
-function copyOutput(){
-navigator.clipboard.writeText(output.value);
+try{
+let lines = raw.replace(/\t/g,'  ').split('\n');
+let formatted = [];
+let lastWasBlank = false;
+
+lines.forEach(line => {
+let clean = line.trim();
+
+if(clean === ''){
+if(!lastWasBlank){
+formatted.push('');
+lastWasBlank = true;
+}
+return;
+}
+
+lastWasBlank = false;
+
+if(clean.startsWith('- ')){
+formatted.push('  ' + clean);
+}else{
+formatted.push(clean);
+}
+});
+
+output.value = formatted.join('\n').trim();
+statusBox.textContent = 'YAML formatted ✔';
+statusBox.className = 'status success';
+
+}catch(e){
+output.value = '';
+statusBox.textContent = 'Could not format YAML ❌';
+statusBox.className = 'status error';
+}
+}
+
+async function copyOutput(){
+if(!output.value) return;
+
+try{
+await navigator.clipboard.writeText(output.value);
+statusBox.textContent = 'Formatted YAML copied ✔';
+statusBox.className = 'status success';
+}catch(e){
+const temp = document.createElement('textarea');
+temp.value = output.value;
+document.body.appendChild(temp);
+temp.select();
+document.execCommand('copy');
+document.body.removeChild(temp);
+statusBox.textContent = 'Formatted YAML copied ✔';
+statusBox.className = 'status success';
+}
 }
 
 function clearAll(){
-input.value='';
-output.value='';
-status.textContent='Ready.';
+input.value = '';
+output.value = '';
+statusBox.textContent = 'Ready.';
+statusBox.className = 'status';
 }
 
-document.getElementById("year").innerText=new Date().getFullYear();
+const relatedTools = [
+["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
+["xml-formatter.html","XML Formatter","Format and validate XML code."],
+["json-validator.html","JSON Validator","Validate JSON and find errors."],
+["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
+["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
+["html-minifier.html","HTML Minifier","Minify HTML code."],
+["css-minifier.html","CSS Minifier","Minify CSS code."],
+["javascript-minifier.html","JavaScript Minifier","Minify JavaScript code."]
+];
 
+const relatedBox = document.getElementById("relatedTools");
+relatedBox.innerHTML = relatedTools.slice(0,4).map(t => `
+<a class="related-tool-card" href="/${t[0]}">
+<strong>${t[1]}</strong>
+<span>${t[2]}</span>
+</a>
+`).join("");
+
+document.getElementById("year").innerText = new Date().getFullYear();
 formatYAML();
-</script>
-
-<section class="related-tools-box">
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
-(function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
-})();
-</script>
-
-</body>
-  <h2>Related Tools</h2>
-  <div class="related-tools-grid" id="relatedTools"></div>
-</section>
-
-<style>
-.related-tools-box{max-width:1100px;margin:45px auto 20px;padding:0 20px}
-.related-tools-box h2{font-size:28px;margin-bottom:18px}
-.related-tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.related-tool-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:16px;display:block;transition:.2s}
-.related-tool-card:hover{transform:translateY(-3px);border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,.10)}
-.related-tool-card strong{display:block;font-size:16px;margin-bottom:6px;color:white}
-.related-tool-card span{color:#94a3b8;font-size:13px;line-height:1.4}
-@media(max-width:900px){.related-tools-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.related-tools-grid{grid-template-columns:1fr}}
-</style>
-
-<script>
-(function(){
-  const tools = [
-    ["json-formatter.html","JSON Formatter","Format and beautify JSON code."],
-    ["json-validator.html","JSON Validator","Validate JSON and find errors."],
-    ["json-viewer.html","JSON Viewer","View JSON in a readable format."],
-    ["csv-to-json.html","CSV to JSON","Convert CSV data to JSON."],
-    ["password-generator.html","Password Generator","Generate secure passwords."],
-    ["password-strength-checker.html","Password Strength Checker","Check password security."],
-    ["uuid-generator.html","UUID Generator","Generate random UUIDs."],
-    ["sha256-generator.html","SHA256 Generator","Generate SHA256 hashes."],
-    ["qr-generator.html","QR Generator","Create QR codes instantly."],
-    ["url-encoder-decoder.html","URL Encoder Decoder","Encode and decode URLs."],
-    ["base64-encoder-decoder.html","Base64 Encoder Decoder","Encode and decode Base64."],
-    ["jwt-decoder.html","JWT Decoder","Decode JWT tokens."],
-    ["word-counter.html","Word Counter","Count words and characters."],
-    ["case-converter.html","Case Converter","Convert text case instantly."],
-    ["text-diff-checker.html","Text Diff Checker","Compare two texts."],
-    ["duplicate-line-remover.html","Duplicate Line Remover","Remove duplicate lines."],
-    ["image-compressor.html","Image Compressor","Compress images online."],
-    ["resize-image.html","Resize Image","Resize images quickly."],
-    ["crop-image.html","Crop Image","Crop images online."],
-    ["background-remover.html","Background Remover","Remove image backgrounds."],
-    ["meta-tag-generator.html","Meta Tag Generator","Generate SEO meta tags."],
-    ["meta-tag-analyzer.html","Meta Tag Analyzer","Analyze meta tags."],
-    ["open-graph-generator.html","Open Graph Generator","Generate OG tags."],
-    ["sitemap-generator.html","Sitemap Generator","Generate sitemap XML."],
-    ["robots-txt-generator.html","Robots.txt Generator","Generate robots.txt files."],
-    ["css-gradient-generator.html","CSS Gradient Generator","Create CSS gradients."],
-    ["css-box-shadow-generator.html","CSS Box Shadow Generator","Generate box shadows."],
-    ["css-button-generator.html","CSS Button Generator","Create CSS buttons."],
-    ["color-palette-generator.html","Color Palette Generator","Generate color palettes."]
-  ];
-
-  const current = location.pathname.split("/").pop();
-  const box = document.getElementById("relatedTools");
-  if(!box) return;
-
-  const filtered = tools.filter(t => t[0] !== current).sort(() => 0.5 - Math.random()).slice(0,4);
-
-  box.innerHTML = filtered.map(t => `
-    <a class="related-tool-card" href="/${t[0]}">
-      <strong>${t[1]}</strong>
-      <span>${t[2]}</span>
-    </a>
-  `).join("");
-})();
 </script>
 
 </body>
