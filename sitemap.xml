@@ -882,4 +882,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
+  
+  <url>
+  <loc>https://toolivo.site/blog/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://toolivo.site/blog/what-is-a-qr-code.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
 </urlset>
